@@ -1,0 +1,32 @@
+<code class='bash'>
+bikle101@cp100-196102:~/cp100/default/compute-engine$
+bikle101@cp100-196102:~/cp100/default/compute-engine$ gcloud compute instances create bookshelf \
+>   --image-family=debian-8 \
+>   --image-project=debian-cloud \
+>   --machine-type=g1-small \
+>   --scopes userinfo-email,cloud-platform \
+>   --metadata-from-file startup-script=startup-scripts/startup-script.sh \
+>   --tags http-server
+Created [https://www.googleapis.com/compute/v1/projects/cp100-196102/zones/us-central1-f/instances/bookshelf].
+NAME       ZONE           MACHINE_TYPE  PREEMPTIBLE  INTERNAL_IP  EXTERNAL_IP    STATUS
+bookshelf  us-central1-f  g1-small                   10.128.0.2   35.224.163.97  RUNNING
+bikle101@cp100-196102:~/cp100/default/compute-engine$
+bikle101@cp100-196102:~/cp100/default/compute-engine$
+bikle101@cp100-196102:~/cp100/default/compute-engine$
+
+
+
+bikle101@cp100-196102:~/cp100/default/compute-engine$ gcloud compute firewall-rules create default-allow-http-8080 \
+>   --allow tcp:8080 \
+>   --source-ranges 0.0.0.0/0 \
+>   --target-tags http-server \
+>   --description "Allow port 8080 access to http-server"
+Creating firewall...\
+Created [https://www.googleapis.com/compute/v1/projects/cp100-196102/global/firewalls/default-allow-http-8080].
+Creating firewall...done.
+NAME                     NETWORK  DIRECTION  PRIORITY  ALLOW     DENY
+default-allow-http-8080  default  INGRESS    1000      tcp:8080
+bikle101@cp100-196102:~/cp100/default/compute-engine$
+bikle101@cp100-196102:~/cp100/default/compute-engine$
+bikle101@cp100-196102:~/cp100/default/compute-engine$
+</code>

@@ -1,0 +1,72 @@
+<code class='bash'>bikle101@cp100-196102:~$ gcloud compute zones list | grep central
+us-central1-c              us-central1              UP
+us-central1-a              us-central1              UP
+us-central1-f              us-central1              UP
+us-central1-b              us-central1              UP
+bikle101@cp100-196102:~$ 
+bikle101@cp100-196102:~$ 
+bikle101@cp100-196102:~$ 
+
+
+
+bikle101@cp100-196102:~$ gcloud config set compute/zone us-central1-f
+Updated property [compute/zone].
+bikle101@cp100-196102:~$
+bikle101@cp100-196102:~$
+bikle101@cp100-196102:~$
+
+
+
+bikle101@cp100-196102:~$ gcloud config list
+[component_manager]
+disable_update_check = True
+[compute]
+gce_metadata_read_timeout_sec = 5
+zone = us-central1-f
+[core]
+account = danbikle611@gmail.com
+check_gce_metadata = False
+disable_usage_reporting = False
+project = cp100-196102
+[metrics]
+environment = devshell
+
+Your active configuration is: [cloudshell-11149]
+bikle101@cp100-196102:~$
+bikle101@cp100-196102:~$
+bikle101@cp100-196102:~$
+
+
+
+bikle101@cp100-196102:~$ gcloud container clusters create bookshelf \
+>   --scopes "https://www.googleapis.com/auth/userinfo.email","cloud-platform" \
+>   --num-nodes 2
+
+WARNING: The behavior of --scopes will change in a future gcloud release:
+service-control and service-management scopes
+will no longer be added to what is specified in --scopes.
+To use these scopes, add them explicitly to --scopes.
+To use the new behavior, set container/new_scopes_behavior property
+(gcloud config set container/new_scopes_behavior true).
+WARNING: Starting in Kubernetes v1.10,
+new clusters will no longer get compute-rw and
+storage-ro scopes
+added to what is specified in --scopes
+(though the latter will remain included in the default --scopes).
+To use these scopes, add them explicitly to --scopes.
+To use the new behavior,
+set container/new_scopes_behavior property
+(gcloud config set container/new_scopes_behavior true).
+Creating cluster bookshelf.../
+Creating cluster bookshelf...done.
+Created
+[https://container.googleapis.com/v1/projects/cp100-196102/zones/us-central1-f/clusters/bookshelf].
+To inspect the contents of your cluster, go to:
+https://console.cloud.google.com/kubernetes/workload_/gcloud/us-central1-f/bookshelf?project=cp100-196102
+kubeconfig entry generated for bookshelf.
+NAME       LOCATION       MASTER_VERSION  MASTER_IP      MACHINE_TYPE   NODE_VERSION  NUM_NODES  STATUS
+bookshelf  us-central1-f  1.8.7-gke.1     35.226.76.228  n1-standard-1  1.8.7-gke.1   2          RUNNING
+bikle101@cp100-196102:~$
+bikle101@cp100-196102:~$
+bikle101@cp100-196102:~$
+</code>

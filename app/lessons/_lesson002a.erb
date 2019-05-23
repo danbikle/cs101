@@ -1,0 +1,80 @@
+<code class='bash'>Welcome to Cloud Shell! Type "help" to get started.
+bikle101@cp100-196102:~$
+bikle101@cp100-196102:~$ mkdir cp100
+bikle101@cp100-196102:~$
+bikle101@cp100-196102:~$
+
+
+
+bikle101@cp100-196102:~$ cd cp100
+bikle101@cp100-196102:~/cp100$ 
+bikle101@cp100-196102:~/cp100$ 
+
+
+
+bikle101@cp100-196102:~/cp100$ gcloud source repos clone default
+Cloning into '/home/bikle101/cp100/default'...
+default warning: You appear to have cloned an empty repository.
+Project [cp100-196102] repository [default] was cloned to [/home/bikle101/cp100/default].
+bikle101@cp100-196102:~/cp100$ 
+bikle101@cp100-196102:~/cp100$ 
+
+
+
+bikle101@cp100-196102:~/cp100$ cd default
+bikle101@cp100-196102:~/cp100/default$
+bikle101@cp100-196102:~/cp100/default$
+
+
+bikle101@cp100-196102:~/cp100/default$ ls -la
+total 12
+drwxr-xr-x 3 bikle101 bikle101 4096 Feb 23 15:22 .
+drwxr-xr-x 3 bikle101 bikle101 4096 Feb 23 15:22 ..
+drwxr-xr-x 7 bikle101 bikle101 4096 Feb 23 15:22 .git
+bikle101@cp100-196102:~/cp100/default$
+bikle101@cp100-196102:~/cp100/default$
+
+
+
+bikle101@cp100-196102:~/cp100/default$ git pull https://github.com/GoogleCloudPlatformTraining/cp100-bookshelf
+remote: Counting objects: 814, done.
+remote: Total 814 (delta 0), reused 0 (delta 0), pack-reused 814
+Receiving objects: 100% (814/814), 180.14 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (533/533), done.
+From https://github.com/GoogleCloudPlatformTraining/cp100-bookshelf
+ * branch            HEAD       -> FETCH_HEAD
+bikle101@cp100-196102:~/cp100/default$
+bikle101@cp100-196102:~/cp100/default$
+
+
+
+bikle101@cp100-196102:~/cp100/default$ ls -la
+total 52
+drwxr-xr-x 7 bikle101 bikle101  4096 Feb 23 15:22 .
+drwxr-xr-x 3 bikle101 bikle101  4096 Feb 23 15:22 ..
+drwxr-xr-x 3 bikle101 bikle101  4096 Feb 23 15:22 app-engine
+drwxr-xr-x 3 bikle101 bikle101  4096 Feb 23 15:22 cloud-storage
+drwxr-xr-x 4 bikle101 bikle101  4096 Feb 23 15:22 compute-engine
+drwxr-xr-x 3 bikle101 bikle101  4096 Feb 23 15:22 container-engine
+-rw-r--r-- 1 bikle101 bikle101  1642 Feb 23 15:22 CONTRIBUTING.md
+drwxr-xr-x 8 bikle101 bikle101  4096 Feb 23 15:22 .git
+-rw-r--r-- 1 bikle101 bikle101   409 Feb 23 15:22 .gitignore
+-rw-r--r-- 1 bikle101 bikle101 11341 Feb 23 15:22 LICENSE
+-rw-r--r-- 1 bikle101 bikle101  1015 Feb 23 15:22 README.md
+bikle101@cp100-196102:~/cp100/default$
+bikle101@cp100-196102:~/cp100/default$
+
+
+
+bikle101@cp100-196102:~/cp100/default$ git push origin master
+Counting objects: 814, done.
+Compressing objects: 100% (265/265), done.
+Writing objects: 100% (814/814), 180.11 KiB | 0 bytes/s, done.
+Total 814 (delta 533), reused 814 (delta 533)
+remote: Resolving deltas: 100% (533/533)
+To https://source.developers.google.com/p/cp100-196102/r/default
+ * [new branch]      master -> master
+bikle101@cp100-196102:~/cp100/default$
+bikle101@cp100-196102:~/cp100/default$
+bikle101@cp100-196102:~/cp100/default$
+</code>

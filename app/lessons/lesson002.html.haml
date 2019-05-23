@@ -1,0 +1,1527 @@
+%h1#top Lesson 002 [ More Google GCP ]
+
+%p I have taught this lesson several times now.
+
+%p Most of this lesson is done with a browser.
+
+%p I offer tips for success.
+
+%ul
+  %li Use Google-Chrome browser.
+  %li Dedicate a new browser window to this lesson.
+  %li If you need a browser to check news or e-mail, do it in another window.
+  %li Get a new window with: File -> New Window
+  %li Why? Because you want to avoid working in a window with many tabs.
+  %li On a piece of paper, write down a useful tab-organization:
+  %li
+    %ul
+      %li Tab 1: cs101.us
+      %li Tab 2: codelabs
+      %li Tab 3: github
+      %li Tab 4: GCP 1
+      %li Tab 5: GCP Cloud-Shell
+      %li Tab 6: DataLab
+      %li Tab 7: GCP 3
+
+%p I started this lesson by creating a new Chrome-window.
+
+%p I created 7 tabs in that window.
+
+%p
+  In tab 1 I loaded this URL:
+  %a(href='http://cs101.us' target='x')
+    http://cs101.us
+  
+%p
+  In tab 2 I loaded this URL:
+  %a(href='https://codelabs.developers.google.com/cp100' target='x')
+    https://codelabs.developers.google.com/cp100
+  
+%p
+  In tab 3 I loaded this URL:
+  %a(href='https://github.com/GoogleCloudPlatform' target='x')
+    https://github.com/GoogleCloudPlatform
+  
+%p
+  In tab 4 I loaded this URL:
+  %a(href='https://console.cloud.google.com' target='x')
+    https://console.cloud.google.com
+%p In tabs 5,6,7 I had done nothing (yet).  
+
+%p After I created the 7 tabs, my Chrome-window looked like this:
+
+%img(src='/lesson002/l200.png')
+%br/
+
+%p I clicked on tab 2, the codelabs-tab.
+
+%p I continued this lesson by studying the URL listed below:
+%p
+  %a(href='https://codelabs.developers.google.com/cp100' target='x')
+    https://codelabs.developers.google.com/cp100
+%p I saw this:
+
+%img(src='/lesson002/l201.png')
+%br/
+
+%p On that page I assume the correct ordering of links is listed below:
+
+%ul
+  %li
+    %a(href='https://codelabs.developers.google.com/codelabs/cp100-free-trial' target='x')
+      https://codelabs.developers.google.com/codelabs/cp100-free-trial
+  %li
+    %a(href='https://codelabs.developers.google.com/codelabs/cp100-cloud-launcher' target='x')
+      https://codelabs.developers.google.com/codelabs/cp100-cloud-launcher
+  %li
+    %a(href='https://codelabs.developers.google.com/codelabs/cp100-app-engine' target='x')
+      https://codelabs.developers.google.com/codelabs/cp100-app-engine
+  %li
+    %a(href='https://codelabs.developers.google.com/codelabs/cp100-cloud-storage' target='x')
+      https://codelabs.developers.google.com/codelabs/cp100-cloud-storage
+  %li
+    %a(href='https://codelabs.developers.google.com/codelabs/cp100-compute-engine' target='x')
+      https://codelabs.developers.google.com/codelabs/cp100-compute-engine
+  %li
+    %a(href='https://codelabs.developers.google.com/codelabs/cp100-container-engine' target='x')
+      https://codelabs.developers.google.com/codelabs/cp100-container-engine
+  %li
+    %a(href='https://codelabs.developers.google.com/codelabs/cp100-big-query' target='x')
+      https://codelabs.developers.google.com/codelabs/cp100-big-query
+  
+%p The above links are discussed below:
+%ul
+  %li
+    %a(href='#free-trial') free-trial
+  %li
+    %a(href='#cloud-launcher') cloud-launcher
+  %li
+    %a(href='#app-engine') app-engine
+  %li
+    %a(href='#cloud-storage') cloud-storage
+  %li
+    %a(href='#compute-engine') compute-engine
+  %li
+    %a(href='#container-engine') container-engine
+  %li
+    %a(href='#big-query') big-query
+
+%hr/
+
+%h2#free-trial Free-Trial
+
+%p#free-trial Next, in the codelabs-tab, I clicked this link:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-free-trial' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-free-trial
+  
+%p I saw a simple path through 4 pages.
+
+%p The third page had a noteworthy URL I used to get $300 of cloud-credit from Google:
+
+%p I loaded the URL into tab 3, the GCP-tab:
+%p
+  %a(href='https://console.developers.google.com/freetrial' target='x')
+    https://console.developers.google.com/freetrial
+
+%p
+  I logged in using my gmail account.
+
+%p
+  It worked well; I gave it my credit-card info.
+%p
+  It gave me $300 of cloud-credit from Google.
+%img(src='/lesson001/ss10.png')
+%br/
+
+%p
+  I hope that you can also get that credit.
+
+%p Next, I visited the URL listed below:
+
+%p
+  %a(href='https://console.cloud.google.com/projectcreate' target='x')
+    https://console.cloud.google.com/projectcreate
+
+%img(src='/lesson001/img003.png')
+%br/
+
+%p I used that page to create a project called cp100.
+
+%p After I created cp100, GCP displayed a "CP100" select-option-link at the top of every GCP page in my GCP-tab:
+
+%img(src='/lesson002/l202.png')
+%br/
+
+%p That ended my interaction with the CP100-node I call: "Free-Trial".
+
+%a(href='#top') [top]
+
+%hr/
+
+%h2#cloud-launcher Cloud-Launcher
+Next, in the codelabs-tab, I clicked this link:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-cloud-launcher' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-cloud-launcher
+%p I studied this page:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-cloud-launcher/#1' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-cloud-launcher/#1
+%p I studied this page:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-cloud-launcher/#2' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-cloud-launcher/#2
+
+%p In the GCP-tab of my browser, I confirmed that I had project CP100 loaded.
+
+%p I visited this URL:
+
+%p
+  %a(href='https://console.cloud.google.com/' target='x')
+    https://console.cloud.google.com/
+
+%p I saw this:
+
+%img(src='/lesson002/l203.png')
+%br/
+
+
+%p I clicked the "upper-left-hamburger-link":
+
+%img(src='/lesson002/l204.png')
+%br/
+
+%p I clicked "APIs & Services":
+
+%img(src='/lesson002/l205.png')
+%br/
+
+%p I saw this:
+
+%img(src='/lesson002/l206.png')
+%br/
+
+%p Near the top I clicked blue-button: "ENABLE APIS AND SERVICES":
+
+%img(src='/lesson002/l207.png')
+%br/
+
+%p I searched for "Compute Enginge".
+
+%p I found it:
+
+%img(src='/lesson002/l208.png')
+%br/
+
+%p I clicked the blue-button: "ENABLE".
+
+%p After two minutes, GCP signaled success.
+
+%p I returned to the codelabs-tab.
+
+%p I studied the next link in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-cloud-launcher/#3' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-cloud-launcher/#3
+
+%p I returned to the GCP-tab.
+
+%p I clicked the "upper-left-hamburger-link".
+
+%p I clicked "Cloud-Launcher":
+
+%img(src='/lesson002/l209.png')
+%br/
+
+%p I found LAMP by Bitnami:
+
+%img(src='/lesson002/l210.png')
+%br/
+
+%p I clicked blue-button: "LAUNCH ON COMPUTE ENGINE".
+
+%p After a short delay, GCP served me a configuration page:
+
+%img(src='/lesson002/l211.png')
+%br/
+
+%p I assumed that the default configuration was fine for my training.
+
+%p I clicked the blue-button: "Deploy".
+
+%p GCP served status during deployment:
+
+%img(src='/lesson002/l212.png')
+%hr/
+%img(src='/lesson002/l213.png')
+%br/
+
+%p In the codelabs-tab, I studied the next link in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-cloud-launcher/#4' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-cloud-launcher/#4
+
+%p In the GCP-tab I clicked the link site address near the top.
+
+%img(src='/lesson002/l214.png')
+%br/
+
+
+%p A LAMP server responded:
+
+%img(src='/lesson002/l215.png')
+%br/
+
+%p I closed that tab.
+
+%p In the GCP-tab I clicked the SSH link:
+
+%img(src='/lesson002/l216.png')
+%br/
+
+%p After 30 seconds, GCP served me an SSH window:
+
+%img(src='/lesson002/l217.png')
+%br/
+
+%p In that window I issued shell commands:
+
+.syntax
+  %pre
+    %code
+      cd /opt/bitnami
+      sudo cp docs/phpinfo.php apache2/htdocs
+      exit
+      
+%p In the GCP-tab I clicked the link site address near the top.
+%p The LAMP server appeared in a new tab with this URL: http://146.148.39.70/
+%p I enhanced the URL:
+%p http://146.148.39.70/phpinfo.php
+
+%p The server responded with configuration information:
+
+%img(src='/lesson002/l218.png')
+%br/
+
+%p The above page convinced me that I successfully completed this exercise.
+
+%p In the GCP-tab I clicked the blue-trashcan-button "DELETE" near the top:
+
+%img(src='/lesson002/l219.png')
+%br/
+
+%p GCP deleted that server for me.
+
+%p That ended my interaction with the CP100-node I call: "Cloud-Launcher".
+
+%a(href='#top') [top]
+
+%hr/
+
+
+%h2#app-engine App-Engine
+
+%p Next, in the codelabs-tab, I clicked this link:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-app-engine' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-app-engine
+  
+%p I saw this:
+
+%img(src='/lesson002/l220.png')
+%br/
+
+%p I studied that page.
+
+%p I clicked the next link in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-app-engine/#1' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-app-engine/#1
+
+%p I studied the page.
+
+%p I bookmarked useful links in that page:
+
+%ul
+  %li
+    %a(href='https://cloud.google.com/docs' target='x')
+      https://cloud.google.com/docs
+  %li
+    %a(href='https://cloud.google.com/appengine/docs' target='x')
+      https://cloud.google.com/appengine/docs
+  %li
+    %a(href='https://cloud.google.com/datastore' target='x')
+      https://cloud.google.com/datastore
+  %li
+    %a(href='https://cloud.google.com/appengine/docs/python/tools/webapp2' target='x')
+      https://cloud.google.com/appengine/docs/python/tools/webapp2
+  %li
+    %a(href='https://cloud.google.com/sql/docs/introduction' target='x')
+      https://cloud.google.com/sql/docs/introduction
+  %li
+    %a(href='https://cloud.google.com/source-repositories/docs' target='x')
+      https://cloud.google.com/source-repositories/docs
+  %li
+    %a(href='https://cloud.google.com/shell/docs' target='x')
+      https://cloud.google.com/shell/docs
+  
+%p I clicked the next link in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-app-engine/#2' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-app-engine/#2
+
+%p I studied the page.
+
+%p In the GCP-tab of my browser, I loaded a URL:
+
+%p
+  %a(href='https://console.cloud.google.com/' target='x')
+    https://console.cloud.google.com/
+
+%p I clicked the upper-left-hamburger-link.
+
+%p From there I picked "Source Repositories":
+
+%img(src='/lesson002/l221.png')
+%br/
+
+%p GCP served me a page.
+
+%p I clicked blue-button "CREATE REPOSITORY":
+
+%img(src='/lesson002/l222.png')
+%br/
+
+%p GCP asked me to name my new repository.
+
+%p I called it: "default":
+
+%img(src='/lesson002/l223.png')
+%br/
+
+%p GCP served me a page:
+
+%img(src='/lesson002/l224.png')
+%br/
+
+%p At the upper-right of that page I clicked a small icon to activate: "Cloud-Shell":
+
+%img(src='/lesson002/l225.png')
+%br/
+
+%p I moved the Cloud-Shell window into its own tab (tab 5).
+
+%p I changed the text to be black on white:
+
+%img(src='/lesson002/l226.png')
+%br/
+
+%p In that Cloud-Shell-tab, I entered commands:
+
+.syntax
+  %pre
+    %code
+      mkdir cp100
+      cd cp100
+      gcloud source repos clone default
+      cd default
+      ls -la
+      git pull https://github.com/GoogleCloudPlatformTraining/cp100-bookshelf
+      ls -la
+      git push origin master
+
+%p I saw this:
+
+.syntax
+  %pre
+    =render 'lesson002a'
+
+%p In the github-tab of my browser I loaded the URL I saw in the above output:
+
+%p
+  %a(href='https://github.com/GoogleCloudPlatformTraining/cp100-bookshelf' target='x')
+    https://github.com/GoogleCloudPlatformTraining/cp100-bookshelf
+
+%p I saw this:
+
+%img(src='/lesson002/l227.png')
+%br/
+
+%p I studied the URLs listed below:
+
+%ul
+  %li
+    %a(href='https://github.com/GoogleCloudPlatformTraining/cp100-bookshelf/tree/master/app-engine' target='x')
+      https://github.com/GoogleCloudPlatformTraining/cp100-bookshelf/tree/master/app-engine
+  %li
+    %a(href='https://github.com/GoogleCloudPlatformTraining/cp100-bookshelf/tree/master/cloud-storage' target='x')
+      https://github.com/GoogleCloudPlatformTraining/cp100-bookshelf/tree/master/cloud-storage
+  %li
+    %a(href='https://github.com/GoogleCloudPlatformTraining/cp100-bookshelf/tree/master/compute-engine' target='x')
+      https://github.com/GoogleCloudPlatformTraining/cp100-bookshelf/tree/master/compute-engine
+  %li
+    %a(href='https://github.com/GoogleCloudPlatformTraining/cp100-bookshelf/tree/master/container-engine' target='x')
+      https://github.com/GoogleCloudPlatformTraining/cp100-bookshelf/tree/master/container-engine
+  %li
+    %a(href='https://github.com/GoogleCloudPlatformTraining/cp100-bookshelf/blob/master/README.md' target='x')
+      https://github.com/GoogleCloudPlatformTraining/cp100-bookshelf/blob/master/README.md
+      
+
+%p I want to learn Docker.
+
+%p This file looked interesting:
+
+%p
+  %a(href='https://github.com/GoogleCloudPlatformTraining/cp100-bookshelf/blob/master/container-engine/Dockerfile' target='x')
+    container-engine/Dockerfile
+
+%p In the codelabs-tab, I clicked the next link in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-app-engine/#3' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-app-engine/#3
+
+%p I studied the page.
+
+%p In the GCP-tab I loaded this URL:
+
+%p
+  %a(href='https://console.cloud.google.com/code' target='x')
+    https://console.cloud.google.com/code
+
+%p I studied the page and recognized it as a git repo.
+
+%p I saw this:
+
+%img(src='/lesson002/l228.png')
+%br/
+
+%p I clicked the folder: "app-engine".
+
+%p I clicked the file: "app.yaml".
+
+%p I saw that it was a simple yaml file.
+
+%p I clicked the folder: "app-engine".
+
+%p I clicked the file: "main.py".
+
+%p I saw that it was a simple Python file.
+
+%p I clicked the folder: "app-engine".
+
+%p I clicked the file: "config.py".
+
+%p I saw that it was a simple Python file.
+
+%p I clicked the folder: "app-engine".
+
+%p I clicked the folder: "bookshelf".
+
+%p I studied files in that folder.
+
+%p In the codelabs-tab, I clicked the next link in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-app-engine/#4' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-app-engine/#4
+
+%p I studied the page.
+
+%p In Cloud-Shell tab I entered commands:
+
+.syntax
+  %pre
+    %code
+      cd ~/cp100/default/app-engine
+      cat requirements.txt
+      pip install -r requirements.txt -t lib
+      cat appengine_config.py
+      gcloud app deploy
+      gcloud app browse
+      exit
+
+%p I saw this:
+
+.syntax
+  %pre
+    =render 'lesson002b'
+
+%p In tab-6 I loaded this URL:
+
+%p https://cp100-196102.appspot.com
+
+%p I saw this:
+
+%img(src='/lesson002/l229.png')
+
+%p In the codelabs-tab, I clicked the next link in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-app-engine/#5' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-app-engine/#5
+
+%p I studied the page.
+
+%p I clicked the next link in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-app-engine/#6' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-app-engine/#6
+
+%p I studied the page.
+
+%p In tab-6 I asked for browser-refresh with ctrl-r.
+
+%p After that I saw this:
+
+%img(src='/lesson002/l229.png')
+
+%p I clicked green-button: "Add book".
+
+%p I saw this:
+
+%img(src='/lesson002/l230.png')
+
+%p I entered information about a book.
+
+%p I clicked green-button: "Save".
+
+%p I saw this:
+
+%img(src='/lesson002/l231.png')
+
+%p In the GCP-tab I visited a URL:
+
+%p
+  %a(href='https://console.cloud.google.com/datastore' target='x')
+    https://console.cloud.google.com/datastore
+  
+
+%p I saw this:
+
+%img(src='/lesson002/l232.png')
+
+  
+%p In the GCP-tab I visited a URL:
+
+%p
+  %a(href='https://console.cloud.google.com/code' target='x')
+    https://console.cloud.google.com/code
+
+%p I clicked app-engine folder.
+
+%p I clicked bookshelf folder.
+
+%p I clicked model_datastore.py
+
+%p I saw this:
+
+%img(src='/lesson002/l233.png')
+
+
+%p In the codelabs-tab, I studied this page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-app-engine/#6' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-app-engine/#6
+
+%p I carefully read: "Step 5".
+
+%p In my mind I joined that section with model_datastore.py (in GCP-tab).
+
+%p Now I understand Cloud Datastore better.
+
+%p If I ever need to add a No-SQL datastore to a python-web-app I will return to this lesson.
+
+%p In the codelabs-tab, I clicked the next link in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-app-engine/#7' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-app-engine/#7
+
+%p I studied the page.
+
+
+%p That ended my interaction with the CP100-node I call: "App-Engine".
+
+%a(href='#top') [top]
+%hr/
+
+
+
+%h2#cloud-storage Cloud-Storage
+
+%p Next, in the codelabs-tab, I clicked this link:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-cloud-storage' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-cloud-storage
+  
+%p I saw this:
+
+%img(src='/lesson002/l234.png')
+
+%p I studied that page.
+
+%p I clicked the next link in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-cloud-storage/#1' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-cloud-storage/#1
+  
+%p I studied that page.
+
+%p I bookmarked three links in that page:
+
+%ul
+  %li
+    %a(href='https://cloud.google.com/storage/docs/' target='x')
+      https://cloud.google.com/storage/docs/
+  %li
+    %a(href='https://cloud.google.com/appengine/docs/standard/python/googlecloudstorageclient/setting-up-cloud-storage' target='x')
+      python/googlecloudstorageclient/setting-up-cloud-storage
+  %li
+    %a(href='https://cloud.google.com/apis/docs/cloud-client-libraries' target='x')
+      https://cloud.google.com/apis/docs/cloud-client-libraries
+  
+
+%p I clicked the next link in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-cloud-storage/#2' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-cloud-storage/#2
+  
+%p I studied that page.
+
+
+%p I clicked the next link in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-cloud-storage/#3' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-cloud-storage/#3
+  
+%p I studied that page to understand the shell commands below:
+
+%p In the GCP-tab I visited a URL:
+
+%p
+  %a(href='https://console.cloud.google.com' target='x')
+    https://console.cloud.google.com
+
+%p In the top-right, I clicked the Cloud-Shell icon to start a new Cloud-Shell.
+
+%p I moved the new Cloud-Shell window to tab 5.
+
+%p In Cloud-Shell-tab, I entered commands:
+
+.syntax
+  %pre
+    %code
+      echo $DEVSHELL_PROJECT_ID
+      gcloud compute zones list|grep central
+      gsutil mb -l us-central1 gs://$DEVSHELL_PROJECT_ID
+
+%p I saw this:
+
+%img(src='/lesson002/l235.png')
+
+%p In Cloud-Shell-tab, I entered another command:
+
+.syntax
+  %pre
+    %code gsutil defacl ch -u AllUsers:R gs://$DEVSHELL_PROJECT_ID
+
+%p GCP indicated success.
+
+%p In the GCP-tab I visited a URL:
+
+%p
+  %a(href='https://console.cloud.google.com/code' target='x')
+    https://console.cloud.google.com/code
+
+%p I clicked folder: "cloud-storage".
+
+%p I clicked "config.py".
+
+%p I studied lines 47 through 49.
+%p I clicked folder: "cloud-storage".
+%p I clicked folder: "bookshelf".
+
+%p I clicked "storage.py".
+%p I studied lines 47 through 69.
+
+%p I clicked folder: "bookshelf".
+%p I clicked folder: "templates".
+%p I clicked "list.html".
+%p I studied lines 31 through 35.
+
+
+%p I clicked the next link in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-cloud-storage/#4' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-cloud-storage/#4
+  
+%p I studied that page.
+
+%p In Cloud-Shell-tab I entered command:
+
+.syntax
+  %pre
+    %code cd ~/cp100/default/cloud-storage
+
+%p I used sed-command to edit a file:
+
+.syntax
+  %pre
+    %code
+      sed -i s/your-bucket-name/$DEVSHELL_PROJECT_ID/ config.py
+      grep BUCKET config.py
+
+%p I entered more commands:
+.syntax
+  %pre
+    %code
+      cat requirements.txt
+      pip install -r requirements.txt -t lib
+      gcloud app deploy
+      
+%p I saw this:
+
+%img(src='/lesson002/l236.png')
+
+
+%p I clicked the next link in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-cloud-storage/#5' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-cloud-storage/#5
+  
+%p I studied that page.
+
+%p I studied the output from gcloud app deploy (displayed above).
+
+%p It gave me the URL of my app on appspot:
+
+%p target url: [https://cp100-196102.appspot.com]
+
+%p I visited https://cp100-196102.appspot.com
+
+%p I saw this:
+
+%img(src='/lesson002/l237.png')
+
+%p I clicked geen-button: "Add book".
+
+%p I added a book and pressed the green-button: "Save":
+
+%img(src='/lesson002/l238.png')
+
+%p I saw this:
+
+%img(src='/lesson002/l239.png')
+
+%p In GCP-tab I loaded URL:
+
+%p
+  %a(href='https://console.cloud.google.com/storage' target='x')
+    https://console.cloud.google.com/storage
+
+%p I found the image for the book:
+
+%img(src='/lesson002/l240.png')
+
+%p That ended my interaction with the CP100-node I call: "Cloud-Storage".
+
+%a(href='#top') [top]
+%hr/
+
+%h2#compute-engine Compute-Engine
+
+%p Next, in the codelabs-tab, I clicked this link:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-compute-engine' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-compute-engine
+  
+%p I saw this:
+
+%img(src='/lesson002/l241.png')
+
+%p I studied that page.
+
+%p I studied the next page:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-compute-engine/#1' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-compute-engine/#1
+  
+%p I bookmarked links in that page:
+
+%ul
+  %li
+    %a(href='https://cloud.google.com/compute/docs/' target='x')
+      https://cloud.google.com/compute/docs/
+  %li
+    %a(href='https://cloud.google.com/python/tutorials/bookshelf-on-compute-engine#multiple_instances' target='x')
+      https://cloud.google.com/python/tutorials/bookshelf-on-compute-engine#multiple_instances
+  %li
+    %a(href='https://cloud.google.com/compute/docs/startupscript' target='x')
+      https://cloud.google.com/compute/docs/startupscript
+  %li
+    %a(href='https://cloud.google.com/solutions/google-compute-engine-management-puppet-chef-salt-ansible' target='x')
+      https://cloud.google.com/solutions/google-compute-engine-management-puppet-chef-salt-ansible
+  %li
+    %a(href='https://cloud.google.com/deployment-manager/overview' target='x')
+      https://cloud.google.com/deployment-manager/overview
+  
+%p I studied the next page:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-compute-engine/#2' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-compute-engine/#2
+  
+%p In the GCP-tab, I visited URL:
+%p
+  %a(href='https://console.cloud.google.com/code' target='x')
+    https://console.cloud.google.com/code
+%p I clicked folder: "compute-engine".
+%p I clicked folder: "startup-scripts".
+%p I clicked file: "startup-script.sh"
+
+%p I studied lines: 20, 45, 52.
+
+%p In the codelabs-tab,  I studied the next page:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-compute-engine/#3' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-compute-engine/#3
+
+%p In GCP-tab I visited URL:
+%p
+  %a(href='https://console.cloud.google.com' target='x')
+    https://console.cloud.google.com
+%p I used the top-right Cloud-Shell icon to start a new Cloud-Shell.
+
+%p I moved Cloud-Shell to tab-5.
+
+%p In Cloud-Shell, I issued commands:
+
+.syntax
+  %pre
+    %code
+      cd ~/cp100/default/compute-engine
+      gcloud compute zones list | grep central
+      gcloud config set compute/zone us-central1-f
+
+%p GCP indicated success.
+
+
+%p In Cloud-Shell, I entered a long command:
+
+.syntax
+  %pre
+    =render 'lesson002c'
+%p In Cloud-Shell, I entered another long command:
+
+.syntax
+  %pre
+    =render 'lesson002d'
+
+%p I saw this:
+
+.syntax
+  %pre
+    =render 'lesson002e'
+
+
+%p In GCP-tab I visited URL:
+%p
+  %a(href='https://console.cloud.google.com/compute' target='x')
+    https://console.cloud.google.com/compute
+
+%p I saw this:
+
+%img(src='/lesson002/l242.png')
+
+%p I made note of the IP address: 35.224.163.97
+
+%p I visited URL:
+
+%p http://35.224.163.97:8080
+%p I saw this:
+
+%img(src='/lesson002/l243.png')
+
+%p In the codelabs-tab,  I studied the next page:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-compute-engine/#4' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-compute-engine/#4
+%p I visited the Bookshelf-tab.
+%p I clicked green-button: "Add book".
+%p I filled out the form and clicked green-button: "Save".
+
+
+%p I saw this:
+
+%img(src='/lesson002/l244.png')
+
+
+%p In the codelabs-tab,  I studied the next page:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-compute-engine/#5' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-compute-engine/#5
+
+
+
+%p I bookmarked links in that page:
+
+%ul
+  %li
+    %a(href='https://cloud.google.com/appengine/docs/python/ndb/' target='x')
+      https://cloud.google.com/appengine/docs/python/ndb/
+  %li
+    %a(href='https://cloud.google.com/sdk/cloud-client-libraries' target='x')
+      https://cloud.google.com/sdk/cloud-client-libraries
+  %li
+    %a(href='https://cloud.google.com/appengine/docs/python/googlecloudstorageclient/using-cloud-storage' target='x')
+      https://cloud.google.com/appengine/docs/python/googlecloudstorageclient/using-cloud-storage
+  %li
+    %a(href='https://cloud.google.com/docs/choosing-a-compute-option#comparing_options' target='x')
+      https://cloud.google.com/docs/choosing-a-compute-option#comparing_options
+  
+
+%p In the codelabs-tab,  I studied the next page:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-compute-engine/#6' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-compute-engine/#6
+%p In the GCP-tab I visited this URL:
+
+%p
+  %a(href='https://console.cloud.google.com/compute' target='x')
+    https://console.cloud.google.com/compute
+
+%p I deleted the instance: "bookshelf".
+
+%p In the GCP-tab I visited this URL:
+
+%p
+  %a(href='https://console.cloud.google.com/networking' target='x')
+    https://console.cloud.google.com/networking
+
+%p I saw this:
+
+%img(src='/lesson002/l245.png')
+
+%p I clicked link "default" near top-left.
+%p I clicked link "Firewall rules":
+
+%img(src='/lesson002/l246.png')
+
+%p I deleted the rule for 8080.
+
+%p GCP indicated success.
+
+%p That ended my interaction with the CP100-node I call: "Compute-Engine".
+
+
+%p
+%a(href='#top') [top]
+%hr/
+
+%h2#container-engine Container-Engine
+
+%p Next, in the codelabs-tab, I clicked this link:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-container-engine' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-container-engine
+  
+%p I saw this:
+
+%img(src='/lesson002/l247.png')
+
+%p I studied that page.
+
+%p I clicked through to the next page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-container-engine/#1' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-container-engine/#1
+
+%p I bookmarked links in that page:
+
+%ul
+  %li
+    %a(href='https://cloud.google.com/container-engine/docs/' target='x')
+      https://cloud.google.com/container-engine/docs/
+  %li
+    %a(href='https://kubernetes.io/' target='x')
+      https://kubernetes.io/
+  %li
+    %a(href='https://kubernetes.io/docs/user-guide/kubectl-overview/' target='x')
+      https://kubernetes.io/docs/user-guide/kubectl-overview/
+  %li
+    %a(href='https://kubernetes.io/docs/admin/node/' target='x')
+      https://kubernetes.io/docs/admin/node/
+  %li
+    %a(href='https://cloud.google.com/compute/docs/instances/' target='x')
+      https://cloud.google.com/compute/docs/instances/
+  %li
+    %a(href='https://kubernetes.io/docs/user-guide/pods/' target='x')
+      https://kubernetes.io/docs/user-guide/pods/
+  %li
+    %a(href='https://kubernetes.io/docs/user-guide/replication-controller/' target='x')
+      https://kubernetes.io/docs/user-guide/replication-controller/
+  %li
+    %a(href='https://kubernetes.io/docs/user-guide/services/' target='x')
+      https://kubernetes.io/docs/user-guide/services/
+  %li
+    %a(href='https://cloud.google.com/compute/docs/load-balancing/network/' target='x')
+      https://cloud.google.com/compute/docs/load-balancing/network/
+  %li
+    %a(href='https://cloud.google.com/container-registry/docs/' target='x')
+      https://cloud.google.com/container-registry/docs/
+  
+%p I clicked through to the next page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-container-engine/#2' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-container-engine/#2
+%p I studied that page.
+
+%p In GCP-tab I visited this URL:
+
+%p
+  %a(href='https://console.cloud.google.com/apis' target='x')
+    https://console.cloud.google.com/apis
+
+
+%p Near the top I clicked blue-button: "ENABLE APIS AND SERVICES":
+
+%img(src='/lesson002/l207.png')
+%br/
+
+%p I searched for "Kubernetes Engine API".
+
+%p I found it; I clicked on the square:
+
+%img(src='/lesson002/l248.png')
+%br/
+
+%p I was ready to click the blue-button: "ENABLE".
+
+%p But, GCP indicated that it was already enabled:
+
+
+%img(src='/lesson002/l249.png')
+%br/
+
+%p In the Cloud-Shell-tab I clicked "Reconnect":
+
+%img(src='/lesson002/l250.png')
+%br/
+
+%p I entered shell commands:
+
+.syntax
+  %pre
+    =render 'lesson002f'
+
+%p I saw this:
+
+.syntax
+  %pre
+    =render 'lesson002g'
+
+%p Next, in the GCP-tab, I entered this URL:
+
+%p
+  %a(href='https://console.cloud.google.com/code' target='x')
+    https://console.cloud.google.com/code
+%p I clicked folder: "container-engine".
+%p I clicked folder: "bookshelf".
+%p I clicked file: "storage.py".
+%p I studied line 18.
+%p I studied lines 24,25,26.
+%p I studied lines 49 through 70.
+%p I returned to folder: "container-engine".
+%p I clicked file: "bookshelf-frontend.yaml".
+%p I studied lines 24 through 52.
+%p I studied lines 63 through 77.
+
+%p In the codelabs-tab I clicked through to the next URL:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-container-engine/#3' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-container-engine/#3
+
+%p I studied that page.
+
+%p In the Cloud-Shell-tab I entered commands:
+
+.syntax
+  %pre
+    %code
+      cd ~/cp100/default/container-engine
+      sed -i s/your-project-id/$DEVSHELL_PROJECT_ID/ config.py
+      sed -i s/your-project-id/$DEVSHELL_PROJECT_ID/ bookshelf-frontend.yaml
+      gcloud config set container/cluster bookshelf
+      docker build -t gcr.io/$DEVSHELL_PROJECT_ID/bookshelf .
+      gcloud docker -- push gcr.io/$DEVSHELL_PROJECT_ID/bookshelf
+      gcloud container clusters get-credentials bookshelf
+      kubectl create -f bookshelf-frontend.yaml
+      kubectl get pods
+      kubectl get services bookshelf-frontend
+
+%p Those commands made Cloud-Shell very busy.
+
+%p I captured output from the end:
+
+.syntax
+  %pre
+    =render 'lesson002h'
+
+%p I made note of the IP address from the above output:
+
+%p 35.226.210.138
+
+%p In tab-6 I entered this URL: http://35.226.210.138
+
+
+%p I saw this:
+
+%img(src='/lesson002/l251.png')
+%br/
+
+%p In codelabs-tab I clicked to the next page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-container-engine/#4' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-container-engine/#4
+
+%p I studied that page.
+
+%p In the bookshelf-tab (should be tab-6), I clicked the green-button: "Add book".
+
+%p I filled out the form:
+
+%img(src='/lesson002/l252.png')
+%br/
+
+%p I clicked green-button "Save"; It responded:
+
+%p
+
+%img(src='/lesson002/l253.png')
+%br/
+
+
+%p In codelabs-tab I clicked to the next page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-container-engine/#5' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-container-engine/#5
+
+%p I studied that page.
+
+
+%p In codelabs-tab I clicked to the next page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-container-engine/#6' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-container-engine/#6
+
+%p I studied that page.
+
+%p In GCP-tab, I visited URL:
+
+%p
+  %a(href='https://console.cloud.google.com/kubernetes' target='x')
+    https://console.cloud.google.com/kubernetes
+%p I clicked the icon: "bookshelf".
+%p I clicked the trash-icon on the left; I wanted to delete the cluster:
+
+
+%img(src='/lesson002/l254.png')
+%br/
+
+%p In GCP-tab, I clicked the hamburger-link.
+
+%p I picked "Container Registry".
+
+%p I saw this:
+
+%img(src='/lesson002/l255.png')
+%br/
+
+%p I clicked "bookshelf":
+
+%img(src='/lesson002/l256.png')
+%br/
+
+%p I checked it; that activated blue-button: "DELETE".
+
+%p I clicked: "DELETE":
+
+%img(src='/lesson002/l257.png')
+%br/
+
+%p In GCP-tab I visited URL:
+
+%p
+  %a(href='https://console.cloud.google.com/networking/firewalls' target='x')
+    https://console.cloud.google.com/networking/firewalls
+
+%p I saw this:
+
+%img(src='/lesson002/l258.png')
+%br/
+
+%p I deleted the two firewall-rules for bookshelf:
+
+%img(src='/lesson002/l260.png')
+%br/
+
+
+%p In GCP-tab I visited URL:
+
+%p
+  %a(href='https://console.cloud.google.com/net-services/loadbalancing' target='x')
+    https://console.cloud.google.com/net-services/loadbalancing
+
+%p I saw this:
+  
+%img(src='/lesson002/l261.png')
+%br/
+
+%p I clicked the trashcan-icon to delete that service:
+
+%img(src='/lesson002/l262.png')
+%br/
+
+%p I visited the VM URL to ensure I had no VMs eating my GCP budget:
+%p
+  %a(href='https://console.cloud.google.com/compute' target='x')
+    https://console.cloud.google.com/compute
+%p GCP showed that none were running.
+
+
+%p That ended my interaction with the CP100-node I call: "Container-Engine".
+
+
+
+%p
+%a(href='#top') [top]
+%hr/
+
+%h2#big-query Big Query
+
+%p Next, in the codelabs-tab, I clicked this link:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-big-query' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-big-query
+  
+%p I saw this:
+
+%img(src='/lesson002/l263.png')
+
+%p I studied that page; I clicked through to the next page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-big-query#1' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-big-query#1
+  
+%p I bookmarked links from that page:
+
+%ul
+  %li
+    %a(href='https://developers.google.com/bigquery/docs/data%23aclsandrights' target='x')
+      https://developers.google.com/bigquery/docs/data%23aclsandrights
+  %li
+    %a(href='https://code.google.com/apis/console/' target='x')
+      https://code.google.com/apis/console/
+  %li
+    %a(href='https://developers.google.com/bigquery/docs/reference/v2/projects' target='x')
+      https://developers.google.com/bigquery/docs/reference/v2/projects
+  %li
+    %a(href='https://developers.google.com/bigquery/docs/reference/v2/datasets' target='x')
+      https://developers.google.com/bigquery/docs/reference/v2/datasets
+  %li
+    %a(href='https://developers.google.com/bigquery/docs/reference/v2/tables' target='x')
+      https://developers.google.com/bigquery/docs/reference/v2/tables
+  %li
+    %a(href='https://cloud.google.com/bigquery/federated-data-sources' target='x')
+      https://cloud.google.com/bigquery/federated-data-sources
+  %li
+    %a(href='https://cloud.google.com/bigquery/what-is-bigquery#jobs' target='x')
+      https://cloud.google.com/bigquery/what-is-bigquery#jobs
+  %li
+    %a(href='https://cloud.google.com/bigquery/streaming-data-into-bigquery' target='x')
+      https://cloud.google.com/bigquery/streaming-data-into-bigquery
+  %li
+    %a(href='https://cloud.google.com/storage/' target='x')
+      https://cloud.google.com/storage/
+  %li
+    %a(href='https://cloud.google.com/datastore/' target='x')
+      https://cloud.google.com/datastore/
+  %li
+    %a(href='https://developers.google.com/bigquery/docs/reference/v2/jobs' target='x')
+      https://developers.google.com/bigquery/docs/reference/v2/jobs
+  
+
+%p I collected an image from that page:
+
+%img(src='/lesson002/l264.png')
+
+%p I memorized the above image as this phrase:
+
+%p Project has many Datasets has many Tables has many Rows with Columns
+
+
+%p I clicked through to the next page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-big-query#2' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-big-query#2
+  
+%p I studied that page.
+
+%p In the GCP-tab I visited the URL to set my project to CP100:
+
+%p
+  %a(href='https://console.cloud.google.com' target='x')
+    https://console.cloud.google.com
+%p After I set the project to "cp100", I clicked the top-left-hamburger link.
+
+%p From there I clicked BigQuery near the bottom.
+
+%p It opened a new tab with this URL:
+
+%p
+  %a(href='https://bigquery.cloud.google.com' target='x')
+    https://bigquery.cloud.google.com
+
+%p I saw this:
+
+%img(src='/lesson002/l265.png')
+
+%p I clicked the select-option to the right of cp100:
+
+%img(src='/lesson002/l266.png')
+
+%p I asked for a new Dataset named: "cp100":
+
+%img(src='/lesson002/l267.png')
+
+%p I clicked blue-button: "OK".
+%p Next, I clicked the tiny-blue-button: "+".
+%p GCP offered me a form to specify Source-Data:
+
+%img(src='/lesson002/l268.png')
+
+%p I filled it out:
+
+%img(src='/lesson002/l269.png')
+
+%p At the bottom I clicked blue-button: "Create Table".
+
+%p I saw this:
+
+%img(src='/lesson002/l270.png')
+
+%p I inspected the new table:
+
+%img(src='/lesson002/l271.png')
+
+%hr/
+
+%img(src='/lesson002/l272.png')
+
+%p I returned to the codelabs-tab.
+
+%p I clicked through to the next page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-big-query#3' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-big-query#3
+  
+%p I studied that page.
+
+%p I clicked through to the next page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cp100-big-query#4' target='x')
+    https://codelabs.developers.google.com/codelabs/cp100-big-query#4
+  
+%p I studied that page.
+%p In the BigQuery-tab I clicked link: "Compose Query"
+
+%img(src='/lesson002/l273.png')
+
+%p BigQuery offered a TextArea-element for me to enter syntax:
+
+
+%img(src='/lesson002/l274.png')
+
+%p I entered syntax:
+
+.syntax
+  %pre
+    =render 'lesson002j'  
+
+%p I clicked red-button: "Run Query".
+
+%p BigQuery responded quickly:
+
+
+%img(src='/lesson002/l275.png')
+
+%p I returned to my Cloud-Shell.
+
+%p I asked it to "Reconnect".
+
+%p I entered command:
+
+.syntax
+  %pre
+    =render 'lesson002k'
+
+%p I saw this:
+
+.syntax
+  %pre
+    =render 'lesson002m'
+
+%p I entered: "1".
+
+%p That caused BigQuery to fail.
+
+%p I tried other ideas but they all failed:
+
+.syntax
+  %pre
+    =render 'lesson002n'
+
+%p I decided to avoid BigQuery.
+
+%p To clean-up, I clicked on my BigQuery tab.
+
+%p I found the link to "Delete Dataset"; I clicked it:
+
+%img(src='/lesson002/l276.png')
+
+%p BigQuery indicated successful delete.
+
+%p That ended my interaction with the CP100-node I call: "Big Query".
+%p Also that ends lesson002 of cs101.us
+
+%p
+%a(href='#top') [top]
+%hr/

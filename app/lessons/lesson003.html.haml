@@ -1,0 +1,474 @@
+%h1#top Lesson 003 [ Intro Data Science ]
+
+%p Topics:
+
+%ul
+  %li Anaconda
+  %li Jupyter
+  %li
+    %a(href='#python') Python
+  %li
+    %a(href='#ds') Data Science
+  %li
+    %a(href='#qa') Questions/Answers
+
+%p I did this lesson and collected notes during my efforts.
+
+%hr/
+
+%h2#anaconda Anaconda
+
+%p Anaconda runs on Mac, Windows, and  Linux.
+
+%p I started by downloading Anaconda 5.1.0 for my laptop:
+
+%ul
+  %li
+    Mac:
+    %a(href='https://drive.google.com/open?id=1XasIhnctEdHKkWFt8aK_-2goVgo_KV8_' target='x')
+      https://drive.google.com/open?id=1XasIhnctEdHKkWFt8aK_-2goVgo_KV8_
+  %li
+    Windows:
+    %a(href='https://drive.google.com/open?id=1QqaRx4UvpneVMzLZShIzeamE0rPvrj8C' target='x')
+      https://drive.google.com/open?id=1QqaRx4UvpneVMzLZShIzeamE0rPvrj8C
+  %li
+    Linux:
+    %a(href='https://drive.google.com/open?id=1WULX7krUKayH0l4BVIb3dCr0Z3i-gQHR' target='x')
+      https://drive.google.com/open?id=1WULX7krUKayH0l4BVIb3dCr0Z3i-gQHR
+
+%p If I want an Anaconda version other than 5.1.0, it should be available here:
+
+%p
+  %a(href='https://repo.continuum.io/archive/' target='x')
+    https://repo.continuum.io/archive/
+
+%p After I downloaded it, I started the install by clicking on the download.
+
+%p During the install, I answered yes to all the defaults.
+
+%p After I installed Anaconda, I saw this:
+
+.syntax
+  %pre
+    =render 'lesson003a'
+
+%p I verified installation with shell commands:
+
+.syntax
+  %pre
+    =render 'lesson003b'
+    
+%hr/
+
+%h2#jupyter Jupyter
+
+%p Jupyter is an interesting application.
+
+%p You can learn a bit about Jupyter at the URL listed below:
+%p
+  %a(href='http://jupyter.org/' target='x')
+    http://jupyter.org/
+%p I see Jupyter as a mashup of a Python interpreter and Web technology.
+
+%p I can use Jupyter to expose some Python syntax to a group of people who are running browsers who then want to see that syntax run in their browswers.
+
+%p I bumped into Jupyter in two types of situations.
+
+%p The first type is what I call the presentation-training-scenario.
+
+%p If I present a small amount of Python based content to a room full of Python programmers, Jupyter can be a good fit for that task.
+
+%p The second type is what I call the development-scenario.
+
+%p In this situation I need to write some code to deliver a feature in a production app.
+
+%p Is the production app running in Jupyter?
+
+%p Probably not.
+
+%p So to me it's obvious that Jupyter makes a poor development environment.
+
+%p So I remember two points:
+%ul
+  %li Jupyter is good for training.
+  %li Jupyter is poor for development.
+
+%p To start Jupyter I typed a simple shell command:
+
+.syntax
+  %pre
+    %code jupyter notebook
+
+%p The above command should work on both Mac and Linux.
+
+%p On windows you should find the right icon and then click on it.
+
+%p On windows if you have trouble, I offer a tip:
+
+%p
+  %a(href='https://www.google.com/search?q=On+windows+how+to+start+Jupyter' target='x')
+    https://www.google.com/search?q=On+windows+how+to+start+Jupyter
+
+%p On my laptop after I typed: "jupyter notebook", I saw this:
+
+%img(src='/lesson003/jup1.png')
+
+%p On the right, I clicked the new-link and I saw this:
+
+%img(src='/lesson003/jup2.png')
+
+%p I typed in some Python syntax:
+
+.syntax
+  %pre
+    %code print('hello jupyter.')
+
+%p I pressed the enter-key.
+
+%p That just made the field larger.
+
+%p I entered shift-enter.
+
+%p Python came to life and ran that Python syntax:
+
+%img(src='/lesson003/jup3.png')
+
+%p Now you know enough Jupyter to learn some Python.
+
+%p Another way to run Jupyter is to use "Google Colab".
+
+%p First, you need to login to your gmail account.
+
+%p Then, you will find it at the URL listed below:
+
+%p
+  %a(href='https://colab.research.google.com' target='x')
+    https://colab.research.google.com
+
+%a(href='#top') [top]
+%hr/
+
+%h2#python Python
+
+%p Here is some Python:
+
+.syntax
+  %pre
+    %code print("Hello, Python!")
+
+%p Try to copy-paste it into Jupyter.
+
+%p Then in Jupyter, use shift-enter to run it.
+
+%p I did that.
+
+%p First, I saw this:
+
+%img(src='/lesson003/jup4.png')
+
+%p Then, I pasted:
+
+%img(src='/lesson003/jup5.png')
+
+%p Then, I pressed shift-enter:
+
+%img(src='/lesson003/jup6.png')
+
+%p If you can do that in your laptop, you are on the right path.
+
+%p Time to move along.
+
+%p I show you More python below.
+
+%p Try to slowly and carefully run pieces of it in Jupyter:
+
+.syntax
+  %pre
+    =render 'lesson003py4ds1'
+
+%a(href='#top') [top]
+%hr/
+   
+%h2#ds Data Science
+
+%p To do this exercise I shutdown Jupyter.
+
+%p Then I downloaded two CSV files into my Downloads folder on my laptop:
+
+%ul
+  %li
+    %a(href='/lesson003/boston_housing_data.csv') boston_housing_data.csv
+  %li
+    %a(href='/lesson003/family.csv') family.csv
+
+%p I wanted Jupyter to see those two files.
+
+%p So, I used two shell commands to start Jupyter from the Downloads folder:
+
+.syntax
+  %pre
+    %code
+      cd ~/Downloads
+      jupyter notebook
+      
+%p Here is some Python which introduces you to Data Science.
+
+%p I ran the Python in my Jupyter Notebook and it worked well:
+ 
+.syntax
+  %pre
+    =render 'lesson003py4ds2'
+
+%p I saw this:
+
+%img(src='/lesson003/ds10.png')
+
+%p I saw this:
+
+%img(src='/lesson003/ds11.png')
+
+%p I saw this:
+
+%img(src='/lesson003/ds12.png')
+
+%p If I want to upload family.csv to Google Colab, I enter this Python syntax into a Colab-cell:
+.syntax
+  %pre
+    %code
+      from google.colab import files
+      files.upload()
+%p Then, Colab should serve me a file-upload-button.
+
+%p Next, I can verify my uploaded worked with this Python command:
+
+.syntax
+  %pre
+    %code files.os.listdir()
+
+
+
+%hr/
+
+%h2#qa Questions/Answers
+
+%ul
+    
+  %li
+    What is Data Science?
+    
+  %li
+    Why do you want to learn Data Science?
+    
+  %li
+    What is the best way to learn Data Science?
+    
+  %li
+    What is Anaconda?
+    
+  %li
+    Why use Anaconda?
+    
+  %li
+    What are alternatives to Anaconda?
+    
+  %li
+    How to install Anaconda?
+    
+  %li
+    How to operate Anaconda?
+    
+  %li
+    What is Jupyter?
+    
+  %li
+    Why use Jupyter?
+    
+  %li
+    What are alternatives to Jupyter?
+    
+  %li
+    How to install Jupyter?
+    
+  %li
+    How to operate Jupyter?
+    
+  %li
+    What is Python?
+    
+  %li
+    Why use Python?
+    
+  %li
+    What are alternatives to Python?
+    
+  %li
+    How to install Python?
+    
+  %li
+    How to operate Python?
+    
+  %li
+    What are the main Python data types?
+    
+  %li
+    How to print part of a String?
+    
+  %li
+    How to concatenate two Strings?
+    
+  %li
+    What is a Python List?
+    
+  %li
+    How is a List like a String?
+    
+  %li
+    How is a List different than a String?
+    
+  %li
+    What is a Python Tuple?
+    
+  %li
+    How is a Tuple like a List?
+    
+  %li
+    How is a Tuple different than a List?
+    
+  %li
+    How to write if-then-else logic in Python?
+    
+  %li
+    How to write a while-loop in Python?
+    
+  %li
+    How to write a for-loop in Python?
+    
+  %li
+    How is a while-loop like a for-loop?
+    
+  %li
+    How is a while-loop different than a for-loop?
+    
+  %li
+    What is a Regular Expression?
+    
+  %li
+    Why use Regular Expressions?
+    
+  %li
+    In Python how to operate Regular Expressions?
+    
+  %li
+    In a Regular Expression, what is a group?
+    
+  %li
+    In a Regular Expression, how to create a group?
+    
+  %li
+    In Python what is a Function?
+    
+  %li
+    In Python why use Functions?
+    
+  %li
+    In Python how to create a Function?
+    
+  %li
+    In a Function, what does the return statement do?
+    
+  %li
+    In a Function how to declare a default value for an input parameter?
+    
+  %li
+    In Python what does the range() function do?
+    
+  %li
+    In Python how to concatenate two lists?
+    
+  %li
+    When I call the print() function, if I see a %s parameter, what does that mean?
+    
+  %li
+    In Python what is Integer division?
+    
+  %li
+    When I call split()    to split a String, what do I get?
+    
+  %li
+    When I call split(",") to split a String, what do I get?
+    
+  %li
+    How do I operate Jupyter so it sees local CSV files?
+    
+  %li
+    What is a local CSV file?
+    
+  %li
+    In Python what does the open() function do?
+    
+  %li
+    In Python what does the iter() function do?
+    
+  %li
+    In Python what does the rstrip() function do?
+    
+  %li
+    In Python where do I usually see the append() function?
+
+  %li
+    In Python, what does the import command do?
+  %li
+    What is NumPy?
+  %li
+    Why use NumPy?
+  %li
+    What is Pandas?
+  %li
+    Why use Pandas?
+  %li
+    What is SciPy?
+  %li
+    Why use SciPy?
+  %li
+    What is matplotlib?
+  %li
+    Why use matplotlib?
+  %li
+    What is sklearn?
+  %li
+    Why use sklearn?
+  %li
+    In Machine Learning, what is a "Feature"?
+  %li
+    The Boston-Housing-example uses the word: "Target"; what is "Target"?
+  %li
+    In Machine Learning, what is "X"?
+  %li
+    In Machine Learning, what is "Y"?
+  %li
+    In Machine Learning, what is Linear Regression?
+  %li
+    In Linear Regression what is "Intercept"?
+  %li
+    In Linear Regression what is "Coefficient"?
+  %li
+    In Linear Regression what is acronym: "MSE"?
+  %li
+    In sklearn-LinearRegression, how do I get a prediction?
+  %li
+    When I get a prediction, what does it look like?
+  %li
+    In Data Science, what is a "Scatter Plot"?
+  %li
+    In Data Science, why use a "Scatter Plot"?
+  %li
+    In Python how to create a "Scatter Plot"?
+    
+  %li How to run Python in Google Colab?
+  
+  %li How to upload a CSV file to Google Colab?
+  
+  %li How to see my uploaded files in Google Colab?
+  
+%a(href='#top') [top]
+%hr/

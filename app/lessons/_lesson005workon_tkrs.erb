@@ -1,0 +1,92 @@
+<code class='bash'>
+#codeing utf-8
+"""
+workon_tkrs.py
+
+This script should help workon_tkrs.bash "work-on" tkrs from GCP Pub/Sub.
+
+Demo:
+python workon_tkrs.py
+"""
+
+import numpy      as np
+import pandas     as pd
+import subprocess as sp
+import sys
+
+PROJECT = 'pubsub-197323' # You should use a different project than mine.
+cmd_s = 'gcloud pubsub subscriptions pull --auto-ack sub10 --project '+PROJECT
+out_s = sp.run(cmd_s, shell=True, stdout=sp.PIPE)
+
+"""
+I should match something like this:
+┌─────────────────────────┬────────────────┬────────────┐
+│           DATA          │   MESSAGE_ID   │ ATTRIBUTES │
+├─────────────────────────┼────────────────┼────────────┤
+│ Please work on AAPL now │ 55903378213755 │            │
+└─────────────────────────┴────────────────┴────────────┘
+"""
+# I should use a list to find the tkr_s:
+out_l = out_s.stdout.decode('utf-8').split()
+if len(out_l) == 0:
+    print('No tkr available now.')
+    print('Maybe all work is done.')
+    sys.exit()
+
+# I should find the index of 'on'.
+# The tkr-index is one-plus the on-index:
+tkr_i = 1+out_l.index('on') # exception ok here
+tkr_s = out_l[tkr_i]
+print('tkr:')
+print(tkr_s)
+
+# I should use the tkr to get prices:
+url_s    = 'https://cs101.herokuapp.com/lesson005/'+tkr_s+'.csv'
+price0_df = pd.read_csv(url_s)
+# I should generate ML-features from prices:
+price1_df         = price0_df[['Date','Close']]
+price1_df.columns = ['cdate','cp']
+feat_df           = price1_df.sort_values('cdate')
+
+# I should compute feature: pctlag1 and then get pctlead from it:
+pctlag1_sr         = (100.0 * (feat_df.cp - feat_df.cp.shift(1)) / feat_df.cp).fillna(0)
+feat_df['pctlead'] = pctlag1_sr.shift(-1).fillna(0)
+# In ML-terms, I hope that pctlead depends on pctlag1 (and other features).
+feat_df['pctlag1'] = pctlag1_sr
+# I should compute another feature, slope5, which is slope of 5-day rolling-mean:
+rollx             = feat_df.rolling(window=5)
+feat_df['slope5'] = 100.0*(rollx.mean().cp - rollx.mean().cp.shift(1))/rollx.mean().cp
+
+# I should predict the last 10 rows:
+test_df = feat_df.iloc[-10:]
+
+# I should learn from the rows before the last 10 rows:
+train_df = feat_df.iloc[10:-10]
+train_df.tail()
+test_df
+
+x_train_a = np.array(train_df[['pctlag1','slope5']])
+y_train_a = train_df.pctlead
+
+# I should fit a model to x_train, y_train:
+import sklearn.linear_model as lm
+linr_model = lm.LinearRegression()
+linr_model.fit(x_train_a,y_train_a)
+
+# I should predict values of pctlead in test_df
+x_test_a       = np.array(test_df[['pctlag1','slope5']])
+predictions_a  = linr_model.predict(x_test_a)
+# I should use copy() to Avoid SettingWithCopyWarning:
+predictions_df = test_df.copy() 
+predictions_df['prediction'] = list(predictions_a)
+
+# I should write to csv file:
+csvf_s = '/tmp/'+tkr_s+'_predictions.csv'
+predictions_df.to_csv(csvf_s, float_format='%0.4f', index=False)
+
+# I should copy CSV file to bucket:
+# gsutil cp SPY_predictions.csv gs://pubsub611/predictions/
+sp.run('gsutil cp '+csvf_s+' gs://pubsub611/predictions/', shell=True)
+
+'bye'
+</code>

@@ -1,0 +1,46 @@
+<code class='bash'>
+MySQL [recommendation_spark]> show tables;
++--------------------------------+
+| Tables_in_recommendation_spark |
++--------------------------------+
+| Accommodation                  |
+| Rating                         |
+| Recommendation                 |
++--------------------------------+
+3 rows in set (0.04 sec)
+
+MySQL [recommendation_spark]>
+MySQL [recommendation_spark]>
+MySQL [recommendation_spark]>
+
+
+
+MySQL [recommendation_spark]> select count(*) from Rating;
++----------+
+| count(*) |
++----------+
+|     1186 |
++----------+
+1 row in set (0.03 sec)
+
+MySQL [recommendation_spark]>
+MySQL [recommendation_spark]>
+MySQL [recommendation_spark]>
+
+
+
+MySQL [recommendation_spark]> select * from Rating limit 4;
++--------+--------+--------+
+| userId | accoId | rating |
++--------+--------+--------+
+| 10     | 1      |      1 |
+| 13     | 1      |      1 |
+| 18     | 1      |      2 |
+| 12     | 10     |      3 |
++--------+--------+--------+
+4 rows in set (0.04 sec)
+
+MySQL [recommendation_spark]>
+MySQL [recommendation_spark]>
+MySQL [recommendation_spark]>
+</code>

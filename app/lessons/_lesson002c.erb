@@ -1,0 +1,10 @@
+<code class='bash'>
+gcloud compute instances create bookshelf \
+  --image-family=debian-8 \
+  --image-project=debian-cloud \
+  --machine-type=g1-small \
+  --scopes userinfo-email,cloud-platform \
+  --metadata-from-file startup-script=startup-scripts/startup-script.sh \
+  --tags http-server
+</code>
+  

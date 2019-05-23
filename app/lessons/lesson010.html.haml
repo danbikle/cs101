@@ -1,0 +1,418 @@
+%h1#top Lesson 010 [ Simple AWS CLI Intro. ]
+
+%p AWS CLI is a short name for Amazon Web Services Command Line Interface.
+
+%p We do not need to use AWS CLI; Why?
+
+%p Because developers often use the web-UI when interacting with AWS:
+
+%img(src='/lesson010/z010.png')
+
+%hr/
+%p But, AWS CLI is useful for developers who want to automate interactions with AWS:
+
+%a(href='https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html' target='x')
+  %img(src='/lesson010/z011.png')
+
+%hr/
+%p This lesson shows how I worked through some simple AWS CLI tasks.
+
+%p To start, I Signed-Up for an AWS account.
+
+%p I saw a Sign-Up button at this URL:
+
+%a(href='https://aws.amazon.com' target='x')
+  https://aws.amazon.com
+%p
+%img(src='/lesson010/z012.png')
+
+%p After I signed-up and logged-in, using a link in the upper right, I set my region to Oregon:
+
+%p
+%img(src='/lesson010/z013.png')
+%hr/
+
+
+
+%p I know that the Oregon region also has these names:
+%ul
+  %li Oregon
+  %li US West (Oregon)
+  %li us-west-2
+
+%p The last name, us-west-2, is important for me to remember.
+
+%p Another region I like is this:
+%ul
+  %li Ohio
+  %li US East (Ohio)
+  %li us-east-2
+
+%p I like Oregon and Ohio because I assume those data centers have less competition for resources.
+
+%p I, however, have no proof that is true.
+
+%p After I set my region to us-west-2, I visited this URL again:
+
+%a(href='https://console.aws.amazon.com/ec2' target='x')
+  https://console.aws.amazon.com/ec2
+
+%p AWS served me a page called EC2 Dashboard.
+
+%p I saw this:
+
+%p
+%img(src='/lesson010/z014.png')
+
+%p I list some questions which I should eventually answer:
+
+%ul
+  %li What is a Running Instance?
+  %li What is a Volume?
+  %li What are Key Pairs?
+  %li What are Elastic IPs?
+  %li What are Snapshots?
+  %li What are Security Groups?
+  %li What are Spot Requests?
+
+%p I clicked blue-button: "Launch Instance".
+
+%p AWS served me a page called "Choose an Amazon Machine Image (AMI)":
+
+%p
+%img(src='/lesson010/z015.png')
+
+%p An AMI is an image of an Instance.
+
+%p An Instance is a machine I login to and run software.
+
+%p As of today 2018-09-09, I like this Image:
+
+%p Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type - ami-a0cfeed8
+
+%p It is the second image listed in the page: "Choose an Amazon Machine Image (AMI)":
+
+%p
+%img(src='/lesson010/z016.png')
+%hr/
+
+%p I list its description below:
+
+%p The Amazon Linux AMI is an EBS-backed, AWS-supported image.
+
+%p The default image includes:
+%ul
+  %li AWS command line tools, Python, Ruby, Perl, and Java.
+  %li The repositories include:
+  %li
+    %ul
+      %li Docker
+      %li PHP
+      %li MySQL
+      %li PostgreSQL and other packages.
+
+%p I Notice the description lists: "AWS command line tools".
+
+%p So, while I was in that page I selected the ami-a0cfeed8 image.
+
+%p AWS served me a page which is Step-2 of a launch-wizard:
+
+%p
+%img(src='/lesson010/z017.png')
+
+%p I click through to the next step.
+
+%p Then, EC2 wanted to serve me a key-pair:
+
+%p
+%img(src='/lesson010/z018.png')
+
+
+
+%p A key-pair is a bunch of random text inside a file with "pem" at the end of the name.
+
+%p The file is not the key-pair.
+
+%p The key-pair is the text in the file.
+
+%p AWS allows me to create a new key-pair.
+
+%p So, I did that and called it dan1:
+
+
+%p
+%img(src='/lesson010/z019.png')
+
+
+%p I prefer to give my key-pairs a short name like dan1.
+
+%p I have seen long names create problems.
+
+%p Next, I click the button: "Download Key Pair".
+
+%p In my opinion the button should be called: "Download Private Key".
+
+%p Anyway, AWS places dan1.pem into my downloads folder.
+
+%p The text in dan1.pem is 1 piece of the pair, called the "Private Key".
+
+%p The second part of the pair is called the "Public Key".
+
+%p AWS stores the Public Key for me and I can ignore it.
+
+%p I copy dan1.pem to my .ssh folder with this syntax:
+.syntax
+  %pre
+    %code.bash
+      mkdir -p  ~/.ssh
+      chmod 600 ~/Downloads/dan1.pem
+      cp        ~/Downloads/dan1.pem ~/.ssh/
+
+%p The above syntax is Bash syntax.
+
+%p Bash is installed for me on both Mac and Linux.
+
+%p On Windows, I need to download Bash from this URL and install it:
+
+%a(href='https://git-scm.com/download/win' target='x')
+  https://git-scm.com/download/win
+  
+%p After I download the pem-file I click the blue-button: "Launch Instances".
+
+%p AWS needs a few minutes to launch an instance from ami-a0cfeed8:
+
+%p
+%img(src='/lesson010/z020.png')
+
+%p While waiting I explored links served from the upper right:
+
+%p
+%img(src='/lesson010/z021.png')
+
+%p I clicked link: "My Security Credentials".
+
+%p I landed at this URL:
+
+%a(href='https://console.aws.amazon.com/iam/home#/security_credential' target='x')
+  https://console.aws.amazon.com/iam/home#/security_credential
+
+%p
+%img(src='/lesson010/z022.png')
+
+%p In the security_credential page, I clicked link:
+%p "Access keys (access key ID and secret access key)"
+
+%p I clicked Blue-Button: "Create New Access Key"
+
+%p It displayed the key and gave me an opportunity to download a file containing the key:
+
+%p
+%img(src='/lesson010/z023.png')
+
+%p I downloaded the key-file and copied it to this folder in my laptop:
+
+.syntax
+  %pre
+    %code.bash ~/.ssh/rootkey.csv
+
+%p At that point I had two key-files in my .ssh folder:
+%ul
+  %li ~/.ssh/rootkey.csv
+  %li ~/.ssh/dan1.pem
+
+%p The first file, rootkey.csv, contains keys I need in order to operate AWS CLI.
+%p The second file, dan1.pem, contains a Private Key I use to ssh-into my AWS instance.
+
+%p Next, I visited this URL:
+
+%a(href='https://console.aws.amazon.com/ec2' target='x')
+  https://console.aws.amazon.com/ec2
+
+%p In that page I found information about the instance I just launched.
+
+%p I located the IP-address: 34.223.225.17
+
+%p I connected to the instance with a long shell command:
+
+.syntax
+  %pre
+    %code
+      ssh -i ~/.ssh/dan1.pem ec2-user@34.223.225.17
+
+
+%p The above shell command references a user-name: "ec2-user".
+
+%p I found other user-names using google:
+
+%a(href='https://www.google.com/search?q=which+account+do+I+login+to+with+amazon+linux+ami' target='x')
+  https://www.google.com/search?q=which+account+do+I+login+to+with+amazon+linux+ami
+  
+
+%p Which sent me here:
+
+%a(href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html' target='x')
+  https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html
+  
+
+%p And I noted these user-names:
+%ul
+  %li For Amazon Linux 2 or the Amazon Linux AMI, the user name is ec2-user.
+  %li For a Centos AMI, the user name is centos.
+  %li For a Debian AMI, the user name is admin or root.
+  %li For a Fedora AMI, the user name is ec2-user or fedora.
+  %li For a RHEL AMI, the user name is ec2-user or root.
+  %li For a SUSE AMI, the user name is ec2-user or root.
+  %li For an Ubuntu AMI, the user name is ubuntu
+
+%p On my laptop I created a file:
+
+.syntax
+  %pre
+    %code ~/.ssh/config
+
+%p I added a few lines of syntax:
+
+.syntax
+  %pre=render 'lesson010a'
+
+%p The above syntax allows me to use a very short shell command to connect to the instance:
+
+.syntax
+  %pre
+    %code.bash ssh ec2
+
+%p So I did that and I saw this:
+
+.syntax
+  %pre=render 'lesson010b'
+
+%p Inside of the instance I ran a shell command:
+
+.syntax
+  %pre
+    %code sudo yum update
+
+%p That updated software inside the instance.
+
+%p The description of the AMI claimed that the instance will contain: "AWS command line tools"
+
+%p Google revealed to me that the main shell command of "AWS command line tools" is "aws".
+
+%p I typed that at the shell prompt and saw this:
+
+.syntax
+  %pre=render 'lesson010c'
+  
+%p I studied content from this URL:
+
+%a(href='https://docs.aws.amazon.com/cli/latest/userguide/' target='x')
+  https://docs.aws.amazon.com/cli/latest/userguide/
+
+%p I ran this shell command to configure AWS-CLI:
+
+.syntax
+  %pre
+    %code.bash aws configure
+
+%p It asked some simple questions and I answered using text in ~/.ssh/rootkey.csv
+
+%p I saw this:
+
+.syntax
+  %pre=render 'lesson010d'
+
+%p Next, I used the aws shell command to request another instance:
+
+.syntax
+  %pre
+    %code.bash aws ec2 run-instances --image-id ami-a0cfeed8 --key-name dan1
+
+%p I used another shell command to list my instances:
+
+.syntax
+  %pre=render 'lesson010e'
+
+%p I got the IP-addresses:
+
+.syntax
+  %pre=render 'lesson010f'
+
+%p On my laptop I tried to connect:
+
+.syntax
+  %pre
+    %code.bash ssh -i ~/.ssh/dan1.pem ec2-user@54.148.20.197
+
+%p It failed because I had neglected to open port 22 when I started the instance.
+
+%p So, I terminated the instance:
+
+.syntax
+  %pre
+    %code.bash aws ec2 terminate-instances --instance-ids i-02cf6fc0229d0e46b
+
+%p I looked for the name of security group which will open port 22:
+
+%a(href='https://docs.aws.amazon.com/cli/latest/reference/ec2/index.html' target='x')
+  https://docs.aws.amazon.com/cli/latest/reference/ec2/index.html
+
+%p  
+
+%a(href='https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-security-groups.html' target='x')
+  https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-security-groups.html
+  
+.syntax
+  %pre=render 'lesson010g'
+
+I looked for the security group attached to "PublicIpAddress": "34.223.225.17"
+
+.syntax
+  %pre=render 'lesson010h'
+
+%p I use that group to launch another instance with port 22 open:
+
+.syntax
+  %pre
+    %code aws ec2 run-instances --image-id ami-a0cfeed8 --key-name dan1 --security-group-ids sg-03474335ff2896050
+
+%p I waited a few minutes and then got the IP-Address:
+
+.syntax
+  %pre=render 'lesson010i'
+
+
+%p I connected to it from my laptop:
+
+.syntax
+  %pre=render 'lesson010j'
+
+%p It worked!
+%p Yay!!
+
+%p To prevent charges, I terminated both instances:
+
+.syntax
+  %pre
+    %code.bash
+      aws ec2 describe-instances|grep Instance
+      aws ec2 terminate-instances --instance-ids i-0e44a13041b2df559
+      aws ec2 terminate-instances --instance-ids i-096dff2257c940641
+
+%p After a few minutes I used the web-UI to ensure all instances were terminated:
+
+%a(href='https://console.aws.amazon.com/ec2' target='x')
+  https://console.aws.amazon.com/ec2
+%p
+%img(src='/lesson010/z024.png')
+
+%p Also I removed all keys which are listed in this document:
+
+%a(href='https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#KeyPairs:sort=keyName' target='x')
+  https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#KeyPairs:sort=keyName
+
+%p
+
+%a(href='https://console.aws.amazon.com/iam/home?region=us-west-2#/security_credential' target='x')
+  https://console.aws.amazon.com/iam/home?region=us-west-2#/security_credential
+
+%hr/

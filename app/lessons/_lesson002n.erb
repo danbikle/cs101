@@ -1,0 +1,51 @@
+<code class='bash'>
+Welcome to Cloud Shell! Type "help" to get started.
+bikle101@cpb100-195004:~$ bq query \
+> "SELECT name,count FROM cp100.namedata WHERE gender = 'M' ORDER BY count ASC LIMIT 5"
+
+Welcome to BigQuery! This script will walk you through the
+process of initializing your .bigqueryrc configuration file.
+
+First, we need to set up your credentials if they do not
+already exist.
+
+Credential creation complete. Now we will select a default project.
+
+List of projects:
+  #     projectId     friendlyName
+ --- --------------- --------------
+  1   cp100-196102    CP100
+  2   cpb100-195004   cpb100
+  3   proj10-194905   proj10
+Found multiple projects. Please enter a selection for
+which should be the default, or leave blank to not
+set a default.
+
+Enter a selection (1 - 3): 1
+
+BigQuery configuration complete! Type "bq" to get started.
+
+BigQuery error in query operation: Error processing job 'cpb100-195004:bqjob_r17dd4d1fe039067b_00000161cfa318f3_1':
+Not found: Table cpb100-195004:cp100.namedata
+bikle101@cpb100-195004:~$
+bikle101@cpb100-195004:~$ 
+bikle101@cpb100-195004:~$
+bikle101@cpb100-195004:~$ bq query "SELECT name,count FROM cp100.namedata WHERE gender = 'M' ORDER BY count ASC LIMIT 5"
+BigQuery error in query operation: Error processing job 'cpb100-195004:bqjob_r387c27926d45a9f4_00000161cfa40090_1':
+Not found: Table cpb100-195004:cp100.namedata
+bikle101@cpb100-195004:~$
+bikle101@cpb100-195004:~$
+bikle101@cpb100-195004:~$
+bikle101@cpb100-195004:~$ bq query "SELECT name,count FROM CP100.namedata WHERE gender = 'M' ORDER BY count ASC LIMIT 5"
+BigQuery error in query operation: Error processing job 'cpb100-195004:bqjob_r21ee3ea3975e4639_00000161cfa46411_1':
+Not found: Table cpb100-195004:CP100.namedata
+bikle101@cpb100-195004:~$
+bikle101@cpb100-195004:~$
+bikle101@cpb100-195004:~$ bq query "SELECT name,count FROM namedata WHERE gender = 'M' ORDER BY count ASC LIMIT 5"
+BigQuery error in query operation: Error processing job 'cpb100-195004:bqjob_r1ed371a2ee77f33f_00000161cfa556af_1':
+Table name "namedata" cannot be resolved: dataset name is
+missing.
+bikle101@cpb100-195004:~$
+bikle101@cpb100-195004:~$
+bikle101@cpb100-195004:~$
+</code>

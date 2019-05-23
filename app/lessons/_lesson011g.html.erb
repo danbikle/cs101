@@ -1,0 +1,54 @@
+<code class='bash'>
+dan@d81:~ $ 
+dan@d81:~ $ psql -h redshift-cluster-1.cmea74qjjc8h.us-west-2.redshift.amazonaws.com -U awsuser -d dev -p 5439 -f qry.sql
+Password for user awsuser: 
+
+ schemaname | tablename |   column   |            type             | encoding | distkey | sortkey | notnull 
+------------+-----------+------------+-----------------------------+----------+---------+---------+---------
+ public     | sales     | salesid    | integer                     | delta32k | f       |       0 | t
+ public     | sales     | listid     | integer                     | delta32k | t       |       0 | t
+ public     | sales     | sellerid   | integer                     | delta32k | f       |       0 | t
+ public     | sales     | buyerid    | integer                     | delta32k | f       |       0 | t
+ public     | sales     | eventid    | integer                     | delta32k | f       |       0 | t
+ public     | sales     | dateid     | smallint                    | lzo      | f       |       1 | t
+ public     | sales     | qtysold    | smallint                    | lzo      | f       |       0 | t
+ public     | sales     | pricepaid  | numeric(8,2)                | lzo      | f       |       0 | f
+ public     | sales     | commission | numeric(8,2)                | delta32k | f       |       0 | f
+ public     | sales     | saletime   | timestamp without time zone | lzo      | f       |       0 | f
+(10 rows)
+
+ sum 
+-----
+ 210
+(1 row)
+
+ firstname | lastname | total_quantity 
+-----------+----------+----------------
+ Jerry     | Nichols  |             67
+ Kameko    | Bowman   |             64
+ Armando   | Lopez    |             64
+ Kellie    | Savage   |             63
+ Herrod    | Sparks   |             60
+ Rhona     | Sweet    |             60
+ Kadeem    | Blair    |             60
+ Penelope  | Merritt  |             60
+ Deborah   | Barber   |             60
+ Malachi   | Hayden   |             60
+(10 rows)
+
+      eventname       | total_price 
+----------------------+-------------
+ Adriana Lecouvreur   |    51846.00
+ Janet Jackson        |    51049.00
+ Phantom of the Opera |    50301.00
+ The Little Mermaid   |    49956.00
+ Citizen Cope         |    49823.00
+ Sevendust            |    48020.00
+ Electra              |    47883.00
+ Mary Poppins         |    46780.00
+ Live                 |    46661.00
+(9 rows)
+
+dan@d81:~ $ 
+dan@d81:~ $ 
+</code>

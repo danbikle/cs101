@@ -1,0 +1,7 @@
+<code class='bash'>gcloud compute zones list | grep central
+gcloud config set compute/zone us-central1-f
+gcloud config list
+gcloud container clusters create bookshelf \
+  --scopes "https://www.googleapis.com/auth/userinfo.email","cloud-platform" \
+  --num-nodes 2
+</code>

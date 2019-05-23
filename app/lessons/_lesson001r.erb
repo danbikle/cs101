@@ -1,0 +1,21 @@
+<code class='bash'>cs101@cpb100-195004:~$
+cs101@cpb100-195004:~$ datalab create mydatalabvm --zone us-central1-f
+Creating the network datalab-network
+Creating the firewall rule datalab-network-allow-ssh
+Creating the disk mydatalabvm-pd
+Creating the repository datalab-notebooks
+
+ERROR: (gcloud.source.repos.create) ResponseError: status=[PERMISSION_DENIED], code=[403],
+message=[User [cs101@gmail.com] does not have permission to access project [cpb100-195004]
+(or it may not exist): The caller does not have permission].
+details:
+- Cloud Source Repositories API is not enabled. Please enable the API on the Google
+  Cloud console.
+enable at: https://console.cloud.google.com/apis/library/sourcerepo.googleapis.com/?project=cpb100-195004
+Failed to find or create the repository datalab-notebooks.
+
+Ask a project owner to create it for you.
+cs101@cpb100-195004:~$
+cs101@cpb100-195004:~$
+cs101@cpb100-195004:~$
+</code>

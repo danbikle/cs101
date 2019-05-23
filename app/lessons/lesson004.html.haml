@@ -1,0 +1,237 @@
+%h1#top Lesson 004 [ GCP Dataflow ]
+
+%p GCP Dataflow is described in this URL:
+
+%p
+  %a(href='https://cloud.google.com/dataflow/' target='x')
+    https://cloud.google.com/dataflow/
+
+%p If you want a free GCP account to do this lesson, you should be able to get one:
+
+%p
+  %a(href='https://console.developers.google.com/freetrial' target='x')
+    https://console.developers.google.com/freetrial
+  
+%p Google will want you to login using gmail.
+
+%p Also they will want your credit-card information.
+
+%p So, you should do that now.
+
+%p Or, if you want, just keep reading.
+
+%p To do this lesson, I needed only a browser.
+
+%p I used a Chrome browser.
+
+%p To start, I logged into gmail.
+
+%p Next I loaded a URL:
+
+%p
+  %a(href='https://console.cloud.google.com/projectcreate' target='x')
+    https://console.cloud.google.com/projectcreate
+
+%p I saw this:
+
+%img(src='/lesson004/df150.png')
+
+%p I created a project:
+
+%img(src='/lesson004/df151.png')
+
+%p Notice in the above image that I did not use the suggested project-name.
+
+%p Instead I called my new project: "dfnow".
+
+%p Dataflow depends on a bucket:
+
+%img(src='/lesson004/df153.png')
+
+%p I created a bucket called "dfnow":
+
+%img(src='/lesson004/df155.png')
+
+%p I checked that it was available in the browser:
+
+%img(src='/lesson004/df157.png')
+
+%p Next, I loaded a URL:
+
+%p
+  %a(href='https://console.cloud.google.com/dataflow' target='x')
+    https://console.cloud.google.com/dataflow
+
+%p I saw this:
+
+%img(src='/lesson004/df159.png')
+
+%p I clicked blue-button: "CREATE JOB FROM TEMPLATE".
+
+%p GCP served me a form to fill out:
+
+%img(src='/lesson004/df163.png')
+
+%p I wanted to test if Dataflow would work for me.
+
+%p So, I supplied minimal information to the form.
+
+%p I clicked blue-button: "Run job".
+
+%p GCP served me an error:
+
+%img(src='/lesson004/df167.png')
+
+%p I looked for help:
+
+%img(src='/lesson004/df169.png')
+
+%p I returned to URL:
+
+%p
+  %a(href='https://console.cloud.google.com/dataflow' target='x')
+    https://console.cloud.google.com/dataflow
+
+%p I saw this:
+
+%img(src='/lesson004/df171.png')
+
+%p I clicked blue-button: "Try Dataflow":
+
+%img(src='/lesson004/df173.png')
+
+%p It offered me help with my permission problem.
+
+%p I clicked through:
+
+%img(src='/lesson004/df175.png')
+
+%p I clicked blue-button: "Enable APIs":
+
+%img(src='/lesson004/df177.png')
+
+%p It needed two minutes:
+
+%img(src='/lesson004/df179.png')
+
+%p It finished. I clicked blue-button, "CREATE JOB FROM TEMPLATE":
+
+%img(src='/lesson004/df181.png')
+
+%p GCP served me a form to fill out:
+
+%img(src='/lesson004/df183.png')
+
+%p I wanted to test if Dataflow would work for me.
+
+%p So, I supplied minimal information to the form.
+
+%p I clicked blue-button: "Run job".
+
+%p Instead of serving an error, GCP launched a Job:
+
+%img(src='/lesson004/df185.png')
+
+%p I saw information about the job as it progressed:
+
+%img(src='/lesson004/df187.png')
+
+%p After 4 min 28 sec, it finished:
+
+%img(src='/lesson004/df189.png')
+
+%p I visited a URL to search for the job-output:
+
+%p
+  %a(href='https://console.cloud.google.com/storage' target='x')
+    https://console.cloud.google.com/storage
+
+%p I found it and clicked on a file in the dfnow-bucket:
+
+%img(src='/lesson004/df191.png')
+
+%p I saw output from the job:
+
+%img(src='/lesson004/df193.png')
+
+%p After I studied the files, I deleted them from the bucket:
+
+%img(src='/lesson004/df195.png')
+
+
+%p At that point I was convinced that I had the permissions I need to submit Dataflow-jobs.
+
+%p
+  %a(href='#top') [top]
+%hr/
+
+%h2#python Python DataFlow
+
+%p I started this effort by activating Cloud-Shell:
+
+%img(src='/lesson004/df200.png')
+
+%p I clicked button on the right to give Cloud-Shell its own tab:
+
+%img(src='/lesson004/df202.png')
+
+%p I like to have my Cloud-Shell tab to the right of my GCP-tab:
+
+%img(src='/lesson004/df204.png')
+
+%p I visited a URL and studied it:
+
+%p
+  %a(href='https://cloud.google.com/dataflow/docs/quickstarts/quickstart-python' target='x')
+    https://cloud.google.com/dataflow/docs/quickstarts/quickstart-python
+%p I should have started there.
+
+%p The above page offers information on how to avoid the API-permission-error I encountered.
+
+%p In Cloud-Shell-tab I issued commands:
+
+.syntax
+  %pre
+    %code
+      virtualenv venv10
+      \. venv10/bin/activate
+      pip install google-cloud-dataflow
+%p That quickly finished.
+
+%p Then, I prepared two shell variables for a large Python command:
+
+.syntax
+  %pre
+    %code
+      env|grep PROJECT
+      export BUCKET=gs://dfnow
+
+%p I launched a Dataflow-job using Python:
+
+.syntax
+  %pre
+    =render 'lesson004a'
+
+%p Much text flew by in the tab; I captured some:
+
+%img(src='/lesson004/df206.png')
+
+%p Eventually it finished:
+
+%img(src='/lesson004/df208.png')
+
+%p In the buckets-Browser, I looked for output from the job:
+
+%img(src='/lesson004/df210.png')
+
+%p I found output from the job:
+
+%img(src='/lesson004/df212.png')
+
+%p After I saw that output, I returned to the buckets-Browser and removed files from that job.
+
+%p That concludes this lesson on GCP-Dataflow.
+
+%p
+  %a(href='#top') [top]
+%hr/

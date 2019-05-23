@@ -1,0 +1,39 @@
+<code class='bash'>
+cs101@cpb100-195004:~/training-data-analyst/CPB100/lab3b$ bash authorize_dataproc.sh cluster-d037 us-central1 2
+Machines to authorize: cluster-d037-m cluster-d037-w-0 cluster-d037-w-1 in us-central1
+... finding their IP addresses
+ERROR: (gcloud.compute.instances.describe) Could not fetch resource:
+ - Invalid value for field 'zone': 'us-central1'. Unknown zone.
+
+IP address of cluster-d037-m is /32
+ERROR: (gcloud.compute.instances.describe) Could not fetch resource:
+ - Invalid value for field 'zone': 'us-central1'. Unknown zone.
+
+IP address of cluster-d037-w-0 is /32
+ERROR: (gcloud.compute.instances.describe) Could not fetch resource:
+ - Invalid value for field 'zone': 'us-central1'. Unknown zone.
+
+IP address of cluster-d037-w-1 is /32
+Authorizing [/32,/32,/32] to access cloudsql=rentals
+ERROR: (gcloud.sql.instances.patch) argument --authorized-networks: Bad value [/32]:
+Must be specified in CIDR notation, also known as 'slash' notation (e.g. 192.168.100.0/24).
+Usage: gcloud sql instances patch INSTANCE [optional flags]
+  optional flags may be  --activation-policy | --assign-ip | --async |
+                         --authorized-gae-apps | --authorized-networks |
+                         --no-backup | --backup-start-time |
+                         --clear-authorized-networks | --clear-database-flags |
+                         --clear-gae-apps | --cpu | --database-flags | --diff |
+                         --enable-bin-log | --enable-database-replication |
+                         --follow-gae-app | --gce-zone | --help |
+                         --maintenance-release-channel |
+                         --maintenance-window-any | --maintenance-window-day |
+                         --maintenance-window-hour | --memory | --pricing-plan |
+                         --replication | --require-ssl |
+                         --storage-auto-increase | --storage-size | --tier
+
+For detailed information on this command and its flags, run:
+  gcloud sql instances patch --help
+cs101@cpb100-195004:~/training-data-analyst/CPB100/lab3b$
+cs101@cpb100-195004:~/training-data-analyst/CPB100/lab3b$
+cs101@cpb100-195004:~/training-data-analyst/CPB100/lab3b$
+</code>

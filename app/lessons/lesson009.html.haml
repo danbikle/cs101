@@ -1,0 +1,740 @@
+%h1#top Lesson 009 [ Simple Docker Introductory Tutorial ]
+
+%p This lesson shows how I stepped through some Docker tasks.
+
+%h2 Part-0: Create a GCP account, then Login
+
+%p If you want to see how I did Part-0, study the content at this URL:
+
+%p
+  %a(href='/lessons/lesson001#free-trial') lesson001#free-trial
+%p After I created my GCP account, I created a Project called: "pubsub".
+%p After you login, you can create a Project at this URL:
+%p
+  %a(href='https://console.cloud.google.com/projectcreate' target='x')
+    https://console.cloud.google.com/projectcreate
+  
+%h2 Part-1: Create GCP Kubernetes Cluster of 1 Node
+
+%p
+  Q: Why use GCP Kubernetes node to operate Docker?
+%p
+  A: A GCP Kubernetes node comes with Docker installed; I avoid the chore of Docker installation.
+
+%p
+  I started by asking GCP to create a VM with Docker installed for me.
+
+%p
+  I did this by creating a kubernetes cluster of 1 host.
+
+%p
+  I started at this URL:
+
+%p
+  %a(href='https://console.cloud.google.com/kubernetes' target='x')
+    https://console.cloud.google.com/kubernetes
+%p I saw this:
+
+%img(src='/lesson009/z001.png')
+
+%p Notice the page lists my pubsub-Project near the top.
+
+%p
+  I clicked blue-button: "Create Cluster"
+
+%p
+  I made small changes to the form it served me:
+%ul
+  %li Ubuntu instead of "cos"
+  %li Size 1 instead of 3
+%p I saw this:
+
+%img(src='/lesson009/z002.png')
+
+%p
+  It quickly created 1-node-cluster.
+%p I saw this:
+
+%img(src='/lesson009/z003.png')
+
+%p
+  After GCP created the node, I found it listed in this URL:
+
+%p
+  %a(href='https://console.cloud.google.com/compute/instances' target='x')
+    https://console.cloud.google.com/compute/instances
+  
+%p I saw this:
+
+%img(src='/lesson009/z004.png')
+
+%h2 Part-2: Run /bin/bash in new Docker Containers
+
+%p
+  I started by visiting this URL:
+
+%p
+  %a(href='https://console.cloud.google.com/compute/instances' target='x')
+    https://console.cloud.google.com/compute/instances
+  
+%p
+  I found the node I created in part-1.
+
+%p
+  I clicked the SSH link to gain shell access to the node.
+
+%p I saw this:
+
+
+%img(src='/lesson009/z005.png')
+
+
+%p
+  I entered a shell command:
+
+.syntax
+  %pre
+    %code sudo docker run -it ubuntu:16.04 /bin/bash
+
+%p
+  After a bit of work, Docker served me a shell prompt from a newly hatched container.
+
+%p I saw this:
+
+%img(src='/lesson009/z006.png')
+
+%p
+  I entered a shell command:
+
+.syntax
+  %pre
+    %code cat /etc/lsb-release
+
+%p
+  I saw this:
+
+.syntax
+  %pre
+    %code
+      root@84d3aed24cbd:/# cat /etc/lsb-release
+      DISTRIB_ID=Ubuntu
+      DISTRIB_RELEASE=16.04
+      DISTRIB_CODENAME=xenial
+      DISTRIB_DESCRIPTION="Ubuntu 16.04.4 LTS"
+      root@84d3aed24cbd:/#
+
+%p The above output convinced me that I had just deployed a Docker container running Ubuntu 16.04.4.
+%p
+  I typed exit to exit the container.
+
+%p
+  I was now back inside a shell of the cluster node.
+
+%p
+  So, that was a simple demo of creating a new Docker container and then running /bin/bash inside it.
+
+%p
+  Here is a another similar demo.
+
+%p
+  I ran a Docker shell command to bring up another container with Anaconda Python in it:
+
+.syntax
+  %pre
+    %code sudo docker run -it continuumio/anaconda3 /bin/bash
+
+%p
+  After a bit of work, Docker served me a shell prompt from a newly hatched container.
+
+%p I saw this:
+
+%img(src='/lesson009/z007.png')
+
+%p
+  I entered a shell command:
+
+.syntax
+  %pre
+    %code python
+
+%p
+  It served me a Python-3 prompt.
+
+%p
+  I entered Python commands:
+
+.syntax
+  %pre
+    %code
+      import pandas as pd
+      from sklearn.datasets import load_boston
+      bos_df = pd.DataFrame(load_boston().data)
+      bos_df.columns = load_boston().feature_names
+      bos_df.describe()
+
+%p
+  The above commands worked well.
+
+%p I saw this:
+
+%img(src='/lesson009/z008.png')
+
+%p
+  That convinced me that I could quickly gain access to a container running Anaconda Python.
+
+%p
+  I exited Python using the quit() command.
+
+%p
+  I exited the container with the shell command: "exit".
+
+%p
+  I ran another Docker shell command to bring up another container with Anaconda Python in it:
+
+.syntax
+  %pre
+    %code sudo docker run -it continuumio/anaconda3 /bin/bash
+
+%p
+  Instantly, Docker served me a shell prompt from a newly hatched container.
+
+%p This was different behavior than before.
+
+%p Previously, Docker needed several minutes to bring up the container.
+
+%p Now, Docker brought up the container instantly.
+
+%p
+  I entered a shell command:
+
+.syntax
+  %pre
+    %code python
+
+%p
+  Quickly, I saw a Python prompt.
+
+%p
+  I exited Python using the quit() command.
+
+%p
+  I exited the container with the shell command: "exit".
+
+
+
+%h2 Part-3 Docker-build an Image
+
+
+%p
+  So, the initial creation of the container was slow because Docker needed to pull an "image" from the net.
+  
+%p
+  But, after the image was cached locally, I could access it instantly.
+  
+%p
+  So, those last two lessons showed how to create a container from an image and then run /bin/bash in the container.
+  
+%p
+  A main idea to remember about Docker is that I can get one or more containers from an image.
+  
+%p
+  Once I have a container, I can boot it up and then use it to support shell commands.
+  
+%p
+  I reviewed the two docker commands I ran above to create containers:
+.syntax
+  %pre
+    %code sudo docker run -it ubuntu:16.04 /bin/bash
+    %code sudo docker run -it continuumio/anaconda3 /bin/bash
+  
+%p
+  Both of the above commands depended on images that had been built for me by other people.
+  
+%p
+  Both of the images are stored on hub.docker.com:
+  
+%p
+  %a(href='https://hub.docker.com/_/ubuntu/' target='x')
+    https://hub.docker.com/_/ubuntu/
+  
+%p
+  %a(href='https://hub.docker.com/r/continuumio/anaconda3/' target='x')
+    https://hub.docker.com/r/continuumio/anaconda3/
+  
+  
+%p
+  Q: How do I create an image?
+%p
+  A: I create a file: "Dockerfile", then I use the "docker build" command to create an image.
+  
+%p
+  I followed the above information and wrote some notes.
+  
+%p
+  On the cluster-node, I entered some shell commands to create an image of my own:
+.syntax
+  %pre
+    %code
+      mkdir ~/dock1804
+      cd    ~/dock1804
+      echo From ubuntu:18.04 > Dockerfile
+      sudo docker build -t dock1804 .
+      sudo docker run  -it dock1804 /bin/bash
+      exit
+  
+%p
+  That worked well.
+%ul
+  %li Next, I copied Dockerfile into a github repo.
+  %li
+    I connected that repo to the bikle101 account in 
+    %a(href='https://cloud.docker.com/' target='x')
+      https://cloud.docker.com/
+  %li I asked the site to build.
+  
+%p
+  Next I ran this shell command:
+.syntax
+  %pre
+    %code sudo docker run -it bikle101/dock1804 /bin/bash
+  
+%p
+  It worked great!
+  
+%p
+  An alternative:
+%ul
+  %li Clone the repo and cd into its folder.
+  %li Then type shell commands:
+  %li
+    .syntax
+      %pre
+        %code
+          sudo docker build -t dock1804 .
+          sudo docker run  -it dock1804 /bin/bash
+  
+%p
+  Here is a screen shot of me doing that:
+.syntax
+  %pre
+    =render 'lesson009ss1'
+  
+
+%p So, it turns out that GCP offers a service like cloud.docker.com
+
+%p It is called: "gcr.io"
+
+%p I visited gcr.io and my browser redirected me to this page:
+
+%p
+  %a(href='https://cloud.google.com/container-registry' target='x')
+    https://cloud.google.com/container-registry
+%p In order to use it, I need to install gcloud.
+
+%p I installed gcloud with the shell commands listed below:
+
+.syntax
+  %pre
+    %code
+      wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-193.0.0-linux-x86_64.tar.gz
+      tar xf google-cloud-sdk-193.0.0-linux-x86_64.tar.gz
+      google-cloud-sdk/install.sh
+      bash
+%p Next I issued some shell commands:
+
+.syntax
+  %pre
+    %code
+      gcloud projects list
+      gcloud config set project pubsub-197323
+      sudo docker tag dock1804 gcr.io/pubsub-197323/dock1804
+      gcloud docker
+      sudo docker -- push gcr.io/pubsub-197323/dock1804
+
+%p I tried this:
+.syntax
+  %pre
+    %code sudo docker run -it gcr.io/pubsub-197323/dock1804 /bin/bash
+
+%p It worked!
+
+%p I started another one-node cluster.
+
+%p On that node, I installed gcloud and I tried this:
+.syntax
+  %pre
+    %code
+      gcloud config set project pubsub-197323
+      sudo docker run -it gcr.io/pubsub-197323/dock1804 /bin/bash
+
+%p It failed.
+
+%p I saw this:
+
+.syntax
+  %pre
+    %code
+      bikle101@gke-cluster-2-default-pool-24d6b02b-cfs4:~$ sudo docker run -it gcr.io/pubsub-197323/dock1804 /bin/bash
+      Unable to find image 'gcr.io/pubsub-197323/dock1804:latest' locally
+      Pulling repository gcr.io/pubsub-197323/dock1804
+      docker: unauthorized: authentication required.
+      See 'docker run --help'.
+      bikle101@gke-cluster-2-default-pool-24d6b02b-cfs4:~$ 
+
+%p I visited a page inside GCP-kubernetes:
+
+%p
+  %a(href='https://console.cloud.google.com/kubernetes/workload' target='x')
+    https://console.cloud.google.com/kubernetes/workload
+%p I saw this:
+
+%img(src='/lesson009/z009.png')
+
+%p I clicked the blue-button: "Deploy".
+%p I saw this:
+
+%img(src='/lesson009/z010.png')
+
+%p I clicked the link:
+
+%p "Select existing Google Container Registry image"
+
+%p I saw this:
+
+%img(src='/lesson009/z011.png')
+
+%p I selected: "gcr.io/pubsub-197323/dock1804"
+
+%p I saw this:
+
+%img(src='/lesson009/z012.png')
+
+%p Near the page-bottom I selected the cluster I wanted to deploy to.
+
+%p I clicked the blue-button at the bottom: "Deploy".
+
+%p I saw this:
+
+%img(src='/lesson009/z013.png')
+%br/
+%img(src='/lesson009/z014.png')
+%p I ignored the red-warnings in the above page.
+%p I returned to the cluster-2-shell which encountered the docker-run failure.
+
+%p I tried to run docker again with this shell command:
+
+.syntax
+  %pre
+    %code sudo docker run -it gcr.io/pubsub-197323/dock1804 /bin/bash
+
+%p It worked!
+
+%p I saw this:
+
+.syntax
+  %pre
+    %code
+      bikle101@gke-cluster-2-default-pool-f82190b0-cdlk:~$ 
+      bikle101@gke-cluster-2-default-pool-f82190b0-cdlk:~$ sudo docker run -it gcr.io/pubsub-197323/dock1804 /bin/bash
+      root@f31e1f48b430:/# 
+      root@f31e1f48b430:/# cat /etc/lsb-release 
+      DISTRIB_ID=Ubuntu
+      DISTRIB_RELEASE=18.04
+      DISTRIB_CODENAME=bionic
+      DISTRIB_DESCRIPTION="Ubuntu Bionic Beaver (development branch)"
+      root@f31e1f48b430:/# 
+      root@f31e1f48b430:/# 
+      root@f31e1f48b430:/# exit
+      exit
+      bikle101@gke-cluster-2-default-pool-f82190b0-cdlk:~$ 
+      bikle101@gke-cluster-2-default-pool-f82190b0-cdlk:~$ 
+      bikle101@gke-cluster-2-default-pool-f82190b0-cdlk:~$     
+
+%p Getting docker images from gcr.io and then running them is an important step.
+
+%p Later, I will show further steps to automate deployment of docker images from gcr.io and then running software in those images.
+
+%p That is all for this lesson.
+
+%p Next, I exited the node-shell.
+  
+%p Finally I deleted clusters from a link in this URL:
+%p
+  %a(href='https://console.cloud.google.com/kubernetes' target='x')
+    https://console.cloud.google.com/kubernetes
+  
+  
+%h2 Lesson Summary:
+%ul
+  %li Part-1
+  %li visit:
+  %li
+    %a(href='https://console.cloud.google.com' target='x')
+      https://console.cloud.google.com
+  
+  %li Login to GCP
+  %li visit:
+  %li
+    %a(href='https://console.cloud.google.com/kubernetes' target='x')
+      https://console.cloud.google.com/kubernetes
+  
+  %li Create a Kubernetes Cluster with just 1 node
+  %li visit:
+  %li
+    %a(href='https://console.cloud.google.com/compute' target='x')
+      https://console.cloud.google.com/compute
+  %li In GCP, Find the resulting instance
+  %li Part-2
+  %li Login via SSH link
+  %li Run:
+  %li
+    .syntax
+      %pre
+        %code sudo docker run -it ubuntu:16.04 /bin/bash
+  %li exit container
+  %li Run:
+  %li
+    .syntax
+      %pre
+        %code sudo docker run -it continuumio/anaconda3 /bin/bash
+  %li Test python
+  %li exit container
+  %li Part-3
+  %li
+    .syntax
+      %pre
+        %code
+          mkdir ~/dock1804
+          cd    ~/dock1804
+          echo From ubuntu:18.04 > Dockerfile
+          sudo docker build -t dock1804 .
+          sudo docker run  -it dock1804 /bin/bash
+          exit
+  %li
+    .syntax
+      %pre
+        %code sudo docker run -it bikle101/dock1804 /bin/bash
+  
+  %li
+    .syntax
+      %pre
+        %code
+          cd ~
+          git clone https://github.com/danbikle/dock1804
+          cd dock1804
+          sudo docker build -t dock1804 .
+          sudo docker run  -it dock1804 /bin/bash
+          exit
+
+  %li visit:
+  %li
+    %a(href='https://console.cloud.google.com/kubernetes' target='x')
+      https://console.cloud.google.com/kubernetes
+
+  %li Install gcloud on cluster node
+  %li 
+    .syntax
+      %pre
+        %code
+          gcloud projects list
+          gcloud config set project pubsub-197323
+          sudo docker tag dock1804 gcr.io/pubsub-197323/dock1804
+          gcloud docker -- push gcr.io/pubsub-197323/dock1804
+          sudo docker run -it gcr.io/pubsub-197323/dock1804 /bin/bash
+  %li Start another node in the cluster
+  %li Install gcloud on new cluster node
+  %li 
+    .syntax
+      %pre
+        %code
+          gcloud config set project pubsub-197323
+          sudo docker run -it gcr.io/pubsub-197323/dock1804 /bin/bash
+  %li Understand how to Deploy an image in gcr.io to a cluster using a page in the kubernetes URL:
+  %li
+    %a(href='https://console.cloud.google.com/kubernetes/workload ' target='x')
+      https://console.cloud.google.com/kubernetes/workload
+  %li Delete the cluster to limit GCP cost         
+
+%h2 Questions/Answers
+
+%ul
+  %li Q: What is Docker?
+  %li
+    Docker allows me to create a command-line linux environment inside another host.
+    %hr/
+  %li Q: Is it easy to install Docker?
+  %li
+    Sometimes yes or no. Installing Docker on windows can be a problem.
+    %hr/
+
+  %li Q: How to get a free GCP account with $300 credit?
+  %li Get a credit-card.
+  %li Login to gmail.com
+  %li Then start here:
+  %li
+    %a(href='https://console.developers.google.com/freetrial' target='x')
+      https://console.developers.google.com/freetrial
+    %hr/
+  %li Q: How to create a project inside GCP?
+  %li
+    %a(href='https://console.cloud.google.com/projectcreate' target='x')
+      https://console.cloud.google.com/projectcreate
+    %hr/
+  %li Q: Why create a project inside GCP?
+  %li
+    Google wants you to create a project.
+    %hr/
+  %li Q: Why add an ssh-key to a project?
+  %li
+    You can then ssh into any GCP instance which gets created later.
+    %hr/
+  %li Q: How to add an ssh-key to a project?
+  %li Visit:
+  %li
+    %a(href='https://console.cloud.google.com/compute/metadata/sshKeys' target='x')
+      https://console.cloud.google.com/compute/metadata/sshKeys
+  %li Click edit button; Click Add item.
+  %li
+    Copy/Paste key into empty text-area-box; Save.  
+    %hr/
+  %li Q: How to create GCP Kubernetes Cluster of 1 Node?
+  %li
+    Visit:
+    %a(href='https://console.cloud.google.com/kubernetes' target='x')
+      https://console.cloud.google.com/kubernetes
+  %li
+    Fill out the cluster creation form:
+    %ul
+      %li Pick Ubuntu not cos.
+      %li Size: 1
+      %li Autoscaling: On
+      %li Min size == Max size == 1
+      %li Preemptible: Enabled (ignore warning)
+      %li Boot size: 40 GB
+      %li Button: Allow full access to all Cloud APIs
+    %hr/
+
+  %li Q: After I create a 1-node-cluster, how to login to the node?
+  %li Visit the link below:
+  %li
+    %a(href='https://console.cloud.google.com/compute/instances' target='x')
+      https://console.cloud.google.com/compute/instances
+  %li
+    Find the node; click the SSH link to access a shell inside the node.
+    %hr/
+    
+  %li Q: What is a Dockerfile?
+  %li
+    I can use a Dockerfile to create an "Image".
+    %hr/
+    
+  %li Q: What is an Image?
+  %li
+    I can use an Image to create one or more "Containers".
+    %hr/
+    
+  %li Q: What is a Container?
+  %li
+    A Container is an active Linux-environment which accepts my shell commands.
+    %hr/
+    
+  %li Q: How to run a bash-shell inside Docker Ubuntu Container?
+  %li ssh into 1-node-cluster then enter shell command:
+  %li
+    .syntax
+      %pre
+        %code sudo docker run -it ubuntu:16.04 /bin/bash
+    %hr/
+  %li Q: Do I need an Image to run the above Container?
+  %li Yes, but you can ignore the Image.
+  %li
+    Docker will get the Image from hub.docker.com and install it for you.
+    %hr/
+
+  %li Q: How to see my current version of Ubuntu?
+  %li
+    .syntax
+      %pre
+        %code cat /etc/lsb-release
+    %hr/
+  %li Q: How to run a Container with Anaconda Python inside it?
+  %li
+    .syntax
+      %pre
+        %code sudo docker run -it continuumio/anaconda3 /bin/bash
+    %hr/
+
+  %li Q: How to create a one-line Dockerfile?
+  %li
+    Demo:
+    .syntax
+      %pre
+        %code echo From ubuntu:18.04 > Dockerfile
+    %hr/
+
+  %li Q: How to build an Image from above Dockerfile?
+  %li
+    Demo:
+    .syntax
+      %pre
+        %code sudo docker build -t dock1804 .
+    %hr/
+
+  %li Q: What is "gcr.io"?
+  %li
+    It is a google-server where I can store Images.
+    %hr/
+
+
+  %li Q: How to install "gcloud" on Linux?
+  %li
+    Demo:
+    .syntax
+      %pre
+        %code
+          wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-193.0.0-linux-x86_64.tar.gz
+          tar xf google-cloud-sdk-193.0.0-linux-x86_64.tar.gz
+          google-cloud-sdk/install.sh
+          bash  
+    %hr/
+
+  %li Q: How to "push" dock1804-Image into gcr.io?
+  %li
+    Demo:
+    .syntax
+      %pre
+        %code
+          gcloud projects list
+          gcloud config set project pubsub-197323
+          sudo docker tag dock1804 gcr.io/pubsub-197323/dock1804
+          gcloud docker
+          sudo docker -- push gcr.io/pubsub-197323/dock1804
+    %hr/
+
+  %li Q: How to deploy dock1804-Image to another node in GCP?
+  %li
+    Visit:
+  %li
+    %a(href='https://console.cloud.google.com/kubernetes/workload    ' target='x')
+      https://console.cloud.google.com/kubernetes/workload
+  %li Find dock1804 in the form.
+  %li Pick the target-cluster.
+  %li
+    Click blue-button: "Deploy"; ignore the warnings.
+    %hr/
+  %li Q: After I finish a training session, should I delete my cluster?
+  %li Yes!
+  %li Visit:
+  %li
+    %a(href='https://console.cloud.google.com/kubernetes' target='x')
+      https://console.cloud.google.com/kubernetes
+  %li
+    Find the cluster, click the trash-can.
+    %hr/
+
+
+
+%p
+  %a(href='#top') [top]
+%hr/
+

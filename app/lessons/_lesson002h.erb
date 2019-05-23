@@ -1,0 +1,59 @@
+<code class='bash'>bikle101@cp100-196102:~/cp100/default/container-engine$
+bikle101@cp100-196102:~/cp100/default/container-engine$
+
+
+
+bikle101@cp100-196102:~/cp100/default/container-engine$ gcloud docker -- push gcr.io/$DEVSHELL_PROJECT_ID/bookshelf
+The push refers to a repository [gcr.io/cp100-196102/bookshelf]
+4cdee793aceb: Pushed
+11405187a2ec: Pushed
+fddb4ab72d72: Pushed
+c27b0a837362: Pushed
+54eed10b560f: Pushed
+a3f6a30be11b: Pushed
+d75d22fe5420: Pushed
+65d9aa2a4c52: Pushed
+d263c7228acb: Mounted from google_appengine/base
+21df82f90a72: Mounted from google_appengine/base
+latest: digest: sha256:3b5032e6ca1209ec7f00788d4ed13165ba0989fd93f5c46c8486b83cc866b820 size: 2415
+bikle101@cp100-196102:~/cp100/default/container-engine$
+bikle101@cp100-196102:~/cp100/default/container-engine$
+bikle101@cp100-196102:~/cp100/default/container-engine$
+
+
+
+bikle101@cp100-196102:~/cp100/default/container-engine$ gcloud container clusters get-credentials bookshelf
+Fetching cluster endpoint and auth data.
+kubeconfig entry generated for bookshelf.
+bikle101@cp100-196102:~/cp100/default/container-engine$
+bikle101@cp100-196102:~/cp100/default/container-engine$
+
+
+
+bikle101@cp100-196102:~/cp100/default/container-engine$ kubectl create -f bookshelf-frontend.yaml
+replicationcontroller "bookshelf-frontend" created
+service "bookshelf-frontend" created
+bikle101@cp100-196102:~/cp100/default/container-engine$
+bikle101@cp100-196102:~/cp100/default/container-engine$
+bikle101@cp100-196102:~/cp100/default/container-engine$
+
+
+
+bikle101@cp100-196102:~/cp100/default/container-engine$ kubectl get pods
+NAME                       READY     STATUS    RESTARTS   AGE
+bookshelf-frontend-cd8dc   1/1       Running   0          2m
+bookshelf-frontend-prbrp   1/1       Running   0          2m
+bookshelf-frontend-vbn4x   1/1       Running   0          2m
+bikle101@cp100-196102:~/cp100/default/container-engine$
+bikle101@cp100-196102:~/cp100/default/container-engine$
+bikle101@cp100-196102:~/cp100/default/container-engine$
+
+
+
+bikle101@cp100-196102:~/cp100/default/container-engine$ kubectl get services bookshelf-frontend
+NAME                 TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)        AGE
+bookshelf-frontend   LoadBalancer   10.11.240.183   35.226.210.138   80:31348/TCP   2m
+bikle101@cp100-196102:~/cp100/default/container-engine$
+bikle101@cp100-196102:~/cp100/default/container-engine$
+bikle101@cp100-196102:~/cp100/default/container-engine$
+</code>

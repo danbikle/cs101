@@ -1,0 +1,304 @@
+%h1#top Lesson 011 [ Simple AWS Redshift Intro. ]
+
+%p AWS Redshift is a database service.
+
+%p This service runs in a cluster configured by you the operator.
+
+%p The cluster offers higher reliability and sometimes better performance than a single-node database service:
+
+%a(href='https://docs.aws.amazon.com/redshift' target='x')
+  https://docs.aws.amazon.com/redshift
+  
+
+%p This lesson shows how I worked through some simple AWS Redshift tasks.
+
+%p To start, I Signed-Up for an AWS account.
+
+%p I saw a Sign-Up button at this URL:
+
+%a(href='https://aws.amazon.com' target='x')
+  https://aws.amazon.com
+%p
+%img(src='/lesson011/z012.png')
+
+%p After I signed-up and logged-in, using a link in the upper right, I set my region to Oregon:
+
+%p
+%img(src='/lesson011/z013.png')
+%hr/
+
+
+
+%p I know that the Oregon region also has these names:
+%ul
+  %li Oregon
+  %li US West (Oregon)
+  %li us-west-2
+
+%p The last name, "us-west-2", is important to remember.
+
+%p After I set my region to us-west-2, I visited this URL:
+
+%a(href='https://console.aws.amazon.com/redshift' target='x')
+  https://console.aws.amazon.com/redshift
+  
+%p AWS served me a page called Redshift Dashboard.
+
+%p I saw this:
+
+%img(src='/lesson011/z014.png')
+
+%p I clicked blue-button: "Quick launch cluster".
+
+%p AWS served me a form:
+
+%img(src='/lesson011/z015.png')
+
+%p I typed in a password for future connections:
+
+.syntax
+  %pre
+    %code Dan12345
+
+%p The option-field "Available IAM roles" was asking me to create a new IAM-Role.
+
+%p I opened a another tab.
+
+%p I visited URL:
+
+%a(href='https://console.aws.amazon.com/iam/home#/roles' target='x')
+  https://console.aws.amazon.com/iam/home#/roles
+  
+%p I saw this:
+
+%img(src='/lesson011/z016.png')
+
+%p I clicked blue-button: "Create role".
+
+%p AWS served a page asking me a question:
+
+%p Choose the service that will use this role
+
+%p The page I saw:
+
+%img(src='/lesson011/z017.png')
+
+%p I answered by clicking the blue-Redshift link near lower right.
+
+
+%p AWS served a page asking me a question:
+
+%p Select your use case
+
+%p The page I saw:
+
+%img(src='/lesson011/z018.png')
+
+%p I answered by clicking the blue-link: "Redshift - Customizable".
+
+%p AWS highlighted my choice and activated blue-button: "Next: Permissions"
+
+%p AWS served me page 2 from a wizard.
+
+%p I typed "s3" into the search field.
+
+%p AWS then allowed me to select this permission: "AmazonS3ReadOnlyAccess".
+
+%p I saw this:
+
+%img(src='/lesson011/z019.png')
+
+%p I clicked blue-button: "Next: Review".
+
+%p AWS served me page 3 from a wizard asking me to name the Role I want.
+
+%p I typed: "aRedshiftRole" and saw this:
+
+%img(src='/lesson011/z020.png')
+
+%p I clicked blue-button: "Create Role".
+
+%p AWS created the role and served me Role-list page:
+
+%img(src='/lesson011/z021.png')
+
+%p I clicked blue-button: "aRedshiftRole".
+
+%p AWS showed the Amazon-Role-Name (ARN) of "aRedshiftRole" to be this string:
+
+.syntax
+  %pre
+    %code arn:aws:iam::448496253599:role/aRedshiftRole
+
+%p The page I saw is displayed below:
+
+%img(src='/lesson011/z022.png')
+
+%p I returned my attention to the Redshift-configuration page which needs "aRedshiftRole":
+
+%img(src='/lesson011/z023.png')
+
+%p I selected the option "aRedshiftRole":
+
+%img(src='/lesson011/z024.png')
+
+%p I clicked blue-button: "Launch Cluster".
+
+%p AWS served me a page:
+
+%img(src='/lesson011/z025.png')
+
+%p After 5 minutes I visited a Redshift URL:
+
+%a(href='https://console.aws.amazon.com/redshift' target='x')
+  https://console.aws.amazon.com/redshift
+  
+%p Eventually I found the URL of the configuration page:
+
+%a(href='https://us-west-2.console.aws.amazon.com/redshift/home?region=us-west-2#cluster-details:cluster=redshift-cluster-1' target='x')
+  https://us-west-2.console.aws.amazon.com/redshift/home?region=us-west-2#cluster-details:cluster=redshift-cluster-1
+
+
+%p I saw this:
+
+%img(src='/lesson011/z026.png')
+
+%p During my wait for cluster-creation, I wanted to open port 5439 into the cluster.
+
+%p In the configuration page I clicked link: "sg-b0e2acc3" which was the link to VPC security groups.
+
+%p AWS served me a configuration page:
+
+%img(src='/lesson011/z027.png')
+
+%p Opening port 5439 was easy:
+
+%ul
+  %li I clicked the Inbound tab. 
+  %li I clicked button: "Edit"
+  %li I clicked button: "Add Rule"
+  %li I entered the following:
+  %li
+    %ul
+      %li Type: Custom TCP Rule.
+      %li Protocol: TCP.
+      %li Port Range: 5439
+      %li Source: select Custom IP, then type 0.0.0.0/0.
+  %li
+    %img(src='/lesson011/z028.png')
+  %li I clicked Save.
+
+%p I returned to the Redshift URL to check the status of my cluster:
+
+%a(href='https://console.aws.amazon.com/redshift' target='x')
+  https://console.aws.amazon.com/redshift
+
+%p I found the configuration page and saw this:
+
+%img(src='/lesson011/z029.png')
+
+%p I made note of the jdbc connect string:
+
+.syntax
+  %pre
+    %code jdbc:redshift://redshift-cluster-1.cmea74qjjc8h.us-west-2.redshift.amazonaws.com:5439/dev
+
+%p I asked google how to connect with Postgres-CLI named: "psql".
+
+%p The google-answer:
+
+.syntax
+  %pre
+    %code psql -h endpoint -U userid -d databasename -p port
+
+
+%p I checked my Ubuntu laptop for psql:
+
+.syntax
+  %pre
+    %code
+      which psql
+      psql --help
+
+%p I did not see psql so I installed it:
+
+.syntax
+  %pre
+    %code sudo apt install postgresql
+
+%p Next, I tried a simple shell command:
+
+.syntax
+  %pre
+    %code psql -h redshift-cluster-1.cmea74qjjc8h.us-west-2.redshift.amazonaws.com -U awsuser -d dev -p 5439
+
+%p It worked, I saw this:
+
+.syntax
+  %pre
+    %code
+      dan@d81:~ $ psql -h redshift-cluster-1.cmea74qjjc8h.us-west-2.redshift.amazonaws.com -U awsuser -d dev -p 5439
+      Password for user awsuser: 
+      psql (9.5.14, server 8.0.2)
+      SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
+      Type "help" for help.
+      dev=# 
+
+%p I tested it further with SQL commands:
+
+.syntax
+  %pre
+    =render 'lesson011a'
+
+%p Next, I tried to run a sql script.
+
+%p The script is listed below:
+
+.syntax
+  %pre
+    =render 'lesson011b'
+
+%p I saw this:
+
+.syntax
+  %pre
+    =render 'lesson011c'
+
+
+%p Next, I ran another sql script.
+
+%p The script is listed below.
+%p Notice that the script refers to the Amazon Role Name I had created earlier:
+
+.syntax
+  %pre
+    =render 'lesson011d'
+
+%p I saw this:
+
+.syntax
+  %pre
+    =render 'lesson011e'
+
+%p Finally, I ran another sql script.
+
+%p The script is listed below:
+
+.syntax
+  %pre
+    =render 'lesson011f'
+
+%p I saw this:
+
+.syntax
+  %pre
+    =render 'lesson011g'
+
+%p The above output convinced me that my Redshift cluster was behaving well.
+
+%p The Redshift service is expensive so I shut it down:
+
+%img(src='/lesson011/z030.png')
+%hr
+%img(src='/lesson011/z031.png')
+%hr/

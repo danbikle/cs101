@@ -1,0 +1,157 @@
+<code class='bash'>Welcome to Cloud Shell! Type "help" to get started.
+bikle101@cp100-196102:~$
+bikle101@cp100-196102:~$ cd ~/cp100/default/app-engine
+bikle101@cp100-196102:~/cp100/default/app-engine$
+bikle101@cp100-196102:~/cp100/default/app-engine$
+bikle101@cp100-196102:~/cp100/default/app-engine$
+
+
+
+bikle101@cp100-196102:~/cp100/default/app-engine$ cat requirements.txt
+Flask==0.11.1
+gunicorn==19.6.0
+bikle101@cp100-196102:~/cp100/default/app-engine$
+bikle101@cp100-196102:~/cp100/default/app-engine$
+bikle101@cp100-196102:~/cp100/default/app-engine$
+bikle101@cp100-196102:~/cp100/default/app-engine$
+
+
+
+bikle101@cp100-196102:~/cp100/default/app-engine$ pip install -r requirements.txt -t lib
+Collecting Flask==0.11.1 (from -r requirements.txt (line 1))
+  Downloading Flask-0.11.1-py2.py3-none-any.whl (80kB)
+    100% |████████████████████████████████| 81kB 2.5MB/s
+Collecting gunicorn==19.6.0 (from -r requirements.txt (line 2))
+  Downloading gunicorn-19.6.0-py2.py3-none-any.whl (114kB)
+    100% |████████████████████████████████| 122kB 3.2MB/s
+Collecting itsdangerous>=0.21 (from Flask==0.11.1->-r requirements.txt (line 1))
+  Downloading itsdangerous-0.24.tar.gz (46kB)
+    100% |████████████████████████████████| 51kB 3.9MB/s
+Collecting click>=2.0 (from Flask==0.11.1->-r requirements.txt (line 1))
+  Downloading click-6.7-py2.py3-none-any.whl (71kB)
+    100% |████████████████████████████████| 71kB 2.9MB/s
+Collecting Werkzeug>=0.7 (from Flask==0.11.1->-r requirements.txt (line 1))
+  Downloading Werkzeug-0.14.1-py2.py3-none-any.whl (322kB)
+    100% |████████████████████████████████| 327kB 2.5MB/s
+Collecting Jinja2>=2.4 (from Flask==0.11.1->-r requirements.txt (line 1))
+  Downloading Jinja2-2.10-py2.py3-none-any.whl (126kB)
+    100% |████████████████████████████████| 133kB 4.5MB/s
+Collecting MarkupSafe>=0.23 (from Jinja2>=2.4->Flask==0.11.1->-r requirements.txt (line 1))
+  Downloading MarkupSafe-1.0.tar.gz
+Building wheels for collected packages: itsdangerous, MarkupSafe
+  Running setup.py bdist_wheel for itsdangerous ... done
+  Stored in directory:
+  /home/bikle101/.cache/pip/wheels/fc/a8/66/24d655233c757e178d45dea2de22a04c6d92766abfb741129a
+  Running setup.py bdist_wheel for MarkupSafe ... done
+  Stored in directory:
+  /home/bikle101/.cache/pip/wheels/88/a7/30/e39a54a87bcbe25308fa3ca64e8ddc75d9b3e5afa21ee32d57
+Successfully built itsdangerous MarkupSafe
+Installing collected packages: itsdangerous, click, Werkzeug, MarkupSafe, Jinja2, Flask, gunicorn
+Successfully installed Flask-0.11.1 Jinja2-2.10 MarkupSafe-1.0 Werkzeug-0.14.1 click-6.7
+gunicorn-19.6.0 itsdangerous-0.24
+bikle101@cp100-196102:~/cp100/default/app-engine$
+bikle101@cp100-196102:~/cp100/default/app-engine$
+bikle101@cp100-196102:~/cp100/default/app-engine$
+
+
+
+bikle101@cp100-196102:~/cp100/default/app-engine$ cat appengine_config.py
+"""
+`appengine_config.py` is automatically loaded when Google App Engine
+starts a new instance of your application. This runs before any
+WSGI applications specified in app.yaml are loaded.
+"""
+
+from google.appengine.ext import vendor
+import tempfile
+tempfile.SpooledTemporaryFile = tempfile.TemporaryFile
+
+# Third-party libraries are stored in "lib", vendoring will make
+# sure that they are importable by the application.
+vendor.add('lib')
+bikle101@cp100-196102:~/cp100/default/app-engine$
+bikle101@cp100-196102:~/cp100/default/app-engine$
+bikle101@cp100-196102:~/cp100/default/app-engine$
+bikle101@cp100-196102:~/cp100/default/app-engine$
+
+
+
+bikle101@cp100-196102:~/cp100/default/app-engine$ gcloud app deploy
+You are creating an app for project [cp100-196102].
+WARNING: Creating an App Engine application for a project is irreversible and the region
+cannot be changed. More information about regions is at
+&lt;https://cloud.google.com/appengine/docs/locations>.
+
+Please choose the region where you want your App Engine application
+located:
+
+ [1] europe-west2  (supports standard and flexible)
+ [2] us-east1      (supports standard and flexible)
+ [3] us-east4      (supports standard and flexible)
+ [4] asia-northeast1 (supports standard and flexible)
+ [5] asia-south1   (supports standard and flexible)
+ [6] australia-southeast1 (supports standard and flexible)
+ [7] southamerica-east1 (supports standard and flexible)
+ [8] northamerica-northeast1 (supports standard and flexible)
+ [9] us-central    (supports standard and flexible)
+ [10] europe-west3  (supports standard and flexible)
+ [11] europe-west   (supports standard and flexible)
+ [12] cancel
+Please enter your numeric choice:  9
+
+
+
+Creating App Engine application in project [cp100-196102] and region [us-central]....done.
+Services to deploy:
+
+descriptor:      [/home/bikle101/cp100/default/app-engine/app.yaml]
+source:          [/home/bikle101/cp100/default/app-engine]
+target project:  [cp100-196102]
+target service:  [default]
+target version:  [20180223t170733]
+target url:      [https://cp100-196102.appspot.com]
+
+
+
+Do you want to continue (Y/n)?
+
+Beginning deployment of service [default]...
+/google/google-cloud-sdk/lib/googlecloudsdk/core/util/files.py:622: UnicodeWarning:
+Unicode equal comparison failed to convert both arguments to Unicode -
+interpreting them as being unequal
+  for chunk in iter(lambda: fp.read(4096), ''):
+Some files were skipped. Pass `--verbosity=info` to see which ones.
+You may also view the gcloud log file, found at
+[/tmp/tmp.jSPbOyfTpW/logs/2018.02.23/17.06.34.652615.log].
+╔════════════════════════════════════════════════════════════╗
+╠═ Uploading 226 files to Google Cloud Storage              ═╣
+╚════════════════════════════════════════════════════════════╝
+File upload done.
+Updating service [default]...done.
+Waiting for operation
+[apps/cp100-196102/operations/127ce446-a28d-4ab7-b55d-0a3b002ca388]
+to complete...done.
+Updating service [default]...done.
+Deployed service [default] to [https://cp100-196102.appspot.com]
+
+You can stream logs from the command line by running:
+  $ gcloud app logs tail -s default
+
+To view your application in the web browser run:
+  $ gcloud app browse
+bikle101@cp100-196102:~/cp100/default/app-engine$
+bikle101@cp100-196102:~/cp100/default/app-engine$
+bikle101@cp100-196102:~/cp100/default/app-engine$
+bikle101@cp100-196102:~/cp100/default/app-engine$
+
+
+
+bikle101@cp100-196102:~/cp100/default/app-engine$ gcloud app browse
+Did not detect your browser. Go to this link to view your app:
+https://cp100-196102.appspot.com
+bikle101@cp100-196102:~/cp100/default/app-engine$
+bikle101@cp100-196102:~/cp100/default/app-engine$
+bikle101@cp100-196102:~/cp100/default/app-engine$
+
+
+</code>

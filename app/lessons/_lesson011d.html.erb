@@ -1,0 +1,34 @@
+<code class='bash'>
+-- ur.sql
+
+-- Ref:
+-- https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-create-sample-db.html
+
+copy users from 's3://awssampledbuswest2/tickit/allusers_pipe.txt' 
+credentials 'aws_iam_role=arn:aws:iam::448496253599:role/aRedshiftRole'
+delimiter '|' region 'us-west-2';
+
+copy venue from 's3://awssampledbuswest2/tickit/venue_pipe.txt' 
+credentials 'aws_iam_role=arn:aws:iam::448496253599:role/aRedshiftRole'
+delimiter '|' region 'us-west-2';
+
+copy category from 's3://awssampledbuswest2/tickit/category_pipe.txt' 
+credentials 'aws_iam_role=arn:aws:iam::448496253599:role/aRedshiftRole'
+delimiter '|' region 'us-west-2';
+
+copy date from 's3://awssampledbuswest2/tickit/date2008_pipe.txt' 
+credentials 'aws_iam_role=arn:aws:iam::448496253599:role/aRedshiftRole'
+delimiter '|' region 'us-west-2';
+
+copy event from 's3://awssampledbuswest2/tickit/allevents_pipe.txt' 
+credentials 'aws_iam_role=arn:aws:iam::448496253599:role/aRedshiftRole'
+delimiter '|' timeformat 'YYYY-MM-DD HH:MI:SS' region 'us-west-2';
+
+copy listing from 's3://awssampledbuswest2/tickit/listings_pipe.txt' 
+credentials 'aws_iam_role=arn:aws:iam::448496253599:role/aRedshiftRole'
+delimiter '|' region 'us-west-2';
+
+copy sales from 's3://awssampledbuswest2/tickit/sales_tab.txt'
+credentials 'aws_iam_role=arn:aws:iam::448496253599:role/aRedshiftRole'
+delimiter '\t' timeformat 'MM/DD/YYYY HH:MI:SS' region 'us-west-2';
+</code>

@@ -1,0 +1,40 @@
+<code class='bash'>cs101@cpb100-195004:~$
+cs101@cpb100-195004:~$ datalab create mydatalabvm --zone us-central1-f
+Creating the repository datalab-notebooks
+Creating the instance mydatalabvm
+Created [https://www.googleapis.com/compute/v1/projects/cpb100-195004/zones/us-central1-f/instances/mydatalabvm].
+Connecting to mydatalabvm.
+This will create an SSH tunnel and may prompt you to create an rsa key pair.
+To manage these keys, see https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys
+Waiting for Datalab to be reachable at http://localhost:8081/
+This tool needs to create the directory [/home/cs101/.ssh] before
+being able to generate SSH keys.
+
+Do you want to continue (Y/n)?  y
+
+Generating public/private rsa key pair.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/cs101/.ssh/google_compute_engine.
+Your public key has been saved in /home/cs101/.ssh/google_compute_engine.pub.
+The key fingerprint is:
+SHA256:/Nyvn1cGO66I19S66NaH92mwa1q1bUpTzPUH0W0DE6E cs101@cs-6000-devshell-vm-041ee3e0-98cc-4471-b54e-de69c3f602a9
+The key's randomart image is:
++---[RSA 2048]----+
+|             ==..|
+|            . .o+|
+|           E  ..o|
+|       .      .+o|
+|        S    . +*|
+|         o ...=.*|
+|          o+.==++|
+|         .oo*=+*o|
+|        .++.*OB+.|
++----[SHA256]-----+
+Updating project ssh metadata.../Updated [https://www.googleapis.com/compute/v1/projects/cpb100-195004].
+Updating project ssh metadata...done.
+Waiting for SSH key to propagate.
+
+The connection to Datalab is now open and will remain until this command is killed.
+Click on the *Web Preview* (square button at top-right), select *Change port > Port 8081*, and start using Datalab.
+</code>

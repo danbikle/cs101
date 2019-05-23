@@ -1,0 +1,26 @@
+<code class='bash'>
+cs101@cpb100-195004:~/training-data-analyst/CPB100/lab3b$ bash authorize_dataproc.sh cluster-d037 us-central1-f 2
+Machines to authorize: cluster-d037-m cluster-d037-w-0 cluster-d037-w-1 in us-central1-f
+... finding their IP addresses
+IP address of cluster-d037-m is 35.224.123.22/32
+IP address of cluster-d037-w-0 is 35.192.238.24/32
+IP address of cluster-d037-w-1 is 35.225.251.161/32
+Authorizing [35.224.123.22/32,35.192.238.24/32,35.225.251.161/32] to access cloudsql=rentals
+When adding a new IP address to authorized networks, make sure to also
+ include any IP addresses that have already been authorized.
+Otherwise, they will be overwritten and de-authorized.
+
+Do you want to continue (Y/n)?  y
+
+The following message will be used for the patch API method.
+{"project": "cpb100-195004", "name": "rentals", "settings":
+{"ipConfiguration":
+{"authorizedNetworks":
+[{"value": "35.224.123.22/32"},
+{"value": "35.192.238.24/32"}, {"value": "35.225.251.161/32"}]}}}
+Patching Cloud SQL instance...done.
+Updated [https://www.googleapis.com/sql/v1beta4/projects/cpb100-195004/instances/rentals].
+cs101@cpb100-195004:~/training-data-analyst/CPB100/lab3b$
+cs101@cpb100-195004:~/training-data-analyst/CPB100/lab3b$
+cs101@cpb100-195004:~/training-data-analyst/CPB100/lab3b$
+</code>

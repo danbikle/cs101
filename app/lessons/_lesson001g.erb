@@ -1,0 +1,27 @@
+<code class='bash'>
+cs101@cpb100-195004:~/training-data-analyst/CPB100/lab3a$ cat authorize_cloudshell.sh
+#!/bin/bash
+gcloud sql instances patch rentals \
+    --authorized-networks `wget -qO - http://ipecho.net/plain`/32
+cs101@cpb100-195004:~/training-data-analyst/CPB100/lab3a$
+cs101@cpb100-195004:~/training-data-analyst/CPB100/lab3a$
+cs101@cpb100-195004:~/training-data-analyst/CPB100/lab3a$
+
+
+
+cs101@cpb100-195004:~/training-data-analyst/CPB100/lab3a$ bash authorize_cloudshell.sh
+When adding a new IP address to authorized networks, make sure to also
+ include any IP addresses that have already been authorized.
+Otherwise, they will be overwritten and de-authorized.
+
+Do you want to continue (Y/n)?  y
+
+The following message will be used for the patch API method.
+{"project": "cpb100-195004", "name": "rentals", "settings":
+{"ipConfiguration": {"authorizedNetworks": [{"value": "35.227.172.20/32"}]}}}
+Patching Cloud SQL instance...done.
+Updated [https://www.googleapis.com/sql/v1beta4/projects/cpb100-195004/instances/rentals].
+cs101@cpb100-195004:~/training-data-analyst/CPB100/lab3a$
+cs101@cpb100-195004:~/training-data-analyst/CPB100/lab3a$
+cs101@cpb100-195004:~/training-data-analyst/CPB100/lab3a$
+</code>

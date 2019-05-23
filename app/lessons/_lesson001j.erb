@@ -1,0 +1,18 @@
+<code class='bash'>
+MySQL [recommendation_spark]>
+MySQL [recommendation_spark]> select * from Accommodation where type = 'castle' and price &lt; 1500;
++----+--------------------------+--------------+-------+-------+--------+--------+
+| id | title                    | location     | price | rooms | rating | type   |
++----+--------------------------+--------------+-------+-------+--------+--------+
+| 14 | Colossal Peaceful Palace | Melbourne    |  1200 |    21 |    1.5 | castle |
+| 15 | Vast Private Fort        | London       |  1300 |    18 |    2.6 | castle |
+| 26 | Enormous Peaceful Palace | Paris        |  1300 |    18 |    1.1 | castle |
+| 31 | Colossal Private Castle  | Buenos Aires |  1400 |    15 |    3.3 | castle |
+| 45 | Vast Quiet Chateau       | Tokyo        |  1100 |    19 |    2.3 | castle |
++----+--------------------------+--------------+-------+-------+--------+--------+
+5 rows in set (0.04 sec)
+
+MySQL [recommendation_spark]>
+MySQL [recommendation_spark]>
+MySQL [recommendation_spark]>
+</code>

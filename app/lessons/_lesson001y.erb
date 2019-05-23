@@ -1,0 +1,88 @@
+<code class='bash'>
+
+snip ...
+
+ Stored in directory: /root/.cache/pip/wheels/fc/a8/66/24d655233c757e178d45dea2de22a04c6d92766abfb741129a
+  Running setup.py bdist_wheel for MarkupSafe: started
+  Running setup.py bdist_wheel for MarkupSafe: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/88/a7/30/e39a54a87bcbe25308fa3ca64e8ddc75d9b3e5afa21ee32d57
+  Running setup.py bdist_wheel for googleapis-common-protos: started
+  Running setup.py bdist_wheel for googleapis-common-protos: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/93/e0/cb/b06866f012310b96fba79c37f199aaf973a2e97a42ca7ef696
+Successfully built itsdangerous MarkupSafe googleapis-common-protos
+Installing collected packages: MarkupSafe, Jinja2, Werkzeug, click, itsdangerous, Flask, gunicorn,
+setuptools, protobuf, googleapis-common-protos, futures, rsa, cachetools, pyasn1-modules, google-auth,
+certifi, chardet, idna, urllib3, requests, google-api-core, google-cloud-core, google-cloud-storage
+  Found existing installation: setuptools 20.7.0
+    Not uninstalling setuptools at /usr/lib/python2.7/dist-packages, outside environment /usr
+  Found existing installation: idna 2.0
+    Not uninstalling idna at /usr/lib/python2.7/dist-packages, outside environment /usr
+Successfully installed Flask-0.11.1 Jinja2-2.10 MarkupSafe-1.0 Werkzeug-0.14.1 cachetools-2.0.1
+certifi-2018.1.18 chardet-3.0.4 click-6.7 futures-3.2.0 google-api-core-0.1.4 google-auth-1.4.1
+google-cloud-core-0.28.0 google-cloud-storage-0.21.0 googleapis-common-protos-1.5.3 gunicorn-19.6.0
+idna-2.6 itsdangerous-0.24 protobuf-3.5.1 pyasn1-modules-0.2.1 requests-2.18.4 rsa-3.4.2
+setuptools-38.5.1 urllib3-1.22
+You are using pip version 8.1.1, however version 9.0.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+ ---> 6fed58c358cf
+Removing intermediate container fa0f0b0f8404
+Step 8/9 : ENTRYPOINT python
+ ---> Running in acfefa5495d2
+ ---> dbd5b9d59bfe
+Removing intermediate container acfefa5495d2
+Step 9/9 : CMD ingestapp.py
+ ---> Running in d2b66192cfa2
+ ---> 1074a82f102e
+Removing intermediate container d2b66192cfa2
+Successfully built 1074a82f102e
+Successfully tagged us.gcr.io/cpb100-195004/appengine/default.20180219t183619:latest
+PUSH
+Pushing us.gcr.io/cpb100-195004/appengine/default.20180219t183619:latest
+The push refers to a repository [us.gcr.io/cpb100-195004/appengine/default.20180219t183619]
+a062c5a0f6af: Preparing
+64501b77450c: Preparing
+b5a37c3f1cb8: Preparing
+f469dd62d29b: Preparing
+6f4ce6b88849: Preparing
+92914665e7f6: Preparing
+c98ef191df4b: Preparing
+9c7183e0ea88: Preparing
+ff986b10a018: Preparing
+92914665e7f6: Waiting
+c98ef191df4b: Waiting
+9c7183e0ea88: Waiting
+ff986b10a018: Waiting
+6f4ce6b88849: Layer already exists
+92914665e7f6: Layer already exists
+c98ef191df4b: Layer already exists
+9c7183e0ea88: Layer already exists
+ff986b10a018: Layer already exists
+64501b77450c: Pushed
+f469dd62d29b: Pushed
+a062c5a0f6af: Pushed
+b5a37c3f1cb8: Pushed
+latest:
+digest: sha256:5f25cb6cad3e00e27fa7caff79e71b3e22c2123932becf081a92bd5896df3470 size: 2202
+DONE
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------
+
+Updating service [default] (this may take several minutes)...failed.
+ERROR: (gcloud.app.deploy) Error Response: [9]
+Application startup error:
+/usr/lib/python2.7/dist-packages/matplotlib/font_manager.py:273:
+UserWarning: Matplotlib is building the font cache using fc-list. This may take a moment.
+  warnings.warn('Matplotlib is building the font cache using fc-list. This may take a moment.')
+Traceback (most recent call last):
+  File "ingestapp.py", line 22, in &lt;module>
+    import google.cloud.storage as gcs
+  File "/usr/local/lib/python2.7/dist-packages/google/cloud/storage/__init__.py", line 39, in &lt;module>
+    from google.cloud.storage.batch import Batch
+  File "/usr/local/lib/python2.7/dist-packages/google/cloud/storage/batch.py", line 29, in &lt;module>
+    from google.cloud.exceptions import make_exception
+ImportError: cannot import name make_exception
+
+cs101@cpb100-195004:~/training-data-analyst/CPB100/lab2b/scheduled$
+cs101@cpb100-195004:~/training-data-analyst/CPB100/lab2b/scheduled$
+</code>

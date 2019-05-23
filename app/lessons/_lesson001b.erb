@@ -1,0 +1,59 @@
+<code class='bash'>
+Welcome to Cloud Shell! Type "help" to get started.
+cs101@cpb100-195004:~$ id
+uid=1000(cs101) gid=1000(cs101) groups=1000(cs101),4(adm),27(sudo),999(docker)
+cs101@cpb100-195004:~$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+none             25G   19G  5.0G  79% /
+tmpfs           853M     0  853M   0% /dev
+tmpfs           853M     0  853M   0% /sys/fs/cgroup
+/dev/sda1        25G   19G  5.0G  79% /etc
+/dev/sdb1       4.8G   11M  4.6G   1% /home
+shm              64M     0   64M   0% /dev/shm
+cs101@cpb100-195004:~$
+cs101@cpb100-195004:~$
+cs101@cpb100-195004:~$
+
+
+
+cs101@cpb100-195004:~$ ls -la
+total 24
+drwxr-xr-x 2 cs101 cs101 4096 Feb 13 12:06 .
+drwxr-xr-x 4 root     root     4096 Feb 13 12:04 ..
+-rw------- 1 cs101 cs101          9 Feb 13 12:06 .bash_history
+-rw-r--r-- 1 cs101 cs101        220 May 15  2017 .bash_logout
+-rw-r--r-- 1 cs101 cs101       3564 Feb  9 16:03 .bashrc
+-rw-r--r-- 1 cs101 cs101        675 May 15  2017 .profile
+lrwxrwxrwx 1 cs101 cs101         38 Feb 13 12:04 README-cloudshell.txt -> /google/devshell/README-cloudshell.txt
+cs101@cpb100-195004:~$
+cs101@cpb100-195004:~$
+cs101@cpb100-195004:~$
+
+
+
+cs101@cpb100-195004:~$ ifconfig
+docker0: flags=4099&lt;UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 172.18.0.1  netmask 255.255.0.0  broadcast 0.0.0.0
+        ether 02:42:77:65:a7:42  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+eth0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST>  mtu 1460
+        inet 172.17.0.2  netmask 255.255.0.0  broadcast 0.0.0.0
+        ether 02:42:ac:11:00:02  txqueuelen 0  (Ethernet)
+        RX packets 366  bytes 105824 (103.3 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 326  bytes 54222 (52.9 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+lo: flags=73&lt;UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        loop  txqueuelen 0  (Local Loopback)
+        RX packets 49  bytes 3813 (3.7 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 49  bytes 3813 (3.7 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+cs101@cpb100-195004:~$
+cs101@cpb100-195004:~$
+cs101@cpb100-195004:~$
+</code>

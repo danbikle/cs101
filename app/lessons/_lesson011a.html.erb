@@ -1,0 +1,39 @@
+<code class='bash'>
+dan@d81:~ $ 
+dan@d81:~ $ psql -h redshift-cluster-1.cmea74qjjc8h.us-west-2.redshift.amazonaws.com -U awsuser -d dev -p 5439
+Password for user awsuser: 
+psql (9.5.14, server 8.0.2)
+SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
+Type "help" for help.
+
+dev=# 
+dev=# CREATE TABLE dropme (myid INT, myname VARCHAR);
+CREATE TABLE
+dev=# INSERT INTO dropme VALUES(10, 'Dan');
+
+INSERT 0 1
+dev=# INSERT INTO dropme VALUES(10, 'Dan');
+
+INSERT 0 1
+dev=# INSERT INTO dropme VALUES(10, 'Dan');
+
+INSERT 0 1
+dev=# INSERT INTO dropme VALUES(10, 'Dan');
+
+INSERT 0 1
+dev=# SELECT * FROM dropme;
+
+ myid | myname 
+------+--------
+   10 | Dan
+   10 | Dan
+   10 | Dan
+   10 | Dan
+(4 rows)
+
+dev=# 
+dev=# DROP TABLE dropme;
+DROP TABLE
+dev=# 
+dev=#
+</code>

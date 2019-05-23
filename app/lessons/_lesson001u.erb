@@ -1,0 +1,12 @@
+<code class='python'>import tensorflow as tf
+shuffled = data2.sample(frac=1, random_state=13)
+# It would be a good idea, if we had more data, to treat the days as categorical variables
+# with the small amount of data, we have though, the model tends to overfit
+#predictors = shuffled.iloc[:,2:5]
+#for day in xrange(1,8):
+#  matching = shuffled['dayofweek'] == day
+#  key = 'day_' + str(day)
+#  predictors[key] = pd.Series(matching, index=predictors.index, dtype=float)
+predictors = shuffled.iloc[:,1:5]
+predictors[:5]
+</code>

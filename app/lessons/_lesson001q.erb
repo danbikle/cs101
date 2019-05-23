@@ -1,0 +1,70 @@
+<code class='bash'>
+cs101@cpb100-195004:~/training-data-analyst/CPB100/lab3b$ mysql --host=35.192.114.78 --user=root --password
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 1121
+Server version: 5.7.14-google-log (Google)
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> 
+MySQL [(none)]> 
+MySQL [(none)]> 
+
+
+
+MySQL [(none)]> use recommendation_spark;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MySQL [recommendation_spark]> 
+MySQL [recommendation_spark]> 
+MySQL [recommendation_spark]> 
+
+
+
+MySQL [recommendation_spark]> select count(*) from Recommendation;
++----------+
+| count(*) |
++----------+
+|      125 |
++----------+
+1 row in set (0.03 sec)
+
+MySQL [recommendation_spark]> 
+MySQL [recommendation_spark]> 
+MySQL [recommendation_spark]> 
+
+
+
+MySQL [recommendation_spark]> select r.userid,
+    ->         r.accoid,
+    ->         r.prediction,
+    ->         a.title,
+    ->         a.location,
+    ->         a.price,
+    ->         a.rooms,
+    ->         a.rating,
+    ->         a.type
+    -> from Recommendation as r,
+    ->         Accommodation as a
+    -> where r.accoid = a.id and
+    ->         r.userid = 10;
++--------+--------+------------+-------------------------+---------------+-------+-------+--------+--------+
+| userid | accoid | prediction | title                   | location      | price | rooms | rating | type   |
++--------+--------+------------+-------------------------+---------------+-------+-------+--------+--------+
+| 10     | 40     |  1.5812576 | Colossal Private Castle | Seattle       |  2900 |    24 |    1.5 | castle |
+| 10     | 35     |  1.5657468 | Colossal Quiet Chateau  | NYC           |  2300 |    14 |    4.6 | castle |
+| 10     | 45     |  1.5110599 | Vast Quiet Chateau      | Tokyo         |  1100 |    19 |    2.3 | castle |
+| 10     | 74     |  1.4872638 | Giant Calm Fort         | Melbourne     |  2400 |    12 |    2.3 | castle |
+| 10     | 46     |  1.4497858 | Colossal Private Castle | San Francisco |  1900 |    15 |    3.7 | castle |
++--------+--------+------------+-------------------------+---------------+-------+-------+--------+--------+
+5 rows in set (0.04 sec)
+
+MySQL [recommendation_spark]>
+MySQL [recommendation_spark]>
+MySQL [recommendation_spark]>
+</code>

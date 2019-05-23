@@ -1,0 +1,26 @@
+<code class='bash'>
+[ec2-user@ip-172-31-18-71 ~]$ aws ec2 describe-security-groups|grep 22
+                    "FromPort": 22, 
+                    "ToPort": 22, 
+                    "FromPort": 22, 
+                    "ToPort": 22, 
+                    "FromPort": 22, 
+                    "ToPort": 22, 
+                    "FromPort": 22, 
+                    "ToPort": 22, 
+                    "FromPort": 22, 
+                    "ToPort": 22, 
+                    "FromPort": 22, 
+                    "ToPort": 22, 
+[ec2-user@ip-172-31-18-71 ~]$ aws ec2 describe-security-groups|grep sg-
+            "GroupId": "sg-007426953b705a65b"
+            "GroupId": "sg-0134b90a752637715"
+            "GroupId": "sg-02d169f65d03982f8"
+            "GroupId": "sg-03474335ff2896050"
+            "GroupId": "sg-0d39a57c13faf786a"
+            "GroupId": "sg-0f2b2db4389bacbfd"
+                            "GroupId": "sg-b0e2acc3"
+            "GroupId": "sg-b0e2acc3"
+[ec2-user@ip-172-31-18-71 ~]$ 
+[ec2-user@ip-172-31-18-71 ~]$
+</code>

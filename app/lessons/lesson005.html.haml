@@ -1,0 +1,361 @@
+%h1#top Lesson 005 [ Distributed Python with GCP Pub/Sub ]
+
+%h2 Introduction
+
+%p This lesson shows how I used GCP Pub/Sub to coordinate a Python script.
+
+%p The script is named workon_tkrs.py.
+
+%p The script was deployed across a GCP-Kubernetes cluster.
+
+%p Deployment was done using the GCP web-UI and ssh.
+
+%h2 Inspiration
+
+%p This lesson is inspired by a Will Crichton and his github repo:
+
+%p
+  %a(href='https://github.com/willcrichton/gcp-job-queue' target='x')
+    https://github.com/willcrichton/gcp-job-queue
+  
+%p
+  The repo leads to a nice description of Pub/Sub, and other GCP topics:
+
+%p
+  %a(href='http://willcrichton.net/notes/gcp-job-queue/' target='x')
+    http://willcrichton.net/notes/gcp-job-queue/
+
+%h2 Create GCP Account
+
+%p If you want to follow the steps listed in this lab, you will need to create a GCP account.
+
+%p A useful URL is listed below:
+
+%p
+  %a(href='https://console.cloud.google.com/freetrial' target='x')
+    https://console.cloud.google.com/freetrial
+%p After you create a GCP account, you should login to it.
+
+%p Then, you should create a project.
+
+%p When I did that, I created a project named: "pubsub"
+
+%p When I create a project I use a short name with only lower-case letters.
+
+%p After I created my first project, I "upgraded" to gain extra GCP privileges.
+
+%p I learned about "upgrade" while following a lab in Feb-2018:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-free-trial/#3' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-free-trial/#3
+    
+%p I am not sure if you should "upgrade" but the above page suggests it is a good idea.
+
+%p The downside to upgrade is that if you start a GCP service or VM and then forget about it, Google will start charging your credit card after you spend the initial $300 credit.
+
+%p During initial project creation, GCP may give you an opportunity to attach your ssh-public-key to that project.
+
+%p If you have a ssh-public-key, and know how to use it, you should take advantage of that opportunity.
+
+%p After you create a project, you will have an opportunity to add a public-key via the URL listed below:
+
+%p
+  %a(href='https://console.cloud.google.com/compute/metadata/sshKeys' target='x')
+    https://console.cloud.google.com/compute/metadata/sshKeys
+
+%p If ssh is unfamiliar to you, ignore ssh for now.
+
+
+%h2 Part 1:
+%p
+  I list below steps I followed to create a simple GCP job-queue:
+
+%ul
+  %li
+    Login to GCP:
+    %a(href='https://console.cloud.google.com' target='x')
+      https://console.cloud.google.com
+  %li I saw this:
+  %li
+    %img(src='/lesson005/z001.png')
+  %li I noticed at the top of the page that I was inside the "pubsub" project.
+  %li During the time I have spent with GCP, I learned that I must have a sharp awareness of my projects.
+  %li Eventually I gained a sense of how GCP pages are affected by projects.
+  %li Initially I ignored projects which led me to some confusing situations.
+  %li Enough about projects.
+  %li I enabled some APIs which are listed below:
+  %li
+    %ul
+      %li
+        %a(href='https://console.cloud.google.com/apis/library/compute.googleapis.com' target='x')
+          https://console.cloud.google.com/apis/library/compute.googleapis.com
+      %li
+        %a(href='https://console.cloud.google.com/apis/library/container.googleapis.com' target='x')
+          https://console.cloud.google.com/apis/library/container.googleapis.com
+      %li
+        %a(href='https://console.cloud.google.com/apis/library/pubsub.googleapis.com' target='x')
+          https://console.cloud.google.com/apis/library/pubsub.googleapis.com
+      %li
+        %a(href='https://console.cloud.google.com/apis/library/storage-component.googleapis.com' target='x')
+          https://console.cloud.google.com/apis/library/storage-component.googleapis.com
+
+
+  %li I verified the enabled APIs and then captured screen-shots:
+  %li
+    %br/
+    %img(src='/lesson005/zapi1.png')
+  %li
+    %img(src='/lesson005/zapi2.png')
+  %li
+    %img(src='/lesson005/zapi3.png')
+  %li
+    %img(src='/lesson005/zapi4.png')
+  
+  %li
+    Next, I created a bucket: pubsub611
+    %br/
+    %a(href='https://console.cloud.google.com/storage' target='x')
+      https://console.cloud.google.com/storage
+  %li I saw this:
+  %li
+    %img(src='/lesson005/z002.png')
+  %li Next, I created a test-topic and a subscription inside of Pub/Sub.
+  %li It was very easy to do using the URL listed below:
+  %li
+    %a(href='https://console.cloud.google.com/cloudpubsub' target='x')
+      https://console.cloud.google.com/cloudpubsub
+  %li After I did that I collected a screen-shot:
+  %li
+    %img(src='/lesson005/zps1.png')
+
+%h2 Part 2:
+%ul
+  %li
+    At
+    %a(href='https://console.cloud.google.com/iam-admin/serviceaccounts' target='x')
+      https://console.cloud.google.com/iam-admin/serviceaccounts
+  %li I created a service account: "srvacct"
+  %li During that process, I asked GCP to generate a key for that account.
+  %li Also I granted Pub/Sub-Admin privilege to "srvacct"
+  %li I saw this:
+  %li
+    %img(src='/lesson005/z002d.png')
+  
+  %li When GCP generated the key, it asked to place the key in my Downloads-folder.
+  %li I allowed that download to happen.
+  %li After that, I copied the key to: ~/Downloads/service-key.json
+  %li service-key.json was used later.
+  %li Eventually, I saw this:
+  %li
+    %img(src='/lesson005/z003.png')
+
+  %li
+    I learned that I can create more service-key.json files at will:
+  %li
+    %a(href='https://console.cloud.google.com/iam-admin/serviceaccounts' target='x')
+      https://console.cloud.google.com/iam-admin/serviceaccounts
+  %li I can do that by starting here:
+  %li
+    %img(src='/lesson005/z004.png')
+  
+
+%h2 Part 3:
+%ul
+  %li
+    Make srvacct an admin of pubsub611 bucket:
+  %li
+    %a(href='https://console.cloud.google.com/storage' target='x')
+      https://console.cloud.google.com/storage
+
+  %li I did that by starting here:
+  %li
+    %img(src='/lesson005/z005.png')
+
+%h2 Part 4:
+%ul
+  %li
+    I created a cluster named cluster10.
+  %li
+    I made it Ubuntu with 3.75 gb ram, I ensured it has full access to cloud-APIs.
+    %br
+    %a(href='https://console.cloud.google.com/kubernetes' target='x')
+      https://console.cloud.google.com/kubernetes
+  %li I captured screen shots:
+  %li
+    %img(src='/lesson005/z006.png')
+  %li
+    %img(src='/lesson005/z007.png')
+  %li
+    %img(src='/lesson005/z008.png')
+  %li
+    I added 1 worker, Ubuntu:
+  %li
+    %img(src='/lesson005/z009.png')
+  %li
+    %img(src='/lesson005/z010.png')
+  %li
+    %img(src='/lesson005/z011.png')
+  %li
+    %img(src='/lesson005/z012.png')
+    
+  %li
+    When done, I read IP addresses from here:
+  %li
+    %a(href='https://console.cloud.google.com/compute' target='x')
+      https://console.cloud.google.com/compute
+  %li
+    %img(src='/lesson005/z013.png')
+%h2 Part 5:
+%ul
+  %li
+    On my laptop I did this:
+    %br
+    vi ~/.ssh/config
+    .syntax
+      %pre
+        =render 'lesson005a'
+  %li When I work on windows, I ensure that I have this software installed:
+  %li
+    %a(href='https://git-scm.com/downloads' target='x')
+      https://git-scm.com/downloads
+  %li The above software allows a windows-user to properly operate ssh.
+  %li Proper operation means the following:
+  %li
+    %ul
+      %li That ~/.ssh/config will affect ssh behavior
+      %li The user has access to bash
+      %li The user can create ssh-keys
+      %li The user can issue shell commands like this:
+      %li scp ~/somefile.txt somehost:
+      %li ssh -i ~/.ssh/somekey.txt someuser@somehost
+  %li If you are using putty to operate ssh on your windows-laptop, I advise you to avoid putty while working with GCP.
+  %li Instead, use ssh from git-scm.com.
+  
+%h2 Part 6:
+%ul
+  %li I used ssh log-into both mgr and worker.
+  %li
+    On both hosts, I installed Python 3 via Anaconda:
+  %li
+    .syntax
+      %pre
+        %code
+          sudo apt-get install -y bzip2
+          wget https://repo.continuum.io/archive/Anaconda3-5.1.0-Linux-x86_64.sh
+          bash Anaconda3-5.1.0-Linux-x86_64.sh -b
+          echo PATH="${HOME}/anaconda3/bin:$PATH" >> ${HOME}/.bashrc
+          mv ~/anaconda3/bin/curl ~/anaconda3/bin/curl_ana
+          bash
+  %li
+    On both hosts, I installed gcloud:
+    .syntax
+      %pre
+        =render 'lesson005gci'
+
+  %li
+    I copied service-key.json from my laptop to both hosts:
+    .syntax
+      %pre
+        %code
+          scp ~/Downloads/service-key.json mgr:
+          scp ~/Downloads/service-key.json worker:
+  %li
+    On both hosts I authenticated:
+    .syntax
+      %pre
+        %code gcloud auth activate-service-account --key-file=service-key.json
+
+%h2 Part 7:
+%ul
+  %li On mgr, I used gcloud shell commands to test publish-subscribe:
+  %li
+    .syntax
+      %pre
+        %code
+          gcloud pubsub topics        create         topic10       --project pubsub-197323
+          gcloud pubsub subscriptions create --topic topic10 sub10 --project pubsub-197323
+          gcloud pubsub topics publish topic10 --message "hello0" --project pubsub-197323
+          gcloud pubsub topics publish topic10 --message "hello1" --project pubsub-197323
+          gcloud pubsub topics publish topic10 --message "hello2" --project pubsub-197323
+          sleep 20
+          gcloud pubsub subscriptions pull --auto-ack sub10 --project pubsub-197323
+          gcloud pubsub subscriptions delete sub10          --project pubsub-197323
+          gcloud pubsub topics        delete topic10        --project pubsub-197323
+
+
+%h2 Part 8:
+%ul
+  %li
+    The above test worked well so I moved on.
+  %li
+    Next, on mgr, I did this:
+    vi ~/publish_tkrs.bash
+
+  %li
+    .syntax
+      %pre
+        =render 'lesson005publish_tkrs'
+
+  %li
+    On mgr I ran the above script:
+    .syntax
+      %pre
+        %code bash ~/publish_tkrs.bash
+
+%h2 Part 9:
+%ul     
+  %li
+    Next, on worker, I did this:
+    vi ~/workon_tkrs.bash
+  %li
+    .syntax
+      %pre
+        =render 'lesson005workon_tkrs0'
+  %li
+    Next, on worker, I did this:
+    vi ~/workon_tkrs.py
+  %li
+    .syntax
+      %pre
+        =render 'lesson005workon_tkrs1'
+  %li
+    On worker I ran this:
+    .syntax
+      %pre
+        %code bash ~/workon_tkrs.bash
+  %li I found new predictions in my pubsub611 bucket!
+  %li I saw them here:
+  %li
+    %a(href='https://console.cloud.google.com/storage' target='x')
+      https://console.cloud.google.com/storage
+  %li They looked like this:
+  %li
+    %img(src='/lesson005/z014.png')
+  %li
+    %img(src='/lesson005/z015.png')
+%h2 Lesson Summary:
+%ul
+  %li Create GCP account
+  %li Login to GCP
+  %li Create Bucket: pubsub611
+  %li Create Service Account: srvacct
+  %li Get Service Account key: service-key.json
+  %li Grant pubsub611 access to srvacct
+  %li Create a kubernetes cluster of 2 Ubuntu nodes
+  %li In each:
+  %li
+    %ul
+      %li Install gcloud
+      %li Install Anaconda
+      %li Install service-key.json
+      %li Use srvacct to login to gcloud
+  %li On mgr create pub/sub topic and subsription
+  %li test pub/sub
+  %li On mgr publish tkrs
+  %li On worker, work-on tkrs to generate predictions
+  %li Copy predictions to bucket: pubsub611
+  %li Look at predictions
+  
+%p
+  %a(href='#top') [top]
+%hr/

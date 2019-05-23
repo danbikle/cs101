@@ -1,0 +1,2194 @@
+%h1#top Lesson 001 [ Google GCP ]
+
+%p I have taught this lesson several times now.
+
+%p Most of this lesson is done with a browser.
+
+%p I offer tips for success.
+
+%ul
+  %li Use Google-Chrome browser.
+  %li Dedicate a new browser window to this lesson.
+  %li If you need a browser to check news or e-mail, do it in another window.
+  %li Get a new window with: File -> New Window
+  %li Why? Because you want to avoid working in a window with many tabs.
+  %li On a piece of paper, write down a useful tab-organization:
+  %li
+    %ul
+      %li Tab 1: cs101.us
+      %li Tab 2: codelabs
+      %li Tab 3: github
+      %li Tab 4: GCP 1
+      %li Tab 5: GCP Cloud-Shell
+      %li Tab 6: DataLab
+      %li Tab 7: GCP 3
+
+%p I started this lesson by creating a new Chrome-window.
+
+%p I created 7 tabs in that window.
+
+%p
+  In tab 1 I loaded this URL:
+  %a(href='http://cs101.us' target='x')
+    http://cs101.us
+  
+%p
+  In tab 2 I loaded this URL:
+  %a(href='https://codelabs.developers.google.com/cpb100' target='x')
+    https://codelabs.developers.google.com/cpb100
+  
+%p
+  In tab 3 I loaded this URL:
+  %a(href='https://github.com/GoogleCloudPlatform' target='x')
+    https://github.com/GoogleCloudPlatform
+  
+%p
+  In tab 4 I loaded this URL:
+  %a(href='https://console.cloud.google.com' target='x')
+    https://console.cloud.google.com
+%p In tabs 5,6,7 I had done nothing (yet).  
+
+%p After I created the 7 tabs, my Chrome-window looked like this:
+
+%img(src='/lesson001/img001.png')
+  
+  
+
+%p I clicked on tab 2, the codelabs-tab.
+
+%p I continued this lesson by studying the URL listed below:
+%p
+  %a(href='https://codelabs.developers.google.com/cpb100' target='x')
+    https://codelabs.developers.google.com/cpb100
+
+%img(src='/lesson001/img002.png')
+
+%p On that page I assume the correct ordering of some links is listed below:
+
+%ul
+  %li
+    %a(href='https://codelabs.developers.google.com/codelabs/cpb100-free-trial' target='x')
+      https://codelabs.developers.google.com/codelabs/cpb100-free-trial
+  %li
+    %a(href='https://codelabs.developers.google.com/codelabs/cpb100-compute-engine' target='x')
+      https://codelabs.developers.google.com/codelabs/cpb100-compute-engine
+  %li
+    %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage' target='x')
+      https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage
+  %li
+    %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql' target='x')
+      https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql
+  %li
+    %a(href='https://codelabs.developers.google.com/codelabs/cpb100-dataproc' target='x')
+      https://codelabs.developers.google.com/codelabs/cpb100-dataproc
+  %li
+    %a(href='https://codelabs.developers.google.com/codelabs/cpb100-datalab' target='x')
+      https://codelabs.developers.google.com/codelabs/cpb100-datalab
+
+  %li
+    %a(href='https://codelabs.developers.google.com/codelabs/cpb100-bigquery-dataset' target='x')
+      https://codelabs.developers.google.com/codelabs/cpb100-bigquery-dataset
+  %li
+    %a(href='https://codelabs.developers.google.com/codelabs/cpb100-tensorflow' target='x')
+      https://codelabs.developers.google.com/codelabs/cpb100-tensorflow
+  %li
+    %a(href='https://codelabs.developers.google.com/codelabs/cpb100-translate-api' target='x')
+      https://codelabs.developers.google.com/codelabs/cpb100-translate-api
+  %li
+    %a(href='https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest' target='x')
+      https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest
+  %li
+    %a(href='https://codelabs.developers.google.com/codelabs/cpb100-distributed-landsat' target='x')
+      https://codelabs.developers.google.com/codelabs/cpb100-distributed-landsat
+
+
+%p The above links are discussed below:
+%ul
+  %li
+    %a(href='#free-trial') free-trial
+  %li
+    %a(href='#compute-engine') compute-engine
+  %li
+    %a(href='#cloud-storage') cloud-storage
+  %li
+    %a(href='#cloud-sql') cloud-sql
+  %li
+    %a(href='#dataproc') dataproc
+  %li
+    %a(href='#datalab') datalab
+  %li
+    %a(href='#bigquery-dataset') bigquery-dataset
+  %li
+    %a(href='#tensorflow') tensorflow
+  %li
+    %a(href='#translate-api') translate-api
+  %li
+    %a(href='#serverless-ingest') serverless-ingest
+  %li
+    %a(href='#distributed-landsat') distributed-landsat
+
+
+
+%hr/
+
+%h2#free-trial Free-Trial
+
+%p#free-trial Next, in the codelabs-tab, I clicked this link:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-free-trial' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-free-trial
+    
+%p I saw a simple path through 4 pages.
+
+%p The third page had a noteworthy URL I used to get $300 of cloud-credit from Google:
+
+%p I loaded the URL into the GCP-tab:
+%p
+  %a(href='https://console.developers.google.com/freetrial' target='x')
+    https://console.developers.google.com/freetrial
+
+%p
+  I logged in using my gmail account.
+
+%p
+  It worked well; I gave it my credit-card info.
+%p
+  It gave me $300 of cloud-credit from Google.
+%img(src='/lesson001/ss10.png')
+
+%p
+  I hope that you can also get that credit.
+
+%p Next, I visited the URL listed below:
+
+%p
+  %a(href='https://console.cloud.google.com/projectcreate' target='x')
+    https://console.cloud.google.com/projectcreate
+
+%img(src='/lesson001/img003.png')
+
+%p I used that page to create a project called cpb100.
+
+%p Google needed 4 minutes to create project cpb100.
+
+%p Although I wanted the name to be cp100, Google added some text to the end of the name:
+
+%p cpb100-195004
+
+%p Google created a URL for the project:
+%p
+  %a(href='https://console.cloud.google.com/home/activity?project=cpb100-195004' target='x')
+    https://console.cloud.google.com/home/activity?project=cpb100-195004
+%p In the upper right I saw a blue-button called "UPGRADE".
+%p I clicked the button.
+%p Next, I accepted the upgrade offer because I wanted access to services required by future training sessions.
+
+%p Then I verified that the "hamburger-link" in the upper-left behaved well when I clicked it.
+
+%p It did behave well and I was ready to move on.
+
+%img(src='/lesson001/ss11.png')
+
+%p In the codelabs-tab, I returned to the URL listed below:
+%p
+  %a(href='https://codelabs.developers.google.com/cpb100' target='x')
+    https://codelabs.developers.google.com/cpb100
+
+%a(href='#top') [top]
+
+%hr/
+
+%h2#compute-engine Compute-Engine
+
+%p Next, in the codelabs-tab, I clicked the next link in the series:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-compute-engine' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-compute-engine
+
+%p I quickly clicked through the first two links in that page and landed at this URL:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-compute-engine/#2' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-compute-engine/#2
+
+%p It asked me to click the upper-left-hamburger-link in my project page.
+
+%p I went to the GCP-tab and did that.
+
+%p Then I followed the advice to click the "Compute Engine" link on the left:
+%p
+  %a(href='https://console.cloud.google.com/compute' target='x')
+    https://console.cloud.google.com/compute
+
+%p I saw this:
+
+%img(src='/lesson001/ss12.png')
+
+%p I clicked the "Create"  button.
+%p It served me a form from this URL:
+%p
+  %a(href='https://console.cloud.google.com/compute/instancesAdd' target='x')
+    https://console.cloud.google.com/compute/instancesAdd
+    
+%p I saw this:
+
+%img(src='/lesson001/ss13.png')
+
+%p I clicked radio-button: "Allow full access to all Cloud APIs"
+
+%p I deviated from the tutorial and clicked the link: "SSH keys"
+
+%p Note: If you are on windows, you can get ssh from the URL listed below:
+
+%p
+  %a(href='https://git-scm.com/download/win' target='x')
+    https://git-scm.com/download/win
+
+%p My intent was to ease my ability to ssh into the GCP-Instance from a shell in my laptop.
+%p The text I mouse-copied into the GCP SSH-key-form came from this file:
+%p ~/.ssh/id_rsa.pub
+%p It looks like this:
+.syntax
+  %pre
+    %code
+      ssh-rsa
+      AAAAB3NzaC1yc2EAAAADAQABAAABAQC8cbLxnaqPPznHz9DgMq
+      xg38LPxRTRT1qjyQH0cGEHHtHVYHgPdCNvW++0ArCuJVxiQ7fx
+      XvK2cYThurYozSkI6uwxVSPBoJgsLmLPvhc+JshDHi7SgtWl4b
+      8JZlnL5dMPQNo61p/qGmqZpKxXYJanY0zN4WnB17vlnVFhXL2j
+      3U3YKvifIC8a6gRKitG+XFGmj5sZKbJuqbnfhD93ytcRGV+rEM
+      VipYAl2XBs27K0VGwK+u3NOOerWXjRrgqIo9Frk7C4rps/dMYd
+      56QKxnVumr24TUJ0TlymsCYkhD9qDHyJHxGTyN5BAzUpryphd7
+      QDLZn+Rdrm4Ssu8/jclLPH
+      dan@ubu42.net
+
+%p Notice the last line.
+
+%p The last line asks GCP to create a Linux account named "dan" in the new Linux instance.
+
+%p I saw this:
+
+%img(src='/lesson001/ss14.png')
+
+%p Next, I clicked the blue "Create" button.
+
+%p GCP started the instance in about 1 minute.
+
+%p I saw the corresponding IP address: 35.229.101.148
+
+%p I saw this:
+
+%img(src='/lesson001/ss15.png')
+
+%p I tried to login with this shell command:
+
+.syntax
+  %pre
+    %code ssh 35.229.101.148
+
+%p It failed.
+
+%p I used a shell command which asked to login as "dan".
+
+.syntax
+  %pre
+    %code ssh dan@35.229.101.148
+
+%p The above command worked perfectly.
+
+%p If you do not know how to start a shell on your laptop, you should click the SSH-link in your GCP-tab:
+
+%img(src='/lesson001/ss16.png')
+
+%p Next, I returned to the codelabs-tab; I studied the instructions in this page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-compute-engine/#4' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-compute-engine/#4
+
+%p I returned to my shell-window.
+
+%p I followed instructions I had just read:
+
+.syntax
+  %pre
+    %code.bash
+      sudo apt-get update
+      sudo apt-get -y -qq install git
+      git --version
+
+%p The above shell commands worked perfectly in my new GCP instance.
+
+%p In the codelabs-tab, I returned to the URL listed below:
+%p
+  %a(href='https://codelabs.developers.google.com/cpb100' target='x')
+    https://codelabs.developers.google.com/cpb100
+
+
+%p That ended my interaction with the CPB100-node I call: "Compute-Engine".
+
+%a(href='#top') [top]
+
+%hr/
+
+%h2#cloud-storage Cloud-Storage
+
+%p Next, in the codelabs-tab, I clicked the next link in the series:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage
+
+%p I studied the page there and clicked through until I landed at this URL:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage/#2' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage/#2
+
+%p I verified that I could ssh into the GCP instance I had created earlier.
+
+%p I saw this:
+
+%img(src='/lesson001/ss17.png')
+
+
+
+%p After the instance served me a shell prompt, I issued a shell command:
+
+.syntax
+  %pre
+    %code.bash git clone https://github.com/GoogleCloudPlatform/training-data-analyst
+
+%p That command worked well.
+
+%p I ran more shell commands:
+
+.syntax
+  %pre
+    %code.bash
+      cd training-data-analyst/CPB100/lab2b
+      less ingest.sh
+      bash ingest.sh
+      head earthquakes.csv
+
+%p In the codelabs-tab, I clicked the next node in the page and landed on this URL:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage/#3' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage/#3
+  
+%p I read the content on that page.
+
+%p Next, I clicked the github-tab.
+
+%p I visited the URL below:
+
+%p
+  %a(href='https://github.com/GoogleCloudPlatform/datalab-samples/blob/master/basemap/earthquakes.ipynb' target='x')
+    https://github.com/GoogleCloudPlatform/datalab-samples/blob/master/basemap/earthquakes.ipynb
+
+%p I studied the above page.
+
+%p I returned to the shell.
+
+%p I ran two shell commands inside the GCP instance:
+
+.syntax
+  %pre
+    %code.bash
+      bash install_missing.sh
+      python transform.py
+      
+%p The last command resulted in some warnings from Python but I am confident it worked.
+
+%p I noticed a new file which python created:
+
+.syntax
+  %pre
+    =render 'lesson001a'
+
+%p I copied the PNG file to my laptop and looked at it:
+
+%img(width='999' src='/lesson001/earthquakes.png')
+
+%p In the codelabs-tab, I clicked the next node in the page and landed on this URL:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage/#4' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage/#4
+
+%p I clicked on the GCP-tab.
+
+%p I visited the URL below:
+
+%p
+  %a(href='https://cloud.google.com/' target='x')
+    https://cloud.google.com/
+    
+%p I hovered the button: "GO TO CONSOLE".
+
+%p I made note of its href-URL:
+
+%p
+  %a(href='https://console.cloud.google.com' target='x')
+    https://console.cloud.google.com
+
+%p I clicked the button.
+
+%p It sent me to a page I call: "Dashboard".
+
+%p I clicked the upper-left-hamburger-link and from there clicked: "Storage".
+
+%p It served me a page with blue-button: "Create bucket".
+
+%p I clicked "Create bucket".
+
+%p It served me a form asking me to name a new bucket.
+
+%p I called my new bucket: cs101feb2018
+
+%p In retrospect, I can see now that was a poor naming choice.
+
+%p Now I know to create buckets with shorter names.
+
+%p At the bottom of the form I clicked the blue "Create" button.
+
+%p I saw evidence that it worked.
+
+%p It served me a page, called "Browser", prompting me to upload files into the bucket.
+
+%p The page reminds me of the page served to me by AWS when I work with S3.
+
+%p I saw this:
+
+%img(src='/lesson001/ss18.png')
+
+
+
+%p In the codelabs-tab, I returned to the cpb100 page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage/#4' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage/#4
+
+%p I clicked the next node in the page and landed on this URL:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage/#5' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage/#5
+
+%p I returned to the shell prompt of my GCP instance and type a command:
+
+.syntax
+  %pre
+    %code.bash gsutil cp earthquakes.* gs://cs101feb2018
+
+%p I am confident it worked.
+
+%p I verified by returning to the "Browser" page in the GCP-tab and inspecting the contents of cs101feb2018.
+
+%p It listed three files:
+
+%ul
+  %li earthquakes.csv
+  %li earthquakes.htm
+  %li earthquakes.png
+
+%p I saw this:
+
+%img(src='/lesson001/ss19.png')
+
+%p In the codelabs-tab, I returned to the cpb100 page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage/#5' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage/#5
+
+%p I clicked the next node in the page and landed on this URL:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage/#6' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage/#6
+
+
+%p I returned to the "Browser" page in the GCP-tab.
+
+%p I checked the boxes to "Share publicly" the three files in cs101feb2018.
+
+%p I list the resulting URLs below:
+
+%ul
+  %li
+    %a(href='https://storage.cloud.google.com/cs101feb2018/earthquakes.csv' target='x')
+      https://storage.cloud.google.com/cs101feb2018/earthquakes.csv
+  %li
+    %a(href='https://storage.cloud.google.com/cs101feb2018/earthquakes.htm' target='x')
+      https://storage.cloud.google.com/cs101feb2018/earthquakes.htm
+  %li
+    %a(href='https://storage.cloud.google.com/cs101feb2018/earthquakes.png' target='x')
+      https://storage.cloud.google.com/cs101feb2018/earthquakes.png
+
+%p Using a laptop-shell, I verified that the public could see earthquakes.png
+
+.syntax
+  %pre
+    %code.bash
+      cd /tmp
+      wget https://storage.cloud.google.com/cs101feb2018/earthquakes.png
+
+%p I tried to use an incognito-browser to see earthquakes.png
+
+%p The google server asked me to authenticate.
+
+%p Google should not force me to login to gmail in order to see publicly-shared content.
+
+%p Based on this "feature", AWS-S3 is clearly superior to GCP-Storage.
+
+%p In the codelabs-tab, I returned to the cpb100 page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage/#6' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage/#6
+
+%p I clicked the next node in the page and landed on this URL:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage/#7' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-storage/#7
+
+%p I followed the instructions in that page to delete my GCP instance.
+
+%p I saw this:
+
+%img(src='/lesson001/ss20.png')
+
+
+%p In the codelabs-tab, I returned to the URL listed below:
+%p
+  %a(href='https://codelabs.developers.google.com/cpb100' target='x')
+    https://codelabs.developers.google.com/cpb100
+
+%p That ended my interaction with the CPB100-node I call: "Cloud-Storage".
+
+%a(href='#top') [top]
+
+%hr/
+
+%h2#cloud-sql Cloud-Sql
+
+%p This sub-lesson has many steps and offers many opportunities to get lost.
+
+%p Good Luck!
+
+%p In the codelabs-tab, I clicked the next link in the series:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql
+
+%p I studied the page it served me:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql/#0' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql/#0
+  
+%p I studied the next page in sequence:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql/#1' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql/#1
+  
+%p I studied the next page in sequence:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql/#2' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql/#2
+  
+%p In the GCP-tab, I visited this URL:
+
+%p
+  %a(href='https://console.cloud.google.com' target='x')
+    https://console.cloud.google.com
+  
+%p I found the tiny "Cloud-Shell" button near the upper-right.
+
+%p I hovered it to see: "Activate Google Cloud Shell".
+
+%p I saw this:
+
+%img(src='/lesson001/ss21.png')
+
+%p I clicked it.
+
+%p A dark window appeared at the bottom.
+
+%p After 15 seconds, a white shell prompt appeared in the window.
+
+%p I tried some shell commands and saw this:
+
+.syntax
+  %pre
+    =render 'lesson001b'
+
+%p I popped that shell window so it had its own tab.
+
+%p I moved that tab so it was tab #5, the tab after GCP-tab.
+
+%p After that, GCP issued an error.
+
+%p I sense that it some kind of GCP-bug:
+
+%img(src='/lesson001/ss23.png')
+
+%p It is unfortunate that GCP lacks reliability.
+
+%p The error suggested that I send feedback.
+
+%p So I did that and halted my activity in this lab for a day.
+
+%p After 24 hours, I continued.
+
+%p In GCP-tab I started a new Cloud-Shell.
+
+%p I move the shell to its own tab (tab #5).
+
+%p Cloud-Shell stopped issuing errors.
+
+%p In the codelabs-tab, I returned my attention to this page:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql/#2' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql/#2
+
+%p In the Cloud-Shell-tab, I typed a shell command which looked familiar:
+
+.syntax
+  %pre
+    %code.bash git clone https://github.com/GoogleCloudPlatform/training-data-analyst
+
+%p That worked well; I entered another shell command:
+
+.syntax
+  %pre
+    %code.bash cd training-data-analyst/CPB100/lab3a
+
+%p I entered another shell command:
+
+.syntax
+  %pre
+    %code.bash cat cloudsql/table_creation.sql
+
+%p I saw some SQL syntax:
+
+.syntax
+  %pre
+    =render 'lesson001c'
+
+%p I can see in the above syntax that the SQL script declares three tables and their columns:
+
+%ul
+  %li Accommodation
+  %li
+    %ul
+      %li id varchar(255),	 
+      %li title varchar(255),	 
+      %li location varchar(255), 
+      %li price int,		 
+      %li rooms int,		 
+      %li rating float,		 
+      %li type varchar(255),     
+  %li Rating
+  %li
+    %ul
+      %li userId varchar(255),
+      %li accoId varchar(255),
+      %li rating int,
+  %li Recommendation
+  %li
+    %ul
+      %li userId varchar(255),
+      %li accoId varchar(255),
+      %li prediction float,
+  
+%p I see two relationships in the above syntax:
+
+%ul
+  %li An Accommodation has 0 or more Ratings
+  %li An Accommodation has 0 or more Recommendations
+  
+%p The tables might support these scenarios:
+
+%ul
+  %li When a user rates a house, the app adds a row to Rating.
+  %li When admin adds a house for rent, the app adds a row to Accommodation.
+  %li When ML-app predicts a user rating for a house, ML-app adds a row to Recommendation.
+  
+%p In the Cloud-Shell-tab I ran another command and collected the output:
+
+.syntax
+  %pre
+    =render 'lesson001d'
+
+%p I see in the above output that we have accommodations and ratings but no recommendations yet.
+
+%p I returned to the codelabs-tab.
+
+%p I navigated to the next page in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql/#3' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql/#3
+
+%p I returned to the Cloud-Shell-tab.
+
+%p I ran another command:
+
+.syntax
+  %pre
+    %code.bash gsutil cp cloudsql/* gs://cs101feb2018/sql/
+
+%p It was very slow; it needed 60 seconds to finish:
+
+.syntax
+  %pre
+    =render 'lesson001e'
+
+%p I visited the GCP-tab.
+
+%p I verified success of the above command by visiting an appropriate URL:
+%p
+  %a(href='https://console.cloud.google.com/storage/browser/cs101feb2018/sql/' target='x')
+    https://console.cloud.google.com/storage/browser/cs101feb2018/sql/
+    
+%p I returned to the codelabs-tab.
+
+%p I navigated to the next page in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql/#4' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql/#4
+
+%p I studied that page.
+
+%p The page listed 10 steps.
+
+%p To start step 1, clicked the GCP-tab and I visited this URL:
+
+%p
+  %a(href='https://console.cloud.google.com' target='x')
+    https://console.cloud.google.com
+
+%p I clicked the upper-left-hamburger-link and from there clicked: "SQL".
+
+%p It served me a page describing: "Cloud SQL Instances"
+
+%ul
+  %li Cloud SQL instances are fully managed relational:
+  %li MySQL databases
+  %li PostgreSQL databases
+
+
+%p I saw this:
+
+%img(src='/lesson001/ss24.png')
+
+
+%p I clicked the blue: "Create instance" button.
+
+%p In the next page I picked the MySQL radio-button.
+
+%p I clicked the blue: "Next" button.
+
+%p I saw this:
+
+%img(src='/lesson001/ss25.png')
+
+%p I clicked the blue: "Choose Second Generation" button.
+
+%p The next page landed me in a field: "Instance ID".
+
+%p I entered string: "rentals".
+
+%p I entered root password: "root".
+
+%p I saw this:
+
+%img(src='/lesson001/ss26.png')
+
+%p I clicked the blue "Create" button.
+
+%p GCP served me a page with information about my new db instance:
+
+%ul
+  %li MySQL 2nd Gen 5.7
+  %li IP: 104.197.219.252
+  %li Instance connection name: cpb100-195004:us-central1:rentals
+
+%p I saw this:
+
+%img(src='/lesson001/ss27.png')
+
+%p Next I clicked the Cloud-Shell-tab.
+
+%p I ran shell commands:
+
+.syntax
+  %pre
+    %code.bash
+      cd ~/training-data-analyst/CPB100/lab3a
+      bash find_my_ip.sh
+
+%p I saw this:
+
+.syntax
+  %pre
+    =render 'lesson001f'
+
+%p I ran shell commands:
+
+.syntax
+  %pre
+    %code.bash
+      cd ~/training-data-analyst/CPB100/lab3a
+      bash authorize_cloudshell.sh
+
+
+%p I saw this:
+
+.syntax
+  %pre
+    =render 'lesson001g'
+
+%p The intent of the above syntax is to grant networking permission from MySQL to Cloud-Shell.
+
+%p If you have problems getting permissions granted, GCP allows you to grant permissions in a web page.
+
+%p A clue to do that is described below:
+
+%p In the GCP-tab, visit this URL:
+
+%p
+  %a(href='https://console.cloud.google.com/sql' target='x')
+    https://console.cloud.google.com/sql
+
+%p Then look for a link for the MySQL instance.
+
+%p Under that link find the authorization form.
+
+%p I saw this:
+
+%img(src='/lesson001/ss28.png')
+
+%p Enough about that; back to the lesson.
+  
+
+%p In the codelabs-tab, I navigated to the next page in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql/#5' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql/#5
+
+%p I studied that page.
+
+%p The page listed 4 steps.
+
+%p To start step 1, in the GCP-tab, I navigated to the URL listed below:
+
+%p
+  %a(href='https://console.cloud.google.com/sql' target='x')
+    https://console.cloud.google.com/sql
+
+%p I clicked the link called "rentals" which is the name of the Instance I created earlier.
+
+%p I clicked "Import" at the top.
+
+%p GCP served a page: "Import data from Cloud Storage"
+
+%p I saw this:
+
+%img(src='/lesson001/ss29.png')
+
+
+%p I clicked the button named: "Browse".
+
+%p GCP served a link named: "cs101feb2018" which is the name of the bucket I created earlier.
+
+%p I clicked the "cs101feb2018" link.
+
+%p GCP showed three files and a folder named "sql" in that bucket.
+
+%p I clicked "table_creation.sql" in that folder.
+
+%p I saw this:
+
+%img(src='/lesson001/ss30.png')
+
+%p GCP activated a blue button named "Import".
+
+%p I saw this:
+
+%img(src='/lesson001/ss31.png')
+
+%p I clicked the button.
+
+%p GCP got busy for 10 seconds and then indicated success with a green-check-mark.
+
+%p I saw this:
+
+%img(src='/lesson001/ss32.png')
+
+%p In the codelabs-tab, I navigated to the next page in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql/#6' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql/#6
+
+%p I studied that page.
+
+%p The page listed 3 steps.
+
+%p To start step 1, in the GCP-tab, I navigated to the URL listed below:
+
+%p
+  %a(href='https://console.cloud.google.com/sql' target='x')
+    https://console.cloud.google.com/sql
+
+%p I clicked the link called "rentals" which is the name of the Instance I created earlier.
+
+%p I clicked "Import" at the top.
+
+%p I browsed to accommodation.csv and selected it.
+
+%p GCP served me a page: "Import data from Cloud Storage"
+
+%p I selected radio-button: "CSV".
+
+%p I selected database: "recommendation_spark".
+
+%p In the next field, I entered string: "Accommodation".
+
+%p GCP responded by activating the blue "Import" button.
+
+%p I saw this:
+
+%img(src='/lesson001/ss33.png')
+
+%p I clicked the button.
+
+%p GCP quickly served me a page named "Instance details".
+
+%p Quickly after that it served a green-check-mark to indicate success.
+
+%p I clicked "Import" at the top.
+
+%p I browsed to rating.csv and selected it.
+
+%p GCP served me a page: "Import data from Cloud Storage"
+
+%p I selected radio-button: "CSV".
+
+%p I selected database: "recommendation_spark".
+
+%p In the "Table" field, I entered string: "Rating".
+
+%p GCP responded by activating the blue "Import" button.
+
+%p I clicked the button.
+
+%p GCP quickly served me a page named "Instance details".
+
+%p Quickly after that it served a green-check-mark to indicate success.
+
+%p In the codelabs-tab, I visited the next page in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql/#7' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-cloud-sql/#7
+
+%p I studied that page.
+
+%p The page contained 5 steps.
+
+%p To start step 1, in the GCP-tab, I visited this page:
+
+%p
+  %a(href='https://console.cloud.google.com/sql' target='x')
+    https://console.cloud.google.com/sql
+  
+%p I used that page to get the IP address of the MySQL instance: 104.197.219.252
+
+%p Next, in the Cloud-Shell-tab, I entered a shell command:
+
+.syntax
+  %pre
+    %code.bash mysql --host=104.197.219.252 --user=root --password
+
+%p I saw this:
+
+.syntax
+  %pre
+    =render 'lesson001h'
+
+%p The above error was caused because Cloud-Shell had "lost" its IP address.
+
+%p So, GCP gave it a new IP address.
+
+%p It was up to me tell MySQL about this problem.
+
+%p I tried these shell commands:
+
+.syntax
+  %pre
+    %code
+      cd ~/training-data-analyst/CPB100/lab3a
+      bash find_my_ip.sh
+      bash authorize_cloudshell.sh
+      mysql --host=104.197.219.252 --user=root --password
+
+%p I saw this:
+
+.syntax
+  %pre
+    =render 'lesson001h2'
+
+%p At the MySQL prompt I entered a command:
+
+.syntax
+  %pre
+    %code.bash use recommendation_spark;
+
+%p I wanted to see tables so I typed this:
+
+.syntax
+  %pre
+    %code.bash show tables;
+
+%p I verifed that ratings.csv was loaded into ratings table:
+
+.syntax
+  %pre
+    =render 'lesson001i'
+
+%p I entered a SQL command:
+
+.syntax
+  %pre
+    =render 'lesson001j'
+
+%p That ended my interaction with the CPB100-node I call: "Setup rentals data in Cloud SQL".
+
+%a(href='#top') [top]
+%hr/
+%h2#dataproc Dataproc
+
+%p Next, in the codelabs-tab, I clicked the next link in the series:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-dataproc' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-dataproc
+
+%p I studied the page it served me:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-dataproc/#0' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-dataproc/#0
+  
+%p In the Cloud-Shell tab I verifed that repo: "training-data-analyst" was still available.
+
+%p I verified that my MySQL instance and tables were still available.
+
+%p In the codelabs-tab, I clicked the next link in the series:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-dataproc/#1' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-dataproc/#1
+
+%p I studied the page it served me.
+
+%p I clicked the next link in the series:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-dataproc/#2' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-dataproc/#2
+
+%p I studied the page it served me.
+
+%p In the GCP-tab I noted the region of my Cloud SQL instance: "us-central1".
+
+%p I clicked the upper-left-hamburger-link and from there clicked: "Dataproc".
+
+%p GCP served me a page with blue-button: "Enable API".
+
+%p I clicked it.
+
+%p GCP served me a page with blue-button: "Create cluster".
+
+
+%p I saw this:
+
+%img(src='/lesson001/ss34.png')
+
+%p I clicked it.
+
+%p GCP served me a form to configure the cluster.
+
+%p I ensured the cluster was in same region as my Cloud SQL instance: "us-central1".
+
+%p I changed machine type of both master and worker nodes to: "2vCPUs 7.5 GB memory"
+
+%p I specified the cluster have two nodes (the minimum).
+
+%p I saw this:
+
+%img(src='/lesson001/ss35.png')
+
+%p I clicked the blue-button: "Create".
+
+%p GCP served a page indicating it was busy building the cluster.
+
+%p I saw this:
+
+%img(src='/lesson001/ss36.png')
+
+%p Eventually, it finished.
+
+%p I saw this:
+
+%img(src='/lesson001/ss37.png')
+
+%p In Cloud-Shell-tab I issued shell commands:
+
+.syntax
+  %pre
+    %code.bash
+      cd ~/training-data-analyst/CPB100/lab3b
+      bash authorize_dataproc.sh cluster-d037 us-central1 2
+
+%p It served me an error:
+
+
+.syntax
+  %pre
+    =render 'lesson001m'
+
+%p In the GCP-tab, I studied the page at this URL:
+
+%p
+  %a(href='https://console.cloud.google.com/dataproc/clusters' target='x')
+    https://console.cloud.google.com/dataproc/clusters
+  
+%p In Cloud-Shell-tab I tried this shell command:
+
+.syntax
+  %pre
+    %code.bash
+      bash authorize_dataproc.sh cluster-d037 us-central1-f 2
+
+%p I saw this:
+
+.syntax
+  %pre
+    =render 'lesson001n'
+
+%p In the codelabs-tab, I clicked the next link in the series:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-dataproc/#3' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-dataproc/#3
+
+%p I studied that page.
+
+%p I ran a shell command to open an editor in Cloud-Shell-tab:
+
+.syntax
+  %pre
+    %code.bash nano sparkml/train_and_apply.py
+
+%p I typed in the IP-address of the Cloud-SQL-Instance: 104.197.219.252
+
+%p I saw this:
+
+%img(src='/lesson001/ss39.png')
+
+%p I entered a shell command:
+
+.syntax
+  %pre
+    %code.bash gsutil cp sparkml/tr*.py gs://cs101feb2018/
+
+%p In GCP-tab, I visited this URL:
+%p
+  %a(href='https://console.cloud.google.com/dataproc/clusters/' target='x')
+    https://console.cloud.google.com/dataproc/clusters/
+    
+%p I clicked the "Jobs" icon on the left.
+
+%p It served me a page with blue-button: "Submit job".
+
+%p I clicked "Submit job".
+
+%p GCP served me a job-submission form for Hadoop.
+
+%p I changed the job-type to: "PySpark"
+
+%p I indicated the location of the Python script to be this:
+
+.syntax
+  %pre
+    %code.bash gs://cs101feb2018/train_and_apply.py
+
+%p I saw this:
+
+%img(src='/lesson001/ss40.png')
+
+%p Near the bottom, I clicked on the blue-button: "Submit"
+
+%p GCP accepted the job and then gave it a status of: "Running".
+
+%p I saw this:
+
+%img(src='/lesson001/ss41.png')
+
+%p After two minutes, GCP changed the status to "Succeeded".
+
+%p In codelabs-tab, I clicked the next link in the series:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-dataproc/#4' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-dataproc/#4
+
+%p I studied that page.
+
+%p In GCP-tab, I got the IP address of MySQL from this URL:
+
+%p
+  %a(href='https://console.cloud.google.com/sql/instances' target='x')
+    https://console.cloud.google.com/sql/instances
+  
+%p In Cloud-Shell-tab, I verified that I could connect to MySQL.
+
+.syntax
+  %pre
+    %code mysql --host=104.197.219.252 --user=root --password
+
+%p It failed because GCP lost the authorization for Cloud-Shell.
+
+%p I got authorization again with these shell commands:
+
+.syntax
+  %pre
+    %code
+      cd ~/training-data-analyst/CPB100/lab3a
+      bash authorize_cloudshell.sh
+
+%p In Cloud-Shell-tab, I verified that I could connect to MySQL.
+
+.syntax
+  %pre
+    %code mysql --host=104.197.219.252 --user=root --password
+
+%p I issued a command:
+
+.syntax
+  %pre
+    %code.bash use recommendation_spark;
+
+%p I issued a SQL commands:
+
+.syntax
+  %pre
+    =render 'lesson001p'
+
+%p I saw this:
+
+.syntax
+  %pre
+    =render 'lesson001q'
+
+%p In the above output I see predictions.
+
+%p So, I see that as solid evidence that I was able to finish the Dataproc lab.
+
+%p In the codelabs-tab, I clicked the next link in the series:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-dataproc/#5' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-dataproc/#5
+
+%p I studied that page.
+
+%p In the GCP-tab, I visited this URL:
+%p
+  %a(href='https://console.cloud.google.com/sql/instances' target='x')
+    https://console.cloud.google.com/sql/instances
+    
+%p I selected my instance and asked GCP to delete it to prevent more charges against my account.  
+
+%p I visited this URL:
+%p
+  %a(href='https://console.cloud.google.com/dataproc' target='x')
+    https://console.cloud.google.com/dataproc
+  
+%p I selected my instance and asked GCP to delete it to prevent more charges against my account.  
+
+%p That ended my interaction with the CPB100-node I call: "Dataproc".
+
+
+%a(href='#top') [top]
+%hr/
+%h2#datalab  Datalab
+
+%p Next, in codelabs-tab, I clicked the next link in the series:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-datalab' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-datalab
+
+%p I studied the page it served me:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-datalab/#0' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-datalab/#0
+  
+%p I clicked the next link in the series:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-datalab/#1' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-datalab/#1
+  
+%p In the GCP-tab, I visited the URL below:
+
+%p
+  %a(href='https://console.cloud.google.com' target='x')
+    https://console.cloud.google.com
+
+%p In the Cloud-Shell-tab I entered a command:
+
+.syntax
+  %pre
+    %code.bash gcloud compute zones list
+
+%p I decided I want to use: "us-central1-f"
+
+%p I entered a shell command:
+
+.syntax
+  %pre
+    %code.bash datalab create mydatalabvm --zone us-central1-f
+
+%p GCP issued an error:
+
+.syntax
+  %pre
+    =render 'lesson001r'
+
+
+%p In the GCP-tab, I visited the URL below:
+
+%p
+  %a(href='https://console.cloud.google.com/apis/library/sourcerepo.googleapis.com' target='x')
+    https://console.cloud.google.com/apis/library/sourcerepo.googleapis.com
+
+%p The above page served a blue-button: "ENABLE".
+
+%p I clicked the button.
+
+%p In Cloud-Shell-tab I entered a shell command:
+
+.syntax
+  %pre
+    %code.bash datalab create mydatalabvm --zone us-central1-f
+
+%p GCP offered a better response:
+
+.syntax
+  %pre
+    =render 'lesson001s'
+
+%p I clicked the web preview square-button at top-right.
+
+%p The button looks like this:
+
+%img(src='/lesson001/ss42.png')
+
+%p I opted to change the port:
+
+%img(src='/lesson001/ss43.png')
+
+%p I changed the port to 8081 and clicked through.
+
+%p GCP loaded a page from this URL:
+
+%p
+  https://8081-dot-3516970-dot-devshell.appspot.com/tree/datalab/notebooks#
+
+%p I made sure that page was in tab 6, the tab after the Cloud-Shell-tab.
+
+%p I call tab 6 the DataLab-tab.
+
+%p I captured an image of the page:
+
+%img(src='/lesson001/ss44.png')
+
+%p In the GCP-tab,  I visited this URL:
+%p
+  %a(href='https://console.cloud.google.com/compute/instances' target='x')
+    https://console.cloud.google.com/compute/instances
+  
+%p The page told me that GCP had just started an VM instance named "mydatalabvm".
+
+%p I saw this:
+
+%img(src='/lesson001/ss45.png')
+
+%p In codelabs-tab, I clicked the next link in the series:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-datalab/#2' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-datalab/#2
+  
+%p I studied the page.
+
+%p I ran an experiment to verify the information there:
+
+%ul
+  %li In GCP-tab, I stopped VM instance named "mydatalabvm"
+  %li In DataLab-tab, I verified that I could not access:
+  %li
+    https://8081-dot-3516970-dot-devshell.appspot.com/tree/datalab#
+  %li In Cloud-Shell tab I ran a command:
+  %li
+    .syntax
+      %pre
+        %code.bash datalab connect mydatalabvm
+  %li GCP responded to that by restarting the VM instance named "mydatalabvm".
+  %li I wait a minute for the VM to boot.
+  %li In DataLab-tab, I verified that I could access:
+  %li
+    https://8081-dot-3516970-dot-devshell.appspot.com/tree/datalab#
+  %li It worked!
+
+%p That ended my interaction with the CPB100-node I call: "Datalab".
+
+%a(href='#top') [top]
+%hr/
+
+%h2#bigquery-dataset Bigquery-Dataset
+
+%p In codelabs-tab, I clicked the next link in the series:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-bigquery-dataset' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-bigquery-dataset
+
+%p I studied the page it served me:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-bigquery-dataset/#0' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-bigquery-dataset/#0
+  
+%p I clicked the next node in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-bigquery-dataset/#1' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-bigquery-dataset/#1
+  
+%p I studied that page.
+
+%p I clicked the next node in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-bigquery-dataset/#2' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-bigquery-dataset/#2
+    
+%p I studied that page.
+
+%p In DataLab-tab, I verified this URL was active:
+
+%p
+  https://8081-dot-3516970-dot-devshell.appspot.com/tree/datalab#
+
+%p In codelabs-tab, I clicked the next node in the sequence:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-bigquery-dataset/#3' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-bigquery-dataset/#3
+    
+%p I studied that page.
+
+%p In DataLab-tab, I visited this URL:
+
+%p
+  https://8081-dot-3516970-dot-devshell.appspot.com/tree/datalab#
+
+%p I clicked the +notebook button.
+
+%p The server responded with a page which reminds me of a Jupyter Notebook UI:
+
+%img(src='/lesson001/ss46.png')
+
+%p In Github-tab, I visited this URL:
+
+%p
+  %a(href='http://github.com/GoogleCloudPlatform/training-data-analyst/tree/master/CPB100/lab4a/demandforecast.ipynb' target='x')
+    demandforecast.ipynb
+
+%img(src='/lesson001/ss47.png')
+
+%p I copied some Python syntax from demandforecast.ipynb into the field in the new notebook UI:
+
+%img(src='/lesson001/ss48.png')
+
+%p So, I was bouncing between the Github-tab and DataLab-tab.
+
+%p In the DataLab-tab, I asked the UI to run it.
+
+%p It ran fine.
+
+%p I continued the process of copy-paste-run on each section of code I found in demandforecast.ipynb
+
+%p Each section ran just as expected.
+
+%p Next, in GCP-tab, I visited this URL:
+
+%p
+  %a(href='https://console.cloud.google.com/compute/instances' target='x')
+    https://console.cloud.google.com/compute/instances
+
+%p I stopped mydatalabvm to avoid adding costs to my account.
+
+%p That ended my interaction with the CPB100-node I call: "Bigquery-Dataset".
+
+
+%a(href='#top') [top]
+%hr/
+%h2#tensorflow TensorFlow
+
+
+%p In codelabs-tab, I clicked the next link in the series:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-tensorflow' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-tensorflow
+
+%p I studied the page it served me:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-tensorflow/#0' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-tensorflow/#0
+  
+%p I studied the next page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-tensorflow/#1' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-tensorflow/#1
+  
+%p I studied the next page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-tensorflow/#2' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-tensorflow/#2
+
+%p In GCP-tab, I visited the console-URL:
+%p
+  %a(href='https://console.cloud.google.com' target='x')
+    https://console.cloud.google.com
+
+%p In Cloud-Shell-tab, I issued a shell command:
+
+.syntax
+  %pre
+    %code.bash datalab connect mydatalabvm
+  
+
+%p GCP offered a good response:
+
+.syntax
+  %pre
+    =render 'lesson001v'
+
+%p I clicked the Web-Preview button in upper right and changed the port to 8081.
+
+%p GCP loaded this URL into my browser:
+
+%p
+  https://8081-dot-3516970-dot-devshell.appspot.com/tree/datalab/notebooks
+
+%p I move that page so it occupied DataLab-tab [ tab 6 ].
+
+%p I clicked the +notebook button in upper-left.
+
+%p GCP served a page with name: "Untitled Notebook1".
+
+%p The page offered an input field for notebook commands.
+
+%p The author of this notebook server assumes that I know how to operate a Python Jupyter notebook.
+
+%p A GCP-datalab notebook offers behavior similar to a Jupyter notebook.
+
+%p In Github-tab, I visited the URL listed below which offers syntax for a Jupyter notebook:
+%p
+  %a(href='http://github.com/GoogleCloudPlatform/training-data-analyst/tree/master/CPB100/lab4a/demandforecast.ipynb' target='x')
+    demandforecast.ipynb
+  
+%p I scrolled to this h2-element [about 2/3 to page-end]:
+
+%p "Machine Learning with Tensorflow":
+
+%img(src='/lesson001/ss49.png')
+
+%p I studied four paragraphs below the h2-element.
+
+%p I studied the Python syntax below the paragraphs:
+
+.syntax
+  %pre
+    =render 'lesson001u'
+
+%p
+  I returned to the top of
+  %a(href='http://github.com/GoogleCloudPlatform/training-data-analyst/tree/master/CPB100/lab4a/demandforecast.ipynb' target='x')
+    demandforecast.ipynb
+
+
+%p
+  I copied syntax from
+  %a(href='http://github.com/GoogleCloudPlatform/training-data-analyst/tree/master/CPB100/lab4a/demandforecast.ipynb' target='x')
+    demandforecast.ipynb
+  into "Untitled Notebook1", in DataLab-tab.
+
+%p I did the copying bit-by-bit; I was patient.
+
+%p I wanted to study the output at a slow pace.
+
+%p
+  Eventually I worked all the way through the syntax in: 
+  %a(href='http://github.com/GoogleCloudPlatform/training-data-analyst/tree/master/CPB100/lab4a/demandforecast.ipynb' target='x')
+    demandforecast.ipynb
+    
+%p Next, in GCP-tab, I visited this URL:
+
+%p
+  %a(href='https://console.cloud.google.com/compute/instances' target='x')
+    https://console.cloud.google.com/compute/instances
+
+%p I stopped mydatalabvm to avoid adding costs to my account.
+
+%p That ended my interaction with the CPB100-node I call: "TensorFlow".
+
+
+%a(href='#top') [top]
+%hr/
+%h2#translate-api Translate-API
+
+%p In codelabs-tab, I clicked the next link in the series:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-translate-api' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-translate-api
+
+%p I studied the page it served me:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-translate-api/#0' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-translate-api/#0
+  
+%p I studied the next page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-translate-api/#1' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-translate-api/#1
+  
+%p I studied the next page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-translate-api/#2' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-translate-api/#2
+  
+%p In GCP-tab, I visited this URL:
+
+%p
+  %a(href='https://console.cloud.google.com/apis' target='x')
+    https://console.cloud.google.com/apis
+
+%p I saw a blue-button: "ENABLE APIS AND SERVICES".
+
+%p I clicked it.
+
+%p GCP served me a large list of APIs.
+
+%p I enabled: "Google Cloud Vision API".
+
+%p GCP served me this page:
+
+%p
+  %a(href='https://console.cloud.google.com/apis/api/vision.googleapis.com/overview' target='x')
+    https://console.cloud.google.com/apis/api/vision.googleapis.com/overview
+
+%p I clicked the credentials-key-icon on the left.
+
+%p It served me a blue-button: "Create credentials".
+
+%p I clicked it.
+
+%p At that point the UI mis-matched the instructions I was following in cpb100.
+
+%p So I was confused.
+
+%p I visited this URL:
+
+%p
+  %a(href='https://console.cloud.google.com/apis/credentials/wizard' target='x')
+    https://console.cloud.google.com/apis/credentials/wizard
+
+%p From select-option control I picked value: "Google Cloud Vision API".
+
+%p Next I picked radio-button: "Yes I am using one or both".
+
+%p I clicked blue-button: "What credentials do I need?"
+
+%p GCP served me a message: "You don't need to create new credentials"
+
+%p So, I clicked blue-button: "Done".
+
+%p I followed the same process to enable Translate API, Speech API, and Natural Language APIs.
+
+%p In codelabs-tab, I studied the next codelabs-page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-translate-api/#3' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-translate-api/#3
+
+%p In GCP-tab, I visited my console URL:
+
+%p
+  %a(href='https://console.cloud.google.com' target='x')
+    https://console.cloud.google.com
+
+%p In  Cloud-Shell-tab, I entered a shell command:
+
+.syntax
+  %pre
+    %code.bash datalab connect mydatalabvm
+
+%p GCP offered good news:
+
+.syntax
+  %pre
+    =render 'lesson001w'
+
+%p I use the Web-Preview link in the upper-right of Cloud-Shell to load Datalab into a new tab in my browser.
+
+%p The Datalab URL served to me looked like this:
+
+%p
+  %a(href='https://8081-dot-3516970-dot-devshell.appspot.com/tree/datalab/notebooks#' target='x')
+    https://8081-dot-3516970-dot-devshell.appspot.com/tree/datalab/notebooks#
+
+%p I moved that page so it was tab 6, the DataLab-tab.
+
+%p In codelabs-tab, I studied the next codelabs-page:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-translate-api/#4' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-translate-api/#4
+
+%p I visited the GCP-tab and loaded a URL:
+
+%p
+  %a(href='https://console.cloud.google.com/apis' target='x')
+    https://console.cloud.google.com/apis
+
+%p I clicked credentials-icon on left.
+
+%p I clicked blue-button: "Create credentials".
+
+%p I clicked API-key.
+
+%p GCP gave me this key:
+
+.syntax
+  %pre
+    %code AIzaSyBhcruU8RW0PeOllj-yxkfLnef3YRHwCt
+
+%p In Github-tab, I loaded a URL from github.com:
+
+%p
+  %a(href='https://github.com/GoogleCloudPlatform/training-data-analyst/blob/master/CPB100/lab4c/mlapis.ipynb' target='x')
+    mlapis.ipynb
+
+%p I studied comments in that page.
+
+%p I returned to my Datalab-tab.
+
+%p I clicked +Notebook
+
+%p It served me a new notebook with a field for syntax.
+
+%p I typed in this syntax:
+
+.syntax
+  %pre
+    %code APIKEY="AIzaSyBhcruU8RW0PeOllj-yxkfLnef3YRHwCt"
+
+%p I entered Shift-Enter which activated the syntax and then opened a new syntax-field.
+
+%p Next, one field at a time, I carefully copy-pasted syntax from Github-tab to my Datalab-tab.
+
+%p I saw responses from GCP which matched information in the Github-tab.
+
+%p So, I am confident I completed the lab with no error.
+
+%p In my GCP-tab I loaded this URL:
+
+%p
+  %a(href='https://console.cloud.google.com/compute/instances' target='x')
+    https://console.cloud.google.com/compute/instances
+  
+%p I stopped the instance named: "mydatalabvm".
+
+%p Next,  I loaded this URL:
+%p
+  %a(href='https://console.cloud.google.com/apis/credentials' target='x')
+    https://console.cloud.google.com/apis/credentials
+
+%p I used the trash-can-icon to remove the API key I no longer needed.
+
+%p That ended my interaction with the CPB100-node I call: "Translate-API".
+
+%a(href='#top') [top]
+%hr/
+
+
+
+%h2#serverless-ingest Serverless-Ingest
+
+
+%p In codelabs-tab, I clicked the next link in the series:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest
+
+%p I studied the page it served me:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest/#0' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest/#0
+
+%p I clicked the next node in the sequence:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest/#1' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest/#1
+
+%p In Cloud-Shell-tab, I issued a command:
+
+.syntax
+  %pre
+    %code git clone https://github.com/GoogleCloudPlatform/training-data-analyst
+
+%p Cloud-Shell served me an error:
+
+.syntax
+  %pre
+    %code
+      fatal: destination path 'training-data-analyst' already exists and is not an empty directory.
+
+%p I see that as a good error.
+
+%p It means that I had already git-cloned training-data-analyst.
+
+%p I responded with a shell command:
+
+.syntax
+  %pre
+    %code cd ~/training-data-analyst/CPB100/lab2b/scheduled
+
+%p I examined a Python script in that folder:
+
+.syntax
+  %pre
+    %code pg ingestapp.py
+
+%p In my Github-tab I studied ingestapp.py by visiting the URL listed below:
+
+%p
+  %a(href='https://github.com/GoogleCloudPlatform/training-data-analyst/blob/master/CPB100/lab2b/scheduled/ingestapp.py' target='x')
+    https://github.com/GoogleCloudPlatform/training-data-analyst/blob/master/CPB100/lab2b/scheduled/ingestapp.py
+
+%p The script is a simple Python Flask App.
+
+%p This app has one interesting route:
+
+.syntax
+  %pre
+    %code '/ingest'
+
+%p Flask uses that route to act as a proxy for the URL listed below:
+
+%p
+  %a(href='http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.csv' target='x')
+    http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.csv
+
+%p Flask transforms the CSV-data into an image of earthquake activity.
+
+%p This happens during a Flask response to a request of the '/ingest' route.
+
+%p Near the end of the response, Flask uploads the image to GCP-Cloud-Storage.
+
+%p The author of the script separated ingest_last_week() into sections:
+%ul
+  %li verify that this is a cron job request
+  %li create png
+  %li upload to cloud storage
+  %li change permissions: make_public()
+
+%p After I finished my study of that script, I returned to the codelabs-tab.
+
+%p In codelabs-tab, I clicked the next link in the series:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest/#2' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest/#2
+%p I studied the above page.
+
+%p In Cloud-Shell-tab I ran a command:
+
+.syntax
+  %pre
+    %code cat Dockerfile
+
+%p I saw this:
+
+.syntax
+  %pre
+    %code
+      cs101@cpb100-195004:~/training-data-analyst/CPB100/lab2b/scheduled$ cat Dockerfile
+      FROM ubuntu:latest
+      MAINTAINER Rajdeep Dua "dua_rajdeep@yahoo.com"
+      RUN apt-get update -y
+      RUN apt-get install -y python-pip python-dev build-essential python-mpltoolkits.basemap python-numpy python-matplotlib
+      COPY . /app
+      WORKDIR /app
+      RUN pip install -r requirements.txt
+      ENTRYPOINT ["python"]
+      CMD ["ingestapp.py"]
+      cs101@cpb100-195004:~/training-data-analyst/CPB100/lab2b/scheduled$
+      cs101@cpb100-195004:~/training-data-analyst/CPB100/lab2b/scheduled$
+      cs101@cpb100-195004:~/training-data-analyst/CPB100/lab2b/scheduled$
+      cs101@cpb100-195004:~/training-data-analyst/CPB100/lab2b/scheduled$
+
+%p I saw that this Dockerfile declares that I want an Ubuntu host.
+
+%p After the host is available, root should run shell commands:
+
+.syntax
+  %pre
+    %code
+      apt-get update -y
+      apt-get install -y python-pip python-dev build-essential python-mpltoolkits.basemap python-numpy python-matplotlib
+
+%p Next, Docker should copy "." into /app of the host.
+%p Then, Docker should make /app the Current Working Directory.
+%p Next, Docker should run a shell command:
+
+.syntax
+  %pre
+    %code pip install -r requirements.txt
+
+%p Then, Docker should run python script: ingestapp.py
+
+%p I assume that after Docker runs ingestapp.py, then a Flask app will be running on the host.
+
+%p In codelabs-tab, I clicked the next link in the series:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest/#3' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest/#3
+%p I studied the above page.
+
+%p In Cloud-Shell-tab, I used the nano editor to enhance cron.yaml:
+
+.syntax
+  %pre
+    =render 'lesson001w2'
+
+%p I wanted to use the bucket I had created in the Cloud-Storage lab.
+
+%p That bucket is named: "cs101feb2018".
+
+%p In Cloud-Shell-tab, I used the nano editor to enhance app.yaml:
+
+.syntax
+  %pre
+    =render 'lesson001x'
+
+
+%p In codelabs-tab, I clicked the next link in the series:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest/#4' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest/#4
+%p I studied the above page.
+
+%p In Cloud-Shell-tab, I ran a shell command:
+
+.syntax
+  %pre
+    %code gcloud app deploy --quiet app.yaml cron.yaml
+
+%p I saw this:
+
+.syntax
+  %pre
+    =render 'lesson001y'
+
+%p The above error made little sense to me.
+
+%p I decided to abandon this effort.
+
+%p Perhaps in the future I will encounter App-Engine training content which works better.
+
+%p That ended my interaction with the CPB100-node I call: "Serverless-Ingest".
+
+%a(href='#top') [top]
+%hr/
+
+
+
+%h2#distributed-landsat Distributed-Landsat
+
+%p In codelabs-tab, I clicked the next link in the series:
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-distributed-landsat' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-distributed-landsat
+
+%p I studied the page it served me:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-distributed-landsat/#0' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-distributed-landsat/#0
+
+%p I studied the next page it served me:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-distributed-landsat/#1' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-distributed-landsat/#1
+
+%p In the GCP-tab I visited this URL:
+%p
+  %a(href='https://console.cloud.google.com/apis' target='x')
+    https://console.cloud.google.com/apis
+%p I clicked the blue-button: "ENABLE APIS AND SERVICES".
+
+%p I searched for: "Google Dataflow API".
+
+%p I found it; I enabled it.
+
+%p In codelabs-tab, I clicked the next link in the series:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-distributed-landsat/#2' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-distributed-landsat/#2
+
+%p I studied that page.
+
+%p In tab-7 I visited the URL below:
+
+%p
+  %a(href='https://cloud.google.com/blog/big-data/2016/11/how-to-do-distributed-processing-of-landsat-data-in-python' target='x')
+    how-to-do-distributed-processing-of-landsat-data-in-python
+  
+%p In Github-tab, I visited the URL below:
+%p
+  %a(href='https://github.com/GoogleCloudPlatform/training-data-analyst/blob/master/blogs/landsat/dfndvi.py' target='x')
+    dfndvi.py
+%p In the above page I studied the run() method.
+
+%p Below, I list sections of that method which I see:
+
+%ul
+  %li parse arguments
+  %li create beam.Pipeline object
+  %li Read the index file and find all scenes that cover this area
+  %li for each month and spacecraft-coverage-pattern (given by the path and row), find clearest scene
+  %li write out info about scene
+  %li compute ndvi on scene
+  
+%p In codelabs-tab, I clicked the next link in the series:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-distributed-landsat/#3' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-distributed-landsat/#3
+
+%p I studied that page.
+
+%p In Cloud-Shell-tab, I ran commands:
+
+.syntax
+  %pre
+    %code
+      cd ~/training-data-analyst/blogs/landsat/
+      cat run_oncloud.sh
+    
+%p I ran another shell command which listed both my project and bucket I want to use:
+.syntax
+  %pre
+    %code ./run_oncloud.sh cpb100-195004 cs101feb2018
+
+%p The command failed:
+
+.syntax
+  %pre
+    =render 'lesson001z'
+
+%p The above error was caused by a missing Python module and/or package.
+
+%p I ran two shell scripts I found in the folder:
+
+.syntax
+  %pre
+    %code sudo bash install_ee.sh
+    
+.syntax
+  %pre
+    %code sudo bash install_packages.sh
+
+%p I ran another shell command which listed both my project and bucket I want to use:
+.syntax
+  %pre
+    %code ./run_oncloud.sh cpb100-195004 cs101feb2018
+
+%p I saw this:
+
+.syntax
+  %pre
+    =render 'lesson001za'
+
+%p In codelabs-tab, I clicked the next link in the series:
+
+%p
+  %a(href='https://codelabs.developers.google.com/codelabs/cpb100-distributed-landsat/#4' target='x')
+    https://codelabs.developers.google.com/codelabs/cpb100-distributed-landsat/#4
+
+%p I studied that page.
+
+%p In GCP-tab, I visited the URL below:
+
+%p
+  %a(href='http://console.cloud.google.com/dataflow' target='x')
+    http://console.cloud.google.com/dataflow
+%p I saw this:
+
+%img(src='/lesson001/df1.png')
+%hr/
+%img(src='/lesson001/df2.png')
+
+%p I saw that as good evidence that my DataFlow job was running.
+
+%p Eventually, it finished:
+%img(src='/lesson001/df3.png')
+
+%p In GCP tab I visited URL:
+%p
+  %a(href='http://console.cloud.google.com/storage' target='x')
+    http://console.cloud.google.com/storage
+
+%p I searched about and found much output from DataFlow:
+
+%img(src='/lesson001/df4.png')
+
+
+%p That ended my interaction with the CPB100-node I call: "Distributed-Landsat"
+
+%p Also that ended my interaction with the CPB100.
+
+%a(href='#top') [top]
+
+%hr/

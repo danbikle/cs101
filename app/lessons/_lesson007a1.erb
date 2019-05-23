@@ -1,0 +1,17 @@
+<code class='bash'>"""
+estimator1.py
+
+Will this run or give exception?
+
+Ref:
+https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator
+
+Demo:
+python estimator1.py
+"""
+import tensorflow as tf
+estimator = tf.estimator.DNNClassifier(
+    feature_columns=[]
+    ,hidden_units=[1024, 512, 256]
+    ,warm_start_from="/tmp/checkpoint_dir")
+</code>
