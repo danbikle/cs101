@@ -28,8 +28,22 @@ vi Gemfile
 
 bundle
 
+copy parts of cs101_old into cs101:
+  cd ~cs101
+  git clone git@github.com:danbikle/cs101_old.git
+  cd cs101_old
+  git remote add gh  git@github.com:danbikle/cs101_old.git
+  git remote add bit git@bitbucket.org:bikle/cs101_old.git
+  git pull gh  master
+  git pull bit master
+
+look for cs101_old in heroku
+
 install heroku
 
 vi ~/ks/mem/herokupea.txt
 
 heroku create cs101a
+
+cp       ~/cs101_old/Procfile ~/cs101/
+rsync -a ~/cs101_old/script   ~/cs101/
