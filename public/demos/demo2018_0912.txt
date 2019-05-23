@@ -1,0 +1,9 @@
+~/cs101/public/demos/demo2018_0912.txt
+
+Ubuntu:
+  211gb
+  3.75gb
+  
+gcloud beta compute --project=augmented-pager-126620 instances create instance-1 --zone=us-central1-c --machine-type=n1-standard-1 --subnet=default --network-tier=PREMIUM --maintenance-policy=MIGRATE --service-account=386444334008-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --image=ubuntu-1604-xenial-v20180912 --image-project=ubuntu-os-cloud --boot-disk-size=211GB --boot-disk-type=pd-standard --boot-disk-device-name=instance-1
+
+

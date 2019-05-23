@@ -1,0 +1,171 @@
+~/cs101/public/lesson001/serverless_ingest_bug.txt
+
+This post describes buggy behavior I found via the CPB100 tutorial:
+
+https://codelabs.developers.google.com/cpb100
+
+I opened Cloud-Shell.
+
+I did this:
+
+bikle101@cpb100-195004:~$
+bikle101@cpb100-195004:~$ git clone https://github.com/GoogleCloudPlatform/training-data-analyst
+Cloning into 'training-data-analyst'...
+remote: Counting objects: 5801, done.
+remote: Compressing objects: 100% (25/25), done.
+remote: Total 5801 (delta 16), reused 22 (delta 9), pack-reused 5767
+Receiving objects: 100% (5801/5801), 14.45 MiB | 28.86 MiB/s, done.
+Resolving deltas: 100% (3186/3186), done.
+bikle101@cpb100-195004:~$
+bikle101@cpb100-195004:~$
+
+
+
+
+bikle101@cpb100-195004:~$ cd training-data-analyst/
+bikle101@cpb100-195004:~/training-data-analyst$
+bikle101@cpb100-195004:~/training-data-analyst$ git log -1
+commit c9a4885f663864cb85fe910a893f60a88c5cc570
+Author: lakshmanok <lakshmanok@gmail.com>
+Date:   Thu Feb 22 14:53:39 2018 -0800
+
+    updated script for TF Serving
+bikle101@cpb100-195004:~/training-data-analyst$
+bikle101@cpb100-195004:~/training-data-analyst$
+bikle101@cpb100-195004:~/training-data-analyst$
+    
+    
+I read these URLs:
+    
+https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest/#0
+https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest/#1
+https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest/#2
+https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest/#3
+https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest/#4
+
+I did this:
+
+
+cd ~/training-data-analyst/CPB100/lab2b/scheduled
+vi app.yaml
+
+bikle101@cpb100-195004:~/training-data-analyst/CPB100/lab2b/scheduled$ cat app.yaml
+runtime: custom
+env: flex
+entrypoint: gunicorn -b :$PORT ingestapp:app
+service: quakes
+
+#[START env]
+env_variables:
+    CLOUD_STORAGE_BUCKET: d3572
+#[END env]
+
+handlers:
+- url: /ingest
+  script: ingestapp.app
+
+- url: /.*
+  script: ingestapp.app
+bikle101@cpb100-195004:~/training-data-analyst/CPB100/lab2b/scheduled$
+bikle101@cpb100-195004:~/training-data-analyst/CPB100/lab2b/scheduled$
+bikle101@cpb100-195004:~/training-data-analyst/CPB100/lab2b/scheduled$
+
+
+
+Then this:
+
+bikle101@cpb100-195004:~/training-data-analyst/CPB100/lab2b/scheduled$ gcloud app deploy --quiet app.yaml cron.yaml
+Services to deploy:
+
+descriptor:      [/home/bikle101/training-data-analyst/CPB100/lab2b/scheduled/app.yaml]
+source:          [/home/bikle101/training-data-analyst/CPB100/lab2b/scheduled]
+target project:  [cpb100-195004]
+target service:  [quakes]
+target version:  [20180222t155700]
+target url:      [https://quakes-dot-cpb100-195004.appspot.com]
+
+
+Configurations to update:
+
+descriptor:      [/home/bikle101/training-data-analyst/CPB100/lab2b/scheduled/cron.yaml]
+type:            [cron jobs]
+target project:  [cpb100-195004]
+
+
+Beginning deployment of service [quakes
+
+snip ...
+
+Successfully installed Flask-0.11.1 Jinja2-2.10 MarkupSafe-1.0 Werkzeug-0.14.1 cachetools-2.0.1 certifi-2018.1.18 chardet-3.0.4 click-6.7 futures-3.2.0 google-api-core-0.1.4 google-auth-1.4.1 google-cloud-core-0.28.0 google-cloud-storage-0.21.0 googleapis-common-protos-1.5.3 gunicorn-19.6.0 idna-2.6 itsdangerous-0.24 protobuf-3.5.1 pyasn1-modules-0.2.1 requests-2.18.4 rsa-3.4.2 setuptools-38.5.1 urllib3-1.22
+You are using pip version 8.1.1, however version 9.0.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+ ---> f7e4cbb78210
+Removing intermediate container c7bd22ebb29a
+Step 8/9 : ENTRYPOINT python
+ ---> Running in 76b4c5ec1915
+ ---> 045ad56aab83
+Removing intermediate container 76b4c5ec1915
+Step 9/9 : CMD ingestapp.py
+ ---> Running in 66679cd298e2
+ ---> 7ffe3e2816a4
+Removing intermediate container 66679cd298e2
+Successfully built 7ffe3e2816a4
+Successfully tagged us.gcr.io/cpb100-195004/appengine/quakes.20180222t155700:latest
+PUSH
+Pushing us.gcr.io/cpb100-195004/appengine/quakes.20180222t155700:latest
+The push refers to a repository [us.gcr.io/cpb100-195004/appengine/quakes.20180222t155700]
+59f263825436: Preparing
+dcc9f71e4262: Preparing
+974eb127d93c: Preparing
+a0dabccfae11: Preparing
+6f4ce6b88849: Preparing
+92914665e7f6: Preparing
+c98ef191df4b: Preparing
+9c7183e0ea88: Preparing
+ff986b10a018: Preparing
+92914665e7f6: Waiting
+c98ef191df4b: Waiting
+9c7183e0ea88: Waiting
+ff986b10a018: Waiting
+6f4ce6b88849: Layer already exists
+92914665e7f6: Layer already exists
+c98ef191df4b: Layer already exists
+9c7183e0ea88: Layer already exists
+ff986b10a018: Layer already exists
+dcc9f71e4262: Pushed
+a0dabccfae11: Pushed
+59f263825436: Pushed
+974eb127d93c: Pushed
+latest: digest: sha256:3fd9b2f588ba5029eee000ddf428f386bb707bb2396036f32646b7dd687c0d61 size: 2202
+DONE
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Updating service [quakes] (this may take several minutes)...failed.
+ERROR: (gcloud.app.deploy) Error Response: [9]
+Application startup error:
+/usr/lib/python2.7/dist-packages/matplotlib/font_manager.py:273: UserWarning: Matplotlib is building the font cache using fc-list. This may take a moment.
+  warnings.warn('Matplotlib is building the font cache using fc-list. This may take a moment.')
+Traceback (most recent call last):
+  File "ingestapp.py", line 22, in <module>
+    import google.cloud.storage as gcs
+  File "/usr/local/lib/python2.7/dist-packages/google/cloud/storage/__init__.py", line 39, in <module>
+    from google.cloud.storage.batch import Batch
+  File "/usr/local/lib/python2.7/dist-packages/google/cloud/storage/batch.py", line 29, in <module>
+    from google.cloud.exceptions import make_exception
+ImportError: cannot import name make_exception
+
+bikle101@cpb100-195004:~/training-data-analyst/CPB100/lab2b/scheduled$
+bikle101@cpb100-195004:~/training-data-analyst/CPB100/lab2b/scheduled$
+bikle101@cpb100-195004:~/training-data-analyst/CPB100/lab2b/scheduled$
+bikle101@cpb100-195004:~/training-data-analyst/CPB100/lab2b/scheduled$
+    
+
+
+I'd welcome any tips on fixing this lab:
+
+
+https://codelabs.developers.google.com/codelabs/cpb100-serverless-ingest/#0
+
+
+Thanks, -Dan

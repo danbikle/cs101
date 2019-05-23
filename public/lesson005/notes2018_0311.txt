@@ -1,0 +1,53 @@
+~/cs101/public/lesson005/notes2018_0311.txt
+
+This file describes my efforts to operate pub/sub on my laptop.
+
+I took these steps:
+
+useradd -m -s /bin/bash -G sudo py2
+passwd py2
+
+ssha py2@lh
+
+cd ~py2
+wget https://repo.continuum.io/archive/Anaconda2-5.1.0-Linux-x86_64.sh
+bash Anaconda2-5.1.0-Linux-x86_64.sh
+
+conda install tqdm
+pip install google-cloud-pubsub google-cloud-monitoring
+wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-192.0.0-linux-x86_64.tar.gz
+
+tar xf google-cloud-sdk-192.0.0-linux-x86_64.tar.gz
+
+ln -s google-cloud-sdk gcloud
+
+~/gcloud/install.sh
+
+bash
+
+export BOTO_CONFIG=/dev/null
+
+export GOOGLE_APPLICATION_CREDENTIALS=/home/py2/cs101/public/lesson005/service-key.json
+
+gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+
+trash-recreate topic10,sub10
+
+python publish_topics.py
+python pubsub_example.py
+
+problem
+
+google.api_core.exceptions.Forbidden: 403 GET
+
+https://monitoring.googleapis.com/v3/projects/pubsub-197323/timeSeries/?filter=metric.type+%3D+%22pubsub.googleapis.com%2Fsubscription%2Fnum_undelivered_messages%22&interval.endTime=2018-03-12T07%3A40%3A00.000000Z&interval.startTime=2018-03-12T07%3A39%3A00.000000Z:
+
+User is not authorized to access the project monitoring records.
+
+py2@h80:~/cs101/public/lesson005 $
+
+I was able to fix the 403-error:
+  visited the pubsub page:
+    on rhs of topic10 I found permission controls which allowed me to add srvacct
+    on rhs of sub10   I found permission controls which allowed me to add srvacct
+    

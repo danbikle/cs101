@@ -1,0 +1,299 @@
+~/cs101/public/lesson005/notes2018_0308.txt
+
+ref:
+  https://github.com/willcrichton/gcp-job-queue
+  http://willcrichton.net/notes/gcp-job-queue/
+  
+This file should help me prep a gcp-pubsub-kubernetes demo.
+
+I found out today that youtube-dl is not working for me...
+
+So, I will have the workers do something simple like compute pi.
+
+steps:
+
+create cluster cluster10
+  make it ubuntu with 3.75 gb ram
+
+add workers - min 0 max 3
+
+create topic, topic10
+create subscription, sub10
+
+ssh into mgr-node
+
+apt-get install -y bzip2
+
+wget https://repo.continuum.io/archive/Anaconda2-5.1.0-Linux-x86_64.sh
+bash Anaconda2-5.1.0-Linux-x86_64.sh
+
+conda install tqdm
+pip install google-cloud-pubsub google-cloud-monitoring
+
+# git clone https://github.com/willcrichton/gcp-job-queue
+mkdir  gcp-job-queue
+cd     gcp-job-queue
+
+vi publish_topics.py
+
+# coding utf-8
+"""
+publish_topics.py
+
+This script should publish many topics to pubsub.
+
+Ref:
+http://willcrichton.net/notes/gcp-job-queue/
+https://github.com/willcrichton/gcp-job-queue
+
+Demo:
+python publish_topics.py
+"""
+
+from google.cloud import pubsub
+from tqdm import tqdm
+
+PROJECT = 'pubsub-197323'
+TOPIC   = 'topic10'
+
+def main():
+    publisher  = pubsub.PublisherClient()
+    topic_s    = 'projects/{}/topics/{}'.format(PROJECT, TOPIC)
+    worksize_i = 10
+    for id in tqdm(list(range(worksize_i))):
+        publisher.publish(topic_s, str(id))
+
+if __name__ == '__main__':
+    main()
+
+
+Next, python publish_topics.py
+
+
+
+Next, vi myworker.py
+
+# coding utf-8
+"""
+myworker.py
+This script should help me with pubsub demo.
+Ref:
+http://willcrichton.net/notes/gcp-job-queue/
+https://github.com/willcrichton/gcp-job-queue
+"""
+
+from google.cloud import pubsub
+from google.cloud import monitoring
+import subprocess as sp
+import time
+
+PROJECT = 'pubsub-197323'
+TOPIC   = 'topic10'
+
+SUBSCRIPTION = 'sub10'
+BUCKET       = 'pubsub611'
+
+def queue_empty(client):
+    result = client.query(
+        'pubsub.googleapis.com/subscription/num_undelivered_messages',
+        minutes=1).as_dataframe()
+    return result['pubsub_subscription'][PROJECT][SUBSCRIPTION][0] == 0
+
+def dothis(id):
+    sp.check_call(
+        'touch {id}.txt'
+        .format(id=id),
+        shell=True)
+
+def copy_to_gcs(id):
+    sp.check_call(
+        'gsutil mv {}.txt gs://{}/tmp/videos/'
+        .format(id, BUCKET),
+        shell=True)
+
+def handle_message(message):
+    id = message.data
+    dothis(id)
+    copy_to_gcs(id)
+    message.ack()
+
+def main():
+    client       = monitoring.Client(project=PROJECT)
+    subscriber   = pubsub.SubscriberClient()
+    subscription = subscriber.subscribe(
+        'projects/{}/subscriptions/{}'
+        .format(PROJECT, SUBSCRIPTION))
+    subscription.open(handle_message)
+
+    time.sleep(60)
+    while not queue_empty(client):
+        pass
+    subscription.close()
+
+
+if __name__ == '__main__':
+    main()
+
+ensure I have docker installed
+
+ref:
+  https://docs.docker.com/install/linux/docker-ce/ubuntu/
+  https://docs.docker.com/install/linux/linux-postinstall/
+
+docker --help
+
+sudo docker run hello-world
+
+
+install gcloud
+wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-192.0.0-linux-x86_64.tar.gz
+~/google-cloud-sdk/install.sh
+bash
+
+interesting:
+
+bikle101@gke-cluster10-default-pool-18e76f3e-g3xg:~/gcloud$ ./install.sh
+Welcome to the Google Cloud SDK!
+
+To help improve the quality of this product, we collect anonymized usage data
+and anonymized stacktraces when crashes are encountered; additional information
+is available at <https://cloud.google.com/sdk/usage-statistics>. You may choose
+to opt out of this collection now (by choosing 'N' at the below prompt), or at
+any time in the future by running the following command:
+
+    gcloud config set disable_usage_reporting true
+
+Do you want to help improve the Google Cloud SDK (Y/n)?  n
+
+
+Your current Cloud SDK version is: 192.0.0
+The latest available version is: 192.0.0
+
++-------------------------------------------------------------------------------------------------------------+
+|                                                  Components                                                 |
++---------------+------------------------------------------------------+--------------------------+-----------+
+|     Status    |                         Name                         |            ID            |    Size   |
++---------------+------------------------------------------------------+--------------------------+-----------+
+| Not Installed | App Engine Go Extensions                             | app-engine-go            | 151.9 MiB |
+| Not Installed | Cloud Bigtable Command Line Tool                     | cbt                      |   4.5 MiB |
+| Not Installed | Cloud Bigtable Emulator                              | bigtable                 |   3.7 MiB |
+| Not Installed | Cloud Datalab Command Line Tool                      | datalab                  |   < 1 MiB |
+| Not Installed | Cloud Datastore Emulator                             | cloud-datastore-emulator |  17.9 MiB |
+| Not Installed | Cloud Datastore Emulator (Legacy)                    | gcd-emulator             |  38.1 MiB |
+| Not Installed | Cloud Pub/Sub Emulator                               | pubsub-emulator          |  33.4 MiB |
+| Not Installed | Emulator Reverse Proxy                               | emulator-reverse-proxy   |  14.5 MiB |
+| Not Installed | Google Container Local Builder                       | container-builder-local  |   3.8 MiB |
+| Not Installed | Google Container Registry's Docker credential helper | docker-credential-gcr    |   3.3 MiB |
+| Not Installed | gcloud Alpha Commands                                | alpha                    |   < 1 MiB |
+| Not Installed | gcloud Beta Commands                                 | beta                     |   < 1 MiB |
+| Not Installed | gcloud app Java Extensions                           | app-engine-java          | 118.9 MiB |
+| Not Installed | gcloud app PHP Extensions                            | app-engine-php           |           |
+| Not Installed | gcloud app Python Extensions                         | app-engine-python        |   6.2 MiB |
+| Not Installed | gcloud app Python Extensions (Extra Libraries)       | app-engine-python-extras |  27.8 MiB |
+| Not Installed | kubectl                                              | kubectl                   |  12.3 MiB |
+| Installed     | BigQuery Command Line Tool                           | bq                       |   < 1 MiB |
+| Installed     | Cloud SDK Core Libraries                             | core                     |   7.3 MiB |
+| Installed     | Cloud Storage Command Line Tool                      | gsutil                   |   3.3 MiB |
++---------------+------------------------------------------------------+--------------------------+-----------+
+To install or remove components at your current SDK version [192.0.0], run:
+  $ gcloud components install COMPONENT_ID
+  $ gcloud components remove COMPONENT_ID
+
+To update your SDK installation to the latest version [192.0.0], run:
+  $ gcloud components update
+
+
+bash
+gcloud components install kubectl
+kubectl --help
+
+vi requirements.txt
+vi service-key.json
+
+google-cloud-pubsub
+google-cloud-monitoring
+youtube-dl
+pandas
+tqdm
+
+
+{
+  "type": "service_account",
+  "project_id": "pubsub-197323",
+  "private_key_id": "e71b0ed6e643ecda36c5c83f91b9b6a0c25b6359",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDaqQpLPRSXzoNM\n/N0xfu6SA4Vr5mZdPg1ZqrHCIrHMmCeWRWjZ9cKj/dYYPOfgWzxuf49W8ktv8gq8\nTxfuYl4YG7cIiC4W9FQP9Y8eDVgEqW3gjdetYEiS1z65j3juJ8zmHUwJs2xvziLu\n+qpODVIO9GxFutRPefLlzN0bkQEV7WQXCSimoSHSa1s7Wa8EYeSR8OiHYn1N6wkB\n9C6TUsAiIv6YQ7y0wa0N4hI3jvox2BFuCVD2moMvrL9ntCPz5gGV00UKMkTUyJJl\nVC19OEPWVL3sze11o5H+MXAU4MQCwwJRyG0vb4oFUk5FOTPgnbDvRWRXF7TZYuxR\npza6EighAgMBAAECggEAFWgXKeaA7Zu6Hv9iaEYU9RaDKV0VCGvawryDSo46+dyr\ng3qoGS6GL6faHeVYjg5gjDDQx6JQ4FTB2E2l+iCHNbUA5kTuvjCNSkKwEDEePNaZ\nezJnuwGCGV4ZNfFl1WrwFFcp6ok2RHvZz6uaoKmNLwmez/TKdD1sGjNEMj6v7IVy\nw6zYPlzw5lbUDCv5VOobaWlhJt9tHix/QrAnrRC0/S5AlOapKbqK4r5bYgOGuvxP\nUJpV7JCMKCljSvR137kfs+n84LqMhq7D8wwSbp6hijr+u2MnryX2fOpt6aklnFlg\n7EQazycsN7fRJnZPIJ1bH2Om2w8oleR2kzbxtxijAQKBgQDtbhV0hr0SNtHXByBS\n2Ob8I//TjhVdjAK6PmDEXaxatAyDTufJpfB+UHqarqduiyuWFcP5dzKWc8tII20p\nm6INgcPOy47Bk22L4Vr7xgszeBmS3H6ORgVmNhhsQqcYkQK5pTxMwW3WvBotwkHh\nWGfqKvXdmaIKUcNozrH8gsTLHQKBgQDrwyRimZ6BHOMoJ3SDE7jR8eZyK7ZNLg1v\n/lUTf17QILYr/6dbvZeKxz/17In9WKrLRLvTEp56wCDZaFtfryDdNsk0syuaME54\nt67rs/EMLyCi1DmLJNvfDuyIci7YjT4oh1G/5pX+qXUPV+U5W6l/ZTzDcJx2nhXC\naD5yeUh91QKBgDJnkWR4ikEIpEmq+KC97WOP3OqzmjOO2rFhNrfZTxK+cH2bzbdQ\nZBrcyPp3o5HjN7CYFE+sj2/DS1+YLb+Mi72kU8ZeDoNn4fS1NdSHea9Git9TsgZQ\nNSs6xrqM995OQq7YtlFxKvlQW5plSAkn9H+Q+Ts/N1hLfVmNr9l0hYS9AoGBAOXh\navLxUwoVvrCCeCru6gFb2xVr5d+vjc6rsQzH3w0VOEwChY8AeGkLCyShtZLgB/kX\nVgTjXL/X4q/Z/2529pZ8Owg1w8geXgV7JQYSeHEm6q2aPVmdYP5IMP6CR4dDgV5H\nQ8DX911OoiOJ0qpw4/6iGfN/NDC8x/69YlaAR9zZAoGBAJCobdWUrC7iKb7NpsU3\nEmpnxmxh8RGnn89gkl9I+UH5qc8ch6CqfBRjTG/hk2zxzH4uOdxTjrCQBxF8BZ4k\ng6MNQ7mgsLJa3BVj2fa/yyImjQCdZINYXjG75WsC1hEJxze4EKPAoUk1DZyIsuPC\nJ5tT3f7ZQBQLpJsHtbx2977P\n-----END PRIVATE KEY-----\n",
+  "client_email": "srvacct1@pubsub-197323.iam.gserviceaccount.com",
+  "client_id": "103986106678199983657",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/srvacct1%40pubsub-197323.iam.gserviceaccount.com"
+}
+
+
+continue with docker
+
+vi Dockerfile
+
+FROM ubuntu:16.04
+
+RUN apt-get update && apt-get install -y python-pip curl
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+RUN echo "deb http://packages.cloud.google.com/apt cloud-sdk-xenial main" | \
+    tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
+    apt-get update && apt-get install -y google-cloud-sdk
+
+WORKDIR /app
+COPY myworker.py service-key.json ./
+ENV GOOGLE_APPLICATION_CREDENTIALS=/app/service-key.json
+RUN gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+CMD python myworker.py
+
+
+
+gcloud config get-value project
+
+echo sudo usermod -aG docker $USER
+
+echo docker build -t gcr.io/$(gcloud config get-value project)/worker .
+
+echo /home/bikle101/google-cloud-sdk/bin/gcloud docker -- push gcr.io/$(gcloud config get-value project)/worker
+
+gcloud compute zones list
+
+# cluster10 is name of my cluster
+# Get name from web:
+# https://console.cloud.google.com/kubernetes/
+
+gcloud container clusters get-credentials cluster10 --zone us-central1-f 
+
+
+Put this file in folder: gcp-job-queue
+
+# job.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: cluster10job
+spec:
+  parallelism: 3
+  template:
+    metadata:
+      name: cluster10job
+    spec:
+      containers:
+        - name: worker
+          image: gcr.io/pubsub-197323/worker
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 0.51
+      restartPolicy: OnFailure
+
+Next, I should run it...
+
+kubectl create -f job.yaml
+kubectl get all

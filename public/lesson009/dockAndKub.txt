@@ -1,0 +1,161 @@
+~/cs101/public/lesson009/dockAndKub.txt
+
+This file describes steps I go through to mix Docker and Kubernetes.
+
+I started with a one-line Dockerfile in ~/dock1804/Dockerfile
+
+From ubuntu:18.04
+
+
+Next I built an image from it:
+
+docker build -t dock1804 .
+
+docker image ls
+
+I saw this:
+
+dan@h80:~/dock1804 $ docker image ls
+REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
+dock1804               latest              02f9d6707661        3 weeks ago         88.3MB
+ubuntu                 18.04               02f9d6707661        3 weeks ago         88.3MB
+continuumio/anaconda   latest              f1d4efed24e6        4 weeks ago         3.15GB
+hello-world            latest              f2a91732366c        4 months ago        1.85kB
+dan@h80:~/dock1804 $
+
+I studied this page:
+
+https://cloud.google.com/container-registry/docs/pushing-and-pulling
+
+
+I authenticated:
+
+gcloud auth login
+
+I set my current project:
+
+gcloud projects list
+
+gcloud config set project pubsub-197323
+
+
+I wanted to do this:
+
+docker tag [SOURCE_IMAGE] [HOSTNAME]/[PROJECT-ID]/[IMAGE][:TAG]
+
+I tried:
+
+docker tag dock1804 gcr.io/pubsub-197323/dock1804
+
+It worked:
+
+dan@h80:~/dock1804 $ docker image ls |grep 1804
+gcr.io/pubsub-197323/dock1804   latest              02f9d6707661        3 weeks ago         88.3MB
+dock1804                        latest              02f9d6707661        3 weeks ago         88.3MB
+dan@h80:~/dock1804 $ 
+
+I tried:
+
+gcloud docker -- push gcr.io/pubsub-197323/dock1804
+
+It worked:
+
+dan@h80:~/dock1804 $ gcloud docker -- push gcr.io/pubsub-197323/dock1804
+The push refers to repository [gcr.io/pubsub-197323/dock1804]
+latest: digest:
+sha256:7dc573c889f663a2892937afe86eaebe4b1c97464fd4f69d1762a6e83f9c3510
+size: 1357
+dan@h80:~/dock1804 $ 
+dan@h80:~/dock1804 $ 
+dan@h80:~/dock1804 $ 
+
+
+dan@h80:~/dock1804 $ gcloud container images list-tags gcr.io/pubsub-197323/dock1804
+DIGEST        TAGS    TIMESTAMP
+7dc573c889f6  latest  2018-03-06T14:16:11
+dan@h80:~/dock1804 $
+
+
+I can pull:
+
+gcloud docker -- pull gcr.io/pubsub-197323/dock1804
+
+dan@h80:~/dock1804 $ gcloud docker -- pull gcr.io/pubsub-197323/dock1804
+Using default tag: latest
+latest: Pulling from pubsub-197323/dock1804
+Digest: sha256:7dc573c889f663a2892937afe86eaebe4b1c97464fd4f69d1762a6e83f9c3510
+Status: Image is up to date for gcr.io/pubsub-197323/dock1804:latest
+dan@h80:~/dock1804 $
+
+I tried to run it on gcp host.
+
+So, I started a kub-mgr-host running ubuntu.
+
+I installed gcloud:
+
+wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-193.0.0-linux-x86_64.tar.gz
+
+tar xf google-cloud-sdk-193.0.0-linux-x86_64.tar.gz
+
+ln -s google-cloud-sdk gcloud
+
+~/gcloud/install.sh
+
+bash
+
+I tried this:
+
+gcloud container images list-tags gcr.io/pubsub-197323/dock1804
+
+It worked!
+
+I tried this:
+
+gcloud docker -- pull gcr.io/pubsub-197323/dock1804
+
+
+bikle101@gke-cluster-1-node1804-2a2de813-l3rc:~$ gcloud docker -- pull gcr.io/pubsub-197323/d
+ock1804
+Using default tag: latest
+Cannot connect to the Docker daemon. Is the docker daemon running on this host?
+bikle101@gke-cluster-1-node1804-2a2de813-l3rc:~$
+
+I tried this:
+
+sudo docker -- pull gcr.io/pubsub-197323/dock1804
+
+It worked!
+
+I saw this:
+
+bikle101@gke-cluster-1-node1804-2a2de813-l3rc:~$ sudo docker -- pull gcr.io/pubsub-197323/doc
+k1804
+Using default tag: latest
+latest: Pulling from pubsub-197323/dock1804
+Digest: sha256:7dc573c889f663a2892937afe86eaebe4b1c97464fd4f69d1762a6e83f9c3510
+Status: Image is up to date for gcr.io/pubsub-197323/dock1804:latest
+bikle101@gke-cluster-1-node1804-2a2de813-l3rc:~$
+
+I tried this:
+
+sudo docker run -it gcr.io/pubsub-197323/dock1804 /bin/bash
+
+It worked!
+
+I saw this:
+
+bikle101@gke-cluster-1-node1804-2a2de813-l3rc:~$ 
+bikle101@gke-cluster-1-node1804-2a2de813-l3rc:~$ sudo docker run -it gcr.io/pubsub-197323/dock1804 /bin/bash
+root@fab9f50141f5:/# 
+root@fab9f50141f5:/# 
+root@fab9f50141f5:/# cat /etc/lsb-release 
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=18.04
+DISTRIB_CODENAME=bionic
+DISTRIB_DESCRIPTION="Ubuntu Bionic Beaver (development branch)"
+root@fab9f50141f5:/# 
+root@fab9f50141f5:/# 
+root@fab9f50141f5:/# exit
+bikle101@gke-cluster-1-node1804-2a2de813-l3rc:~$ 
+bikle101@gke-cluster-1-node1804-2a2de813-l3rc:~$ 
+

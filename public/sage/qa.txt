@@ -1,0 +1,117 @@
+~/cs101/public/sage/qa.txt
+
+q: How to get started once I get a notebook running?
+a: The help-link in the upper-right leads to a page full of good content:
+   - Manuual
+   - Tutorial
+   - Thematic Tutorial
+   - http://localhost:8080/doc/static/faq/index.html
+   - http://localhost:8080/doc/static/prep/index.html
+   - Youtube:
+   - https://www.youtube.com/watch?v=1wQ0rc5s04k
+   - https://www.youtube.com/user/wstein389/videos
+   - https://cocalc.com/projects/4d0f1d1d-7b70-4fc7-88a4-3b4a54f77b18/files/lectures/2016-04-25/?session=default
+   - https://cocalc.com/projects/4d0f1d1d-7b70-4fc7-88a4-3b4a54f77b18/files/lectures/?session=default
+
+q: How to install Sage?
+a: http://mirrors.mit.edu/sage/linux/64bit/index.html
+   Above url gives me a tar file.
+   
+q: How to fix this:
+sage@h79:~ $ anaconda2/bin/sage
+Error: You must set the SAGE_ROOT environment variable or run this
+script from the SAGE_ROOT or SAGE_ROOT/local/bin/ directory.
+??
+a: Dont try, just get the tar file and use that.
+
+q: How to fix this:
+sage@h79:~ $ anaconda2/bin/sage-notebook
+Traceback (most recent call last):
+  File "anaconda2/bin/sage-notebook", line 13, in <module>
+    from sage.env import SAGE_ROOT
+  File "/home/sage/anaconda2/lib/python2.7/site-packages/sage/env.py", line 151, in <module>
+    SINGULAR_SO = SAGE_LOCAL+"/lib/libSingular."+extension
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+sage@h79:~ $
+??
+a: Dont try, just get the tar file and use that.
+
+
+q: What is a Sage notebook and how to create one?
+a: get a sage-prompt and then type notebook()
+
+q: The intro shows a: "sage:" CLI prompt. How I get that displayed on my laptop?
+a: After I deployed the tar-file to ~sage/SageMath , I type this: ~sage/SageMath/sage
+
+q: Should I run Sage on Python 2.7?
+a: Actually I just install Sage from tar file and when I start sage, it runs its own copy of Python
+
+
+q: I did this on a Python 2.7 account:
+   conda install sage -c conda-forge
+   and I see many sage related execs in anaconda2/bin/
+   which should I try first?
+  -rwxrwxr-x  2 sage sage    38412 Jun  5 01:08 sage
+  -rw-rw-r--  2 sage sage      783 Jun  5 01:08 sage-arch-env
+  -rw-rw-r--  2 sage sage      647 Jun  5 01:08 sage-banner
+  -rwxrwxr-x  2 sage sage      659 Jun  5 01:08 sage-cachegrind
+  -rwxrwxr-x  2 sage sage      477 Jun  5 01:08 sage-callgrind
+  -rwxrwxr-x  1 sage sage     7417 Nov 23 21:15 sage-cleaner
+  -rwxrwxr-x  2 sage sage     1234 Jun  5 01:08 sage-clone-source
+  -rwxrwxr-x  1 sage sage     8326 Nov 23 21:15 sage-coverage
+  -rwxrwxr-x  1 sage sage     1236 Nov 23 21:15 sage-coverageall
+  -rwxrwxr-x  1 sage sage     1003 Nov 23 21:15 sage-cython
+  -rwxrwxr-x  2 sage sage      133 Jun  5 01:08 sage-download-upstream
+  -rw-rw-r--  2 sage sage    23771 Jun  5 01:08 sage-env
+  -rwxrwxr-x  1 sage sage      253 Nov 23 21:15 sage-eval
+  -rwxrwxr-x  1 sage sage     5330 Nov 23 21:15 sage-fixdoctests
+  -rwxrwxr-x  2 sage sage      443 Jun  5 01:08 sage-fix-pkg-checksums
+  -rw-rw-r--  2 sage sage        2 Jun  5 01:08 sage-gdb-commands
+  -rwxrwxr-x  2 sage sage      109 Jun  5 01:08 sage-grep
+  -rwxrwxr-x  2 sage sage      103 Jun  5 01:08 sage-grepdoc
+  -rwxrwxr-x  2 sage sage      244 Jun  5 01:08 sage-inline-fortran
+  -rwxrwxr-x  1 sage sage      209 Nov 23 21:15 sage-ipython
+  -rwxrwxr-x  2 sage sage      231 Jun  5 01:08 sage-list-experimental
+  -rwxrwxr-x  2 sage sage      227 Jun  5 01:08 sage-list-optional
+  -rwxrwxr-x  1 sage sage     2729 Nov 23 21:15 sage-list-packages
+  -rwxrwxr-x  2 sage sage      222 Jun  5 01:08 sage-list-standard
+  -rwxrwxr-x  1 sage sage    11537 Nov 23 21:15 sage-location
+  -rwxrwxr-x  2 sage sage      621 Jun  5 01:08 sage-massif
+  -rw-rw-r--  2 sage sage      163 Jun  5 01:08 sage-maxima.lisp
+  -rwxrwxr-x  2 sage sage      131 Jun  5 01:08 sage-native-execute
+  -rwxrwxr-x  1 sage sage     7101 Nov 23 21:15 sage-notebook
+  -rwxrwxr-x  1 sage sage     5817 Nov 23 21:15 sage-num-threads.py
+  -rwxrwxr-x  2 sage sage      603 Jun  5 01:08 sage-omega
+  -rwxrwxr-x  2 sage sage      175 Jun  5 01:08 sage-open
+  -rwxrwxr-x  2 sage sage    38411 Jun  5 01:08 sage.orig
+  -rwxrwxr-x  1 sage sage     3808 Nov 23 21:15 sage-pkg
+  -rwxrwxr-x  1 sage sage     8417 Nov 23 21:15 sage-preparse
+  -rwxrwxr-x  1 sage sage      416 Nov 23 21:15 sage-pypkg-location
+  -rwxrwxr-x  2 sage sage       38 Jun  5 01:08 sage-python
+  -rw-rw-r--  2 sage sage     6145 Jun  5 01:08 sage-README-osx.txt
+  -rwxrwxr-x  2 sage sage     1126 Jun  5 01:08 sage-rebaseall.bat
+  -rwxrwxr-x  2 sage sage      854 Jun  5 01:08 sage-rebaseall.sh
+  -rwxrwxr-x  2 sage sage      875 Jun  5 01:08 sage-rebase.bat
+  -rwxrwxr-x  2 sage sage      575 Jun  5 01:08 sage-rebase.sh
+  -rwxrwxr-x  2 sage sage     1067 Jun  5 01:08 sage-rst2ipynb
+  -rwxrwxr-x  1 sage sage     4763 Nov 23 21:15 sage-rst2sws
+  -rwxrwxr-x  1 sage sage     4705 Nov 23 21:15 sage-rst2txt
+  -rwxrwxr-x  2 sage sage     4248 Jun  5 01:08 sage-rsyncdist
+  -rwxrwxr-x  1 sage sage      714 Nov 23 21:15 sage-run
+  -rwxrwxr-x  1 sage sage      260 Nov 23 21:15 sage-run-cython
+  -rwxrwxr-x  1 sage sage     5783 Nov 23 21:15 sage-runtests
+  -rwxrwxr-x  2 sage sage     1355 Jun  5 01:08 sage-sdist
+  -rwxrwxr-x  2 sage sage     1037 Jun  5 01:08 sage-starts
+  -rwxrwxr-x  1 sage sage     4903 Nov 23 21:15 sage-startuptime.py
+  -rwxrwxr-x  1 sage sage     6866 Nov 23 21:15 sage-sws2rst
+  -rwxrwxr-x  1 sage sage      592 Nov 23 21:15 sage-unzip
+  -rwxrwxr-x  2 sage sage      647 Jun  5 01:08 sage-update-src
+  -rwxrwxr-x  2 sage sage     2314 Jun  5 01:08 sage-update-version
+  -rwxrwxr-x  2 sage sage      191 Jun  5 01:08 sage-upgrade
+  -rwxrwxr-x  2 sage sage      774 Jun  5 01:08 sage-valgrind
+  -rw-rw-r--  2 sage sage      173 Jun  5 01:08 sage-version.sh
+a: None of those seem to work; I should avoid it all.
+
+
+  
+   

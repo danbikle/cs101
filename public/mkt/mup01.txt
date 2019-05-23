@@ -1,0 +1,47 @@
+
+I see these as good days for a Meetup at 7 to 9pm:
+
+Feb 27, 28
+Mar 1, 6, 7, 8
+
+Here is the group which allows me "organizer-privileges":
+
+https://www.meetup.com/Palo-Alto-Data-Science-Association/
+
+I propose the following Meetup:
+
+Title: Free Class: Intro to Python and Data Science
+
+This Meetup is for beginners who want to learn Python and/or Data Science.
+
+Python is a great way to learn Data Science.
+
+Data Science is a great way to learn Python.
+
+This is an actual class taught by a Data Scientist/Python Programmer.
+
+It's not a power-point preso from the Marketing Dept.
+
+We give you a chair, table, power, and WIFI.
+
+We give you an hour of technical lecture followed by an hour of lab-time.
+
+Bring your laptop.
+
+This Meetup is small so we can give you individual attention.
+
+If you RSVP, we ask that you make an effort to attend.
+
+If the Meetup is oversubscribed, don't worry we will hold more Meetups.
+
+This Meetup is offered by two educational services:
+
+-- The Learning Center
+-- CS101
+
+The Learning Center offers high quality technical education to people between the ages of 9 and 99.
+
+CS101 offers Computer Science education to adults.
+
+Classes cover curriculum developed by engineers who know how to teach.
+

@@ -1,0 +1,26 @@
+~/cs101/public/lesson004/beamq.txt
+
+sub: In Apache Beam, What does 'ExtractWords' do?
+
+Hello world,
+
+I am studying the Python syntax at this URL:
+
+https://beam.apache.org/get-started/wordcount-example/#applying-pipeline-transforms
+
+I see this syntax:
+
+    # The Flatmap transform is a simplified version of ParDo.
+    | 'ExtractWords' >> beam.FlatMap(lambda x: re.findall(r'[A-Za-z\']+', x))
+
+What is 'ExtractWords' ?
+
+Is it the name of a function in the beam API?
+
+Is it a comment?
+
+Is it some kind of annotation for the line it resides in?
+
+Why is 'ExtractWords' there?
+
+

@@ -1,0 +1,36 @@
+
+~/cs101/public/mkt/mup2018_0309.txt
+
+sub: How to CHEAPLY distribute Python processes across GCP cluster
+
+LOCATION: The Learning Center [ Sunnyvale Corner: Maude+Mathilda ]
+Address: 333 W. Maude Ave #110 Sunnyvale.
+
+We start the Meetup with some review of connecting both your brain and laptop to AWS competitor: Google GCP.
+
+If you want to register for a free GCP account, bring your laptop, gmail-account, and a credit card.
+
+Next we study the main topic:
+
+How to distribute python processes across a GCP cluster.
+
+This Meetup is purely educational.
+You bring a laptop.
+We give you:
+  - Free Training
+  - Seat at table
+  - Laptop power
+  - Excellent WIFI
+  - Access to educational content.
+
+This is not a Data Science Meetup so,
+
+RSVP at CS101 Meetup:
+
+https://meetup.com/cs101a
+
+Space is limited...
+
+
+
+

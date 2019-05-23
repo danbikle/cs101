@@ -1,0 +1,263 @@
+~/cs101/public/lesson005/notes2018_0307.txt
+
+This file should help me remember the steps to do a kuber-pub-sub demo:
+
+copy id_rsa.pub into project metadata ssh-keys
+
+this time see if I can run the demo from the cluster-mgr-node.
+
+create devhost
+
+create cluster
+add workers
+
+create topic
+create subscription
+
+create service account
+  https://console.cloud.google.com/iam-admin/serviceaccounts
+    service-acct-name: "srvacct"
+  
+gcloud projects add-iam-policy-binding:
+  syntax in blog:
+    gcloud projects add-iam-policy-binding $(gcloud config get-value project) --member serviceAccount:srvacct1@$(gcloud config get-value project).iam.gserviceaccount.com --role roles/editor
+  web-form-way:
+    https://console.cloud.google.com/iam-admin/serviceaccounts
+    click-permissions
+      select role: editor
+    generate a key:
+      - 3 dots:
+        - ~/Downloads/pubsub-e71b0ed6e643.json
+
+Now I have this:
+{
+  "type": "service_account",
+  "project_id": "pubsub-197323",
+  "private_key_id": "e71b0ed6e643ecda36c5c83f91b9b6a0c25b6359",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDaqQpLPRSXzoNM\n/N0xfu6SA4Vr5mZdPg1ZqrHCIrHMmCeWRWjZ9cKj/dYYPOfgWzxuf49W8ktv8gq8\nTxfuYl4YG7cIiC4W9FQP9Y8eDVgEqW3gjdetYEiS1z65j3juJ8zmHUwJs2xvziLu\n+qpODVIO9GxFutRPefLlzN0bkQEV7WQXCSimoSHSa1s7Wa8EYeSR8OiHYn1N6wkB\n9C6TUsAiIv6YQ7y0wa0N4hI3jvox2BFuCVD2moMvrL9ntCPz5gGV00UKMkTUyJJl\nVC19OEPWVL3sze11o5H+MXAU4MQCwwJRyG0vb4oFUk5FOTPgnbDvRWRXF7TZYuxR\npza6EighAgMBAAECggEAFWgXKeaA7Zu6Hv9iaEYU9RaDKV0VCGvawryDSo46+dyr\ng3qoGS6GL6faHeVYjg5gjDDQx6JQ4FTB2E2l+iCHNbUA5kTuvjCNSkKwEDEePNaZ\nezJnuwGCGV4ZNfFl1WrwFFcp6ok2RHvZz6uaoKmNLwmez/TKdD1sGjNEMj6v7IVy\nw6zYPlzw5lbUDCv5VOobaWlhJt9tHix/QrAnrRC0/S5AlOapKbqK4r5bYgOGuvxP\nUJpV7JCMKCljSvR137kfs+n84LqMhq7D8wwSbp6hijr+u2MnryX2fOpt6aklnFlg\n7EQazycsN7fRJnZPIJ1bH2Om2w8oleR2kzbxtxijAQKBgQDtbhV0hr0SNtHXByBS\n2Ob8I//TjhVdjAK6PmDEXaxatAyDTufJpfB+UHqarqduiyuWFcP5dzKWc8tII20p\nm6INgcPOy47Bk22L4Vr7xgszeBmS3H6ORgVmNhhsQqcYkQK5pTxMwW3WvBotwkHh\nWGfqKvXdmaIKUcNozrH8gsTLHQKBgQDrwyRimZ6BHOMoJ3SDE7jR8eZyK7ZNLg1v\n/lUTf17QILYr/6dbvZeKxz/17In9WKrLRLvTEp56wCDZaFtfryDdNsk0syuaME54\nt67rs/EMLyCi1DmLJNvfDuyIci7YjT4oh1G/5pX+qXUPV+U5W6l/ZTzDcJx2nhXC\naD5yeUh91QKBgDJnkWR4ikEIpEmq+KC97WOP3OqzmjOO2rFhNrfZTxK+cH2bzbdQ\nZBrcyPp3o5HjN7CYFE+sj2/DS1+YLb+Mi72kU8ZeDoNn4fS1NdSHea9Git9TsgZQ\nNSs6xrqM995OQq7YtlFxKvlQW5plSAkn9H+Q+Ts/N1hLfVmNr9l0hYS9AoGBAOXh\navLxUwoVvrCCeCru6gFb2xVr5d+vjc6rsQzH3w0VOEwChY8AeGkLCyShtZLgB/kX\nVgTjXL/X4q/Z/2529pZ8Owg1w8geXgV7JQYSeHEm6q2aPVmdYP5IMP6CR4dDgV5H\nQ8DX911OoiOJ0qpw4/6iGfN/NDC8x/69YlaAR9zZAoGBAJCobdWUrC7iKb7NpsU3\nEmpnxmxh8RGnn89gkl9I+UH5qc8ch6CqfBRjTG/hk2zxzH4uOdxTjrCQBxF8BZ4k\ng6MNQ7mgsLJa3BVj2fa/yyImjQCdZINYXjG75WsC1hEJxze4EKPAoUk1DZyIsuPC\nJ5tT3f7ZQBQLpJsHtbx2977P\n-----END PRIVATE KEY-----\n",
+  "client_email": "srvacct1@pubsub-197323.iam.gserviceaccount.com",
+  "client_id": "103986106678199983657",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/srvacct1%40pubsub-197323.iam.gserviceaccount.com"
+}
+
+ssh into devhost
+
+apt-get install -y python-pip curl git
+
+git clone https://github.com/willcrichton/gcp-job-queue
+
+copy ~/Downloads/pubsub-e71b0ed6e643.json into: gcp:gcp-job-queue/service-key.json
+
+
+cd gcp-job-queue
+
+pip install -r requirements.txt
+
+vi master.py
+
+python master.py
+
+
+Here it is:
+
+"""
+master.py
+
+This script should publish many topics to pubsub.
+
+Ref:
+http://willcrichton.net/notes/gcp-job-queue/
+https://github.com/willcrichton/gcp-job-queue
+
+master.py goes through every ID in our file: "youtube-ids"
+
+Then it publishes them to the topic we chose earlier. 
+
+You can just run this script from your laptop:
+
+python master.py
+
+Once master.py completes, your queue has been filled.
+
+Next, we need to create the script we’ll run on each worker.
+
+Demo:
+python master.py
+
+"""
+
+from google.cloud import pubsub
+# How I pip install for google.cloud?
+# ans:
+# pip install -r requirements.txt
+
+from tqdm import tqdm
+
+#PROJECT = 'wc-personal'
+#TOPIC = 'queue-example'
+
+PROJECT = 'pubsub-197323'
+TOPIC   = 'topic10'
+
+# Ref:
+# https://github.com/willcrichton/gcp-job-queue/blob/master/youtube-ids
+def main():
+    with open('youtube-ids') as f:
+        ids = [s.strip() for s in f.readlines()]
+
+    publisher = pubsub.PublisherClient()
+    topic = 'projects/{}/topics/{}'.format(PROJECT, TOPIC)
+    for id in tqdm(ids):
+        publisher.publish(topic, id)
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+
+
+vi worker.py
+
+# coding utf-8
+"""
+gcp-job-queue/worker.py
+This script should help me with pubsub demo.
+Ref:
+http://willcrichton.net/notes/gcp-job-queue/
+https://github.com/willcrichton/gcp-job-queue
+"""
+
+# imports below depend on shell command:
+# pip install -r requirements.txt
+
+from google.cloud import pubsub
+from google.cloud import monitoring
+import subprocess as sp
+import time
+
+PROJECT = 'pubsub-197323'
+TOPIC   = 'topic10'
+
+SUBSCRIPTION = 'sub10'
+BUCKET       = 'pubsub611'
+
+
+def queue_empty(client):
+    result = client.query(
+        'pubsub.googleapis.com/subscription/num_undelivered_messages',
+        minutes=1).as_dataframe()
+    return result['pubsub_subscription'][PROJECT][SUBSCRIPTION][0] == 0
+
+
+def download_video(id):
+    sp.check_call(
+        'youtube-dl -f mp4 "http://youtube.com/watch?v={id}" -o {id}.mp4 --no-cache-dir'
+        .format(id=id),
+        shell=True)
+
+
+def copy_to_gcs(id):
+    sp.check_call('gsutil mv {}.mp4 gs://{}/tmp/videos/'.format(id, BUCKET), shell=True)
+
+
+def handle_message(message):
+    id = message.data
+    download_video(id)
+    # copy_to_gcs(id)
+    message.ack()
+
+
+def main():
+    client = monitoring.Client(project=PROJECT)
+
+    subscriber = pubsub.SubscriberClient()
+    subscription = subscriber.subscribe('projects/{}/subscriptions/{}'.format(
+        PROJECT, SUBSCRIPTION))
+    subscription.open(handle_message)
+
+    time.sleep(60)
+    while not queue_empty(client):
+        pass
+    subscription.close()
+
+
+if __name__ == '__main__':
+    main()
+
+
+ensure I have docker installed
+
+ref:
+  https://docs.docker.com/install/linux/linux-postinstall/
+  https://docs.docker.com/install/linux/docker-ce/debian/
+
+sudo apt-get install -y apt-transport-https ca-certificates gnupg2 software-properties-common
+     
+curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | sudo apt-key add -
+
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable"
+
+sudo apt-get update
+
+sudo apt-get install docker-ce
+
+sudo groupadd docker
+
+sudo usermod -aG docker $USER
+
+logout/login
+
+docker run hello-world
+
+sudo systemctl enable docker
+
+cd gcp-job-queue
+
+docker build -t gcr.io/$(gcloud config get-value project)/worker .
+
+gcloud docker -- push gcr.io/$(gcloud config get-value project)/worker
+
+sudo apt-get install kubectl
+
+gcloud compute zones list
+
+# pubsub2 is name of my cluster
+# Get name from web:
+# https://console.cloud.google.com/kubernetes/
+gcloud container clusters get-credentials pubsub2 --zone us-central1-f 
+
+Put this file in folder: gcp-job-queue
+
+# job.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: dl-videos
+spec:
+  parallelism: 3
+  template:
+    metadata:
+      name: dl-videos
+    spec:
+      containers:
+        - name: worker
+          image: gcr.io/pubsub-197323/worker
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 0.51
+      restartPolicy: OnFailure
+
+
+Start the job:
+
+kubectl create -f job.yaml
+
+kubectl get all
+
+gsutil ls gs://pubsub611/tmp/videos/ | head

@@ -1,0 +1,8 @@
+~/cs101/public/lesson006/notes2018_0302.txt
+
+This file shows my efforts to walkthrough some clustering info I found on the web:
+
+
+https://gc3-uzh-ch.github.io/elasticluster/
+
+

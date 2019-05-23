@@ -1,0 +1,32 @@
+
+Subject: Google Machine-Learning/Crash-Course/Prereqs-and-Prework
+
+
+Hello World,
+
+In this Meetup we will study content served from this site:
+
+https://developers.google.com/machine-learning/crash-course/prereqs-and-prework
+
+After a week or two we will move on to studying this site:
+
+https://developers.google.com/machine-learning/crash-course/ml-intro
+
+The first hour will be a lecture.
+
+The second hour will be lab and socializing.
+
+All you will need for the lab is a gmail account and a laptop.
+
+You will not need a credit card to to the lab.
+
+RSVP if you intend to attend.
+
+Space is limited.
+
+If you land on the waitlist, try to RSVP at this URL:
+
+http://meetup.com/cs101a
+
+Holler if questions: bikle101 , gmail
+

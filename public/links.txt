@@ -1,0 +1,3 @@
+
+
+https://cloud.google.com/docs/authentication/production?hl=en_US#auth-cloud-implicit-python

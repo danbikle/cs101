@@ -1,0 +1,196 @@
+~/cs101/public/lesson005/notes2018_0309.txt
+
+
+ref:
+  https://github.com/willcrichton/gcp-job-queue
+  http://willcrichton.net/notes/gcp-job-queue/
+  
+create service account
+  https://console.cloud.google.com/iam-admin/serviceaccounts
+    service-acct-name: "srvacct"
+  
+create service-key.json
+  web-form-way:
+    https://console.cloud.google.com/iam-admin/serviceaccounts
+    click-permissions
+      select role: editor
+    generate a key:
+      - 3 dots:
+        - ~/Downloads/pubsub-e71b0ed6e643.json
+        - copy downloaded-file to service-key.json
+	
+make srvacct an admin of pubsub611 bucket
+  - https://console.cloud.google.com/storage/browser/pubsub611
+  - 3 dots
+  
+This file should help me prep a gcp-pubsub-kubernetes demo.
+
+steps:
+
+
+create cluster cluster10
+  make it ubuntu with 3.75 gb ram
+
+add 1 worker, ubuntu
+
+vi .ssh/config
+
+Host gcp mgr
+  HostName 35.202.10.39
+  User bikle101
+  
+Host worker
+  HostName 35.224.153.55
+  User bikle101
+
+create topic, topic10
+create subscription, sub10
+
+ssh mgr
+ssh worker
+
+
+apt-get install -y bzip2
+
+wget https://repo.continuum.io/archive/Anaconda2-5.1.0-Linux-x86_64.sh
+bash Anaconda2-5.1.0-Linux-x86_64.sh
+
+conda install tqdm
+pip install google-cloud-pubsub google-cloud-monitoring
+
+cd ~
+
+vi publish_topics.py
+
+# coding utf-8
+"""
+publish_topics.py
+
+This script should publish many topics to pubsub.
+
+Ref:
+http://willcrichton.net/notes/gcp-job-queue/
+https://github.com/willcrichton/gcp-job-queue
+
+Demo:
+python publish_topics.py
+"""
+
+from google.cloud import pubsub
+from tqdm import tqdm
+
+PROJECT = 'pubsub-197323'
+TOPIC   = 'topic10'
+
+def main():
+    publisher  = pubsub.PublisherClient()
+    topic_s    = 'projects/{}/topics/{}'.format(PROJECT, TOPIC)
+    worksize_i = 10
+    for id in tqdm(list(range(worksize_i))):
+        publisher.publish(topic_s, str(id))
+
+if __name__ == '__main__':
+    main()
+
+
+
+
+
+
+Next, vi myworker.py
+# coding utf-8
+"""
+myworker.py
+This script should help me with pubsub demo.
+Ref:
+http://willcrichton.net/notes/gcp-job-queue/
+https://github.com/willcrichton/gcp-job-queue
+"""
+
+from google.cloud import pubsub
+from google.cloud import monitoring
+import subprocess as sp
+import time
+
+PROJECT = 'pubsub-197323'
+TOPIC   = 'topic10'
+
+SUBSCRIPTION = 'sub10'
+BUCKET       = 'pubsub611'
+
+def queue_empty(client):
+    result = client.query(
+        'pubsub.googleapis.com/subscription/num_undelivered_messages',
+        minutes=1).as_dataframe()
+    return result['pubsub_subscription'][PROJECT][SUBSCRIPTION][0] == 0
+
+def dothis(id):
+    sp.check_call(
+        'touch {id}.txt'
+        .format(id=id),
+        shell=True)
+
+def copy_to_gcs(id):
+    sp.check_call(
+        'gsutil mv {}.txt gs://{}/'
+        .format(id, BUCKET),
+        shell=True)
+
+def handle_message(message):
+    id = message.data
+    dothis(id)
+    copy_to_gcs(id)
+    message.ack()
+
+def main():
+    client       = monitoring.Client(project=PROJECT)
+    subscriber   = pubsub.SubscriberClient()
+    subscription = subscriber.subscribe(
+        'projects/{}/subscriptions/{}'
+        .format(PROJECT, SUBSCRIPTION))
+    subscription.open(handle_message)
+
+    time.sleep(60)
+    while not queue_empty(client):
+        pass
+    subscription.close()
+
+
+if __name__ == '__main__':
+    main()
+
+
+scp publish_topics.py myworker.py mgr:
+scp publish_topics.py myworker.py worker:
+
+on mgr:
+  python publish_topics.py
+
+
+
+
+install gcloud
+
+wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-192.0.0-linux-x86_64.tar.gz
+
+tar xf google-cloud-sdk-192.0.0-linux-x86_64.tar.gz
+
+ln -s google-cloud-sdk gcloud
+
+~/gcloud/install.sh
+
+bash
+
+gcloud components install kubectl
+ignore /home/kubernetes/bin/kubectl
+
+on worker:
+
+export BOTO_CONFIG=/dev/null
+
+gcloud auth activate-service-account --key-file=service-key.json
+
+gsutil cp 2018.txt gs://pubsub611/
+
+python danw.py
+

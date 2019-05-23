@@ -1,0 +1,18 @@
+~/cs101/public/sage/tutorial_notes.txt
+
+q: How to start?
+a: I started with this:
+   ~sage/SageMath/sage
+   http://localhost:8080/
+   http://localhost:8080/doc/live/tutorial/index.html
+
+q: What are the ways I can use sage?
+a:
+  - sage notebook
+  - sage CLI
+  - sage programs/scripts
+    - http://localhost:8080/doc/live/tutorial/programming.html#section-loadattach
+    - http://localhost:8080/doc/live/tutorial/programming.html#section-compile
+  - python scripts which call the sage library
+    - http://localhost:8080/doc/live/tutorial/programming.html#section-standalone
+    

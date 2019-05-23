@@ -1,0 +1,29 @@
+~/cs101/public/features.txt
+
+This file lists features which I want to complete.
+
+Not Done:
+
+redborder
+bluefont
+
+blog
+about
+contact
+forum
+
+cs221:
+  lecture pdfs
+  hw
+  texts
+  
+README.md
+  Linux, or Mac
+  VirtualBox
+  
+
+Done:
+
+Procfile
+favicon.ico
+

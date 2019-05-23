@@ -1,0 +1,170 @@
+https://codelabs.developers.google.com/codelabs/gcp-aws-bigquery/index.html?index=..%2F..%2Findex#0
+
+
+what is bigquery?
+
+BigQuery is a fully-managed, petabyte-scale, low-cost enterprise data warehouse for analytics. BigQuery is serverless. You do not need to set up and manage clusters.
+
+what is a bigquery dataset?
+
+A BigQuery dataset resides in a project. A dataset contains one or more tables with data.
+
+does bigquery have a web-ui?
+
+yes
+
+Can I export bigquery data to cloud storage bucket?
+
+yes
+
+what is a cloud storage bucket?
+
+it is like an s3 bucket but hosted by google.
+
+what is the bq command line tool?
+
+it is a cli I install on my laptop
+
+where is bigquery documentation?
+
+https://cloud.google.com/bigquery/docs/
+
+
+what is
+A Google Cloud Platform billing account?
+
+what is console?
+console.cloud.google.com
+
+what is project?
+
+it is a collection of work
+it is listed at upper left
+it has 2 names: friendly-name, generated-long-name
+
+what is an organization in the create-project page?
+
+dunno
+
+what is public dataset?
+
+dunno
+
+what is the Stackoverflow dataset?
+
+https://bigquery.cloud.google.com/dataset/bigquery-public-data:stackoverflow
+
+does this work:
+?
+https://bigquery.cloud.google.com/dataset/bigquery-public-data
+yes!
+
+where is public datasets?
+https://cloud.google.com/bigquery/public-data/
+
+what is a query?
+
+it is syntax I type into query editor.
+1 flavor is #standardSQL
+
+what is a prefix?
+
+it is a declaration of language in my editor
+
+ex: #standardSQL
+
+what is wildcard table name?
+
+where babynames zip file?
+
+http://www.ssa.gov/OACT/babynames/names.zip
+
+how to upload csv data into bigquery table?
+
+create table , upload , spec schema , 
+
+nouns:
+  dataset
+  bucket
+  bq command line tool
+  table
+  A Google Cloud Platform billing account
+  console
+  project
+  organization
+  public dataset
+  query  
+
+
+redshift
+
+
+nouns
+  cluster
+  node
+  database
+  snapshot
+  security group
+  IAM credentials 
+  Amazon Redshift console,
+  CLI
+  EC2-Classic platform
+  EC2-VPC platform
+  encryption
+  ssl-connection
+  master user
+  parameter-group
+  jdbc URL:
+    jdbc:redshift://endpoint:port/database
+
+
+2018-09-14
+
+I downloaded jar file to:
+
+~/sqlwb/ext/RedshiftJDBC42-1.2.16.1027.jar
+
+
+
+go to aws.amazon.com
+
+redshift...
+
+launch cluster
+
+.33/hr
+
+url
+
+jdbc:redshift//ferdi-test-cluster:5439/dev
+
+ferdi
+Ferdi123
+
+gsb rcpedia
+
+avoid career builder
+
+like linkedin , indeed
+
+https://sites.google.com/a/stanford.edu/rcpedia/
+
+jdbc:redshift://ferdi-test-cluster.cgepfzsr5ubf.us-west-1.redshift.amazonaws.com:5439/dev
+
+
+
+    Go into EC2 Management Console
+    On the left navigation pane, look for Network & Security header and click on Security Groups. (https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#SecurityGroups:sort=groupId)
+    Notice the row with name "launch-wizard-1" in the Group Name's column. Click that. Then select the Inbound tab, and click Edit.
+    Add Rule: Type=Redshift, Source=MyIP. (auto-fill)
+    Save it.
+    Try to connect again from within SQLWorkbench/J.
+
+
+create role ...
+
+
+https://docs.aws.amazon.com/redshift/latest/gsg/getting-started.html
+
+https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-create-an-iam-role.html
+

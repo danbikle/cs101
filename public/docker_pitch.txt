@@ -1,0 +1,38 @@
+~/cs101/public/docker_pitch.txt
+
+Meetup at the Learning Center at Maude and Mathilda.
+
+Introduction to Docker!
+
+Docker is software which can help you distribute software across a cluster.
+
+This class introduces you to Docker.
+
+We start by showing you how to start a host on Google-Cloud which has Docker installed.
+
+Next we show you some of the simple ways that Docker can be operated.
+
+After you understand simple Docker operations, we will help you attempt installation of Docker on your laptop.
+
+Installing Docker on Mac is usually easy.
+
+Installing Docker on windows can be difficult.
+
+If you have problems installing or running Docker on your laptop, it is best to just run Docker on Google-Cloud.
+
+In order to use Google-Cloud you will need a gmail account and a credit card.
+
+Google will give you a $300 credit so you can learn how to run Docker and other software on Google-Cloud.
+
+We will show you how to get that $300 credit and start using your Google-Cloud account.
+
+The first hour of the Meetup is Lecture.
+
+The second hour is Lab.
+
+Feel free to attend just the Lecture and do the Lab at home.
+
+RSVP if you intend to attend.
+
+
+

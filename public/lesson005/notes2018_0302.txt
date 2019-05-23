@@ -1,0 +1,412 @@
+~/cs101/public/lesson005/notes2018_0302.txt
+
+This file descrbes my effort to walkthrough a blog post about gcp pub-sub and kubernetes:
+
+
+http://willcrichton.net/notes/gcp-job-queue/
+
+I noticed this syntax first:
+
+
+# parallelize the computation over multiple cores:
+from concurrent.futures import ProcessPoolExecutor
+with ProcessPoolExecutor() as executor:
+    list(executor.map(expensive_function, range(1000000)))
+
+I searched:
+https://www.google.com/search?q=In+Python+how+to+use+map+function
+
+tried:
+
+list(map(print, 'hello')) # works
+
+def echo(x): return x     # works
+
+list(map(echo, 'hello'))  # works
+
+list(map(lambda x: x, 'hello')) # works:
+# ['h', 'e', 'l', 'l', 'o']
+
+q: in python 3, can I do this:
+from concurrent.futures import ProcessPoolExecutor
+?
+yes!
+
+I tried this:
+
+# parallelize the computation over multiple cores:
+from concurrent.futures import ProcessPoolExecutor
+with ProcessPoolExecutor() as executor: list(executor.map(lambda x: x, range(10)))
+
+# error:
+# _pickle.PicklingError: Can't pickle <function <lambda> at 0x7fd2a132dd08>
+
+I tried this:
+
+# parallelize the computation over multiple cores:
+from concurrent.futures import ProcessPoolExecutor
+def echo(x): return x
+with ProcessPoolExecutor() as executor: list(executor.map(echo, range(10)))
+
+works! yay!!
+>>> with ProcessPoolExecutor() as executor: list(executor.map(echo, range(10)))
+... 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> 
+
+
+
+I noticed links:
+
+https://kubernetes.io/docs/tasks/job/fine-parallel-processing-work-queue/
+https://docs.docker.com/install/
+https://github.com/willcrichton/gcp-job-queue
+
+
+2018-03-06
+
+I installed docker on p95:
+
+https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1
+
+apt-get update
+
+apt-get install apt-transport-https ca-certificates curl software-properties-common
+
+/usr/bin/curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+apt-get update
+
+apt-get install docker-ce
+
+sudo docker run hello-world
+
+groupadd docker
+
+usermod -aG docker dan
+
+systemctl enable docker
+
+shutdown -r now
+
+docker run hello-world
+
+https://docs.docker.com/config/daemon/
+
+google: daemon.json configuration file.
+
+{
+  "debug": true,
+  "tls": true,
+  "tlscert": "/var/docker/server.pem",
+  "tlskey": "/var/docker/serverkey.pem",
+  "hosts": ["tcp://192.168.59.3:2376"]
+}
+
+
+dockerd
+
+or something like:
+
+dockerd -D --tls=true --tlscert=/var/docker/server.pem --tlskey=/var/docker/serverkey.pem -H tcp://192.168.59.3:2376
+
+
+
+I returned to:
+http://willcrichton.net/notes/gcp-job-queue/
+
+https://research.google.com/youtube8m/
+https://groups.google.com/forum/#!forum/youtube8m-users
+
+
+pip install -r requirements.txt
+
+depends on...
+
+https://github.com/willcrichton/gcp-job-queue
+
+sudo bash
+
+echo FROM ubuntu:16.04 > /tmp/ctxt/Dockerfile
+cd /tmp/
+docker build ctxt
+
+docker image ls
+docker container ls
+
+docker rm cda6f5e55fd4 # removes container
+docker image rm f2a91732366c
+
+I should return to docker later...
+
+I returned to:
+http://willcrichton.net/notes/gcp-job-queue/
+
+login to gcp
+
+https://console.cloud.google.com/
+
+create project: pubsub
+
+check that this project can bill:
+https://console.cloud.google.com/billing
+
+Big Data > Pub/Sub.
+
+https://console.cloud.google.com/cloudpubsub
+
+enable API
+
+create topic: topic10
+  click on topic10
+    create subscription: sub10
+
+https://console.cloud.google.com/kubernetes
+
+button create cluster
+
+cluster of 1 [ master node ]
+
+wait
+
+click on it
+click edit
+
+click add node pool
+
+Set Name to workers.
+Set Preemptible nodes to Yes.
+Set Autoscaling to On.
+set Minimum size to 0.
+Set Maximum size to your desired number of workers (we’ll use 3 for this example).
+Then click Save.
+
+wait
+
+create bucket: pubsub611
+
+
+on some host I need this:
+# https://cloud.google.com/sdk/downloads
+# https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-191.0.0-linux-x86_64.tar.gz
+??
+
+here is requirements.txt:
+
+google-cloud-pubsub
+google-cloud-monitoring
+youtube-dl
+pandas
+tqdm
+
+
+Can Python3 be used with these?
+
+
+On some host,laptop even, I should have this:
+
+
+# gcp-job-queue/master.py
+
+# This script should help me with pubsub demo.
+# Ref:
+# http://willcrichton.net/notes/gcp-job-queue/
+# https://github.com/willcrichton/gcp-job-queue
+
+from google.cloud import pubsub
+# How I pip install for google.cloud?
+# ans:
+# pip install -r requirements.txt
+
+from tqdm import tqdm
+
+#PROJECT = 'wc-personal'
+#TOPIC = 'queue-example'
+
+PROJECT = 'pubsub'
+TOPIC   = 'topic10'
+
+# Ref:
+# https://github.com/willcrichton/gcp-job-queue/blob/master/youtube-ids
+def main():
+    with open('youtube-ids') as f:
+        ids = [s.strip() for s in f.readlines()]
+
+    publisher = pubsub.PublisherClient()
+    topic = 'projects/{}/topics/{}'.format(PROJECT, TOPIC)
+    for id in tqdm(ids):
+        publisher.publish(topic, id)
+
+
+if __name__ == '__main__':
+    main()
+
+
+master.py goes through every ID in our file: "youtube-ids"
+
+Then it publishes them to the topic we chose earlier. You can just run this script from your laptop:
+
+python master.py
+
+Once master.py completes, your queue has been filled to the brim with IDs ready for downloading. Next, we need to create the script we’ll run on each worker:
+
+oooooooooo
+
+2018-03-07
+
+
+created cluster
+created host: tiny1
+  apt-get install git
+  git clone https://github.com/willcrichton/gcp-job-queue
+  apt-get install -y python-pip curl
+  pip install -r requirements.txt
+    memory error
+  enhance tiny1...
+    added mem
+    now pip works! yay!!
+    
+I should branch gcp-job-queue:
+
+git checkout -b bikle
+
+
+bikle101@tiny1:~/gcp-job-queue$ python master.py
+100% 1000/1000 [00:00<00:00, 26715.14it/s]
+bikle101@tiny1:~/gcp-job-queue$ 
+bikle101@tiny1:~/gcp-job-queue$
+
+I think it worked!
+notice the fraction: 100% 1000/1000
+
+
+
+create the script we’ll run on each worker:
+
+"""
+gcp-job-queue/worker.py
+This script should help me with pubsub demo.
+Ref:
+http://willcrichton.net/notes/gcp-job-queue/
+https://github.com/willcrichton/gcp-job-queue
+"""
+
+# imports below depend on shell command:
+# pip install -r requirements.txt
+
+from google.cloud import pubsub
+from google.cloud import monitoring
+import subprocess as sp
+import time
+
+PROJECT = 'pubsub'
+TOPIC   = 'topic10'
+
+SUBSCRIPTION = 'sub10'
+BUCKET       = 'pubsub611'
+
+
+def queue_empty(client):
+    result = client.query(
+        'pubsub.googleapis.com/subscription/num_undelivered_messages',
+        minutes=1).as_dataframe()
+    return result['pubsub_subscription'][PROJECT][SUBSCRIPTION][0] == 0
+
+
+def download_video(id):
+    sp.check_call(
+        'youtube-dl -f mp4 "http://youtube.com/watch?v={id}" -o {id}.mp4 --no-cache-dir'
+        .format(id=id),
+        shell=True)
+
+
+def copy_to_gcs(id):
+    sp.check_call('gsutil mv {}.mp4 gs://{}/tmp/videos/'.format(id, BUCKET), shell=True)
+
+
+def handle_message(message):
+    id = message.data
+    download_video(id)
+    # copy_to_gcs(id)
+    message.ack()
+
+
+def main():
+    client = monitoring.Client(project=PROJECT)
+
+    subscriber = pubsub.SubscriberClient()
+    subscription = subscriber.subscribe('projects/{}/subscriptions/{}'.format(
+        PROJECT, SUBSCRIPTION))
+    subscription.open(handle_message)
+
+    time.sleep(60)
+    while not queue_empty(client):
+        pass
+    subscription.close()
+
+
+if __name__ == '__main__':
+    main()
+
+
+Above script depends on shell commands:
+  gsutil
+  youtube-dl
+  
+The tiny-instance I created seems to already have gsutil:
+  /usr/bin/gsutil
+
+Next:
+
+gcloud iam service-accounts create example-account
+gcloud projects add-iam-policy-binding $(gcloud config get-value project) \
+    --member serviceAccount:example-account@$(gcloud config get-value project).iam.gserviceaccount.com \
+    --role roles/editor
+gcloud iam service-accounts keys create service-key.json \
+    --iam-account=example-account@$(gcloud config get-value project).iam.gserviceaccount.com
+
+tiny-instance have gcloud?
+  - yes!
+  
+I tried this:
+
+gcloud iam service-accounts create srvacct1
+
+
+bikle101@tiny1:~/gcp-job-queue$ which gcloud
+/usr/bin/gcloud
+bikle101@tiny1:~/gcp-job-queue$ 
+bikle101@tiny1:~/gcp-job-queue$ gcloud iam service-accounts create srvacct1
+API [iam.googleapis.com] not enabled on project [pubsub-197323]. Would
+ you like to enable and retry?  (y/N)?  y
+
+Enabling service iam.googleapis.com on project pubsub-197323...
+Waiting for async operation operations/tmo-acf.7b901299-27c1-4e47-8f18-160dc059f60c to complete...
+Operation finished successfully. The following command can describe the Operation details:
+ gcloud services operations describe operations/tmo-acf.7b901299-27c1-4e47-8f18-160dc059f60c
+Created service account [srvacct1].
+bikle101@tiny1:~/gcp-job-queue$ 
+bikle101@tiny1:~/gcp-job-queue$
+
+Next I tried:
+
+gcloud projects add-iam-policy-binding $(gcloud config get-value project) --member serviceAccount:srvacct1@$(gcloud config get-value project).iam.gserviceaccount.com --role roles/editor
+
+
+
+bikle101@tiny1:~/gcp-job-queue$ gcloud projects add-iam-policy-binding $(gcloud config get-value project) --member serviceAccount:srvacct1@$(gcloud config get-value project).iam.gserviceaccount.com --role roles/editor
+API [cloudresourcemanager.googleapis.com] not enabled on project 
+[pubsub-197323]. Would you like to enable and retry?  (y/N)?  y
+
+Enabling service cloudresourcemanager.googleapis.com on project pubsub-197323...
+Waiting for async operation operations/tmo-acf.eb953b16-c0c2-4d03-9e3e-751912ec1743 to complete...
+Operation finished successfully. The following command can describe the Operation details:
+ gcloud services operations describe operations/tmo-acf.eb953b16-c0c2-4d03-9e3e-751912ec1743
+ERROR: (gcloud.projects.add-iam-policy-binding) Project [pubsub-197323] does not exist, or you do not have permission to access it.
+bikle101@tiny1:~/gcp-job-queue$ 
+bikle101@tiny1:~/gcp-job-queue$ 
+bikle101@tiny1:~/gcp-job-queue$
+
+

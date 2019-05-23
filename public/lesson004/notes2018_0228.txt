@@ -1,0 +1,240 @@
+~/cs101/public/lesson004/notes2018_0228.txt
+
+This file should hold notes I gather while I write lesson004.
+
+I want to learn enough about serverless tech so I can quickly:
+  - gather new prices
+  - build new models
+  - issue new predictions
+  - for both:
+    - stocks
+    - forex
+
+
+I looked at cloud-functions.
+I see that they depend on JavaScript.
+I'd prefer to use Python.
+
+Next I looked at "Dataprep".
+
+That is a third party service called Trifacta.
+
+I prefer to stick with something open-source.
+
+Next I looked at "Dataflow".
+
+I see evidence that it uses Python.
+
+I collected some screenshots of me setting it up.
+
+url:
+  https://github.com/GoogleCloudPlatform/DataflowJavaSDK
+  https://cloud.google.com/dataflow/docs
+  
+These screenshots are from a walk-through of a java-wordcount-app:
+
+
+dan@h80:~/cs101/public/lesson004 $ ll
+total 6280
+drwxrwxr-x 2 dan dan   4096 Feb 28 13:38 ./
+drwxrwxr-x 9 dan dan   4096 Feb 28 12:28 ../
+-rw-rw-r-- 1 dan dan  53573 Feb 28 13:00 df100.png
+-rw-rw-r-- 1 dan dan 106321 Feb 28 13:06 df101.png
+-rw-rw-r-- 1 dan dan 148674 Feb 28 13:08 df102.png
+-rw-rw-r-- 1 dan dan  87126 Feb 28 13:08 df103.png
+-rw-rw-r-- 1 dan dan  87024 Feb 28 13:09 df104.png
+-rw-rw-r-- 1 dan dan  84377 Feb 28 13:09 df105.png
+-rw-rw-r-- 1 dan dan  87019 Feb 28 13:10 df106.png
+-rw-rw-r-- 1 dan dan  98222 Feb 28 13:11 df107.png
+-rw-rw-r-- 1 dan dan  98486 Feb 28 13:11 df108.png
+-rw-rw-r-- 1 dan dan 185597 Feb 28 13:12 df110.png
+-rw-rw-r-- 1 dan dan 190951 Feb 28 13:13 df111.png
+-rw-rw-r-- 1 dan dan 231717 Feb 28 13:14 df112.png
+-rw-rw-r-- 1 dan dan 281559 Feb 28 13:15 df113.png
+-rw-rw-r-- 1 dan dan 285828 Feb 28 13:16 df114.png
+-rw-rw-r-- 1 dan dan 286466 Feb 28 13:17 df115.png
+-rw-rw-r-- 1 dan dan 242159 Feb 28 13:18 df116.png
+-rw-rw-r-- 1 dan dan 318965 Feb 28 13:19 df117.png
+-rw-rw-r-- 1 dan dan 278053 Feb 28 13:26 df118.png
+-rw-rw-r-- 1 dan dan 302921 Feb 28 13:27 df119.png
+-rw-rw-r-- 1 dan dan 257588 Feb 28 13:28 df120.png
+-rw-rw-r-- 1 dan dan 211161 Feb 28 13:29 df121.png
+-rw-rw-r-- 1 dan dan 203312 Feb 28 13:30 df122.png
+-rw-rw-r-- 1 dan dan 252887 Feb 28 13:30 df123.png
+-rw-rw-r-- 1 dan dan 277639 Feb 28 13:31 df124.png
+-rw-rw-r-- 1 dan dan 285199 Feb 28 13:31 df125.png
+-rw-rw-r-- 1 dan dan 130804 Feb 28 13:32 df126.png
+-rw-rw-r-- 1 dan dan 119631 Feb 28 13:33 df127.png
+-rw-rw-r-- 1 dan dan  85294 Feb 28 13:33 df128.png
+-rw-rw-r-- 1 dan dan 114232 Feb 28 13:34 df129.png
+-rw-rw-r-- 1 dan dan  96846 Feb 28 13:34 df130.png
+-rw-rw-r-- 1 dan dan 101699 Feb 28 13:35 df131.png
+-rw-rw-r-- 1 dan dan 114186 Feb 28 13:36 df132.png
+-rw-rw-r-- 1 dan dan  93028 Feb 28 13:36 df133.png
+-rw-rw-r-- 1 dan dan 124919 Feb 28 13:37 df134.png
+-rw-rw-r-- 1 dan dan 207232 Feb 28 13:38 df135.png
+
+
+Next I studied this:
+
+https://cloud.google.com/dataflow/docs/quickstarts/quickstart-python
+
+I acted on it:
+
+  - Install cloud SDK:
+    - https://cloud.google.com/sdk/docs/
+  - See if gcloud in my PATH already:
+    - gcloud --help
+  - download:
+    - https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-191.0.0-linux-x86_64.tar.gz
+    - cp ~/dl/goog*gz ~/cs101/public/
+    - ll /home/dan/dl/google-cloud-sdk
+    - mv /home/dan/dl/google-cloud-sdk ~
+    - cd ~
+    - ln -s google-cloud-sdk gc
+    - gc/bin/gcloud --help
+    - Note that gcloud is a shell wrapper of a python 2.7 script
+    - gc/bin/gcloud init
+    - It worked; then served links:
+      - https://cloud.google.com/sdk/auth_success
+      - https://cloud.google.com/sdk/gcloud
+      - https://cloud.google.com/sdk/cloudplatform
+      - https://developers.google.com/api-client-library
+      - https://console.cloud.google.com/start/appengine
+      - https://cloud.google.com/compute/docs/quickstart
+      - https://cloud.google.com/bigquery/bq-command-line-tool-quickstart
+      - https://cloud.google.com/cloud-sql/docs/cloud-sdk
+      - https://cloud.google.com/cloud-dns/getting-started
+      - http://stackoverflow.com/questions/tagged/gcloud
+      - https://groups.google.com/forum/?fromgroups#!forum/google-cloud-dev
+      - https://issuetracker.google.com/issues/new?component=187143
+      
+    
+- I created multi-regional bucket: dandf
+- https://cloud.google.com/storage/docs/gsutil/commands/mb
+
+- gsutil mb gs://dandf
+- gsutil ls
+- locally:
+- FAILs: conda install  google-cloud-dataflow
+- FAILs: pip install google-cloud-dataflow
+- google-cloud-dataflow is python 2only I think
+- I should setup a gcloud linux account...
+
+- python -m apache_beam.examples.wordcount --output OUTPUT_FILE
+- try this in cloud-shell:
+
+cd ~
+
+virtualenv venv10
+
+. venv10/bin/activate
+
+pip install google-cloud-dataflow
+
+pip install google-cloud-dataflow
+export BUCKET=gs://dandf
+echo $PROJECT
+export PROJECT=less004-196620
+python -m apache_beam.examples.wordcount \
+  --project $PROJECT \
+  --runner DataflowRunner \
+  --staging_location $BUCKET/staging \
+  --temp_location $BUCKET/temp \
+  --output $BUCKET/results/output
+
+It seemed to start okay...
+
+INFO:root:2018-02-28T23:40:26.179Z: JOB_MESSAGE_BASIC: (38b1db2af5f4ff13): Worker pool stopped.
+INFO:root:2018-02-28T23:40:26.216Z: JOB_MESSAGE_DEBUG: (38b1db2af5f4f94f): Tearing down pending resources...
+INFO:root:Job 2018-02-28_15_32_29-364152677400130160 is in state JOB_STATE_DONE
+INFO:root:number of empty lines: 1663
+INFO:root:average word length: 4
+(venv10) bikle101@less004-196620:~$
+(venv10) bikle101@less004-196620:~$
+
+I think it worked!
+
+It looks like I should study this:
+  - apache_beam.examples.wordcount.py
+
+ooooooooo
+
+2018-03-01
+
+a 2nd walkthrough today
+
+I started by creating a new project: dfnow
+
+I bumped into an issue with billing.
+
+I think billing limits me to 5 projects.
+
+I disconnected some projects from billing.
+
+I think it works now.
+
+I collected some screenshots of bringing dataflow up to readiness:
+
+df150.png through df195.png
+
+Next I tried the python path again.
+
+https://cloud.google.com/dataflow
+
+I picked my project: dfnow
+
+starting img: df200.png
+
+
+Next I studied this:
+
+https://cloud.google.com/dataflow/docs/quickstarts/quickstart-python
+Actually I should have started there.
+I would have avoided problems with billing and permissions.
+
+
+
+
+virtualenv venv10
+
+. venv10/bin/activate
+
+pip install google-cloud-dataflow
+
+
+
+# which env var has my project-id?
+env|grep PROJECT
+I see it: $DEVSHELL_PROJECT_ID
+
+Time to call python
+
+python
+
+import apache_beam
+
+(venv10) bikle101@dfnow-196701:~$ python
+Python 2.7.13 (default, Nov 24 2017, 17:33:09)
+[GCC 6.3.0 20170516] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import apache_beam
+>>>
+(venv10) bikle101@dfnow-196701:~$
+(venv10) bikle101@dfnow-196701:~$
+(venv10) bikle101@dfnow-196701:~$
+
+Now I am ready...
+
+
+I tried this:
+
+export BUCKET=gs://dfnow
+
+python -m apache_beam.examples.wordcount \
+  --project $DEVSHELL_PROJECT_ID \
+  --runner DataflowRunner \
+  --staging_location $BUCKET/staging \
+  --temp_location $BUCKET/temp \
+  --output $BUCKET/results/output
+

@@ -1,0 +1,51 @@
+~/cs101/public/course_list.txt
+
+Stanford:
+
+  cme204 ,  41
+  cme206 ,   ?
+  cs106a , 999
+  cs106aJS
+  cs106ap [ python ]
+  cs106b , 409
+  cs106x ,  83
+  cs107  , 236
+  cs161  , 200
+  cs205a , 100
+  cs221  , 1100
+  cs224n ,  393
+  cs229  , 1200
+  cs231a ,  127
+  cs231n ,  April
+  cs246  ,  280
+  cs255  ,  190
+  ee214b ,   19
+  ee364a ,  133
+  ee364b ,  June
+  ee376a ,   51
+  stats191, 130
+  stats216,  59 
+  stats216v, june
+  stats290,  46
+
+https://lagunita.stanford.edu/courses
+stanford-online
+http://online.stanford.edu/
+
+http://online.stanford.edu/course/game-theory-fall-16
+http://online.stanford.edu/course/game-theory-ii-advanced-applications-fall-16
+http://online.stanford.edu/course/how-to-learn-math-for-students-s14
+http://online.stanford.edu/course/integrating-language-development-and-content-learning-math-focus-reasoning
+http://online.stanford.edu/course/introduction-mathematical-thinking-0
+http://online.stanford.edu/course/algorithms-design-and-analysis-self-paced
+http://online.stanford.edu/course/blended-and-online-learning-design-stanford
+http://online.stanford.edu/course/computer-science-101-self-paced
+http://online.stanford.edu/course/compilers-0
+http://online.stanford.edu/course/databases-self-paced
+http://online.stanford.edu/course/introduction-computer-networking
+http://online.stanford.edu/course/mining-massive-datasets-self-paced
+http://online.stanford.edu/course/principles-computing
+http://online.stanford.edu/course/probability-and-statistics-self-paced
+http://online.stanford.edu/course/statistical-learning-self-paced
+http://online.stanford.edu/course/statistical-reasoning-self-paced
+
