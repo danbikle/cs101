@@ -1,0 +1,35 @@
+cs101todo.txt
+
+useradd -m -s /bin/bash -G sudo cs101
+passwd cs101
+
+vi ~/.ssh/config
+
+ssh -AY cs101
+
+install dotfiles
+
+install rbenv
+
+rbenv install 2.6.3
+rbenv global  2.6.3
+
+gem install rails
+
+rails new cs101 -MOCSJ --skip-yarn --skip-listen --skip-spring --skip-active-storage --skip-coffee --skip-bootsnap
+
+cd cs101
+
+git init
+
+git add .;git commit -am hi
+
+vi Gemfile
+
+bundle
+
+install heroku
+
+vi ~/ks/mem/herokupea.txt
+
+heroku create cs101a
