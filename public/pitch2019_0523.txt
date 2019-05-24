@@ -1,0 +1,42 @@
+pitch2019_0523.txt
+
+cs101.us is ...
+
+- A technology training service (software mostly)
+- We are both online and face to face
+
+- Our students are ...
+  - High School age
+    - Learning programming in High School is optimal
+    - Learning programming in college is sub-optimal but possible
+    - Programming is like learning to play a musical instrument
+    - I dont go to college to learn how to play the piano; I learn the piano before college
+    - It is a skill which needs time to develop
+
+  - College age
+    - We help with hw, assigned projects, studying for tests
+
+  - Workforce age
+    - Product/Application development
+    - Choreography of Git
+    - Testing, Monitoring
+    - Cloud computing
+    - Machine Learning
+
+- All our students learn:
+  - Personal Promotion:
+    - App portfolio
+    - Software portfolio
+    - Video portfolio
+  - Interview prep
+    - Company research
+    - Interview simulation
+
+Meetup:
+
+GCP Python Library
+https://www.meetup.com/cs101a/
+Tuesday 2019-05-28 Noon
+Mitchell Park Library 2nd floor
+
+
