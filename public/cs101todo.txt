@@ -47,3 +47,7 @@ heroku create cs101a
 
 cp       ~/cs101_old/Procfile ~/cs101/
 rsync -a ~/cs101_old/script   ~/cs101/
+
+2019-05-24 oooooooooooo
+
+Enhance the lessons page so the old lessons are behind an old-lessons page.
