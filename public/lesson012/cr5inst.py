@@ -3,6 +3,13 @@ cr5inst.py
 
 This script should use syntax in gcloud10.bash to create 5 GCE instances.
 
+With my mouse, I should get a Bash syntax from this page:
+https://console.cloud.google.com/compute/instancesAdd
+Then, I should paste the string into a file:
+gcloud10.bash
+
+This Python script should then read that file 5 times and create 5 instances.
+
 Demo:
 python3 cr5inst.py
 """
