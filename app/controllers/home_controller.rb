@@ -7,4 +7,7 @@ class HomeController < ApplicationController
   end
   def contact
   end
+  def takepost
+    redirect_to '/'
+  end
 end
