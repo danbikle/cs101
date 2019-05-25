@@ -59,6 +59,74 @@
 %img(src='/lesson012/lesson012g.png')
 %hr/
 
+%p Next, I asked google.com a simple question:
 
+%a(href="https://www.google.com/search?q=What+are+the+GCP+shell+commands") https://www.google.com/search?q=What+are+the+GCP+shell+commands?
 
+%p Google served me some links and I learned from those links that GCP has two main shell commands:
+
+%ul
+  %li gcloud
+  %li gsutil
+
+%p Next, in my Chrome browser, I visited this URL:
+
+%p
+  %a(href="https://console.cloud.google.com/compute") https://console.cloud.google.com/compute
+
+%p At the top, I clicked the blue-link: "CREATE INSTANCE".
+
+%p It served a page to me which looked familiar:
+
+%img(src='/lesson012/lesson012h.png')
+%hr/
+
+%p At the bottom, I did not click the blue-"Create" button.
+
+%p Instead, I clicked the blue link: "command line".
+
+%p GCP served me command-line-syntax:
+
+%img(src='/lesson012/lesson012i.png')
+%hr/
+
+%p I grabbed that syntax with my mouse, and then enhanced it, so you can see it better:
+
+.syntax
+  %pre
+    =render 'lesson012j'
+
+%p Next, I used my mouse and vim to place the un-enhanced "command line" syntax into a file on the VM-instance I had started earlier.
+
+%img(src='/lesson012/lesson012k.png')
+%hr/
+
+%p I saved that file and ran it as a Bash command.
+
+%img(src='/lesson012/lesson012m.png')
+%hr/
+
+%p GCP complained.
+
+%img(src='/lesson012/lesson012n.png')
+%hr/
+
+%p I responded with a Bash command:
+
+.syntax
+  %pre
+    %code gcloud auth login
+
+%p That command entered me into a dialog with a browser window and my bash prompt.
+
+%p After that dialog I tried this command again:
+
+.syntax
+  %pre
+    %code bash gcloud10.bash
+
+%p It responded favorably:
+
+%img(src='/lesson012/lesson012p.png')
+%hr/
 
