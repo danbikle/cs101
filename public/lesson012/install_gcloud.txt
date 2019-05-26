@@ -1,0 +1,37 @@
+install_gcloud.txt
+
+Ref:
+  https://cloud.google.com/compute/docs/tutorials/python-guide
+  https://cloud.google.com/sdk/docs/quickstart-linux
+
+This file should help me install gcloud on my Linux host.
+
+cd ~/Downloads
+wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-247.0.0-linux-x86_64.tar.gz
+
+cd ~
+tar xf ~/Downloads/google-cloud-sdk-247.0.0-linux-x86_64.tar.gz
+echo 'export PATH=~/google-cloud-sdk/bin:$PATH' >> ~/.bashrc
+bash
+
+gcloud init
+
+# Now gcp should open browser, I should interact with browser.
+# Also I should interact with the gcloud shell prompts.
+
+# gcp should create some new files here:
+# ~/.config/gcloud/
+
+# Now, I should be able to walk through the content here:
+# https://cloud.google.com/compute/docs/tutorials/python-guide
+
+# Also, I should try some gcloud shell commands:
+
+gcloud --help
+gcloud auth   list
+gcloud config list
+gcloud info
+gcloud compute
+gcloud compute instances
+gcloud compute instances list
+

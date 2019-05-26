@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  protect_from_forgery except: :takepost
   def index
   end
   def about

@@ -18,7 +18,8 @@ Then, this Python script should have a hope.
 Demo:
 python3 post1inst.py
 """
-
+import json
+import os
 import re
 import requests
 
@@ -40,10 +41,17 @@ print(post_url_s)
 with open('api_key.txt') as fh:
   api_key_s = fh.read()
 
+api_key_s  = os.environ['API_KEY'] # instead
 params_d   = {'key': api_key_s}
-# post_url_s = 'http://localhost:3101/home/takepost'
+post_url_s = 'http://localhost:3101/home/takepost'
 json_s     = jsonf_s.replace(line1_s,'')
-# json_s     = '{"hello": "world"}' # for now
+json_s     = '{"hello": "world"}' # for now
+my_d       = json.loads(json_s)
 # I should POST my JSON to the URL listed in line 1 of the JSON file:
-req = requests.post(post_url_s, params=params_d, json=json_s)
-print('Done')
+req = requests.post(post_url_s, params=params_d, json=my_d)
+# print('Done:')
+# print(req.url)
+# # print(req.json())
+# # print(req.content)
+# print(req.raw)
+
