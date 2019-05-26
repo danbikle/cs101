@@ -12,6 +12,7 @@ sed 1d cr1inst.json > /tmp/cr1inst.json
 the_url=`sed -n 1p cr1inst.json|sed 's/POST //'`
 
 set -x
-/usr/bin/curl -X POST -d @/tmp/cr1inst.json ${the_url}?"API_KEY=$API_KEY" 
+# FAILs:
+/usr/bin/curl -X POST -d @/tmp/cr1inst.json ${the_url}
 
 exit

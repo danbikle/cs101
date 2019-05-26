@@ -22,10 +22,7 @@ gcloud init
 # gcp should create some new files here:
 # ~/.config/gcloud/
 
-# Now, I should be able to walk through the content here:
-# https://cloud.google.com/compute/docs/tutorials/python-guide
-
-# Also, I should try some gcloud shell commands:
+# I should try some gcloud shell commands:
 
 gcloud --help
 gcloud auth   list
@@ -34,4 +31,7 @@ gcloud info
 gcloud compute
 gcloud compute instances
 gcloud compute instances list
+
+# Now, I should be able to walk through the content here:
+# https://cloud.google.com/compute/docs/tutorials/python-guide
 

@@ -1,0 +1,56 @@
+stovr10.txt
+
+Hello World,
+
+I want to write a simple Python script which does the same thing as this shell command:
+
+cs101@l77:~/cs101/public/lesson012$ gcloud compute instances list
+NAME  ZONE           MACHINE_TYPE   PREEMPTIBLE  INTERNAL_IP  EXTERNAL_IP     STATUS
+dan1  us-central1-a  n1-standard-1               10.128.0.9   104.197.47.250  RUNNING
+cs101@l77:~/cs101/public/lesson012$ 
+
+The fact that the above shell command works on my laptop is a good sign.
+
+I have gcloud installed and I can use it to authenticate.
+
+Also my GCP account seems to behave well inside the GCP servers.
+
+I studied this URL:
+
+https://cloud.google.com/compute/docs/tutorials/python-guide
+
+I tried to walk through the steps in the above guide and got confused by poor writing:
+
+- Many of the links lead to general information
+- The Python syntax is incomplete (missing imports for example)
+- The Python syntax in the page does not match the syntax on github
+
+Currently I am stuck at this step:
+
+"Authorizing Requests"
+
+The page says this:
+
+Application default credentials are provided in Google API client
+libraries automatically. You just have to build and initialize the API:
+
+compute = googleapiclient.discovery.build('compute', 'v1')
+
+So, I wrote a simple Python script:
+
+"""
+gcp1.py
+
+Demo:
+gcloud init
+pip3 install google-api-python-client
+python3 gcp1.py
+"""
+
+import googleapiclient.discovery
+compute = googleapiclient.discovery.build('compute', 'v1')
+
+I ran the above script...
+
+
+
