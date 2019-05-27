@@ -161,7 +161,7 @@
 
 %p I no longer needed them and I wanted to avoid cloud charges to accumulate in my account.
 
-%h1#gcp Lesson 012 [ GCP Python API ]
+%h1#top Lesson 012 [ GCP Python API ]
 
 %p I started this lesson by using a Chrome browser to login to my gmail account.
 
@@ -186,18 +186,30 @@
 %img(src='/lesson012/lesson012s2.png')
 %hr/
 
-%p On the right, I clicked the three black dots.
-%p The form offered me three Actions: Edit, Delete, Create key
-%p I clicked: Create key
+%p At the top, I clicked the blue-link: "CREATE SERVICE ACCOUNT".
+%p GCP served me a form.
+%p I decided to call my new Service-Account this name: "srvacct"
+%p I gave it this description: "Python API Training Account"
 
-%img(src='/lesson012/lesson012s10.png')
+%img(src='/lesson012/lesson012s3.png')
 %hr/
 
-%p GCP served me a dialog box and I clicked the blue-"CREATE" button inside it.
+%p I clicked the blue-"CREATE" button.
+%p GCP served me a form allowing me to add permissions to "srvacct".
+%p I experiemented with the form and eventually granted only one permission:
+%p Project - Owner
 
-%p GCP then placed a JSON file on my laptop, in my Downloads folder.
+%img(src='/lesson012/lesson012s4.png')
+%hr/
 
-%p I copied that file to a file with a simple name: secret.json
+%p Then, I clicked the blue-"CONTINUE" button.
+%p Then, on the next page, I clicked the blue-"CREATE KEY" button.
+%p Then, I chose JSON format.
+%p GCP then placed a JSON file in the Downloads folder on my laptop.
+%p I went to that folder and renamed the file to: secret.json.
+
+%img(src='/lesson012/lesson012s5.png')
+%hr/
 
 %p I will use secret.json later.
 
@@ -216,6 +228,13 @@
 %img(src='/lesson012/lesson012u.png')
 %hr/
 
+%p The form allowed me to run the instance under "srvacct" instead of "Compute Engine default service account".
+
+%p So, I selected "srvacct":
+
+%img(src='/lesson012/lesson012u1.png')
+%hr/
+
 %p Then, I clicked the blue-"Create" button.
 
 %p After 90 seconds, GCP served me information about a new instance:
@@ -231,11 +250,7 @@
 %hr/
 
 %p Next, I used the gear icon in my GCP-shell-window to copy secret.json from my laptop to the GCP-instance home folder.
-
-%img(src='/lesson012/lesson012w10.png')
-%hr/
-
-%p Then, I issued Bash-shell commands in the GCP-shell-window:
+%p Next, I issued Bash-shell commands in the GCP-shell-window:
 .syntax
   %pre
     %code.bash
@@ -247,7 +262,7 @@
 %img(src='/lesson012/lesson012w1a.png')
 %hr/
 
-%p In that window, I issued more Bash commands:
+%p I issued more Bash commands:
 .syntax
   %pre
     %code.bash
