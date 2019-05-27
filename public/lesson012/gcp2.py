@@ -18,7 +18,7 @@ python3 gcp2.py
 import googleapiclient.discovery
 compute   = googleapiclient.discovery.build('compute', 'v1')
 project_s = 'shining-sol-241621'
-name_s    = 'linuxbox7'
+name_s    = 'linuxbox1'
 zone_s    = 'us-central1-a'
 machine_type_s = "zones/"+zone_s+"/machineTypes/n1-standard-1"
 
@@ -52,7 +52,8 @@ config = {
 
 compute.instances().insert(project=project_s, zone=zone_s, body=config).execute()
 
-print(source_disk_image)
+print(name_s)
 print(project_s)
 print(zone_s)
-print(config)
+print(source_disk_image)
+
