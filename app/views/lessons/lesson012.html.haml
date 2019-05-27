@@ -194,4 +194,39 @@
 %img(src='/lesson012/lesson012w.png')
 %hr/
 
+%p Next, I visited the URL listed below:
 
+%p
+  %a(href="https://console.cloud.google.com") https://console.cloud.google.com
+
+%p I clicked the "hamburger-icon" in upper left.
+%p I clicked "IAM & admin" on the left.
+%p I clicked "Service accounts" on the left.
+%p I was now at this URL:
+%p https://console.cloud.google.com/iam-admin/serviceaccounts?project=shining-sol-241621
+%p At the top, I clicked the blue-link: "CREATE SERVICE ACCOUNT".
+%p GCP served me a form.
+%p I decided to call my new Service-Account this name: "srvacct"
+%p I gave it this description: "Python API Training Account"
+%p I clicked the blue-"CREATE" button.
+%p GCP served me a form allowing me to add permissions to "srvacct".
+%p I experiemented with the form and eventually granted only two permissions:
+%ul
+  %li Project - Owner
+  %li Compute Engine - Compute Admin
+
+%p Then, I clicked the blue-"CONTINUE" button.
+%p Then, on the next page, I clicked the blue-"CREATE KEY" button.
+%p Then, I chose JSON format.
+%p GCP, then placed a JSON file in the Downloads folder on my laptop.
+%p I went to that folder and renamed the file: secret.json.
+%p Next, I used the gear icon in my GCP-shell-window to copy secret.json from my laptop to the GCP-instance home folder.
+%p Next, I issued shell commands in the GCP-shell-window:
+.syntax
+  %pre
+    %code.bash
+      echo 'export GOOGLE_APPLICATION_CREDENTIALS=$HOME/secret.json' >> ~/.bashrc
+      bash
+      env | grep GOOGLE
+      cat $GOOGLE_APPLICATION_CREDENTIALS
+      
