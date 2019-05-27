@@ -166,6 +166,51 @@
 %p I started this lesson by using a Chrome browser to login to my gmail account.
 
 %p Then I visited the URL listed below:
+%p
+  %a(href="https://console.cloud.google.com") https://console.cloud.google.com
+
+%p It showed me a "Dashboard" for a Project named "My First Project".
+
+%p I noted that the project_id was this string: "shining-sol-241621"
+
+
+%img(src='/lesson012/lesson012s1.png')
+%hr/
+
+%p I clicked the "hamburger-icon" in upper left.
+%p I clicked "IAM & admin" on the left.
+%p I clicked "Service accounts" on the left.
+%p I was now at this URL:
+%p https://console.cloud.google.com/iam-admin/serviceaccounts?project=shining-sol-241621
+
+%img(src='/lesson012/lesson012s2.png')
+%hr/
+
+%p At the top, I clicked the blue-link: "CREATE SERVICE ACCOUNT".
+%p GCP served me a form.
+%p I decided to call my new Service-Account this name: "srvacct"
+%p I gave it this description: "Python API Training Account"
+
+%img(src='/lesson012/lesson012s3.png')
+%hr/
+
+%p I clicked the blue-"CREATE" button.
+%p GCP served me a form allowing me to add permissions to "srvacct".
+%p I experiemented with the form and eventually granted only two permissions:
+%ul
+  %li Project - Owner
+  %li Compute Engine - Compute Admin
+
+%img(src='/lesson012/lesson012s4.png')
+%hr/
+
+
+%hr/
+%hr/
+%hr/
+%hr/
+%hr/
+%hr/
 
 %p
   %a(href="https://console.cloud.google.com/compute") https://console.cloud.google.com/compute
