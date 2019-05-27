@@ -49,7 +49,7 @@
 
 %p In that page I clicked the small-black-SSH link.
 
-%p GCP served me a new window with a shell prompt in it.
+%p GCP served me a new window with a Bash-shell prompt in it.
 
 %img(src='/lesson012/lesson012f.png')
 %hr/
@@ -189,7 +189,7 @@
 
 %p On the right, I clicked the SSH link.
 
-%p Quickly, GCP served me a shell running in the instance inside a new window :
+%p Quickly, GCP served me a Bash-shell running in the instance inside a new window :
 
 %img(src='/lesson012/lesson012w.png')
 %hr/
@@ -218,10 +218,10 @@
 %p Then, I clicked the blue-"CONTINUE" button.
 %p Then, on the next page, I clicked the blue-"CREATE KEY" button.
 %p Then, I chose JSON format.
-%p GCP, then placed a JSON file in the Downloads folder on my laptop.
+%p GCP then placed a JSON file in the Downloads folder on my laptop.
 %p I went to that folder and renamed the file: secret.json.
 %p Next, I used the gear icon in my GCP-shell-window to copy secret.json from my laptop to the GCP-instance home folder.
-%p Next, I issued shell commands in the GCP-shell-window:
+%p Next, I issued Bash-shell commands in the GCP-shell-window:
 .syntax
   %pre
     %code.bash
@@ -229,4 +229,18 @@
       bash
       env | grep GOOGLE
       cat $GOOGLE_APPLICATION_CREDENTIALS
+
+%p I issued more Bash commands:
+.syntax
+  %pre
+    %code.bash
+      sudo apt install python3-pip
+      sudo pip3 install -U google-api-python-client
+      pip3 list
+
+%p Next, I started the nano editor with a Bash command:
+.syntax
+  %pre
+    =render 'lesson012x'
       
+
