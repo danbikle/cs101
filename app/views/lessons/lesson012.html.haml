@@ -238,9 +238,36 @@
       sudo pip3 install -U google-api-python-client
       pip3 list
 
-%p Next, I started the nano editor with a Bash command:
+%p Next, I started the nano editor with Bash commands:
+.syntax
+  %pre
+    %code.bash
+      cd ~
+      nano gcp1.py
+
+%p I moused-in syntax and saved it:
+
 .syntax
   %pre
     =render 'lesson012x'
-      
+
+%p I checked that the project listed in gcp1.py matched the project in secret.json:
+
+.syntax
+  %pre
+    %code
+      cd ~
+      grep project gcp1.py
+      grep project secret.json
+
+%p I ran the python script with a Bash command
+
+.syntax
+  %pre
+    %code.bash
+      cd ~
+      python3 gcp1.py
+
+
+
 
