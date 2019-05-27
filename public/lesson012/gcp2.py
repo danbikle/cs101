@@ -1,8 +1,15 @@
 """
 gcp2.py
 
+Ref:
+https://cloud.google.com/compute/docs/tutorials/python-guide
+
 Demo:
 pip3 install google-api-python-client
+
+I get secret.json from 3-dot link of default serviceaccount in:
+https://console.cloud.google.com/iam-admin/serviceaccounts?project=shining-sol-241621
+
 export GOOGLE_APPLICATION_CREDENTIALS=$HOME/secret.json
 cat   $GOOGLE_APPLICATION_CREDENTIALS
 python3 gcp2.py
@@ -11,7 +18,7 @@ python3 gcp2.py
 import googleapiclient.discovery
 compute   = googleapiclient.discovery.build('compute', 'v1')
 project_s = 'shining-sol-241621'
-name_s    = 'linuxbox5'
+name_s    = 'linuxbox7'
 zone_s    = 'us-central1-a'
 machine_type_s = "zones/"+zone_s+"/machineTypes/n1-standard-1"
 
@@ -26,7 +33,7 @@ config = {
     # Specify the boot disk and the image to use as a source.
     'disks': [
         {
-            'boot': True,
+            'boot':       True,
             'autoDelete': True,
             'initializeParams': {
                 'sourceImage': source_disk_image,
