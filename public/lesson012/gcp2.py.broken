@@ -26,17 +26,6 @@ config = {
     'name': name_s,
     'machineType': machine_type_s,
 
-    # Specify the boot disk and the image to use as a source.
-    'disks': [
-        {
-            'boot': True,
-            'autoDelete': True,
-            'initializeParams': {
-                'sourceImage': source_disk_image,
-            }
-        }
-    ],
-
     # Specify a network interface with NAT to access the public
     # internet.
     'networkInterfaces': [{
