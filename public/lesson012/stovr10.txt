@@ -1,56 +1,111 @@
 stovr10.txt
 
+subject: Python GCP-API permissions issue: compute.instances.list
+
 Hello World,
 
-I want to write a simple Python script which does the same thing as this shell command:
+I have a 5 line Python script which is failing.
 
-cs101@l77:~/cs101/public/lesson012$ gcloud compute instances list
-NAME  ZONE           MACHINE_TYPE   PREEMPTIBLE  INTERNAL_IP  EXTERNAL_IP     STATUS
-dan1  us-central1-a  n1-standard-1               10.128.0.9   104.197.47.250  RUNNING
-cs101@l77:~/cs101/public/lesson012$ 
+GCP indicates a problem with a GCP-API permissions issue.
+I'm not sure though it is telling me the truth.
 
-The fact that the above shell command works on my laptop is a good sign.
+Here is the Python syntax:
 
-I have gcloud installed and I can use it to authenticate.
+    import googleapiclient.discovery
+    compute   = googleapiclient.discovery.build('compute', 'v1')
+    project_s = 'shining-sol-241621'
+    zone_s    = 'us-central1-a'
+    
+    result = compute.instances().list(project=project_s, zone=zone_s).execute()
 
-Also my GCP account seems to behave well inside the GCP servers.
+The above syntax depends on this env variable setting:
 
-I studied this URL:
+    export GOOGLE_APPLICATION_CREDENTIALS=$HOME/secret.json
 
-https://cloud.google.com/compute/docs/tutorials/python-guide
+When I run the Python syntax I see:
 
-I tried to walk through the steps in the above guide and got confused by poor writing:
+    $ python3
+    Python 3.5.2 (default, Nov 12 2018, 13:43:14) 
+    [GCC 5.4.0 20160609] on linux
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> import googleapiclient.discovery
+    >>> compute   = googleapiclient.discovery.build('compute', 'v1')
+    >>> project_s = 'shining-sol-241621'
+    >>> zone_s    = 'us-central1-a'
+    >>> result = compute.instances().list(project=project_s, zone=zone_s).execute()
+    
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+      File "/usr/local/lib/python3.5/dist-packages/googleapiclient/_helpers.py", line 130, in positional_wrapper
+        return wrapped(*args, **kwargs)
+      File "/usr/local/lib/python3.5/dist-packages/googleapiclient/http.py", line 851, in execute
+        raise HttpError(resp, content, uri=self.uri)
+    googleapiclient.errors.HttpError: <HttpError 403 when requesting https://www.googleapis.com/compute/v1/projects/shining-sol-241621/zones/us-central1-a/instances?alt=json returned "Required 'compute.instances.list' permission for 'projects/shining-sol-241621'">
+    >>> >>>
 
-- Many of the links lead to general information
-- The Python syntax is incomplete (missing imports for example)
-- The Python syntax in the page does not match the syntax on github
+Above, I see this msg in the error:
 
-Currently I am stuck at this step:
+"Required 'compute.instances.list' permission for 'projects/shining-sol-241621'"
 
-"Authorizing Requests"
+At this URL:
 
-The page says this:
+https://console.cloud.google.com/iam-admin/iam?project=shining-sol-241621
 
-Application default credentials are provided in Google API client
-libraries automatically. You just have to build and initialize the API:
+When I look at the service-account permissions attached to my secret.json file I see that I have attached these permissions to the account:
 
-compute = googleapiclient.discovery.build('compute', 'v1')
+  - Compute Admin
+  - Compute Instance Admin (beta)
+  - Compute Instance Admin (v1)
+  - Compute Viewer
+  - Security Admin
+  - Owner
 
-So, I wrote a simple Python script:
+When I attached permissions to the service-account, I saw no permission available which looked like:
+'compute.instances.list'
 
-"""
-gcp1.py
+I did note that the Compute Admin permission has this description:
 
-Demo:
-gcloud init
-pip3 install google-api-python-client
-python3 gcp1.py
-"""
+"Full control of all Compute Engine resources"
 
-import googleapiclient.discovery
-compute = googleapiclient.discovery.build('compute', 'v1')
+That description suggests to me that the permission should be able to do: 'compute.instances.list'
 
-I ran the above script...
+I am suspicious that GCP is telling me that I have a permissions problem but the problem is somewhere else.
 
+Based on my description, what would be some good questions to ask in order to move past this bad API behavior?
 
+ooooooooooo
 
+I was able to fix this problem after I assumed that the GCP server was caching bad info.
+
+I created a service account with a name I had not used in the past.
+
+I gave it just one permission: Project - Owner
+
+I asked it to create a JSON-key.
+
+I copied the key into $HOME/secret.json
+
+I issued shell command:
+
+    export GOOGLE_APPLICATION_CREDENTIALS=$HOME/secret.json
+
+I tried my 6 lines of Python:
+
+    $ python3
+    Python 3.5.2 (default, Nov 12 2018, 13:43:14) 
+    [GCC 5.4.0 20160609] on linux
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> 
+    >>> 
+    >>> import googleapiclient.discovery
+    >>> compute   = googleapiclient.discovery.build('compute', 'v1')
+    >>> project_s = 'shining-sol-241621'
+    >>> zone_s    = 'us-central1-a'
+    >>> result = compute.instances().list(project=project_s, zone=zone_s).execute()
+    >>> result['items'][0]['status']
+    'RUNNING'
+    >>> 
+    >>> 
+
+As you can see, it worked.
+Yay!

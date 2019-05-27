@@ -251,6 +251,59 @@
 %img(src='/lesson012/lesson012w.png')
 %hr/
 
+%p Next, I used the gear icon in my GCP-shell-window to copy secret.json from my laptop to the GCP-instance home folder.
+%p Next, I issued Bash-shell commands in the GCP-shell-window:
+.syntax
+  %pre
+    %code.bash
+      echo 'export GOOGLE_APPLICATION_CREDENTIALS=$HOME/secret.json' >> ~/.bashrc
+      bash
+      env | grep GOOGLE
+      cat $GOOGLE_APPLICATION_CREDENTIALS
+
+%img(src='/lesson012/lesson012w1a.png')
+%hr/
+
+%p I issued more Bash commands:
+.syntax
+  %pre
+    %code.bash
+      sudo apt install python3-pip
+      sudo pip3 install -U google-api-python-client
+      pip3 list
+
+%img(src='/lesson012/lesson012w2.png')
+%hr/
+
+%p Next, I started the nano editor with Bash commands:
+.syntax
+  %pre
+    %code.bash
+      cd ~
+      nano gcp1.py
+
+%p I moused-in syntax and saved it:
+
+.syntax
+  %pre
+    =render 'lesson012x'
+
+%p I checked that the project listed in gcp1.py matched the project in secret.json:
+
+.syntax
+  %pre
+    %code
+      cd ~
+      grep project gcp1.py
+      grep project secret.json
+
+%p I ran the python script with a Bash command
+
+.syntax
+  %pre
+    %code.bash
+      cd ~
+      python3 gcp1.py
 
 %hr/
 %hr/
