@@ -49,7 +49,7 @@ def create_instance(name_s):
       ]
     }]
   }
-  # compute.instances().insert(project=project_s, zone=zone_s, body=config).execute()
+  compute.instances().insert(project=project_s, zone=zone_s, body=config).execute()
   print(name_s)
 
 # I should create instances named after cities:
