@@ -78,9 +78,8 @@ file_metadata = {
 # I s.create a file and put it in the 'Invoices' folder:
 
 # FAILs:
-media = MediaFileUpload('photo.jpg',
-                        mimetype='image/jpeg',
-                        resumable=True)
+media = MediaFileUpload('files/photo.jpg', mimetype='image/jpeg')
+
 file = drive_service.files().create(body=file_metadata,
                                     media_body=media,
                                     fields='id').execute()
