@@ -38,7 +38,7 @@ list_results = drive_service.files().list(
     orderBy  = "createdTime desc, name desc",
     q        = "name='hello.txt'",
     pageSize = 22,
-    fields   = "nextPageToken,files(id, name)"
+    fields   = "files(id, name)"
 ).execute()
 
 items = list_results.get('files', [])
