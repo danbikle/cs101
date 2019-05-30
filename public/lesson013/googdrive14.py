@@ -19,7 +19,7 @@ import os
 # I s.declare a very permissive scope (for training only):
 scopes      = ['https://www.googleapis.com/auth/drive']
 secretf_s   = os.environ['HOME']+'/secret.json'
-credentials = ServiceAccountCredentials.from_json_keyfile_name(secret_json_s, scopes)
+credentials = ServiceAccountCredentials.from_json_keyfile_name(secretf_s, scopes)
 http_auth   = credentials.authorize(Http())
 drive       = build('drive', 'v3', http=http_auth)
 request     = drive.files().list().execute()
