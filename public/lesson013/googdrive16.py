@@ -29,6 +29,9 @@ secretf_s   = os.environ['HOME']+'/secret.json'
 credentials = ServiceAccountCredentials.from_json_keyfile_name(secretf_s, scopes)
 http_auth   = credentials.authorize(Http())
 drive_service = build('drive', 'v3', http=http_auth)
+
+# Q: With googleapiclient, how to filter files list results?
+
 list_results  = drive_service.files().list(
     pageSize=10, fields="nextPageToken, files(id, name)").execute()
 items = list_results.get('files', [])
