@@ -47,7 +47,7 @@ file_metadata = {
     'parents': [folder_id]
 }
 # From my laptop, I s.upload a file named hello.txt:
-media = MediaFileUpload('hello.txt', mimetype='text/plain')
+media = MediaFileUpload('/tmp/hello.txt', mimetype='text/plain')
 file  = drive_service.files().create(body=file_metadata,
                                      media_body=media,
                                      fields='id').execute()
