@@ -1,5 +1,5 @@
 """
-googdrive12.py
+googdrive13.py
 
 This script should use python3 to talk with Google Drive.
 
@@ -12,7 +12,7 @@ I placed my copy of credentials.json here: $HOME/credentials.json
 
 Demo:
 pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
-python3 googdrive12.py
+python3 googdrive13.py
 """
 
 from __future__ import print_function
@@ -72,12 +72,12 @@ print('Folder ID: %s' % folder_id)
 # Q: How to delete a folder?
 
 file_metadata = {
-    'name': 'photo.jpg',
+    'name': 'Anaconda3-2019.03-Linux-x86_64.sh',
     'parents': [folder_id]
 }
-# From my laptop, I s.upload a file named photo.jpg
 
-media = MediaFileUpload('photo.jpg', mimetype='image/jpeg')
+# https://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh
+media = MediaFileUpload('/tmp/Anaconda3-2019.03-Linux-x86_64.sh', mimetype='application/x-sh')
 
 file = drive_service.files().create(body=file_metadata,
                                     media_body=media,
