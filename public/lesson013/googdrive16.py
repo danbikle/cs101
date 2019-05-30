@@ -1,5 +1,7 @@
 """
-googdrive15.py
+googdrive16.py
+
+This script should delete files named 'hello.txt'
 
 ref:
 https://stackoverflow.com/questions/46457093/google-drive-api-with-python-from-serverbackend-without-browser-autentication
@@ -12,7 +14,7 @@ I s.copy the json-key-file to $HOME/secret.json
 
 Demo:
 pip3 install oauth2client
-python3 googdrive15.py
+python3 googdrive16.py
 """
 
 from googleapiclient.discovery    import build
@@ -27,43 +29,23 @@ secretf_s   = os.environ['HOME']+'/secret.json'
 credentials = ServiceAccountCredentials.from_json_keyfile_name(secretf_s, scopes)
 http_auth   = credentials.authorize(Http())
 drive_service = build('drive', 'v3', http=http_auth)
-
-folder_metadata = {
-    'name': 'afolder',
-    'mimeType': 'application/vnd.google-apps.folder'
-}
-    
-folder    = drive_service.files().create(body=folder_metadata, fields='id').execute()
-folder_id = folder.get('id')
-print('folder_id:')
-print(folder_id)
-
-# I s.create a file so I can upload it:
-with open('/tmp/hello.txt','w') as fh:
-    fh.write("hello world\n")
-    
-file_metadata = {
-    'name': 'hello.txt',
-    'parents': [folder_id]
-}
-# From my laptop, I s.upload a file named hello.txt:
-media = MediaFileUpload('/tmp/hello.txt', mimetype='text/plain')
-file  = drive_service.files().create(body=file_metadata,
-                                     media_body=media,
-                                     fields='id').execute()
-file_id = file.get('id')
-print('file_id:')
-print(file_id)
-
-list_results = drive_service.files().list(
+list_results  = drive_service.files().list(
     pageSize=10, fields="nextPageToken, files(id, name)").execute()
-print('list_results:')
-
 items = list_results.get('files', [])
 
+'''
 if not items:
     print('No files found.')
 else:
     print('Files:')
     for item in items:
         print(u'{0} ({1})'.format(item['name'], item['id']))        
+'''
+
+# This reads better, but does it work if we have no items?
+if items:
+    print('Files:')
+    for item in items:
+        print(u'{0} ({1})'.format(item['name'], item['id']))        
+else:
+    print('No files found.')
