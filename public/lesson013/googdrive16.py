@@ -31,9 +31,16 @@ http_auth   = credentials.authorize(Http())
 drive_service = build('drive', 'v3', http=http_auth)
 
 # Q: With googleapiclient, how to filter files list results?
+# A1: https://developers.google.com/drive/api/v3/reference/files/list
+# A2: https://developers.google.com/drive/api/v3/search-files
 
-list_results  = drive_service.files().list(
-    pageSize=10, fields="nextPageToken, files(id, name)").execute()
+list_results = drive_service.files().list(
+    orderBy  = "createdTime desc, name desc",
+    q        = "name='hello.txt'",
+    pageSize = 22,
+    fields   = "nextPageToken,files(id, name)"
+).execute()
+
 items = list_results.get('files', [])
 
 '''
