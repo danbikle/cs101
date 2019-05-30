@@ -22,6 +22,17 @@ from googleapiclient.discovery      import build
 from googleapiclient.http           import MediaFileUpload
 from google_auth_oauthlib.flow      import InstalledAppFlow
 from google.auth.transport.requests import Request
+import subprocess
+
+# I s.download a large file which I will upload later:
+# /usr/bin/curl https://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh --output /tmp/Anaconda3-2019.03-Linux-x86_64.sh
+
+largef_s = 'Anaconda3-2019.03-Linux-x86_64.sh'
+url_s    = 'https://repo.continuum.io/archive/' + largef_s
+sub_l    = ['/usr/bin/curl', url_s, '--output', '/tmp/'+largef_s]
+print('Waiting for this to finish:')
+print(sub_l)
+subprocess.run(['/usr/bin/curl', url_s, '--output', '/tmp/'+largef_s])
 
 # If modifying these scopes, delete the file token.pickle.
 # Less permissions:
@@ -76,7 +87,6 @@ file_metadata = {
     'parents': [folder_id]
 }
 
-# https://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh
 media = MediaFileUpload('/tmp/Anaconda3-2019.03-Linux-x86_64.sh',
                         mimetype='application/x-sh',
                         chunksize=1024*1024,
@@ -85,13 +95,6 @@ media = MediaFileUpload('/tmp/Anaconda3-2019.03-Linux-x86_64.sh',
 request = drive_service.files().create(body=file_metadata,
                                     media_body=media,
                                     fields='id').execute()
-
-response = None
-while response is None:
-  status, response = request.next_chunk()
-  if status:
-    print("Uploaded %d%%." % int(status.progress() * 100))
-print("Upload Complete!")
 
 file_id = request.get('id')
 
