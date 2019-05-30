@@ -55,8 +55,16 @@ file_id = file.get('id')
 print('file_id:')
 print(file_id)
 
-request = drive_service.files().list().execute()
-files   = request.get('items', [])
-for f in files:
-    print(f)
+# Call the Drive v3 API
+results = drive_service.files().list(
+    pageSize=10, fields="nextPageToken, files(id, name)").execute()
+print('results:')
+#print(results)
+items = results.get('files', [])
 
+if not items:
+    print('No files found.')
+else:
+    print('Files:')
+    for item in items:
+        print(u'{0} ({1})'.format(item['name'], item['id']))        
