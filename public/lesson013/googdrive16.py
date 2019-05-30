@@ -56,6 +56,8 @@ else:
 if items:
     print('Files:')
     for item in items:
-        print(u'{0} ({1})'.format(item['name'], item['id']))        
+        print(u'{0} ({1})'.format(item['name'], item['id']))
+        print("item['id']:")
+        print( item['id'])
 else:
     print('No files found.')
