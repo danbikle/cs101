@@ -43,21 +43,19 @@ list_results = drive_service.files().list(
 
 items = list_results.get('files', [])
 
-'''
-if not items:
-    print('No files found.')
-else:
-    print('Files:')
-    for item in items:
-        print(u'{0} ({1})'.format(item['name'], item['id']))        
-'''
-
 # This reads better, but does it work if we have no items?
 if items:
-    print('Files:')
+    print('Files I want to delete:')
     for item in items:
+        print('I will attempt to delete this file:')
         print(u'{0} ({1})'.format(item['name'], item['id']))
-        print("item['id']:")
-        print( item['id'])
+        del_results = drive_service.files().delete(fileId=item['id'])
+        print(del_results.body)
+    print('I will attempt to emptyTrash:')
+    trash_results = drive_service.files().emptyTrash()
+    print('trash_results:')
+    print( trash_results)
+    print('trash_results.body:')
+    print( trash_results.body)
 else:
     print('No files found.')
