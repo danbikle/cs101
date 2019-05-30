@@ -75,10 +75,10 @@ file_metadata = {
     'name': 'photo.jpg',
     'parents': [folder_id]
 }
-# I s.create a file and put it in the 'Invoices' folder:
+# From my laptop, I s.upload a file named photo.jpg
 
 # FAILs:
-media = MediaFileUpload('files/photo.jpg', mimetype='image/jpeg')
+media = MediaFileUpload('photo.jpg', mimetype='image/jpeg')
 
 file = drive_service.files().create(body=file_metadata,
                                     media_body=media,
