@@ -77,12 +77,24 @@ file_metadata = {
 }
 
 # https://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh
-media = MediaFileUpload('/tmp/Anaconda3-2019.03-Linux-x86_64.sh', mimetype='application/x-sh')
+media = MediaFileUpload('/tmp/Anaconda3-2019.03-Linux-x86_64.sh',
+                        mimetype='application/x-sh',
+                        chunksize=1024*1024,
+                        resumable=True)
 
-file = drive_service.files().create(body=file_metadata,
+request = drive_service.files().create(body=file_metadata,
                                     media_body=media,
                                     fields='id').execute()
-file_id = file.get('id')
+
+response = None
+while response is None:
+  status, response = request.next_chunk()
+  if status:
+    print("Uploaded %d%%." % int(status.progress() * 100))
+print("Upload Complete!")
+
+file_id = request.get('id')
+
 print('File ID: %s' % file_id)
 
 print('Done')
