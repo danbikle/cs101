@@ -34,7 +34,38 @@
 
 %p I clicked the blue-button: "ENABLE".
 
-%p Google served me a page:
+%p Google enabled the API for me and then served me a page:
 
 %img(src='/lesson013/lesson013j.png')
 %hr/
+
+%p I clicked the blue-button: "CREATE CREDENTIALS".
+
+%p Google served me a form:
+
+%img(src='/lesson013/lesson013k.png')
+%hr/
+
+
+%p I interacted with the form to get a JSON file containing credentials:
+
+%img(src='/lesson013/lesson013l.png')
+%hr/
+
+%img(src='/lesson013/lesson013m.png')
+%hr/
+
+%img(src='/lesson013/lesson013n.png')
+%hr/
+
+%img(src='/lesson013/lesson013o.png')
+%hr/
+
+%p In my Downloads folder, I copied the JSON file to a file with a shorter name:
+
+.syntax
+  %pre
+    %code.bash
+      cd ~/Downloads
+      cp dan-project1-ea3472a42678.json credientials.json
+
