@@ -4,7 +4,28 @@
 
 %p G Suite is attractive to developers because, unlike GCP, I can avoid giving my credit card info to Google.
 
-%p I started this lesson by using a Chrome browser to login to my gmail account.
+%p I did this lesson using a Linux account inside a laptop.
+
+%p If you want to try this lesson using an account on a Mac, it might work because Mac-OS is sometimes similar to Linux.
+
+%p If you want to try this lesson using an account on windows, good luck.
+
+%p I know that I can run both Chrome and Python on windows so it seems possible that I might be able to do this lesson on windows.
+
+%p I suspect that I'd need to enhance the Python scripts listed below in order to make them work on windows.
+
+%p Another approach I'd take, if I only have windows, is to use windows to connect a chrome-GCP-GCE terminal to a Linux account running inside GCP-GCE.
+
+%p A problem with that approach is that I need a GCP account and that requires a credit card but only costs $0.03 per hour.
+
+%p I have a credit card so that approach works well for me.
+
+%p If you want to try that approach, I help you get a chrome-GCP-GCE terminal if you study the first half the previous lesson:
+
+%p
+  %a(href='/lessons/lesson012') Lesson 012
+
+%p Anyway, with my Linux account, I started this lesson by using a Chrome browser to login to my gmail account.
 
 %p I visited the URL listed below:
 
@@ -68,4 +89,13 @@
     %code.bash
       cd ~/Downloads
       cp dan-project1-ea3472a42678.json drivecred.json
+      
+%p Also, I copied drivecred.json to my home-folder:
+
+.syntax
+  %pre
+    %code.bash
+      cp ~/Downloads/drivecred.json ~
+      
+%p All Python scripts in this lesson assume drivecred.json is in "~/" folder.
 
