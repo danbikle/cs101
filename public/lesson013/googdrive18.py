@@ -8,12 +8,14 @@ https://stackoverflow.com/questions/46457093/google-drive-api-with-python-from-s
 
 I s.use this URL to enable drive-API for my project:
 https://console.cloud.google.com/apis/library/drive.googleapis.com
-I s.use this URL to download secret.json from the default service-account:
+I s.use this URL to download drivecred.json for the default service-account:
 https://console.developers.google.com/iam-admin/serviceaccounts
-I s.copy the json-key-file to $HOME/secret.json
+I s.copy the json-key-file to $HOME/drivecred.json
 
 Demo:
-pip3 install oauth2client
+sudo pip3 install googleapiclient
+sudo pip3 install oauth2client
+sudo pip3 install httplib2
 python3 googdrive18.py
 """
 
@@ -23,15 +25,19 @@ from oauth2client.service_account import ServiceAccountCredentials
 from httplib2                     import Http
 import os
 
+# I s.create a file on my laptop so I can upload it
+with open('/tmp/hello.txt','w') as fh:
+    fh.write("hello world\n")
+
 # I s.declare a very permissive scope (for training only):
 scopes      = ['https://www.googleapis.com/auth/drive']
 secretf_s   = os.environ['HOME']+'/drivecred.json'
 credentials = ServiceAccountCredentials.from_json_keyfile_name(secretf_s, scopes)
 http_auth   = credentials.authorize(Http())
 drive_service = build('drive', 'v3', http=http_auth)
-
 file_metadata = {'name': 'hello.txt'}
 media = MediaFileUpload('/tmp/hello.txt', mimetype='text/plain')
+print('I will try to upload /tmp/hello.txt to google drive:')
 create_response = drive_service.files().create(body=file_metadata,
                                      media_body=media,
                                      fields='id').execute()
