@@ -99,3 +99,27 @@
       
 %p All Python scripts in this lesson assume drivecred.json is in "~/" folder.
 
+%p The "~/" folder is often called the "home-folder".
+
+%p Shell scripts often use this syntax to list the home-folder:
+
+.syntax
+  %pre
+    %code.bash
+      ls $HOME
+
+%p And, Shell scripts often use this syntax to list the home-folder:
+
+.syntax
+  %pre
+    %code.bash
+      ls ~
+
+%p On Linux, Python scripts use this syntax to get the name of the home-folder:
+
+.syntax
+  %pre
+    %code.bash
+      import os
+      print(os.environ['HOME'])
+
