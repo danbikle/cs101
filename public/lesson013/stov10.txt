@@ -126,3 +126,13 @@ When I run the script I see output similar to that listed below:
 
 I see that two of the API calls work well:
 
+    files.list()
+    files.create()
+
+Two calls appear broken:
+
+    files.delete()
+    files.emptyTrash()
+
+Perhaps, though, I am not calling them correctly?
+
