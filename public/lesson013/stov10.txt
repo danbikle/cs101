@@ -1,3 +1,6 @@
+
+subject: Python Google Drive API file-delete() method broken
+
 Hello World,
 
 I cannot get google-drive file-delete() method to work via the Python API.
@@ -6,12 +9,12 @@ It is acting broken.
 
 I offer some info about my setup:
 
-Ubuntu 16.04
-Python 3.5.2 (default, Nov 12 2018, 13:43:14)
-google-api-python-client (1.7.9)
-google-auth (1.6.3)
-google-auth-httplib2 (0.0.3)
-google-auth-oauthlib (0.3.0)
+  - Ubuntu 16.04
+  - Python 3.5.2 (default, Nov 12 2018, 13:43:14)
+  - google-api-python-client (1.7.9)
+  - google-auth (1.6.3)
+  - google-auth-httplib2 (0.0.3)
+  - google-auth-oauthlib (0.3.0)
 
 Below, I list a Python script which can reproduce the bug:
 
@@ -126,13 +129,13 @@ When I run the script I see output similar to that listed below:
 
 I see that two of the API calls work well:
 
-    files.list()
-    files.create()
+  - files.list()
+  - files.create()
 
 Two calls appear broken:
 
-    files.delete()
-    files.emptyTrash()
+  - files.delete()
+  - files.emptyTrash()
 
-Perhaps, though, I am not calling them correctly?
+Perhaps, though, I call them incorrectly?
 

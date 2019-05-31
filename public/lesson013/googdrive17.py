@@ -74,13 +74,13 @@ if items:
     for item in items:
         print('I will try to delete this file:')
         print(u'{0} ({1})'.format(item['name'], item['id']))
-        del_response = drive_service.files().delete(fileId=item['id'])
-        print('del_response.body:')
-        print( del_response.body)
+        del_response = drive_service.files().delete(fileId=item['id']).execute()
+        print('del_response:')
+        print( del_response)
     print('I will try to emptyTrash:')
-    trash_response = drive_service.files().emptyTrash()
-    print('trash_response.body:')
-    print( trash_response.body)
+    trash_response = drive_service.files().emptyTrash().execute()
+    print('trash_response:')
+    print( trash_response)
 else:
     print('hello.txt not found in your google-drive account.')
 
