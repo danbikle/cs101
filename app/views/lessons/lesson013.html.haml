@@ -67,7 +67,6 @@
 %img(src='/lesson013/lesson013k.png')
 %hr/
 
-
 %p I interacted with the form to get a JSON file containing credentials:
 
 %img(src='/lesson013/lesson013l.png')
@@ -122,4 +121,11 @@
     %code.bash
       import os
       print(os.environ['HOME'])
+      
+%p Next, I wrote a Python script in my home folder in order to confirm that Python could read drivecred.json:
+
+.syntax
+  %pre
+    =render 'lesson013p'
+
 
