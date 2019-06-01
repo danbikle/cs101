@@ -133,17 +133,72 @@
 %img(src='/lesson013/lesson013q.png')
 %hr/
 
+%p I clicked on the SSH link to get the terminal:
+
 %img(src='/lesson013/lesson013r.png')
 %hr/
+
+%p I uploaded gcloud10.py and ran it:
 
 %img(src='/lesson013/lesson013s.png')
 %hr/
 
+%p It failed because I forgot to upload drivecred.json from my laptop:
+
 %img(src='/lesson013/lesson013t.png')
 %hr/
 
+%p With drivecred.json present in the home-folder, gcloud10.py behaved well:
+
 %img(src='/lesson013/lesson013u.png')
 %hr/
+
+%p Next, I copied gdrive10.py to gdrive11.py and enhanced it:
+
+.syntax
+  %pre
+    =render 'lesson013gdrive11_py'
+
+%p After I ran it, I saw that python3 could not import googleapiclient:
+
+%img(src='/lesson013/lesson013v.png')
+%hr/
+
+%p I fixed that with some Bash commands:
+
+.syntax
+  %pre
+    %code.bash
+      sudo apt install python3-pip
+      sudo pip3 install google-api-python-client
+
+%p Also I issued other similar commands:
+
+.syntax
+  %pre
+    %code.bash
+      sudo pip3 install oauth2client
+      sudo pip3 install google-auth-oauthlib      
+
+%p I ran gdrive11.py again and it behaved better:
+
+%img(src='/lesson013/lesson013w.png')
+%hr/
+
+%p Next, I copied gdrive11.py to gdrive12.py and enhanced it:
+
+.syntax
+  %pre
+    =render 'lesson013gdrive12_py'
+
+%p I ran the above script and captured output for you:
+
+%img(src='/lesson013/lesson013x.png')
+%hr/
+
+
+
+
 
 
 
