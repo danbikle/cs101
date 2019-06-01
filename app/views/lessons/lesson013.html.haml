@@ -216,3 +216,17 @@
 %img(src='/lesson013/lesson013z.png')
 %hr/
 
+%p The above file, gdrive13.py, demonstrates these API calls:
+
+%ul
+  %li drive_service.files().create()
+  %li drive_service.files().list()
+
+%p The next call I learned was: drive_service.files().delete()
+
+%p I wrote gdrive14.py to demonstrate drive_service.files().delete():
+
+.syntax
+  %pre
+    =render 'lesson013gdrive14_py'
+
