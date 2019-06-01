@@ -229,4 +229,30 @@
 .syntax
   %pre
     =render 'lesson013gdrive14_py'
+    
+%p I ran the above script and collected output for you to see:
 
+%img(src='/lesson013/lesson013z10.png')
+%hr/
+
+%p So far, I have demonstrated these fundamental Google Drive actions:
+
+%ul
+  %li create a file
+  %li list a file
+  %li delete a file
+  %li emptyTrash
+
+%p What else is possible?
+
+%p I studied this page:
+%p
+  %a(href='https://developers.google.com/drive/api/v3/reference/files#methods')
+    https://developers.google.com/drive/api/v3/reference/files#methods
+
+%p I wrote a script to demostrate this call:
+%p drive_service.files().copy()
+.syntax
+  %pre
+    =render 'lesson013gdrive15_py'
+    
