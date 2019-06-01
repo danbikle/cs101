@@ -60,3 +60,31 @@ if items:
         print(u'{0} ({1})'.format(item['name'], item['id']))
 else:
     print('No files found.')
+
+if items:
+    for item in items:
+        # I shd copy file of item['id']
+        cp_response = drive_service.files().copy(fileId = item['id'],
+                                                 body   = file_metadata
+        ).execute()
+        print('cp_response:')
+        print( cp_response)
+else:
+    print('No files found.')
+
+# I shd have more files now:
+
+list_results = drive_service.files().list(
+    orderBy  = "createdTime desc, name desc",
+    q        = "name='hello.txt'",
+    pageSize = 22,
+    fields   = "files(id, name)"
+).execute()
+
+items = list_results.get('files', [])
+
+if items:
+    for item in items:
+        print(u'{0} ({1})'.format(item['name'], item['id']))
+else:
+    print('No files found.')
