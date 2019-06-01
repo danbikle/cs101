@@ -250,9 +250,15 @@
   %a(href='https://developers.google.com/drive/api/v3/reference/files#methods')
     https://developers.google.com/drive/api/v3/reference/files#methods
 
-%p I wrote a script to demostrate this call:
+%p I wrote a script, gdrive15.py, to demostrate this call:
 %p drive_service.files().copy()
 .syntax
   %pre
     =render 'lesson013gdrive15_py'
-    
+
+%p When I compare drive_service.files().create() to drive_service.files().copy(), I see some similarities.
+
+%p I ran gdrive15.py and collected output for you to see:
+
+%img(src='/lesson013/lesson013z11.png')
+%hr/
