@@ -3,7 +3,7 @@ gdrive18.py
 
 This script should create hello.txt on Linux.
 It should copy hello.txt to Google Drive.
-It should download hello.txt from Google Drive to /tmp/hello2.txt
+It should list info about permissions.
 
 Ref:
 https://developers.google.com/drive/api/v3/reference/files#methods
