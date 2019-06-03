@@ -1,0 +1,195 @@
+notes2019_0603.txt
+
+I started by logging into d735 gmail account.
+
+I visited
+
+https://console.developers.google.com
+
+I created a project and enabled the google-drive API.
+
+I visited
+
+https://developers.google.com/apis-explorer/#p/drive/v3/drive.files.create
+
+It served me a page:
+
+0603a.png
+
+In upper right I clicked gear-icon, then FAQ.
+
+Info there:
+
+  - The APIs Explorer uses its own API key whenever it makes a request.
+  - When you use the APIs Explorer to make a request, it displays the request syntax, which includes a placeholder labeled {YOUR_API_KEY}.
+
+Q: How to get the key I can place in {YOUR_API_KEY}?
+
+To answer the above Q, I visited this URL:
+
+https://developers.google.com/console/help/using-keys
+
+It listed steps I can follow to get API_KEY:
+
+  - https://console.cloud.google.com/apis/credentials
+  - Select Create credentials, then select API key from the dropdown menu
+  - Click the Create button.
+
+I followed them and it worked.
+
+I copied my key to ~/.ssh/d735key_0603.txt
+
+I returned to the FAQ...
+
+It asks a question:
+
+Can I use my own API key and/or OAuth 2.0 client ID with the Explorer?
+
+It says yes and then suggests I can get an OAuth 2.0 client ID from this URL:
+
+https://console.developers.google.com/apis/credentials
+
+I used that same URL to create my API_KEY two minutes ago.
+
+I returned with the intent of creatin a: "OAuth 2.0 client ID".
+
+I clicked the blue-"CREATE CREDENTIALS" button.
+
+From the select-options field I selected: "OAuth client ID"
+
+Google served me a page with this text:
+
+Create OAuth client ID
+
+To create an OAuth client ID, you must first set a product name on the consent screen
+
+For applications that use the OAuth 2.0 protocol to call Google APIs,
+you can use an OAuth 2.0 client ID to generate an access token.
+The token contains a unique identifier.
+See Setting up OAuth 2.0 for more information.
+
+I wanted to set the product name to this string: "exp10".
+
+The page was offering only 1 blue-button to proceed so I clicked it.
+I was hoping it would send me to the "consent screen".
+
+The "consent screen" looked like a problem.
+
+I assumed that I was trying to create an application and expose it to the public.
+And it assumed that I wanted access to other people's data.
+
+For me, both of those assumptions were wrong.
+
+I only wanted to get an OAuth client ID so I could authenticate myself to API Explorer.
+
+I interacted with the form to see if I could move towards my goal.
+
+Next it offered me another form with 5 radio-buttons for 5 choices:
+
+0603b.png
+
+For applications that use the OAuth 2.0 protocol to call Google APIs,
+you can use an OAuth 2.0 client ID to generate an access token.
+The token contains a unique identifier.
+See Setting up OAuth 2.0 for more information.
+
+Application type
+ 
+  - Web application
+
+  - Android Learn more
+ 
+  - Chrome App Learn more
+ 
+  - iOS Learn more
+ 
+  - Other
+
+I wanted to use the API Explorer which is a Web-app so I was tempted to pick: Web application
+
+Another tempting choice was Other.
+
+Android, Chrome, iOS looked like I could easily avoid them.
+
+I picked: Web application
+
+It served me a form with 3 fields:
+
+0603c.png
+
+  - field1: "name" , It filled in name with "Web client 1"
+  - field2: "Authorized JavaScript origins"
+  - field3: "Authorized redirect URIs"
+
+Q: What is "Authorized JavaScript origins"?
+
+The form offers some info:
+
+Authorized JavaScript origins
+
+For use with requests from a browser.
+This is the origin URI of the client application.
+It can't contain a wildcard (https://*.example.com)
+or a path (https://example.com/subdir).
+If you're using a nonstandard port, you must include it in the origin URI.
+
+https://www.example.com
+Type in the domain and press Enter to add it
+
+The above text suggests to me I need to enter the top-level URI of a website I own like https://cs101.us
+
+Also it might be happy if I also enter a subdomain like: https://www.cs101.us
+
+I entered https://cs101.us
+
+Q: What is "Authorized redirect URIs"?
+
+The form offers some info:
+
+Authorized redirect URIs
+
+For use with requests from a web server.
+This is the path in your application
+that users are redirected to
+after they have authenticated with Google.
+
+The path will be appended with the authorization code for access.
+Must have a protocol.
+Cannot contain URL fragments or relative paths.
+Cannot be a public IP address.
+
+So, it is asking for a "path".
+
+The grey-default-value in the field is this URI: https://www.example.com
+
+That does not look like a path to me.
+
+I think for my path I'd pick this path: "/auth10"
+
+It says, "Must have a protocol."
+
+I dont know how to add a protocol to a path.
+
+I know how to add it to a URL. Ex: https://hello123.com
+
+It says, "Cannot contain URL fragments or relative paths."
+Q: What are examples of URL fragments or relative paths?
+
+It says, Cannot be a public IP address.
+Q: Why would I be tempted to enter an IP address? The form is asking for a path which is a string.
+
+I tried entering this string: "https://cs101.us/auth10"
+
+The form accepted that string as valid and then opened another field to prompt me to add another string. I ignored the 2nd field.
+
+So, I entered these values into the form:
+
+Name:                          Web client 1
+Authorized JavaScript origins: https://cs101.us
+Authorized redirect URIs:      https://cs101.us/auth10
+
+I clicked the blue-"Create" button.
+
+
+
+

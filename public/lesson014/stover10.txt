@@ -1,0 +1,38 @@
+
+http://stackoverflow.com/questions/tagged/google-apis-explorer
+
+Hello World,
+
+I want to use the API-explorer to study the Google Drive API.
+
+I tried this URL:
+
+https://developers.google.com/apis-explorer/#p/drive/v3/drive.files.create
+
+At the authentication step it asks me to pick a Gmail account.
+
+I did that.
+
+Then it wants to send a text to my old phone number which I don't have.
+
+I used Gmail to update the phone number to my current number.
+
+That update is not seen by the authentication mechanism used by Google Drive API.
+
+When I try to authenticate for Google Drive API, the authentication mechanism wants to send a text to my old phone number which I don't have.
+
+Also it appears that mechanism depends solely on phone.
+
+The mechanism used by Gmail allows me to use either phone or secondary e-mail.
+
+I have no idea how fix this.
+
+Should I just wait a day or 3 and hope my new number will be recognized?
+
+Yesterday I read in the news that Google Cloud was hit by network problems and many customers were knocked out of action.
+
+Could this weird authentication bug be an artifact from that set of problems?
+
+I'm reluctant to use a different Gmail account because I worry that Google automated hacking detection systems would lock me out of important services like Gmail, Drive, Docs, ...
+
+I dont care that much about API-explorer but I am mildly curious about how to operate it.
