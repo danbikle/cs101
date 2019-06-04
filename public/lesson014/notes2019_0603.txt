@@ -190,6 +190,120 @@ Authorized redirect URIs:      https://cs101.us/auth10
 
 I clicked the blue-"Create" button.
 
+google served me some info:
+
+OAuth client
+The client ID and secret can always be accessed from Credentials in APIs & Services
+
+OAuth is limited to 100 sensitive scope logins until the OAuth consent screen is published. This may require a verification process that can take several days.
+Here is your client ID
+
+69102246475-smge90blgt79o7rf4j4u8ncedragii34.apps.googleusercontent.com
+Here is your client secret
+
+dxDvSf1UxyJyUgsJfp9sS4Hm
+
+I copied the above info to mem/keys.txt
+
+I clicked ok.
+
+In this page:
+https://console.developers.google.com/apis/credentials
+google served a link I could use to download my new client ID.
+I clicked it.
+
+It served a JSON file to my Downloads folder:
+
+client_secret_69102246475-smge90blgt79o7rf4j4u8ncedragii34.apps.googleusercontent.com.json
+
+I copied it to here:
+
+~/oauth.json
+
+
+Q: With these new credentials, could I use them to operate the API Explorer?
+
+I visited
+
+https://developers.google.com/apis-explorer/#p/drive/v3/drive.files.create
+
+I used the gear-icon to configure Explorer to use my credentials.
+
+I used Explorer to send an API call.
+
+google served me an error:
+
+400. That’s an error.
+
+Error: redirect_uri_mismatch
+
+The JavaScript origin in the request,
+https://developers.google.com,
+does not match the ones authorized for the OAuth client.
+Visit
+https://console.developers.google.com/apis/credentials/oauthclient/69102246475-smge90blgt79o7rf4j4u8ncedragii3r.apps.googleusercontent.com?project=69102246475
+to update the authorized JavaScript origins.
+
+Learn more
+
+Request Details
+response_type=permission id_token
+scope=https://www.googleapis.com/auth/drive
+  https://www.googleapis.com/auth/drive.appdata
+  https://www.googleapis.com/auth/drive.file
+openid.realm=
+redirect_uri=storagerelay://https/developers.google.com?id=auth288325
+
+client_id=69102246475-smge90blgt79o7rf4j4u8ncedragii3r.apps.googleusercontent.com
+
+ss_domain=https://developers.google.com
+
+gsiwebsdk=shim
+
+That’s all we know.
+
+I visited this URL:
+
+https://console.developers.google.com/apis/credentials
+
+I removed the newly created oauth2 credentials.
+
+I wanted to create credentials a different way.
+
+I clicked the blue-"Create credentials" button.
+
+I followed what I call the "other-client" path.
+
+Eventually I got a JSON file and put it here:
+
+~/oauth.json
+
+
+
+
+
+Q: With these new credentials, could I use them to operate the API Explorer?
+
+I visited
+
+https://developers.google.com/apis-explorer/#p/drive/v3/drive.files.create
+
+I used the gear-icon to configure Explorer to use my credentials.
+
+I used Explorer to send an API call.
+
+google served me an error:
+
+400. That’s an error.
+
+Error: invalid_request
+
+Storagerelay URI is not allowed for 'NATIVE' client type.
+
+Request Details
+That’s all we know.
+
+
 
 
 
