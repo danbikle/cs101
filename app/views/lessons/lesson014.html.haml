@@ -83,12 +83,12 @@
 %img(src='/lesson014/lesson014b.png')
 %hr/
 
-%p I noticed a link to this API call:
+%p I noticed a link to the API call, drive.files.create:
 
 %img(src='/lesson014/lesson014c.png')
 %hr/
 
-%p I clicked that link and Google served me a page to explore that API call:
+%p I clicked that link, drive.files.create, and Google served me a page to explore that API call:
 
 %img(src='/lesson014/lesson014d.png')
 %hr/
@@ -102,23 +102,125 @@
 
 %p I was happy with the choices Google made for me on that page so I clicked the blue-button: "Authorize and execute".
 
-%p Google served me a page asking me to authenticate with a Gmail account:
+%p Something in the page or server, JavaScript I assume, made the API call, drive.files.create.
 
-%img(src='/lesson014/lesson014f.png')
+%p I had supplied no data to the drive.files.create so I was worried it would fail.
+
+%p The API sever responded.
+
+%p A div-element at the bottom of the page captured the response and served it to my browser so I could see it:
+
+%img(src='/lesson014/lesson014g.png')
 %hr/
 
-%p I clicked the second account.
+%p The call succeeded.
 
-%p Google wanted me to authenticate with an old phone number I no longer used.
+%p It created a file named: "Untitled".
 
-%p Via Gmail, I changed my authentication phone number to my current number.
+%p I compared that response to a Python script I wrote in lesson 013: gdrive13.py
 
-%p But that change did not propogate through to the API Explorer.
+%p In that script, I used Python syntax to make a similar call:
 
-%p My account was in a bad state which prevented me from using the API Explorer.
+.syntax
+  %pre
+    =render 'lesson014h_gdrive13'
 
-%p I was reluctant to use a different Gmail account because I worried that Google automated hacking detection systems would lock me out again.
+%p I wanted to use the API Explorer to make a call similar to the above Python.
 
-%p I decided to wait a day to see if my new authentication phone number would propogate into the API Explorer authentication mechanism.
+%p I returned to this URL:
 
-%p To be continued ........
+%p
+  %a(target='g' href='https://developers.google.com/apis-explorer/#p/drive/v3/')
+    https://developers.google.com/apis-explorer/#p/drive/v3/
+
+%p There, I clicked the link, drive.files.create, and Google served me a page to explore that API call:
+
+%img(src='/lesson014/lesson014d.png')
+%hr/
+
+%p The Python script called googleapiclient.http.MediaFileUpload().
+
+%p The form for drive.files.create does not try to mimic that call.
+
+%p Aside from MediaFileUpload(), I did find three matches so I entered them into the form:
+
+%img(src='/lesson014/lesson014i.png')
+%hr/
+
+%p I clicked the blue-"Execute" button.
+
+%p The page displayed information about both the request and the response:
+
+%img(src='/lesson014/lesson014j.png')
+%hr/
+
+%p In lesson 013, the Python script, gdrive13.py, made another call to the Google Drive API:
+
+.syntax
+  %pre
+    =render 'lesson014h_gdrive13b'
+
+%p I wanted to use the API Explorer to make a similar call.
+
+%p I returned to this URL:
+
+%p
+  %a(target='g' href='https://developers.google.com/apis-explorer/#p/drive/v3/')
+    https://developers.google.com/apis-explorer/#p/drive/v3/
+
+
+%p There, I clicked the link, drive.files.list, and Google served me a form to explore that API call:
+
+%img(src='/lesson014/lesson014k.png')
+%hr/
+
+%p Using gdrive13.py as a guide I filled out the form:
+
+%img(src='/lesson014/lesson014l.png')
+%hr/
+
+%p I clicked the blue-"Execute" button.
+
+%p The page displayed information about both the request and the response:
+
+%img(src='/lesson014/lesson014m.png')
+%hr/
+
+%p The server did execute the call, but it did not return what I expected.
+
+%p I expected to see information about file named: 'hello.txt' which I had recently created.
+
+%p Perhaps I placed incorrect syntax in the "q-field"?
+
+%p For that field, the form suggests: See the "Search for Files" guide for supported syntax.
+
+%p What is the URL for "Search for Files" guide?
+
+%p I asked google:
+
+%p
+  %a(target='g' href='https://www.google.com/search?q=google+drive+search+for+files+guide')
+    https://www.google.com/search?q=google+drive+search+for+files+guide
+
+%p Google sent me here:
+
+%p
+  %a(target='g' href='https://developers.google.com/drive/api/v3/reference/query-ref')
+    https://developers.google.com/drive/api/v3/reference/query-ref
+
+%p There, the guide told me that the pattern for the q-field is: name=string
+
+%p That is what I had typed so then I asked, how to search for all files?
+
+%p The answer is, just leave the q-field blank.
+
+%p I tried that idea and eventually I learned that earlier I had not created a file named hello.txt.
+
+%p I had created: hello.txt"
+
+%p If you carefully study the content above, you will see an image of the form I had used to make that syntax mistake.
+
+%p Here is output from me leaving the q-field blank:
+
+%img(src='/lesson014/lesson014n.png')
+%hr/

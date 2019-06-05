@@ -1,0 +1,14 @@
+<code class='python'>
+# I shd create /tmp/hello.txt on Linux:
+with open('/tmp/hello.txt','w') as fh:
+    fh.write("hello world\n")
+
+# I shd copy hello.txt to Google Drive.
+file_metadata = {'name': 'hello.txt'}
+media = MediaFileUpload('/tmp/hello.txt', mimetype='text/plain')
+print('I will try to upload /tmp/hello.txt to google drive:')
+create_response = drive_service.files().create(body=file_metadata,
+                                     media_body=media,
+                                     fields='id').execute()
+
+</code>
