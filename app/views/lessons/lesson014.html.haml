@@ -356,3 +356,70 @@
 
 %p I interpreted the above output to mean that anyone could read the file and that the Google Drive user who created the file still acted as the owner.
 
+%p Q: If anyone can read it, what would be the URL anyone could use to read it?
+
+%p To answer, I returned to this URL:
+
+%p
+  %a(target='g' href='https://developers.google.com/apis-explorer/#p/drive/v3/')
+    https://developers.google.com/apis-explorer/#p/drive/v3/
+
+%p There, I clicked the link, drive.files.get, and Google served me a form to explore that API call:
+
+%img(src='/lesson014/lesson014z10.png')
+%hr/
+
+%p After I filled out the form, I clicked the blue-"Execute" button.
+
+%p The API responded:
+
+%img(src='/lesson014/lesson014z11.png')
+%hr/
+
+%p Q: Can I download either of the above links using curl or wget?
+
+%p I tried some Bash commands:
+
+.syntax
+  %pre
+    %code.bash
+      cd /tmp/
+      wget 'https://drive.google.com/uc?id=1Vj_zxPczKX1biLwCJrUxRJ2Q5YweFsX_&export=download'      -O file1.jpg
+      wget 'https://drive.google.com/file/d/1Vj_zxPczKX1biLwCJrUxRJ2Q5YweFsX_/view?usp=drivesdk'   -O file2.jpg
+      curl -L 'https://drive.google.com/uc?id=1Vj_zxPczKX1biLwCJrUxRJ2Q5YweFsX_&export=download'    > file3.jpg
+      curl -L 'https://drive.google.com/file/d/1Vj_zxPczKX1biLwCJrUxRJ2Q5YweFsX_/view?usp=drivesdk' > file4.jpg
+      ls -la /tmp/file?.jpg
+      file   /tmp/file?.jpg
+
+%p I saw this
+.syntax
+  %pre
+    =render 'lesson014z12'
+
+%p Based on the above output, I should ask the public to use this URL to get the file:
+%p
+  %a(target='g' href='https://drive.google.com/uc?id=1Vj_zxPczKX1biLwCJrUxRJ2Q5YweFsX_&export=download')
+    https://drive.google.com/uc?id=1Vj_zxPczKX1biLwCJrUxRJ2Q5YweFsX_&export=download
+%p Also I find it very convenient that the file-id assigned by the API can be used by the public.
+
+%p In Python, if I have the file-id, I can easily create a URL-string with syntax like this:
+
+.syntax
+  %pre
+    %code.python
+      file_id = '1Vj_zxPczKX1biLwCJrUxRJ2Q5YweFsX_'
+      url_s = 'https://drive.google.com/uc?id='+file_id+'&export=download'
+      print(url_s)
+
+%p I should note that I tried this URL in my browser:
+
+%p
+  %a(target='g' href='https://drive.google.com/file/d/1Vj_zxPczKX1biLwCJrUxRJ2Q5YweFsX_/view?usp=drivesdk')
+    https://drive.google.com/file/d/1Vj_zxPczKX1biLwCJrUxRJ2Q5YweFsX_/view?usp=drivesdk
+
+%p The browser assumed that I wanted to open the file in Google-docs:
+
+%img(src='/lesson014/lesson014z13.png')
+%hr/
+
+

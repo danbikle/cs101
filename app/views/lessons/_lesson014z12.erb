@@ -1,0 +1,57 @@
+<code class='bash'>
+cs101@l77:/tmp$ wget 'https://drive.google.com/uc?id=1Vj_zxPczKX1biLwCJrUxRJ2Q5YweFsX_&export=download'      -O file1.jpg
+--2019-06-05 17:24:27--  https://drive.google.com/uc?id=1Vj_zxPczKX1biLwCJrUxRJ2Q5YweFsX_&export=download
+Resolving drive.google.com (drive.google.com)... 172.217.164.110, 2607:f8b0:4005:80b::200e
+Connecting to drive.google.com (drive.google.com)|172.217.164.110|:443... connected.
+HTTP request sent, awaiting response... 302 Moved Temporarily
+Location: https://doc-0s-1s-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/aoae5fvf3nh8icvia99l0ir5r031d16j/1559779200000/05712468557397454674/*/1Vj_zxPczKX1biLwCJrUxRJ2Q5YweFsX_?e=download [following]
+Warning: wildcards not supported in HTTP.
+--2019-06-05 17:24:28--  https://doc-0s-1s-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/aoae5fvf3nh8icvia99l0ir5r031d16j/1559779200000/05712468557397454674/*/1Vj_zxPczKX1biLwCJrUxRJ2Q5YweFsX_?e=download
+Resolving doc-0s-1s-docs.googleusercontent.com (doc-0s-1s-docs.googleusercontent.com)... 172.217.5.97, 2607:f8b0:4005:808::2001
+Connecting to doc-0s-1s-docs.googleusercontent.com (doc-0s-1s-docs.googleusercontent.com)|172.217.5.97|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [image/jpeg]
+Saving to: ‘file1.jpg’
+
+file1.jpg               [  &lt;=>               ]   2.14M  7.37MB/s    in 0.3s    
+
+2019-06-05 17:24:28 (7.37 MB/s) - ‘file1.jpg’ saved [2243350]
+
+cs101@l77:/tmp$ wget 'https://drive.google.com/file/d/1Vj_zxPczKX1biLwCJrUxRJ2Q5YweFsX_/view?usp=drivesdk'   -O file2.jpg
+--2019-06-05 17:24:37--  https://drive.google.com/file/d/1Vj_zxPczKX1biLwCJrUxRJ2Q5YweFsX_/view?usp=drivesdk
+Resolving drive.google.com (drive.google.com)... 172.217.164.110, 2607:f8b0:4005:80b::200e
+Connecting to drive.google.com (drive.google.com)|172.217.164.110|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘file2.jpg’
+
+file2.jpg               [ &lt;=>                ] 120.41K  --.-KB/s    in 0.05s   
+
+2019-06-05 17:24:37 (2.28 MB/s) - ‘file2.jpg’ saved [123295]
+
+cs101@l77:/tmp$ curl -L 'https://drive.google.com/uc?id=1Vj_zxPczKX1biLwCJrUxRJ2Q5YweFsX_&export=download'    > file3.jpg
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   388    0   388    0     0    794      0 --:--:-- --:--:-- --:--:--   795
+100 2190k    0 2190k    0     0  1827k      0 --:--:--  0:00:01 --:--:-- 8738k
+cs101@l77:/tmp$ curl -L 'https://drive.google.com/file/d/1Vj_zxPczKX1biLwCJrUxRJ2Q5YweFsX_/view?usp=drivesdk' > file4.jpg
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  120k    0  120k    0     0   191k      0 --:--:-- --:--:-- --:--:--  190k
+cs101@l77:/tmp$ 
+cs101@l77:/tmp$ 
+cs101@l77:/tmp$ ls -la /tmp/file?.jpg
+-rw-rw-r-- 1 cs101 cs101 2243350 Jun  5 17:24 /tmp/file1.jpg
+-rw-rw-r-- 1 cs101 cs101  123295 Jun  5 17:24 /tmp/file2.jpg
+-rw-rw-r-- 1 cs101 cs101 2243350 Jun  5 17:24 /tmp/file3.jpg
+-rw-rw-r-- 1 cs101 cs101  123293 Jun  5 17:25 /tmp/file4.jpg
+cs101@l77:/tmp$ 
+cs101@l77:/tmp$ file /tmp/file?.jpg
+/tmp/file1.jpg: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, baseline, precision 8, 1729x2560, frames 3
+/tmp/file2.jpg: HTML document, ASCII text, with very long lines
+/tmp/file3.jpg: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, baseline, precision 8, 1729x2560, frames 3
+/tmp/file4.jpg: HTML document, ASCII text, with very long lines
+cs101@l77:/tmp$ 
+cs101@l77:/tmp$
+
+</code>
