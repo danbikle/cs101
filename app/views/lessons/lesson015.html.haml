@@ -428,3 +428,52 @@
 
 %img(src='/lesson015/lesson015z40.png')
 %hr/
+
+%p The above output convinced me I was on the right track.
+
+%p I copied sheet11.py to sheet12.py and then enhanced it:
+
+.syntax
+  %pre
+    =render 'lesson015sheet12py'
+
+%p I ran the script on my laptop and it worked well.
+
+%p I captured output for you to see:
+
+%img(src='/lesson015/lesson015z41.png')
+%hr/
+
+%p I wanted to see the actual spreadsheet so I visited the URL listed below:
+
+%p
+  %a(target='g' href='https://developers.google.com/apis-explorer/#p/sheets/v4/')
+    https://developers.google.com/apis-explorer/#p/sheets/v4/
+
+%p I saw a useful link:
+
+%img(src='/lesson015/lesson015z42.png')
+%hr/
+
+%p I clicked it and then filled out the form which Google had served me:
+
+%img(src='/lesson015/lesson015z43.png')
+%hr/
+
+%p I clicked the blue-"Authorize and execute" button.
+
+%p I saw this:
+
+%img(src='/lesson015/lesson015z44.png')
+%hr/
+
+%p I saw the URL for the spreadsheet listed in the Response; I clicked it:
+
+%img(src='/lesson015/lesson015z45.png')
+%hr/
+
+%p After I studied the above spreadsheet, some of the syntax in sheet12.py made more sense to me.
+
+.syntax
+  %pre
+    =render 'lesson015sheet12bpy'
