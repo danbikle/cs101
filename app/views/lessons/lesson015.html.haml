@@ -313,4 +313,41 @@
   %li Create
   %li List
   %li Update
-  
+
+%p I learned what I could from the API Explorer.
+
+%p At that point I felt I needed more help to become productive with Google-Sheets-API.
+
+%p I studied content which teaches the Google-Sheets-API via Python scripts:
+
+%p
+  %a(target='g' href='https://developers.google.com/sheets/api/quickstart/python')
+    https://developers.google.com/sheets/api/quickstart/python
+%p On my Linux laptop I installed Python 3.
+
+%p After installation I made note of the banner:
+
+.syntax
+  %pre
+    =render 'lesson015z10'
+
+%p Then, I ran shell commands to install pip3 and Python modules:
+
+.syntax
+  %pre
+    %code.bash
+      sudo apt install python3-pip
+      sudo pip3 install --upgrade google-api-python-client
+      sudo pip3 install --upgrade google-auth-httplib2
+      sudo pip3 install --upgrade google-auth-oauthlib
+
+%p Next, I visited the URL listed below:
+
+%p
+  %a(target='g' href='https://console.cloud.google.com/apis/api/sheets.googleapis.com/overview')
+    https://console.cloud.google.com/apis/api/sheets.googleapis.com/overview
+
+%p I saw this:
+
+%img(src='/lesson015/lesson015z11.png')
+%hr/
