@@ -86,3 +86,39 @@
 
 %img(src='/lesson016/lesson016b9.png')
 %hr/
+
+%p This form is simple yet tricky.
+
+%p I only typed in two pieces of data:
+
+%ul
+  %li http://localhost:8080
+  %li http://localhost:8080/
+
+%p After I enter the second value, I MUST press the tab key so the form will accept it.
+
+%p After I filled out the form correctly, I saw this:
+
+%img(src='/lesson016/lesson016c1.png')
+%hr/
+
+%p I clicked the blue-"Create" button; I saw this:
+
+%img(src='/lesson016/lesson016c2.png')
+%hr/
+
+%img(src='/lesson016/lesson016c3.png')
+%hr/
+
+%p Next, using the down-link on the right, I downloaded a JSON file which contains the credentials.
+
+%p Then I copied the file to this path on my laptop:
+
+%p ~/secret0612.json
+
+%p The file looks like this:
+
+.syntax
+  %pre
+    =render 'lesson016c4'
+    
