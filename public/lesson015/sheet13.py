@@ -1,0 +1,39 @@
+"""
+sheet13.py
+
+This script should get the spreadsheetUrl for:
+1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms
+
+Ref:
+https://developers.google.com/sheets/api/quickstart/python
+https://developers.google.com/apis-explorer/#p/sheets/v4/sheets.spreadsheets.get
+
+Demo:
+python3 sheet13.py
+"""
+
+import os
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+
+# The ID and range of a sample spreadsheet.
+SAMPLE_SPREADSHEET_ID = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
+SAMPLE_RANGE_NAME     = 'Class Data!A2:E'
+
+SCOPES  = ['https://www.googleapis.com/auth/spreadsheets.readonly']
+jsonf_s = os.environ['HOME']+'/secret0611.json'
+flow    = InstalledAppFlow.from_client_secrets_file(jsonf_s, SCOPES)
+creds   = flow.run_local_server()
+
+print('I should be authenticated now:')
+print(creds)
+
+print('I should build a service:')
+service = build('sheets', 'v4', credentials=creds)
+print(service)
+
+# Call the Sheets API
+print('I should get the value of spreadsheetUrl.')
+result = service.spreadsheets().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                                    fields="spreadsheetUrl").execute()
+print(result)

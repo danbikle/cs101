@@ -477,3 +477,23 @@
 .syntax
   %pre
     =render 'lesson015sheet12bpy'
+
+%p Next, I asked a question.
+
+%p Q: How easy is it to get the spreadsheetUrl using Python rather than the API Explorer?
+
+%p To answer, I copied sheet12.py to sheet13.py and then enhanced it after studying the structure of this form:
+
+%p
+  %a(target='g' href='https://developers.google.com/apis-explorer/#p/sheets/v4/sheets.spreadsheets.get')
+    https://developers.google.com/apis-explorer/#p/sheets/v4/sheets.spreadsheets.get
+
+.syntax
+  %pre
+    =render 'lesson015sheet13py'
+
+%p I ran the above script and saw this:
+
+%img(src='/lesson015/lesson015z46.png')
+%hr/
+
