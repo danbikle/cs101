@@ -11,6 +11,7 @@ Demo:
 python3 sheet15.py
 """
 
+import datetime
 import os
 import pickle
 from googleapiclient.discovery import build
@@ -24,9 +25,14 @@ with open(pcklf_s, 'rb') as fh:
 print('OAuth session obtained from Python-pickle file:')
 print(pcklf_s)
 
+# I shd get a UTC timestamp-string for the spreadsheet title:
+my_dt = datetime.datetime.utcnow()
+my_s  = datetime.datetime.strftime(my_dt, '%Y-%m-%d %H:%M:%S')
+
+title_s           = 'lesson016sheet ' + my_s
 service           = build('sheets', 'v4', credentials=creds)
 field_s           = 'spreadsheetUrl,spreadsheetId'
-body_d            = {'properties':{'title':'lesson016sheetB'}}
+body_d            = {'properties':{'title':title_s}}
 response_ofcreate = service.spreadsheets().create(fields=field_s, body=body_d).execute()
 spreadsheet_id    = response_ofcreate.get('spreadsheetId')
 print('I just created spreadsheet; it has an ID:')
