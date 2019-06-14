@@ -33,7 +33,8 @@ title_s           = 'lesson016sheet ' + my_s
 service           = build('sheets', 'v4', credentials=creds)
 field_s           = 'spreadsheetUrl,spreadsheetId'
 body_d            = {'properties':{'title':title_s}}
-response_ofcreate = service.spreadsheets().create(fields=field_s, body=body_d).execute()
+response_ofcreate = service.spreadsheets().create(fields=field_s
+                                                  ,body=body_d).execute()
 spreadsheet_id    = response_ofcreate.get('spreadsheetId')
 print('I just created spreadsheet; it has an ID:')
 print(spreadsheet_id)
