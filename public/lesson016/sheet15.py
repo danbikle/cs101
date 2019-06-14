@@ -1,10 +1,14 @@
 """
-sheet14.py
+sheet15.py
 
-This script should create a spreadsheet, then add rows to it.
+This script should create a spreadsheet, then call 
+service.spreadsheets().values().batchUpdate()
+
+This script should do the same as sheet14.py except 
+use batchUpdate() instead of update().
 
 Demo:
-python3 sheet14.py
+python3 sheet15.py
 """
 
 import os
@@ -31,25 +35,27 @@ spreadsheet_url = response_ofcreate.get('spreadsheetUrl')
 print('spreadsheetUrl:')
 print( spreadsheet_url)
 
-# To write data to a spreadsheet, I need this:
-# spreadsheetId
-# The range in A1 notation
-# A nested list full of values
-
-range_s        = 'Sheet1!A1' # The range in A1 notation
-
-# I shd use a spreadsheets.values.update request to write data to a single range
-
+range_s  = 'Sheet1!A1' # The range in A1 notation
 row1_l   = [1.1, 2.1, 3.3]
 row2_l   = [1.2, 2.3, 3.1]
 values_l = [row1_l, row2_l] # A nested list full of values
-body     = {
+
+# I shd combine range_s and values_l into a list of dictionaries:
+data_l = [
+  {
+    'range':  range_s,
     'values': values_l
-}
+  } # just 1 dictionary for now
+]
 
-response_ofupdate = service.spreadsheets().values().update(
-    spreadsheetId=spreadsheet_id, range=range_s,
-    valueInputOption='USER_ENTERED', body=body).execute()
+body_d = {
+  'valueInputOption': 'USER_ENTERED',
+  'data': data_l
+} # Another dictionary for batchUpdate()
 
-print("response_ofupdate.get('updatedCells'):")
-print( response_ofupdate.get('updatedCells')  )
+response_ofbatchUpdate = service.spreadsheets().values().batchUpdate(
+  spreadsheetId=spreadsheet_id,
+  body = body_d).execute()
+
+print("response_ofbatchUpdate.get('totalUpdatedCells'):")
+print( response_ofbatchUpdate.get('totalUpdatedCells')  )
