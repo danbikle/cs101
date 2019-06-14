@@ -3,8 +3,6 @@ sheet14.py
 
 This script should test an OAuth session from a Python-pickle file.
 
-Ref:
-
 Demo:
 python3 sheet14.py
 """
