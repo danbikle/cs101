@@ -32,26 +32,3 @@ print(spreadsheet_id)
 spreadsheet_url = response_ofcreate.get('spreadsheetUrl')
 print('spreadsheetUrl:')
 print( spreadsheet_url)
-
-# To write data to a spreadsheet, I need this:
-# spreadsheetId
-# The range in A1 notation
-# A nested list full of values
-
-range_s        = 'Sheet1!A1' # The range in A1 notation
-
-# I shd use a spreadsheets.values.update request to write data to a single range
-
-row1_l   = [1.1, 2.1, 3.3]
-row2_l   = [1.2, 2.3, 3.1]
-values_l = [row1_l, row2_l] # A nested list full of values
-body     = {
-    'values': values_l
-}
-
-response_ofupdate = service.spreadsheets().values().update(
-    spreadsheetId=spreadsheet_id, range=range_s,
-    valueInputOption='USER_ENTERED', body=body).execute()
-
-print("response_ofupdate.get('updatedCells'):")
-print( response_ofupdate.get('updatedCells')  )

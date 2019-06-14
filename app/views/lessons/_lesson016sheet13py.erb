@@ -1,11 +1,11 @@
 <code class='bash'>
 """
-sheet12.py
+sheet13.py
 
 This script should test an OAuth session from a Python-pickle file.
 
 Demo:
-python3 sheet12.py
+python3 sheet13.py
 """
 
 import os
@@ -25,8 +25,11 @@ service           = build('sheets', 'v4', credentials=creds)
 field_s           = 'spreadsheetUrl'
 body_d            = {'properties':{'title':'lesson016sheetA'}}
 response_ofcreate = service.spreadsheets().create(fields=field_s, body=body_d).execute()
-response_ofget    = response_ofcreate.get('spreadsheetUrl')
-print('I just created spreadsheet; it has a URL:')
-print(response_ofget)
+spreadsheet_id    = response_ofcreate.get('spreadsheetId')
+print('I just created spreadsheet; it has an ID:')
+print(spreadsheet_id)
+spreadsheet_url = response_ofcreate.get('spreadsheetUrl')
+print('spreadsheetUrl:')
+print( spreadsheet_url)
 
 </code>

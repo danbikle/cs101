@@ -19,11 +19,3 @@ with open(pcklf_s, 'rb') as fh:
             
 print('OAuth session obtained from Python-pickle file:')
 print(pcklf_s)
-
-service           = build('sheets', 'v4', credentials=creds)
-field_s           = 'spreadsheetUrl'
-body_d            = {'properties':{'title':'lesson016sheetA'}}
-response_ofcreate = service.spreadsheets().create(fields=field_s, body=body_d).execute()
-response_ofget    = response_ofcreate.get('spreadsheetUrl')
-print('I just created spreadsheet; it has a URL:')
-print(response_ofget)
