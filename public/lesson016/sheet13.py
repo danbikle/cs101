@@ -3,6 +3,9 @@ sheet13.py
 
 This script should test an OAuth session from a Python-pickle file.
 
+Ref:
+
+
 Demo:
 python3 sheet13.py
 """
@@ -27,14 +30,30 @@ response_ofcreate = service.spreadsheets().create(fields=field_s, body=body_d).e
 response_ofget    = response_ofcreate.get('spreadsheetId')
 print('I just created spreadsheet; it has an ID:')
 print(response_ofget)
+spreadsheet_id = response_ofget
+print('spreadsheetUrl:')
+print( spreadsheetUrl  )
 
-# To write I need this:
+# To write data to a spreadsheet, I need this:
 # spreadsheetId
 # The range in A1 notation
-# some data
+# A nested list full of values
+
+range_s        = 'Sheet1!A1:C'
+range_s        = 'Sheet1!A1'
 
 # I shd use a spreadsheets.values.update request to write data to a single range
 
 row1_l   = [1.1, 2.1, 3.3]
 row2_l   = [1.2, 2.3, 3.1]
 values_l = [row1_l, row2_l]
+body     = {
+    'values': values_l
+}
+
+response_ofupdate = service.spreadsheets().values().update(
+    spreadsheetId=spreadsheet_id, range=range_s,
+    valueInputOption='RAW', body=body).execute()
+
+print("response_ofupdate.get('updatedCells'):")
+print( response_ofupdate.get('updatedCells')  )
