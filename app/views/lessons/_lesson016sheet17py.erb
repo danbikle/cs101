@@ -71,7 +71,7 @@ body_d = {
 
 response_ofbatchUpdate = service.spreadsheets().values().batchUpdate(
   spreadsheetId=spreadsheet_id,
-  body = body_d).execute()
+  body=body_d).execute()
 
 print("response_ofbatchUpdate.get('totalUpdatedCells'):")
 print( response_ofbatchUpdate.get('totalUpdatedCells')  )
