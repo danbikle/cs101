@@ -239,4 +239,23 @@
 %img(src='/lesson016/lesson016e2.png')
 %hr/
 
+%p The above Python script demonstrates two calls:
+
+%ul
+  %li service.spreadsheets().create()
+  %li service.spreadsheets().values().update()
+
+%p The script below replaces the update() call with batchUpdate():
+
+.syntax
+  %pre
+    =render 'lesson016sheet15py'
+
+%p I ran the above script and collected screen-shots for you:
+
+%img(src='/lesson016/lesson016e3.png')
+%hr/
+
+%img(src='/lesson016/lesson016e4.png')
+%hr/
 
