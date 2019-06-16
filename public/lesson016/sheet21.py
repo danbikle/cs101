@@ -1,11 +1,11 @@
 """
-sheet20.py
+sheet21.py
 
-This script should use a service-accoount to 
-create a sheets-service after authentication.
+Using a service-account,
+This script should create a spreadsheet.
 
 Demo:
-python3 sheet20.py
+python3 sheet21.py
 """
 
 import datetime
@@ -34,3 +34,13 @@ service     = build('sheets', 'v4', http=http_auth)
 
 print('I should now be authenticated and authorized to use service:')
 print(service)
+
+field_s           = 'spreadsheetUrl'
+body_d            = {'properties':{'title':'spreadsheet from sheet21.py'}}
+response_ofcreate = service.spreadsheets().create(fields=field_s, body=body_d).execute()
+spreadsheet_id    = response_ofcreate.get('spreadsheetId')
+print('I just created spreadsheet; it has an ID:')
+print(spreadsheet_id)
+spreadsheet_url = response_ofcreate.get('spreadsheetUrl')
+print('spreadsheetUrl:')
+print( spreadsheet_url)
