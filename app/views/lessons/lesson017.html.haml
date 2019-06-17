@@ -83,5 +83,31 @@
 %img(src='/lesson017/page10i.png')
 %hr/
 
+%p I selected an option: "Service account key".
 
+%p Google responded with a form asking which service account I wanted a key for:
 
+%img(src='/lesson017/page10j.png')
+%hr/
+
+%p I selected the Service account I had just created, "training-srv-acct":
+
+%img(src='/lesson017/page10k.png')
+%hr/
+
+%p Google created a key, placed it in a JSON file, and then copied that file into my ~/Downloads folder:
+
+%img(src='/lesson017/page10l.png')
+%hr/
+
+%p I copied the file with a bash command to a better place:
+
+.syntax
+  %pre
+    %code cp ~/Downloads/dan-project2-c5349542b7b4.json ~/secret0616.json
+
+%p I used cat to look at the file:
+
+.syntax
+  %pre
+    =render 'lesson017_secret0616'
