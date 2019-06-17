@@ -2,7 +2,7 @@
 sheet27.py
 
 This script should create a spreadsheet.
-Then, it should make the spreadsheet public-readable.
+Then, it should grant writer privilege to bikle101@gmail.com
 
 Demo:
 python3 sheet27.py
