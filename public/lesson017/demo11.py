@@ -12,11 +12,8 @@ Demo:
 python3 demo11.py
 """
 
-import datetime
 import os
-import pickle
 from googleapiclient.discovery    import build
-from googleapiclient.http         import MediaFileUpload
 from oauth2client.service_account import ServiceAccountCredentials
 from httplib2                     import Http
 
@@ -63,8 +60,6 @@ response_ofupdate = service.spreadsheets().values().update(
     spreadsheetId=spreadsheet_id, range=range_s,
     valueInputOption='USER_ENTERED', body=body).execute()
 
-print("response_ofupdate.get('updatedCells'):")
-print( response_ofupdate.get('updatedCells')  )
 print('response_ofupdate:')
 print( response_ofupdate)
 

@@ -13,9 +13,7 @@ Demo:
 python3 demo10.py
 """
 
-import datetime
 import os
-import pickle
 from googleapiclient.discovery    import build
 from googleapiclient.http         import MediaFileUpload
 from oauth2client.service_account import ServiceAccountCredentials
@@ -79,5 +77,4 @@ response_ofget = service.files().get(fileId=file_id,fields='webViewLink'
 
 print('The URL of the file, hello.txt, is:')
 print(response_ofget['webViewLink'])
-
 </code>

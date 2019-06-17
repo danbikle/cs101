@@ -12,9 +12,7 @@ Demo:
 python3 demo10.py
 """
 
-import datetime
 import os
-import pickle
 from googleapiclient.discovery    import build
 from googleapiclient.http         import MediaFileUpload
 from oauth2client.service_account import ServiceAccountCredentials
