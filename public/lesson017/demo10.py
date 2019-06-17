@@ -16,6 +16,7 @@ import datetime
 import os
 import pickle
 from googleapiclient.discovery    import build
+from googleapiclient.http         import MediaFileUpload
 from oauth2client.service_account import ServiceAccountCredentials
 from httplib2                     import Http
 
@@ -36,3 +37,44 @@ service   = build('drive', 'v3', http=http_auth)
 
 print('I should now be authenticated and authorized to use service:')
 print(service)
+
+# I shd create /tmp/hello.txt on Linux:
+with open('/tmp/hello.txt','w') as fh:
+    fh.write("hello world\n")
+
+# I shd copy hello.txt to Google Drive.
+file_metadata = {'name': 'hello.txt'}
+media = MediaFileUpload('/tmp/hello.txt', mimetype='text/plain')
+print('I will try to upload /tmp/hello.txt to google drive:')
+create_response = service.files().create(body=file_metadata,
+                                     media_body=media,
+                                     fields='id').execute()
+file_id = create_response.get('id')
+print('new /tmp/hello.txt file_id:')
+print(file_id)
+
+# I shd grant reader-role to anyone (who wants it):
+newperm_d   = {'role': 'reader', 'type': 'anyone'}
+pc_response = service.permissions().create(fileId=file_id,
+                                                   body=newperm_d
+).execute()
+
+print('pc_response:')
+print( pc_response)
+
+# I shd grant writer-role to bikle101@gmail.com:
+newperm_d   = {'role': 'writer', 'type': 'user',
+               'emailAddress': 'bikle101@gmail.com'}
+
+pc_response = service.permissions().create(fileId=file_id,
+                                           body=newperm_d
+).execute()
+
+print('pc_response:')
+print( pc_response)
+
+response_ofget = service.files().get(fileId=file_id,fields='webViewLink'
+).execute()
+
+print('The URL of the file is:')
+print(response_ofget['webViewLink'])
