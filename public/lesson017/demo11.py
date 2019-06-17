@@ -41,7 +41,6 @@ print(service)
 field_s           = 'spreadsheetId,spreadsheetUrl'
 body_d            = {'properties':{'title':'hello spreadsheet'}}
 
-
 response_ofcreate = service.spreadsheets().create(fields=field_s, body=body_d).execute()
 
 spreadsheet_id    = response_ofcreate.get('spreadsheetId')
