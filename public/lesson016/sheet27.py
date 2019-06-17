@@ -1,0 +1,69 @@
+"""
+sheet27.py
+
+This script should create a spreadsheet.
+Then, it should make the spreadsheet public-readable.
+
+Demo:
+python3 sheet27.py
+"""
+
+import datetime
+import os
+import pickle
+from googleapiclient.discovery import build
+from google_auth_oauthlib.flow import InstalledAppFlow
+
+# I s.declare a very permissive scope (for training only):
+SCOPES  = ['https://www.googleapis.com/auth/drive']
+jsonf_s = os.environ['HOME']+'/secret0612.json'
+pcklf_s = os.environ['HOME']+'/secret0612.pickle'
+flow    = InstalledAppFlow.from_client_secrets_file(jsonf_s, SCOPES)
+creds   = flow.run_local_server()
+
+with open(pcklf_s, 'wb') as fh:
+  pickle.dump(creds, fh)
+
+print('OAuth session persisted to a Python-pickle file:')
+print(pcklf_s)
+
+pcklf_s = os.environ['HOME']+'/secret0612.pickle'
+
+# I dont need to use the pickle file here
+# but I want to keep the syntax around for future study:
+
+# with open(pcklf_s, 'rb') as fh:
+#   creds = pickle.load(fh)
+#             
+# print('OAuth session obtained from Python-pickle file:')
+# print(pcklf_s)
+
+service   = build('sheets', 'v4', credentials=creds)
+
+print('I should now be authenticated and authorized to use service:')
+print(service)
+
+field_s           = 'spreadsheetId,spreadsheetUrl'
+body_d            = {'properties':{'title':'spreadsheet from sheet27.py'}}
+response_ofcreate = service.spreadsheets().create(fields=field_s,
+                                                  body=body_d).execute()
+spreadsheet_id    = response_ofcreate.get('spreadsheetId')
+print('I just created spreadsheet; it has an ID:')
+print(spreadsheet_id)
+spreadsheet_url = response_ofcreate.get('spreadsheetUrl')
+print('spreadsheetUrl:')
+print( spreadsheet_url)
+
+# I shd grant role of writer to user with a gmail-address:
+newperm_d     = {'role': 'writer', 'type': 'user',
+                 'emailAddress':'bikle101@gmail.com'}
+drive_service = build('drive', 'v3', credentials=creds)
+print('drive_service:')
+print( drive_service)
+pc_response = drive_service.permissions().create(fileId=spreadsheet_id,
+                                                   body=newperm_d
+).execute()
+
+print('pc_response:')
+print( pc_response)
+

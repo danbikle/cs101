@@ -362,4 +362,16 @@
 %a(target='g' href='https://docs.google.com/spreadsheets/d/1In-pfZs2W69E6P7hmhBeSuvLJmBaN4KdJrUDsBSWKZc/edit')
   https://docs.google.com/spreadsheets/d/1In-pfZs2W69E6P7hmhBeSuvLJmBaN4KdJrUDsBSWKZc/edit
 
+%p Granting reader privilege to anyone is a common use-case.
+
+%p Another use-case is to grant writer to a specific person.
+
+%p The Google-drive API implements this idea by asking me to supply a gmail-address of the specific person who will write data to my spreadsheet.
+
+%p The Python script demonstrates syntax which worked well for me:
+
+.syntax
+  %pre
+    =render 'lesson016sheet27py'
+
 %hr/
