@@ -25,10 +25,10 @@
   
   Some topics we cover will be listed below:
   
-  * Ubuntu as a training and development environment.
+  * Ubuntu as a training and development environment
   * GCP Projects
-  * Accessing an Ubuntu environment from a chrome browser.
-  * Python installation.
+  * Accessing an Ubuntu environment from a chrome browser
+  * Python installation
   * Python packages
   * Installation of google-api-python-client
   * pdb
@@ -199,3 +199,43 @@
 
 %img(src='/lesson018/p109.png')
 %hr/
+
+%h1 Python Installation
+
+%p Now that we are at August of 2019, the best version of Python to use with the Google APIs is Python3.
+
+%p Using the "which" shell-command, I looked for Python3 in my new Ubuntu18-host and I found it:
+
+%img(src='/lesson018/p110.png')
+%hr/
+
+%h1 Python Packages
+
+%p The Python language is modular.
+
+%p We can extend Python using packages which we copy from the internet to our Ubuntu18-host.
+
+%p Google provides a package called google-api-python-client which allows us to connect Python with the Google APIs.
+
+%p The shell-command I use to copy google-api-python-client to my Ubuntu18-host is listed below:
+
+.syntax
+  %pre
+    %code pip3 install google-api-python-client
+
+%p I ran the above command and saw this:
+
+%img(src='/lesson018/p111.png')
+%hr/
+
+%p I ran another shell-command to install pip3:
+
+.syntax
+  %pre
+    %code sudo apt install python3-pip
+    
+%p I saw this:
+
+%img(src='/lesson018/p112.png')
+%hr/
+
