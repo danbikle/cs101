@@ -3,7 +3,7 @@ lesson18a.py
 
 I s.use this script to connect my mind to pdb.
 
-If I ever get lost while I am in pdb, I s.try the help-command.
+If I ever get lost while I am in pdb, I s.try the "help" command.
 
 Demo:
 python3 -m pdb lesson18a.py
