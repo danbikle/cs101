@@ -325,6 +325,53 @@
 .syntax
   %pre
     =render 'lesson18b'
-    
 
+%p To start on that study, I typed in a shell command:
 
+.syntax
+  %pre
+    %code python3 -m pdb lesson18b.py
+
+%p I saw this:
+
+%img(src='/lesson018/p119.png')
+%hr/
+
+%p
+  I used both "l" and "n" pdb-commands to slowly run and watch the behavior
+  of each line of syntax in the script:
+
+%img(src='/lesson018/p120.png')
+%hr/
+
+%p From that interaction, I learned that line-18 was a problem.
+
+%p I list line-18 below:
+
+.syntax
+  %pre
+    %code from oauth2client.service_account import ServiceAccountCredentials
+
+%p I quit pdb with the q command.
+
+%p I used google-search to study the problem:
+%p
+  %a(href='https://www.google.com/search?q=python+ModuleNotFoundError:+No+module+named+oauth2client' target='x')
+    https://www.google.com/search?q=python+ModuleNotFoundError:+No+module+named+oauth2client
+  
+%p I used a pip3 shell command to fix the problem:
+
+.syntax
+  %pre
+    %code sudo pip3 install oauth2client
+
+%p I started another pdb session to look for more bugs:
+
+.syntax
+  %pre
+    %code python3 -m pdb lesson18b.py
+
+%p I saw this:
+
+%img(src='/lesson018/p121.png')
+%hr/
