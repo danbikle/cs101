@@ -277,6 +277,24 @@
 
 %p The above output convinced me that I had installed google-api-python-client.
 
+%h1 git clone
+
+%p The Python scripts in this presentation can be copy/pasted with a mouse.
+
+%p And then they might work.
+
+%p The Python scripts in this presentation should be in a git repo.
+
+%p Instead of a mouse, I used the shell commands listed below to copy the Python scripts into my Ubuntu18-host:
+
+.syntax
+  %pre
+    %code
+      cd ~
+      git clone https://github.com/danbikle/cs101
+      cd cs101/public/lesson018
+      ls -la *py
+
 %h1 pdb
 
 %p One of my favorite packages is pdb.
@@ -506,4 +524,25 @@
 
 %img(src='/lesson018/p137.png')
 %hr/
+
+%h1 More pdb
+
+%p I returned to my Ubuntu18-shell.
+
+%p I saw this:
+
+%img(src='/lesson018/p138.png')
+%hr/
+
+%p I started pdb with a shell command:
+.syntax
+  %pre
+    %code python3 -m pdb lesson18b.py
+
+%p I used "n" and "l" to step through the code.
+
+%p I got past the bug I saw earlier on line 32.
+
+%p I bumped into the next bug:
+
 
