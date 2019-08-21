@@ -602,3 +602,24 @@
 
 %p I got past the bug I saw earlier on line 49.
 
+%p In fact, I stepped through the entire script with no problems.
+
+%p The last line of the script is line-78.
+
+%p After pdb ran line-78, I entered to "q" command to quit pdb:
+
+%img(src='/lesson018/p143.png')
+%hr/
+
+%p The script printed out the URL of a simple file which it copied to Google Drive:
+
+%p
+  %a(href='https://drive.google.com/file/d/1ufkoZInhI3c6XH9rMQi0AK9sH3hjGZQS/view?usp=drivesdk' target='x')
+    https://drive.google.com/file/d/1ufkoZInhI3c6XH9rMQi0AK9sH3hjGZQS/view?usp=drivesdk
+  
+%p You should be able to see the file because the script granted 'reader' role to 'anyone' using syntax listed below:
+
+.syntax
+  %pre
+    =render 'lesson018c'
+

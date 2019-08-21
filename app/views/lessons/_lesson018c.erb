@@ -1,0 +1,8 @@
+<code class='bash'>
+# I shd grant reader-role to anyone (who wants it):
+newperm_d   = {'role': 'reader', 'type': 'anyone'}
+pc_response = service.permissions().create(fileId=file_id,
+                                                   body=newperm_d
+).execute()
+
+</code>
