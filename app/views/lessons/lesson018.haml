@@ -389,16 +389,21 @@
 %img(src='/lesson018/p124.png')
 %hr/
 
-%p I fixed the bug by using the Google web-UI to create a JSON file containing "credentials".
+%p I fixed the above bug by using the Google web-UI to create two things:
+%ul
+  %li A "Service-Account"
+  %li A JSON file containing "credentials"
 
-%p The JSON file is a key ingredient to the mechanism I use to connect my Python scripts to Google APIs.
+%p These items are key ingredients to the mechanism I use to connect my Python scripts to Google APIs.
 
 %p Normally when I want to interact with Google resources, I login using my Gmail account and a password.
 
-%p My Python scripts cannot do that so they use an alternative method.
+%p My Python scripts cannot do that so they use a Service-Account and a JSON file containing credentials.
 
-%p They login using a JSON file containing "credentials".
+%ul
+  %li Q: How to create a Service-Account?
+  %li Q: How to create a JSON file containing "credentials"?
 
-%p Q: How to create a JSON file containing "credentials"?
+%h1 Service-Account
 
 
