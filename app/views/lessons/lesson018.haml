@@ -543,6 +543,62 @@
 
 %p I got past the bug I saw earlier on line 32.
 
-%p I bumped into the next bug:
+%p I bumped into the next bug on line 49:
 
+%img(src='/lesson018/p139.png')
+%hr/
+
+%h1 Enable Drive API
+
+%p The above error message is informative.
+
+%p It told me that I needed to enable the Drive API.
+
+%p I asked google-search for help:
+%p
+  %a(href='https://www.google.com/search?q=In+GSuite+how+to+enable+Google+Drive+API' target='x')
+    https://www.google.com/search?q=In+GSuite+how+to+enable+Google+Drive+API
+
+%p After studying the search-results I visited the URL listed below:
+
+%p
+  %a(href='https://console.cloud.google.com/apis/library' target='x')
+    https://console.cloud.google.com/apis/library
+
+%p I saw this:
+
+%img(src='/lesson018/p140.png')
+%hr/
+
+%p I found the box for the Drive-API:
+
+%img(src='/lesson018/p141.png')
+%hr/
+
+%p I clicked it.
+
+%p I enabled the Drive-API:
+
+%img(src='/lesson018/p142.png')
+%hr/
+
+%p I waited 5 minutes for my request to propogate through GCP.
+
+%h1 More pdb
+
+%p I returned to my Ubuntu18-shell.
+
+%p I saw this:
+
+%img(src='/lesson018/p138.png')
+%hr/
+
+%p I started pdb with a shell command:
+.syntax
+  %pre
+    %code python3 -m pdb lesson18b.py
+
+%p I used "n" and "l" to step through the code.
+
+%p I got past the bug I saw earlier on line 49.
 
