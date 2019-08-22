@@ -1,0 +1,13 @@
+<code class='bash'>
+# I shd copy hello.txt to Google Drive.
+file_metadata = {'name': 'hello.txt'}
+media = MediaFileUpload('/tmp/hello.txt', mimetype='text/plain')
+print('I will try to upload /tmp/hello.txt to google drive:')
+create_response = service.files().create(body=file_metadata,
+                                     media_body=media,
+                                     fields='id').execute()
+file_id = create_response.get('id')
+print('new /tmp/hello.txt file_id:')
+print(file_id)
+
+</code>
