@@ -1,0 +1,12 @@
+<code class='bash'>
+# I s.declare a very permissive scope (for training only):
+SCOPES      = ['https://www.googleapis.com/auth/drive']
+credentials = ServiceAccountCredentials.from_json_keyfile_name(secretf_s,
+                                                               SCOPES)
+http_auth = credentials.authorize(Http())
+service   = build('drive', 'v3', http=http_auth)
+
+print('I should now be authenticated and authorized to use service:')
+print(service)
+
+</code>

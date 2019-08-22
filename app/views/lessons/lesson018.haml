@@ -660,5 +660,74 @@
   %pre
     =render 'lesson018d'
 
+%p After the docstring, the script calls a series of imports:
+.syntax
+  %pre
+    =render 'lesson018e'
+
+%p I wrote the above syntax after using google-search to study a simple question:
+
+%p
+  %a(href='https://www.google.com/search?q=On+google+GCP+how+to+connect+python+to+oauth2' target='x')
+    https://www.google.com/search?q=On+google+GCP+how+to+connect+python+to+oauth2
+
+
+%p Results from the above result included some Google documentation.
+%p None of the documentation seemed to answer the above question.
+%p I did find a helpful page on StackOverflow and now I use that syntax.
+
+%p One problem with the above imports is that oauth2client-package is old:
+%p
+  %a(href='https://github.com/googleapis/oauth2client/blob/master/README.md' target='x')
+    https://github.com/googleapis/oauth2client/blob/master/README.md
+
+%p Eventually I will figure out how to replace it with a newer, better package.
+
+%p After the imports, the script calls syntax to copy a small file into a string:
+
+.syntax
+  %pre
+    =render 'lesson018f'
     
+%p When I teach Python to beginners, sometimes I will derive some questions from some syntax rather than explaining the syntax.
+
+%p I offer some questions below to help you explain the above syntax to yourself:
+
+%ul
+  %li What is the os-package?
+  %li How to learn more about the os-package?
+  %li How to get the value of a Linux env-variable?
+  %li Why do I put "_s" at the end of secretf_s?
+  %li How to concatenate two strings?
+  %li What does open() do?
+  %li What does 'with' do?
+  %li How to learn more about the open() call?
+  %li Does open() reside in a package or is it by "itself"?
+  %li What kind of argument does open() take?
+  %li How to read a small text-file into a string?
+  %li Why do I call fh, "fh"?
+  %li How to see the first 66 characters of a string?
+  %li How is a string like a list?
+  
+%p
+  After copying secret0822.json into json_s,
+  the script calls syntax to connect the script to Google Drive API:
+
+.syntax
+  %pre
+    =render 'lesson018g'  
+
+%p I offer some questions below to help you explain the above syntax to yourself:
+
+%ul
+  %li Why is SCOPES capitalized?
+  %li Why is SCOPES called "SCOPES"?
+  %li Which method creates credentials?
+  %li Why does from_json_keyfile_name() take two args?
+  %li Why is SCOPES a List?
+  %li The first arg of build() is 'drive'; what does that tell you?
+  %li What other strings besides 'drive' might be accepted?
+  %li OAuth combines authentication and authorization; what's that mean?
+  %li Does the above syntax combine authentication and authorization?
+  %li If yes, how?
   
