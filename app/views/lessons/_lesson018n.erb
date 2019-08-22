@@ -1,0 +1,41 @@
+<code class='bash'>
+"""
+lesson18c.py
+
+
+This script should:
+
+- Create a spreadsheet named hello spreadsheet
+- Write some rows into it
+- Grant reader-role to anyone (who wants it)
+- Grant writer-role to bikle101@gmail.com
+
+
+Demo:
+python3 lesson18c.py
+"""
+
+import os
+from googleapiclient.discovery    import build
+from oauth2client.service_account import ServiceAccountCredentials
+from httplib2                     import Http
+
+secretf_s = os.environ['HOME']+'/secret0822.json'
+
+with open(secretf_s) as fh:
+  json_s = fh.read()
+
+print('json_s[:66]:')
+print( json_s[:66])
+
+# I s.declare a very permissive scope (for training only):
+SCOPES      = ['https://www.googleapis.com/auth/drive']
+credentials = ServiceAccountCredentials.from_json_keyfile_name(secretf_s,
+                                                               SCOPES)
+http_auth = credentials.authorize(Http())
+service   = build('sheets', 'v4', http=http_auth)
+
+print('I should now be authenticated and authorized to use service:')
+print(service)
+
+</code>
