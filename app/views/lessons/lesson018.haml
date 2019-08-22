@@ -795,5 +795,57 @@
 %ul
   %li What is a "webViewLink"?
   %li Why is a "webViewLink" useful?
-  
+
+%hr/
+
+%h1 Google Sheets: lesson18c.py
+
+%p I wrote the script listed below:
+
+.syntax
+  %pre
+    =render 'lesson018m'
+
+%p I used the shell command below to run the above script inside pdb:
+
+.syntax
+  %pre
+    %code python3 -m pdb lesson18c.py
+
+%p I used "l" and "n" commands to slowly run the script while I watched it.
+
+%p The script encountered a bug on line 43:
+
+%img(src='/lesson018/p144.png')
+%hr/
+
+%p To fix the bug, I visited the URL listed below:
+
+%p
+  %a(href='https://console.cloud.google.com/apis/library' target='x')
+    https://console.cloud.google.com/apis/library
+
+%p There, I clicked the square for Google Sheets API:
+
+%img(src='/lesson018/p145.png')
+%hr/
+
+%p I clicked the blue-Enable button and waited 5 minutes:
+
+%img(src='/lesson018/p146.png')
+%hr/
+
+%p Again, I used the shell command below to run the above script inside pdb:
+
+.syntax
+  %pre
+    %code python3 -m pdb lesson18c.py
+
+%p I used "l" and "n" commands to slowly run the script while I watched it.
+
+
+
+
+
+
   
