@@ -1,0 +1,8 @@
+<code class='bash'>
+response_ofget = service.files().get(fileId=file_id,fields='webViewLink'
+).execute()
+
+print('The URL of the file, hello.txt, is:')
+print(response_ofget['webViewLink'])
+
+</code>

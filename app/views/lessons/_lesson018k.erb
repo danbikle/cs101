@@ -1,0 +1,13 @@
+<code class='bash'>
+# I shd grant writer-role to bikle101@gmail.com:
+newperm_d   = {'role': 'writer', 'type': 'user',
+               'emailAddress': 'bikle101@gmail.com'}
+
+pc_response = service.permissions().create(fileId=file_id,
+                                           body=newperm_d
+).execute()
+
+print('pc_response:')
+print( pc_response)
+
+</code>
