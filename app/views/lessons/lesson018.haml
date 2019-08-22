@@ -1,68 +1,11 @@
 %h1#top Lesson 018 [ Python Meetup 2019-08-22 ]
 
+%p Meetup:
+%p
+  %a(href='https://www.meetup.com/BAyPIGgies/events/264160722/' target='x')
+    https://www.meetup.com/BAyPIGgies/events/264160722/
+
 %p This lesson is customized for Python Meetup 2019-08-22.
-
-%pre
-  Summary:
-  Python + Google [pdb drilldown]
-  \===============================
-  
-  In May, Wesley Chun presented a wide exploration of Google APIs with Python.
-  
-  In this presentation, Dan Bikle presents a drill-down into some
-  specific scripts which connect Python with Google services via Google APIs.
-  
-  The presentation will be targeted at people new to both Python and Google APIs.
-  
-  Using Python to interact with Google APIs is an effective way to learn both technologies.
-  
-  Each script will serve as a stand-alone lesson.
-  
-  To start, Dan will discuss each script from a general perspective.
-  
-  Then Dan will operate each script inside the Python pdb debugger to give
-  you a look at how each line contributes action to an overall goal.
-  
-  Some topics we cover will be listed below:
-  
-  * Ubuntu as a training and development environment
-  * GCP Projects
-  * Accessing an Ubuntu environment from a chrome browser
-  * Python installation
-  * Python packages
-  * Installation of google-api-python-client
-  * pdb
-  * Google product categories
-  * Google Drive
-  * Google Sheets
-  * GCP Service Accounts
-  * Authentication + Authorization + JSON
-  * Service Account Key creation
-  * Google Drive + Python
-  * Local-File read-write with Python
-  * Python-Only Google Authentication
-  * Declare Authorizations with Python
-  * File upload to Google Drive
-  * Python manipulation of Google Drive permissions:
-  * * Make file world-readable
-  * * Grant write-privilege to a gmail-address
-  * List Sharable-URLs of files in Google Drive
-  * Google Sheets + Python
-  * Create a Sheet
-  * Understand "A1 Notation"
-  * Add rows to a Sheet
-  * * Make Sheet world-readable
-  * * Grant write-privilege to a gmail-address
-  * Sheets are complicated, So is the API.
-  * Let's explore the Sheets API.
-  
-  Bio
-  \===
-  Dan Bikle builds Full-Stack Machine-Learning Apps.
-  Dan graduated from Caltech with a BSEE.
-  There he learned: "The truth shall make you free."
-
-%hr/
 
 %h1 Ubuntu as a Training and Development Environment
 
@@ -878,3 +821,43 @@
   %li Why is response_ofcreate called: "response_ofcreate"?
   %li Would I expect the value of spreadsheet_id to be a String?
   
+%p I list more lines from the script:
+
+.syntax
+  %pre
+    =render 'lesson018q'
+
+%ul
+  %li How does spreadsheet_id relate to spreadsheet_url?
+  %li Is spreadsheet_url more useful than spreadsheet_id?
+  %li response_ofcreate.get() takes a String, which Strings can I use?
+  
+%p I list more lines from the script:
+
+.syntax
+  %pre
+    =render 'lesson018r'
+
+%ul
+  %li The string: 'Sheet1' in range_s is what?
+  %li The string: 'A1' in range_s is what?
+  %li The string: 'Sheet1!A1' in range_s is what?
+  %li What does this expression do: valueInputOption='USER_ENTERED' ?
+  %li The above syntax makes this call:
+  %li service.spreadsheets().values().update()
+  %li What other methods besides .update() are available?
+  %li After I update a sheet with an API, what should be in the response in your opinion?
+  
+%p I list more lines from the script:
+
+.syntax
+  %pre
+    =render 'lesson018s'
+
+%ul
+  %li Is the above syntax familiar?
+  %li Does it make sense that the syntax would be similar between two scripts?
+%hr/
+%h1 Thanks for helping me study this technology.
+%h2 Thanks to Glen for asking me to speak.
+%h2 Contact: bikle101@gmail.com
