@@ -338,7 +338,7 @@
 
 %p So, I consider that a quick introduction to pdb.
 
-%p Next, I used pdb to study the Python script listed below:
+%p#lesson18b Next, I used pdb to study the Python script listed below:
 
 .syntax
   %pre
@@ -623,3 +623,42 @@
   %pre
     =render 'lesson018c'
 
+%h1 lesson18b.py
+
+%p
+  After I configured my GCP account and secret0822.json file,
+  I saw that lesson18b.py would run error free.
+
+%p
+  If you want to study lesson18b.py,
+  you will see it listed
+  %a(href='#lesson18b') above
+  or served from github:
+%p
+  %a(href='https://github.com/danbikle/cs101/blob/master/public/lesson018/lesson18b.py' target='x')
+    https://github.com/danbikle/cs101/blob/master/public/lesson018/lesson18b.py
+  
+%p The script starts with syntax called "Docstring".
+%p Docstring Conventions are described at the URL listed below:
+%p
+  %a(href='https://www.python.org/dev/peps/pep-0257/' target='x')
+    https://www.python.org/dev/peps/pep-0257/
+    
+%p When I write production-Python, I try to use docstring conventions described in the above URL.
+
+%p
+  When I write docstrings for scripts to be studied by students, like lesson18b.py,
+  I use an unconventional style which should convey some kind of educational concept.
+  The usual concepts are:
+  
+%ul
+  %li What the script should do
+  %li How the student can run the script
+
+%p The docstring for lesson18b.py is listed below:
+.syntax
+  %pre
+    =render 'lesson018d'
+
+    
+  
