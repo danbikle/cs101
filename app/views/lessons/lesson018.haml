@@ -715,7 +715,7 @@
 
 .syntax
   %pre
-    =render 'lesson018g'  
+    =render 'lesson018g'
 
 %p I offer some questions below to help you explain the above syntax to yourself:
 
@@ -730,4 +730,19 @@
   %li OAuth combines authentication and authorization; what's that mean?
   %li Does the above syntax combine authentication and authorization?
   %li If yes, how?
+
+%p Next, the script prints information about the service object and then writes a string into a local file:
+
+.syntax
+  %pre
+    =render 'lesson018h'
+    
+%p I offer some questions below to help you explain the above syntax to yourself:
+
+%ul
+  %li Would you expect the service object to be a String?
+  %li How does this second call to open() differ from the first call?
+  %li What is this syntax: "\n" ?
+  %li Will the above syntax fail if /tmp/hello.txt already exists?
   
+
