@@ -361,6 +361,41 @@
 
 %p My Python scripts cannot do that so they use a Service-Account and a JSON file containing credentials.
 
+%h2 A note from Wesley:
+
+%p.p_dark_green
+  That is not entirely accurate. With GCP APIs, it's generally
+  server-to-server in the cloud access, meaning a service account is
+  required. However with G Suite, you have 2 options, with service
+  accts being one of them. Normally people are G Suite *users*,
+  meaning there is user data available, meaning you *can* use Gmail
+  user auth (whereas you'd be accessing service acct G Suite data if
+  you use svc acct auth). Make sense?
+
+%p.p_dark_green
+  For example, I often use the "dump your 1st 100 files/folders from
+  Google Drive" sample to doing my intro. As you can see (from the
+  %a(href='https://github.com/googlecodelabs/gsuite-apis-intro/blob/master/drive_list.py' target='s') code snippet
+  from the
+  %a(href='https://codelabs.developers.google.com/codelabs/gsuite-apis-intro/#0' target='i') intro codelab
+  or the
+  %a(href='https://www.youtube.com/watch?v=Z5G0luBohCg&feature=youtu.be&list=PLOU2XLYxmsILOIxBRPPhgYbuSslr50KVq&index=4' target='v')
+    video
+  ), I'm using user auth and
+  not service acct auth. IOW, the auth you use depends on what kind of
+  "user" whose data you're accessing... a real user's data, or a service
+  account's data.
+
+%p.p_dark_green
+  I failed to mention in my previous msg that the difference b/w user
+  auth and svc acct auth shows up in the Cloud Console when you're
+  creating your credentials. Obviously create service acct credentials
+  when accessing G Suite data belonging to a svc acct, but you'd
+  create an "OAuth2 client ID" to create user auth credentials to
+  access G Suite data belonging to a user.
+
+%h2 So ...
+
 %ul
   %li Q: How to create a Service-Account?
   %li Q: How to create a JSON file containing "credentials"?
